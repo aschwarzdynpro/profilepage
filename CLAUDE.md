@@ -45,6 +45,12 @@ an der App dort abgleichen. **ALM Detective und Job Monitor stehen bewusst nicht
 beide sind aus dem Menü der App entfernt. Verlinkt ist die Seite aus der Referenzkarte
 und aus dem Werkzeuge-Abschnitt der Startseite.
 
+Die Seite hat als einzige ein Inhaltsverzeichnis (`.toc`): am Desktop eine mitlaufende
+Spalte links, unter 1100px ein Panel über den Knopf „Inhalt". Dazu gehört das einzige
+Inline-Skript der Site (Scrollspy, offen ist immer genau eine Gruppe). Jeder Arbeitsbereich
+braucht eine `id` am `<article>` und einen Eintrag im Inhaltsverzeichnis, sonst fehlt er
+in der Navigation.
+
 ## Inhaltliche Quelle
 Massgeblich ist das **englische** Profil-Dokument `Profile_Andy_Schwarz_2026.docx`
 (in `OneDrive/Dokumente/Job/`). Zahlen auf der Site folgen ihm, mit einer bewussten Ausnahme:
