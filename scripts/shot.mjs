@@ -33,6 +33,17 @@ for (const [slug, path] of PAGES) {
       ['Manrope', 'IBM Plex Sans'].filter(f => !document.fonts.check(`700 17px "${f}"`)));
     if (missing.length) { console.error(`FEHLER ${slug}/${view}: Schrift nicht geladen: ${missing.join(', ')}`); failed = true; }
 
+    // Lazy geladene Bilder anstossen, damit sie auf dem Screenshot stehen
+    // und ein kaputter Pfad oder Content-Type hier auffaellt.
+    await page.evaluate(async () => {
+      document.querySelectorAll('img[loading="lazy"]').forEach(i => i.loading = 'eager');
+      await Promise.all([...document.images].map(i => i.complete ? null : i.decode().catch(() => null)));
+    });
+    await page.waitForTimeout(400);
+    const broken = await page.evaluate(() =>
+      [...document.images].filter(i => !i.complete || i.naturalWidth === 0).map(i => i.getAttribute('src')));
+    if (broken.length) { console.error(`FEHLER ${slug}/${view}: Bild laedt nicht: ${broken.join(', ')}`); failed = true; }
+
     const file = `shots/${slug}-${view}.png`;
     await page.screenshot({ path: file, fullPage: true });
     written.push(file);

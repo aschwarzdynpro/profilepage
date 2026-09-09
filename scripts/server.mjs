@@ -6,7 +6,7 @@ import { extname, join, normalize, resolve } from 'node:path';
 const ROOT = resolve('.');
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript',
-  '.jpg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml',
+  '.jpg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml', '.webp': 'image/webp',
   '.woff2': 'font/woff2', '.xml': 'application/xml', '.txt': 'text/plain',
 };
 

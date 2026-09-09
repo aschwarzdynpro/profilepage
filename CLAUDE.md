@@ -23,6 +23,21 @@ Einrichtung und DNS stehen in `README.md`.
 - Hero-Blaupause: inline SVG `.blueprint` mit animierten Pulsen (`animateMotion`), reduced-motion respektiert
 - Skills: Netzdiagramm `.radar` (SVG, Skala 1–5) + Balkengruppen `.sg` (5 Segmente = Niveau, Zahl = Jahre)
 
+## Screenshots der Konsole
+`assets/screenshots/*.webp` sind **selbst aufgenommen**, nicht vom Kunden geliefert.
+Verfahren, falls sie erneuert werden müssen:
+
+1. `apps/solution-forge` aus dem Repo `aschwarzdynpro/CodeApps` lokal starten (`npx vite`).
+   Ohne Power-Bridge fällt die App automatisch auf `local-mock`, Badge oben rechts sagt
+   „Demo data". **Nur mit diesen Beispieldaten aufnehmen, nie mit Kundendaten.**
+2. Beim ersten Start blockiert der Environment-Setup-Assistent. Sechs Mal Next, dann
+   „Create configuration". Danach zeigt Validate 10 Einträge statt 9 (Dual-Write erscheint).
+3. Aufnehmen bei Viewport 1600 breit, `deviceScaleFactor: 2`, geclippt auf `main.content`.
+4. Auf 1600px Breite herunterrechnen und als WebP mit Qualität 0.92 speichern. Das spart
+   gegenüber PNG rund zwei Drittel (516 kB statt 1,4 MB für sieben Bilder).
+
+Karten mit Screenshot müssen `feat wide` sein, in der halben Spalte ist das Bild unlesbar.
+
 ## Produktseite Solution Administration Console
 `solution-admin-console.html` beschreibt alle 21 Arbeitsbereiche der Code App. Quelle ist
 `CodeApps/apps/solution-forge/README.md` im Repo `aschwarzdynpro/CodeApps`; bei Änderungen

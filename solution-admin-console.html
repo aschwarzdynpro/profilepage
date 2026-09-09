@@ -90,6 +90,9 @@
   .feat ul{margin-top:.9rem;list-style:none;display:flex;flex-wrap:wrap;gap:.4rem}
   .feat ul li{font-size:.82rem;color:var(--ink-2);background:var(--bg-2);border-radius:3px;padding:.25rem .55rem}
   .feat.wide{grid-column:1 / -1}
+  .shot{margin-top:1.3rem}
+  .shot img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:5px;background:var(--bg-2)}
+  .shot figcaption{margin-top:.6rem;font-size:.86rem;color:var(--ink-3);line-height:1.5}
   .subs{margin-top:1.4rem;border-top:1px solid var(--line);padding-top:1.3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
   @media (max-width:900px){.subs{grid-template-columns:1fr;gap:1.2rem}}
   .subs h4{font-family:var(--display);font-size:1rem;font-weight:700;letter-spacing:-0.01em}
@@ -154,6 +157,7 @@
       <h2>Wofür</h2>
       <p>In gewachsenen Umgebungen ist selten strittig, was deployt werden soll. Strittig ist, was dabei schiefgeht: eine Abhängigkeit, die im Ziel fehlt. Eine Environment Variable ohne Wert. Eine Connection Reference, die nirgends gebunden ist. Ein unmanaged Layer, der künftige Deployments stillschweigend maskiert. Eine Canvas App, die zwar ankommt, aber niemanden erreicht, weil Freigaben nicht mittransportiert werden. Eine Sicherheitsrolle, die von Hand nachgebaut statt transportiert wurde und ab morgen still auseinanderläuft.</p>
       <p>Jede dieser Fragen ist einzeln beantwortbar, mit genug Zeit und den richtigen Abfragen. Die Konsole beantwortet sie an einer Stelle, über alle konfigurierten Umgebungen hinweg, und zwar bevor importiert wird. Sie ersetzt keine Pipeline. Sie sagt Ihnen, ob der nächste Import durchgeht und was er im Ziel anrichtet.</p>
+      <p>Die Abbildungen auf dieser Seite zeigen die App mit den eingebauten Beispieldaten, nicht mit Kundendaten.</p>
       <p>Alles dreht sich um die <em>Working Solution</em>: ein Datensatz mit Titel, Typ, Azure-DevOps-ID, Owner und Deployment-Status, verbunden mit der echten unmanaged Dataverse-Solution, die die Komponenten trägt. Beim Anlegen entsteht beides in einem Schritt. Unmanaged Solutions ohne Datensatz bleiben trotzdem sichtbar und werden über die Namenskonvention eingeordnet.</p>
     </section>
 
@@ -164,10 +168,14 @@
       </header>
       <div class="feats">
 
-        <article class="feat">
+        <article class="feat wide">
           <h3>Workbench</h3>
           <p>Liste aller Working Solutions mit Filter nach Feature, Bug und Deployment sowie Suche über Titel, Unique Name und Azure-DevOps-ID. Der Schalter <em>incl. components</em> durchsucht zusätzlich die Anzeigenamen der Komponenten in den offenen Solutions und beantwortet damit die Frage, welche Solution eine bestimmte Tabelle oder einen bestimmten Flow enthält. Anlegen erzeugt Datensatz und echte Solution zusammen, mit Live-Vorschau des Unique Name und Dublettenprüfung.</p>
           <ul><li>Detail inline unter der Zeile</li><li>Komponenten nach Typ gruppiert</li><li>Owner zuweisen</li><li>Deep-Link ins Maker-Portal</li><li>Löschen mit drei Sekunden Undo</li></ul>
+          <figure class="shot">
+            <img src="assets/screenshots/workbench.webp" width="1600" height="992" loading="lazy" decoding="async" alt="Bildschirmfoto: Workbench mit aufgeklappter Zeile: Beschreibung, Komponenten nach Typ und der Abgleich mit dem Azure-DevOps-Work-Item.">
+            <figcaption>Workbench mit aufgeklappter Zeile: Beschreibung, Komponenten nach Typ und der Abgleich mit dem Azure-DevOps-Work-Item.</figcaption>
+          </figure>
         </article>
 
         <article class="feat">
@@ -182,10 +190,14 @@
           <ul><li>Work-Item-Link je Eintrag</li><li>Abschließen und Wiedereröffnen</li></ul>
         </article>
 
-        <article class="feat">
+        <article class="feat wide">
           <h3>Merge</h3>
           <p>Deployment-Solution als Ziel wählen, Feature- und Bug-Solutions ankreuzen, den Komponentenplan prüfen und zusammenführen. Konflikte sind markiert, Duplikate werden übersprungen. Jeder Lauf schreibt eine Historienzeile mit Anzahl, Quell-Solutions und den hinzugefügten Komponenten, die im Detail des Release als Merge-Historie erscheint.</p>
           <ul><li>Komponentenplan vor dem Lauf</li><li>Quell-Solutions werden automatisch gestempelt</li></ul>
+          <figure class="shot">
+            <img src="assets/screenshots/merge.webp" width="1600" height="787" loading="lazy" decoding="async" alt="Bildschirmfoto: Merge in drei Schritten: Quell-Solutions wählen, Ziel-Release wählen, Komponentenplan prüfen.">
+            <figcaption>Merge in drei Schritten: Quell-Solutions wählen, Ziel-Release wählen, Komponentenplan prüfen.</figcaption>
+          </figure>
         </article>
 
         <article class="feat">
@@ -216,21 +228,33 @@
       </header>
       <div class="feats">
 
-        <article class="feat">
+        <article class="feat wide">
           <h3>Deployment Readiness <span class="gate">Deployment Manager</span></h3>
           <p>Prüft eine Release-Solution gegen die Zielumgebungen auf Komponenten, die dort gebraucht, aber weder mitgeliefert noch vorhanden sind. Genau daran scheitert ein Import. Je Fund gibt es <em>Add to Solution</em>, um die fehlende Komponente direkt aufzunehmen. Typen, die über den Namen gematcht werden, gelten als vorhanden, wenn das Ziel sie unter gleichem Namen kennt.</p>
           <ul><li>Vor dem Import</li><li>Fehlende Komponente direkt aufnehmen</li></ul>
+          <figure class="shot">
+            <img src="assets/screenshots/readiness.webp" width="1600" height="844" loading="lazy" decoding="async" alt="Bildschirmfoto: Getrennt ausgewiesen: was im Ziel fehlt und den Import scheitern lässt, und was sich von hier aus nicht prüfen lässt.">
+            <figcaption>Getrennt ausgewiesen: was im Ziel fehlt und den Import scheitern lässt, und was sich von hier aus nicht prüfen lässt.</figcaption>
+          </figure>
         </article>
 
-        <article class="feat">
+        <article class="feat wide">
           <h3>Import History <span class="gate">Deployment Manager</span></h3>
           <p>Die Import-Historie einer wählbaren Umgebung mit Start, Solution, Status, Fortschritt, Dauer und aufgelöstem Publisher. Beim Aufklappen wird das Import-Log geparst: das Manifest-Ergebnis und, als eigentlicher Kern, die Missing-Dependency-Fehler als präzise Tabelle. Links die im Ziel fehlende Komponente samt übergeordnetem Objekt und Herkunfts-Solution, rechts die importierte Komponente, die sie braucht.</p>
           <ul><li>Schweres Log erst beim Aufklappen</li><li>Serverseitige Suche nach Status und Solution</li></ul>
+          <figure class="shot">
+            <img src="assets/screenshots/import-history.webp" width="1600" height="888" loading="lazy" decoding="async" alt="Bildschirmfoto: Ein fehlgeschlagener Import, aufgeklappt: links die im Ziel fehlende Komponente, rechts die, die sie braucht.">
+            <figcaption>Ein fehlgeschlagener Import, aufgeklappt: links die im Ziel fehlende Komponente, rechts die, die sie braucht.</figcaption>
+          </figure>
         </article>
 
         <article class="feat wide">
           <h3>Analyze <span class="gate">Deployment Manager</span></h3>
           <p>Ein Klick auf <em>Run Analysis</em> lässt Abhängigkeiten, Vergleich, Layer und App-Freigaben in einem Durchlauf gegen die Zielumgebung laufen und verdichtet das Ergebnis zu einem Deployment Risk Score von 0 bis 100, Karten nach Schweregrad, einer Tabelle der wichtigsten Befunde, einer Komponentenübersicht nach Typ, abgeleiteten Empfehlungen und einer Readiness-Matrix je Bereich. Die drei fokussierten Einzelprüfungen sind als Tabs enthalten und teilen sich die einmal oben gewählte Release-Solution.</p>
+          <figure class="shot">
+            <img src="assets/screenshots/analyze.webp" width="1600" height="1214" loading="lazy" decoding="async" alt="Bildschirmfoto: Ein Durchlauf, verdichtet zu Risk Score, Befunden nach Schweregrad, Empfehlungen und Readiness-Matrix.">
+            <figcaption>Ein Durchlauf, verdichtet zu Risk Score, Befunden nach Schweregrad, Empfehlungen und Readiness-Matrix.</figcaption>
+          </figure>
           <div class="subs">
             <div>
               <h4>Compare</h4>
@@ -319,10 +343,14 @@
           <ul><li>Correlation-Timeline nach Aufrufstiefe</li><li>Laufzeit-Aggregate je Plugin und Message</li><li>Trace-Level umschaltbar</li></ul>
         </article>
 
-        <article class="feat">
+        <article class="feat wide">
           <h3>Role Analyzer <span class="gate">Deployment Manager</span></h3>
           <p>Arbeitet auf einem zwischengespeicherten Abbild des Sicherheitsmodells. Enthalten sind die Matrix aus Rolle, Tabelle und Privileg mit Tiefenangabe, der Vergleich zweier Rollen, die effektiven Rechte eines Benutzers samt Herkunftspfad aus direkten und über Teams vererbten Rollen, die umgekehrte Suche nach allen, die eine bestimmte Aktion ausführen dürfen, sowie Hygiene-Befunde wie nicht zugewiesene Rollen.</p>
           <ul><li>Org-Chart der Business Units und Teams</li><li>Field Security auf Spaltenebene</li><li>Core Roles bündeln mehrfach vergebene Privilegien</li></ul>
+          <figure class="shot">
+            <img src="assets/screenshots/role-analyzer.webp" width="1600" height="1047" loading="lazy" decoding="async" alt="Bildschirmfoto: Effektive Rechte eines Benutzers, je Privileg mit Tiefe und Herkunft aus direkten und über Teams vererbten Rollen.">
+            <figcaption>Effektive Rechte eines Benutzers, je Privileg mit Tiefe und Herkunft aus direkten und über Teams vererbten Rollen.</figcaption>
+          </figure>
         </article>
 
         <article class="feat wide">
@@ -337,6 +365,10 @@
           <p>Der Configuration Data Transfer Hub bringt Konfigurationsdaten zwischen Umgebungen. Ein Paket besteht aus Zielumgebungen und einer Reihenfolge, ein Eintrag aus Quellumgebung, Tabelle, Filter und Spalten, wahlweise über eine System-Ansicht oder direkt als FetchXML mit Vorschau und Zeilenzähler. Dazu kommt das Record-Matching, entweder über die GUID oder über bis zu fünf fachliche Spalten, sowie die Frage, was mit Zielzeilen geschieht, die die Quelle nicht mehr liefert.</p>
           <p>Ausgeführt wird nie in der Sitzung der App, sondern von mitinstallierten Cloud Flows. Der Abschnitt <em>Write plan</em> zeigt vorab je Spalte, was der Executor damit tun wird: kopieren, als Referenz binden oder mit Begründung überspringen. Er nennt auch die unangenehmen Fälle, etwa Referenzen, die verworfen werden, oder Lookups auf Tabellen, die das Paket gar nicht oder erst später transportiert. Ein leerer Plan blockiert das Speichern.</p>
           <ul><li>Probelauf, der zählt und protokolliert, aber nichts schreibt</li><li>Sofort starten oder terminieren</li><li>Wiederkehrende Zeitpläne</li><li>Delta-Transfer je Zielumgebung</li><li>Ergebnis-Log füllt sich während der Ausführung</li><li>Zeilenlimit wird gemeldet statt teilweise geschrieben</li></ul>
+          <figure class="shot">
+            <img src="assets/screenshots/data-transfer.webp" width="1600" height="833" loading="lazy" decoding="async" alt="Bildschirmfoto: Ein Transfer-Paket mit seinen Einträgen und dem Ergebnis des letzten Laufs je Zielumgebung.">
+            <figcaption>Ein Transfer-Paket mit seinen Einträgen und dem Ergebnis des letzten Laufs je Zielumgebung.</figcaption>
+          </figure>
         </article>
 
       </div>
