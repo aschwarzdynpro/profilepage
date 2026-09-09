@@ -50,7 +50,8 @@
   .kicker{font-size:.95rem;font-weight:600;color:var(--ink-3);margin-bottom:.9rem}
 
   .nav{position:sticky;top:0;z-index:30;background:var(--navy);border-bottom:1px solid var(--navy-line);color:#E6EDF7}
-  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .nav .wrap{display:flex;align-items:center;gap:1rem;height:68px}
+  .nav .mark{margin-right:auto}
   .mark{font-family:var(--display);font-weight:700;font-size:1.2rem;display:flex;align-items:center;gap:.6rem;letter-spacing:-0.02em}
   .mark svg{width:26px;height:26px}
   .nav ul{display:flex;gap:1.8rem;list-style:none;align-items:center}
@@ -58,7 +59,18 @@
   .nav li a:hover{color:#fff}
   .nav li.cta a{color:var(--navy);background:var(--sky);padding:.55rem 1.05rem;border-radius:4px;font-weight:600}
   .nav li.cta a:hover{background:#8CC6FF}
-  @media (max-width:900px){.nav ul li:not(.cta){display:none}}
+  @media (max-width:900px){.nav .main li:not(.cta){display:none}}
+
+  .nav .menu{display:none;position:relative}
+  .nav .menu>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;font-size:.95rem;font-weight:500;color:#B9C7DA;padding:.45rem .2rem}
+  .nav .menu>summary::-webkit-details-marker{display:none}
+  .nav .menu>summary::marker{content:""}
+  .nav .menu>summary svg{width:18px;height:13px;stroke:currentColor;stroke-width:1.6;fill:none}
+  .nav .menu[open]>summary{color:#fff}
+  .nav .menu>ul{position:absolute;right:0;top:calc(100% + .6rem);z-index:40;display:flex;flex-direction:column;align-items:stretch;gap:0;min-width:190px;list-style:none;background:var(--navy-2);border:1px solid var(--navy-line);border-radius:6px;padding:.4rem;box-shadow:0 14px 30px rgba(0,0,0,.4)}
+  .nav .menu>ul li a{display:block;padding:.6rem .8rem;border-radius:4px;font-size:.95rem;color:#B9C7DA;font-weight:500}
+  .nav .menu>ul li a:hover{background:rgba(255,255,255,.07);color:#fff}
+  @media (max-width:900px){.nav .menu{display:block}}
 
   .hero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
   .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:40px 40px;mask-image:linear-gradient(90deg,transparent 25%,#000 70%);-webkit-mask-image:linear-gradient(90deg,transparent 25%,#000 70%)}
@@ -254,7 +266,7 @@
       <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#6DB4FF"/><rect x="15" y="3" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><rect x="3" y="15" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><rect x="15" y="15" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><path d="M11 7h4M7 11v4M19 11v4M11 19h4" stroke="#6DB4FF" stroke-width="1.5"/></svg>
       DynamicsPro
     </a>
-    <nav aria-label="Hauptnavigation">
+    <nav class="main" aria-label="Hauptnavigation">
       <ul>
         <li><a href="#leistungen">Leistungen</a></li>
         <li><a href="#referenzen">Referenzen</a></li>
@@ -265,6 +277,17 @@
         <li class="cta"><a href="#kontakt">Kontakt</a></li>
       </ul>
     </nav>
+    <details class="menu">
+      <summary><svg viewBox="0 0 20 14" aria-hidden="true"><path d="M0 1h20M0 7h20M0 13h20"/></svg>Menü</summary>
+      <ul>
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#referenzen">Referenzen</a></li>
+        <li><a href="#signature">Werkzeuge</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#werdegang">Werdegang</a></li>
+        <li><a href="#ueber">Über mich</a></li>
+      </ul>
+    </details>
   </div>
 </header>
 
@@ -369,14 +392,14 @@
   <div class="wrap">
     <div class="head">
       <h2>Referenzen</h2>
-      <p>Drei Vorhaben aus laufenden Mandaten und ein eigenes Produkt, die zeigen, wie ich arbeite. Die Mandate seit 2022 als freiberuflicher Solution Architect, teils parallel. Kundennamen anonymisiert, Referenzen auf Anfrage.</p>
+      <p>Drei Vorhaben aus laufenden Mandaten und ein eigenes Produkt, die zeigen, wie ich arbeite. Die Mandate seit 2022 freiberuflich unter DynamicsPro, teils parallel. Kundennamen anonymisiert, Referenzen auf Anfrage.</p>
     </div>
 
     <article class="case">
       <div class="meta">
         <div class="industry">Payment Services</div>
         <dl>
-          <dt>Rolle</dt><dd>Architektur und Implementierung</dd>
+          <dt>Rolle</dt><dd>Dynamics 365 Specialist</dd>
           <dt>Thema</dt><dd>Datenlebenszyklus, GoBD, DSGVO</dd>
           <dt>Stack</dt><dd>Dataverse, .NET 8, Data Lake Gen2, Synapse Link, Azure DevOps</dd>
         </dl>
@@ -450,11 +473,11 @@
 
     <div class="mandates">
       <h3>Mandate seit 2022</h3>
-      <p>Alle Einsätze als freiberuflicher Solution Architect (DynamicsPro), teils parallel; die laufenden Mandate binden zusammen zwei bis drei Tage pro Woche. Dazu Lead-Architect-Rollen, ALM-Einführungen, System-Health-Checks sowie Diagnose- und Analysearbeit in über zehn weiteren Projekten.</p>
+      <p>Alle Einsätze freiberuflich unter DynamicsPro, teils parallel; die laufenden Mandate binden zusammen zwei bis drei Tage pro Woche. Dazu Lead-Architect-Rollen, ALM-Einführungen, System-Health-Checks sowie Diagnose- und Analysearbeit in über zehn weiteren Projekten.</p>
       <div class="mandate"><div class="when">02/2026 – heute</div><div><div class="who">Travel Industry <span>· Solution Architect</span></div><p>Analyse und Design einer Dynamics 365 Contact Center Lösung. Aufbau des ALM auf Azure DevOps, Leitung der Umsetzung von WhatsApp- und E-Mail-Kanal auf dem Omnichannel-Stack.</p><div class="stack">D365 Contact Center, Omnichannel, Azure Communication Services, Azure DevOps, Power Platform</div></div></div>
       <div class="mandate"><div class="when">02/2024 – heute</div><div><div class="who">Industrial Lighting Manufacturer <span>· Solution Architect</span></div><p>Architectural Lead einer Multi-Stream-Einführung von Sales, Customer Service und Field Service. Discovery-Workshops, Zielarchitektur, Steuerung von Customizing und Pro-Code-Entwicklung, ALM-Strategie mit Feature-Branch-Workflow und automatisierten Managed-Solution-Builds. Code Apps für Außendienst-Dashboard und Messe-Lead-Erfassung.</p><div class="stack">D365 Sales / Customer Service / Field Service, Power Platform CLI, PCF, JavaScript, C# Plugins, Azure DevOps</div></div></div>
       <div class="mandate"><div class="when">02/2024 – heute</div><div><div class="who">Engineering <span>· Architecture Advisor</span></div><p>Beratende Rolle bei der Konfiguration einer Branchenlösung auf Dynamics 365. Architektur-Workshops zu Multi-Company-Kundensetup, Integrationsszenarien und Multi-Workload-Ansätzen über den Customer-Engagement-Stack.</p><div class="stack">D365 Sales / Marketing / Customer Service / Field Service, Power Platform</div></div></div>
-      <div class="mandate"><div class="when">09/2022 – 10/2026</div><div><div class="who">Payment Services <span>· Solution Architect</span></div><p>Implementierungsrichtlinien und Architekturstandards, Aufbau von Monitoring und Center-of-Excellence-Praktiken, Performance-Analyse über Power Platform und Azure-Integrationskomponenten. Architektur und Umsetzung einer regelbasierten, revisionssicheren Archivierungs- und Löschpipeline für Dataverse (GoBD, DSGVO).</p><div class="stack">Azure Logic Apps, Application Insights, Azure Monitoring, Power Platform, Center of Excellence</div></div></div>
+      <div class="mandate"><div class="when">09/2022 – 10/2026</div><div><div class="who">Payment Services <span>· Dynamics 365 Specialist</span></div><p>Implementierungsrichtlinien und Architekturstandards, Aufbau von Monitoring und Center-of-Excellence-Praktiken, Performance-Analyse über Power Platform und Azure-Integrationskomponenten. Architektur und Umsetzung einer regelbasierten, revisionssicheren Archivierungs- und Löschpipeline für Dataverse (GoBD, DSGVO).</p><div class="stack">Azure Logic Apps, Application Insights, Azure Monitoring, Power Platform, Center of Excellence</div></div></div>
       <div class="mandate"><div class="when">08/2022 – heute</div><div><div class="who">Automation Engineering <span>· Solution Architect</span></div><p>Design und Leitung der Einführung von D365 Sales, Field Service und Project Operations mit Dual-Write-Integration zu Finance &amp; Operations. Verantwortlich für alle CE-Workstreams und Berater. Integrationskonzept Workday ↔ Field Service (Abwesenheiten, Zeiterfassung) über Service Bus. Aufbau der Deployment- und Metadaten-Automation für den Release-Prozess.</p><div class="stack">D365 Sales / Field Service, F&amp;O, Dual Write, Power Automate, Customer Voice, Azure DevOps, Power Platform CLI</div></div></div>
     </div>
   </div>

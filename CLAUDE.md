@@ -24,7 +24,18 @@ Einrichtung und DNS stehen in `README.md`.
 - Skills: Netzdiagramm `.radar` (SVG, Skala 1–5) + Balkengruppen `.sg` (5 Segmente = Niveau, Zahl = Jahre)
 
 ## Inhaltliche Quelle
-Profil-Dokument `Profile_Andy_Schwarz_2026.docx` (englisch). Zahlen auf der Site müssen damit übereinstimmen.
+Massgeblich ist das **englische** Profil-Dokument `Profile_Andy_Schwarz_2026.docx`
+(in `OneDrive/Dokumente/Job/`). Zahlen auf der Site folgen ihm, mit einer bewussten Ausnahme:
+
+- **Solution Architecture steht auf der Site mit 7 Jahren, nicht mit 12.** Solution Architect
+  ist er seit 01/2019, das sind 7 Jahre. Die 12 in beiden Dokumenten ist der Fehler und wird
+  dort korrigiert. Nicht auf 12 zurückdrehen.
+
+Das deutsche `Profil_Andy_Schwarz_2026_DE.docx` ist mit dem englischen nicht deckungsgleich
+(sechs abweichende Zahlen, Stand 09.09.2026). Bei Widersprüchen gilt das englische.
+
+Rollenbezeichnungen müssen über Referenzkarte, Mandatsliste und Profil-Dokument
+zusammenpassen. Payment Services heisst überall `Dynamics 365 Specialist`.
 
 ## Offen
 - Jahreszahlen zwischen deutschem und englischem Profil abgleichen.
