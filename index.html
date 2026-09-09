@@ -224,6 +224,10 @@
   .contact .card a:last-child{border-bottom:0}
   @media (max-width:960px){.contact .wrap{grid-template-columns:1fr;gap:2.5rem}}
 
+  a.more{color:var(--ink);font-weight:600;box-shadow:inset 0 -1px 0 var(--sky);white-space:nowrap}
+  a.more:hover{background:var(--sky-soft)}
+  .sig a.more{color:#fff}
+  .more-line{margin-top:.9rem}
   footer{padding:2rem 0;font-size:.88rem;color:var(--ink-2)}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
   footer a:hover{color:var(--ink)}
@@ -466,7 +470,7 @@
         <div class="story">
           <div><h4>Ausgangslage</h4><p>Gewachsene Tenants mit Dutzenden Solutions, undurchsichtigen Abhängigkeiten und Sicherheitsrollen, deren tatsächliche Wirkung niemand sicher benennen konnte. Das Admin Center beantwortet diese Fragen nur mühsam oder gar nicht.</p></div>
           <div><h4>Lösung</h4><p>Eine Code App direkt auf Dataverse, die Solution- und Umgebungsadministration an einem Ort zusammenführt, inklusive Kapazitätsdashboard über einen delegierten Entra-Connector statt eines eigenen Service Principals. Drumherum ein Security Role Analyzer bis auf Schnittstellentabellen und ein Plugin Trace Explorer.</p></div>
-          <div class="result"><h4>Ergebnis</h4><p>Aufräumen und Auditieren dauert Stunden statt Tage. Sichtbarkeit ist per Berechtigung gesteuert, sodass die Werkzeuge im Kundentenant bleiben können. Die Suite wird derzeit zum Produkt für den DACH-Markt ausgebaut.</p></div>
+          <div class="result"><h4>Ergebnis</h4><p>Aufräumen und Auditieren dauert Stunden statt Tage. Sichtbarkeit ist per Berechtigung gesteuert, sodass die Werkzeuge im Kundentenant bleiben können. Die Suite wird derzeit zum Produkt für den DACH-Markt ausgebaut. <a class="more" href="solution-admin-console.html">Alle Funktionen im Detail</a></p></div>
         </div>
       </div>
     </article>
@@ -494,6 +498,7 @@
         <h3>Solution Admin Console und Code-App-Tooling</h3>
         <p>Das Schweizer Taschenmesser für alle, die Dataverse administrieren: Solution- und Umgebungsverwaltung an einem Ort, mit Kapazitätsdashboard. Drumherum Security Role Analyzer, Plugin Trace Explorer und eine Bibliothek wiederverwendbarer PCF-Controls, darunter ein polymorpher Kunden-Lookup als Flyout.</p>
         <div class="stack">Power Platform Code Apps, React, TypeScript, Vite, Fluent UI v9, PCF, Dataverse Web API</div>
+        <p class="more-line"><a class="more" href="solution-admin-console.html">Alle Funktionen im Detail</a></p>
       </article>
       <article class="sig">
         <h3>ALM-Pipeline-Toolset</h3>

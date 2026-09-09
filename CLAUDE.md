@@ -4,7 +4,7 @@ Statische Single-File-Site (`index.html`), kein Build, kein Framework. Ausgelief
 
 ## Regeln
 - Alles bleibt in `index.html` (CSS im `<style>`, keine externen JS-Bundles). Bilder nach `assets/`.
-- Ausnahme: `impressum.html` und `datenschutz.html` sind eigene Seiten mit eigenem `<style>`. Anschrift, USt-IdNr. und Aufsichtsbehörde dort nur nach Rücksprache ändern.
+- Ausnahme: `solution-admin-console.html`, `impressum.html` und `datenschutz.html` sind eigene Seiten mit eigenem `<style>`. Anschrift, USt-IdNr. und Aufsichtsbehörde nur nach Rücksprache ändern.
 - Keine Frameworks, kein Tailwind, kein Build-Schritt einführen.
 - Deutsch, Sie-Ansprache, kein Marketing-Sprech. Keine Emojis, keine Bindestrich-Gedankenstriche.
 - Kundennamen bleiben anonymisiert (Branche statt Firma). Keine Tagessätze, keine Partner-Methodik.
@@ -22,6 +22,13 @@ Einrichtung und DNS stehen in `README.md`.
 - Schrift: Manrope (Überschriften), IBM Plex Sans (Fließtext), selbst gehostet als Variable Fonts in `assets/fonts/`
 - Hero-Blaupause: inline SVG `.blueprint` mit animierten Pulsen (`animateMotion`), reduced-motion respektiert
 - Skills: Netzdiagramm `.radar` (SVG, Skala 1–5) + Balkengruppen `.sg` (5 Segmente = Niveau, Zahl = Jahre)
+
+## Produktseite Solution Administration Console
+`solution-admin-console.html` beschreibt alle 21 Arbeitsbereiche der Code App. Quelle ist
+`CodeApps/apps/solution-forge/README.md` im Repo `aschwarzdynpro/CodeApps`; bei Änderungen
+an der App dort abgleichen. **ALM Detective und Job Monitor stehen bewusst nicht drauf** —
+beide sind aus dem Menü der App entfernt. Verlinkt ist die Seite aus der Referenzkarte
+und aus dem Werkzeuge-Abschnitt der Startseite.
 
 ## Inhaltliche Quelle
 Massgeblich ist das **englische** Profil-Dokument `Profile_Andy_Schwarz_2026.docx`

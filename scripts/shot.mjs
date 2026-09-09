@@ -14,7 +14,7 @@ const browser = await chromium.launch();
 const foreign = new Set();
 let failed = false;
 
-const PAGES = [['start', '/'], ['impressum', '/impressum.html'], ['datenschutz', '/datenschutz.html']];
+const PAGES = [['start', '/'], ['konsole', '/solution-admin-console.html'], ['impressum', '/impressum.html'], ['datenschutz', '/datenschutz.html']];
 const VIEWPORTS = [['desktop', 1400, 900], ['mobile', 390, 844]];
 const written = [];
 

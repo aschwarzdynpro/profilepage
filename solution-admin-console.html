@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solution Administration Console · DynamicsPro</title>
+<meta name="description" content="Power Apps Code App für die Verwaltung von Dataverse-Solutions: Working Solutions, Merge, Release Notes, Deployment-Prüfungen, Konfigurations-Cockpits und Betriebsansichten.">
+<link rel="canonical" href="https://dynamicspro.de/solution-admin-console.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0F1E33">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="DynamicsPro">
+<meta property="og:url" content="https://dynamicspro.de/solution-admin-console.html">
+<meta property="og:title" content="Solution Administration Console">
+<meta property="og:description" content="Power Apps Code App für die Verwaltung von Dataverse-Solutions: vom Anlegen einer Working Solution über den Merge bis zur Prüfung des Release vor und nach dem Import.">
+<meta property="og:image" content="https://dynamicspro.de/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+  :root{
+    --navy:#0F1E33;--navy-2:#162A46;--navy-line:#2C4468;
+    --sky:#6DB4FF;--bg:#F6F7F9;--bg-2:#ECEFF3;--line:#D5DBE3;--white:#FFFFFF;
+    --ink:#14213A;--ink-2:#4A5A72;--ink-3:#7E8CA0;
+    --display:"Manrope",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:var(--body);font-size:17px;line-height:1.65;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.15;letter-spacing:-0.02em}
+  em{font-style:normal;color:var(--ink);font-weight:600}
+  .wrap{width:min(1200px,100% - 3rem);margin-inline:auto}
+  .kicker{font-size:.95rem;font-weight:600;color:var(--ink-3)}
+
+  .nav{position:sticky;top:0;z-index:30;background:var(--navy);border-bottom:1px solid var(--navy-line);color:#E6EDF7}
+  .nav .wrap{display:flex;align-items:center;gap:1rem;height:68px}
+  .mark{font-family:var(--display);font-weight:700;font-size:1.2rem;display:flex;align-items:center;gap:.6rem;letter-spacing:-0.02em;margin-right:auto}
+  .mark svg{width:26px;height:26px}
+  .nav .back{font-size:.95rem;color:#B9C7DA;font-weight:500}
+  .nav .back:hover{color:#fff}
+  .nav .cta{color:var(--navy);background:var(--sky);padding:.55rem 1.05rem;border-radius:4px;font-weight:600;font-size:.95rem;font-family:var(--display)}
+  .nav .cta:hover{background:#8CC6FF}
+  @media (max-width:640px){.nav .back{display:none}}
+
+  .head{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .head::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:40px 40px;mask-image:linear-gradient(90deg,transparent 35%,#000 100%);-webkit-mask-image:linear-gradient(90deg,transparent 35%,#000 100%)}
+  .head .wrap{position:relative;padding:4.5rem 0 3.5rem}
+  .head .kicker{color:var(--sky)}
+  .head h1{font-size:clamp(2.1rem,4.2vw,3.1rem);margin-top:.9rem;max-width:20ch}
+  .head .lead{margin-top:1.4rem;font-size:1.15rem;line-height:1.55;color:#B9C7DA;max-width:62ch}
+  .facts{margin-top:2.6rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;border-top:1px solid var(--navy-line);padding-top:1.6rem}
+  .facts dt{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#7F98BC;font-weight:600}
+  .facts dd{margin-top:.35rem;font-size:.97rem;color:#E6EDF7}
+  @media (max-width:900px){.facts{grid-template-columns:repeat(2,1fr);gap:1.3rem}}
+  @media (max-width:480px){.facts{grid-template-columns:1fr}}
+
+  main{padding:4.5rem 0 5rem}
+  section+section{margin-top:4.5rem}
+  .intro{width:min(72ch,100%)}
+  .intro h2{font-size:clamp(1.6rem,3vw,2.1rem)}
+  .intro p{margin-top:1rem;color:var(--ink-2)}
+
+  .group>header{border-top:2px solid var(--navy);padding-top:1.1rem;margin-bottom:2rem;display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .group h2{font-size:1.7rem}
+  .group>header p{color:var(--ink-2);font-size:.98rem;max-width:56ch}
+  .feats{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+  @media (max-width:900px){.feats{grid-template-columns:1fr}}
+  .feat{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:1.5rem 1.6rem}
+  .feat h3{font-size:1.12rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+  .feat .gate{font-family:var(--body);font-size:.7rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:3px;padding:.15rem .45rem}
+  .feat p{margin-top:.75rem;color:var(--ink-2);font-size:.97rem}
+  .feat ul{margin-top:.9rem;list-style:none;display:flex;flex-wrap:wrap;gap:.4rem}
+  .feat ul li{font-size:.82rem;color:var(--ink-2);background:var(--bg-2);border-radius:3px;padding:.25rem .55rem}
+  .feat.wide{grid-column:1 / -1}
+  .subs{margin-top:1.4rem;border-top:1px solid var(--line);padding-top:1.3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  @media (max-width:900px){.subs{grid-template-columns:1fr;gap:1.2rem}}
+  .subs h4{font-family:var(--display);font-size:1rem;font-weight:700;letter-spacing:-0.01em}
+  .subs p{margin-top:.45rem;color:var(--ink-2);font-size:.94rem}
+
+  .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.4rem}
+  @media (max-width:900px){.split{grid-template-columns:1fr}}
+  .panel{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:1.6rem 1.7rem}
+  .panel h3{font-size:1.12rem}
+  .panel p{margin-top:.75rem;color:var(--ink-2);font-size:.97rem}
+  .panel dl{margin-top:1.1rem;display:grid;grid-template-columns:auto 1fr;gap:.55rem 1.2rem;font-size:.94rem}
+  .panel dt{color:var(--ink-3);font-weight:600}
+  .panel dd{color:var(--ink-2)}
+
+  .contact{background:var(--navy);color:#fff;margin-top:4.5rem}
+  .contact .wrap{padding:4rem 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:3rem;align-items:center}
+  .contact h2{font-size:clamp(1.6rem,3vw,2.1rem);max-width:22ch}
+  .contact p{margin-top:1rem;color:#B9C7DA;max-width:48ch}
+  .contact .card{background:var(--navy-2);border:1px solid var(--navy-line);border-radius:6px;padding:.6rem}
+  .contact .card a{display:block;padding:.9rem 1rem;border-radius:4px;font-family:var(--display);font-weight:600}
+  .contact .card a:hover{background:rgba(255,255,255,.06)}
+  .contact .card small{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;color:#8FA5C0;margin-top:.15rem}
+  @media (max-width:900px){.contact .wrap{grid-template-columns:1fr;gap:2rem}}
+
+  footer{padding:2rem 0;font-size:.88rem;color:var(--ink-2)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a:hover{color:var(--ink)}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="DynamicsPro, zur Startseite">
+      <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#6DB4FF"/><rect x="15" y="3" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><rect x="3" y="15" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><rect x="15" y="15" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><path d="M11 7h4M7 11v4M19 11v4M11 19h4" stroke="#6DB4FF" stroke-width="1.5"/></svg>
+      DynamicsPro
+    </a>
+    <a class="back" href="/">Zurück zur Startseite</a>
+    <a class="cta" href="#kontakt">Kontakt</a>
+  </div>
+</header>
+
+<section class="head">
+  <div class="wrap">
+    <div class="kicker">Eigenes Produkt, im Kundeneinsatz</div>
+    <h1>Solution Administration Console</h1>
+    <p class="lead">Eine Power Apps Code App für die Verwaltung von Dataverse-Solutions über den gesamten Weg: Working Solutions anlegen und verfolgen, Feature- und Bug-Solutions in einen Release mergen, den Release vor dem Import prüfen und nach dem Import kontrollieren. Dazu Konfigurations-Cockpits und Betriebsansichten, die im Admin Center entweder mühsam oder gar nicht zu bekommen sind.</p>
+    <dl class="facts">
+      <div><dt>Typ</dt><dd>Power Apps Code App, läuft im Tenant des Kunden</dd></div>
+      <div><dt>Technik</dt><dd>React, TypeScript, Vite, Fluent UI v9</dd></div>
+      <div><dt>Daten</dt><dd>Dataverse Web API und Microsoft-Dataverse-Konnektor</dd></div>
+      <div><dt>Umfang</dt><dd>21 Arbeitsbereiche in vier Gruppen</dd></div>
+    </dl>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+
+    <section class="intro">
+      <h2>Wofür</h2>
+      <p>In gewachsenen Umgebungen ist selten strittig, was deployt werden soll. Strittig ist, was dabei schiefgeht: eine Abhängigkeit, die im Ziel fehlt. Eine Environment Variable ohne Wert. Eine Connection Reference, die nirgends gebunden ist. Ein unmanaged Layer, der künftige Deployments stillschweigend maskiert. Eine Canvas App, die zwar ankommt, aber niemanden erreicht, weil Freigaben nicht mittransportiert werden. Eine Sicherheitsrolle, die von Hand nachgebaut statt transportiert wurde und ab morgen still auseinanderläuft.</p>
+      <p>Jede dieser Fragen ist einzeln beantwortbar, mit genug Zeit und den richtigen Abfragen. Die Konsole beantwortet sie an einer Stelle, über alle konfigurierten Umgebungen hinweg, und zwar bevor importiert wird. Sie ersetzt keine Pipeline. Sie sagt Ihnen, ob der nächste Import durchgeht und was er im Ziel anrichtet.</p>
+      <p>Alles dreht sich um die <em>Working Solution</em>: ein Datensatz mit Titel, Typ, Azure-DevOps-ID, Owner und Deployment-Status, verbunden mit der echten unmanaged Dataverse-Solution, die die Komponenten trägt. Beim Anlegen entsteht beides in einem Schritt. Unmanaged Solutions ohne Datensatz bleiben trotzdem sichtbar und werden über die Namenskonvention eingeordnet.</p>
+    </section>
+
+    <section class="group">
+      <header>
+        <h2>Manage</h2>
+        <p>Der tägliche Weg von der einzelnen Änderung bis zum fertig geschnürten Release.</p>
+      </header>
+      <div class="feats">
+
+        <article class="feat">
+          <h3>Workbench</h3>
+          <p>Liste aller Working Solutions mit Filter nach Feature, Bug und Deployment sowie Suche über Titel, Unique Name und Azure-DevOps-ID. Der Schalter <em>incl. components</em> durchsucht zusätzlich die Anzeigenamen der Komponenten in den offenen Solutions und beantwortet damit die Frage, welche Solution eine bestimmte Tabelle oder einen bestimmten Flow enthält. Anlegen erzeugt Datensatz und echte Solution zusammen, mit Live-Vorschau des Unique Name und Dublettenprüfung.</p>
+          <ul><li>Detail inline unter der Zeile</li><li>Komponenten nach Typ gruppiert</li><li>Owner zuweisen</li><li>Deep-Link ins Maker-Portal</li><li>Löschen mit drei Sekunden Undo</li></ul>
+        </article>
+
+        <article class="feat">
+          <h3>Kollisions-Radar</h3>
+          <p>Lädt die Komponenten aller offenen Working Solutions und markiert jede Komponente, die in mehr als einer davon steckt. Genau dort überschreibt derjenige, der zuletzt deployt, die Arbeit des anderen. Betroffene Solutions bekommen einen Warnhinweis, die Detailansicht nennt die geteilten Komponenten und die Gegenseite.</p>
+          <ul><li>Beschränkt auf den offenen Satz</li><li>Nennt die konkurrierende Solution</li></ul>
+        </article>
+
+        <article class="feat">
+          <h3>Azure-DevOps-Abgleich</h3>
+          <p>Ein Cloud Flow synchronisiert den Status der verknüpften Work Items zurück in die Working Solutions. Steht ein Work Item auf <em>Closed</em> oder <em>Done</em>, während die Solution noch offen ist, markiert die Liste den Eintrag als <em>to be completed</em> und hebt die Abschluss-Aktion hervor. Das Kennzeichen wird abgeleitet, nicht gespeichert, und rechnet nach jeder Synchronisation neu.</p>
+          <ul><li>Work-Item-Link je Eintrag</li><li>Abschließen und Wiedereröffnen</li></ul>
+        </article>
+
+        <article class="feat">
+          <h3>Merge</h3>
+          <p>Deployment-Solution als Ziel wählen, Feature- und Bug-Solutions ankreuzen, den Komponentenplan prüfen und zusammenführen. Konflikte sind markiert, Duplikate werden übersprungen. Jeder Lauf schreibt eine Historienzeile mit Anzahl, Quell-Solutions und den hinzugefügten Komponenten, die im Detail des Release als Merge-Historie erscheint.</p>
+          <ul><li>Komponentenplan vor dem Lauf</li><li>Quell-Solutions werden automatisch gestempelt</li></ul>
+        </article>
+
+        <article class="feat">
+          <h3>Merge Rules <span class="gate">Deployment Manager</span></h3>
+          <p>Je Release lässt sich festlegen, welche Komponententypen überhaupt mitwandern dürfen: eine Positivliste und eine Ausschlussliste. Mergebar ist ein Typ, wenn er in der Positivliste steht oder diese leer ist, und nicht in der Ausschlussliste. Blockierte Komponenten erscheinen im Plan ausgegraut und werden beim Lauf gesondert gezählt.</p>
+          <ul><li>Pro Release konfigurierbar</li><li>In der Workbench nur lesend sichtbar</li></ul>
+        </article>
+
+        <article class="feat">
+          <h3>Release Notes</h3>
+          <p>Werden aus der Merge-Historie erzeugt: enthaltene Quell-Solutions samt Azure-DevOps-Link und alle hinzugefügten Komponenten nach Typ. Umschaltbar zwischen Markdown und Rohtext. Veröffentlichen friert den Stand als versionierten Snapshot ein. Ab dem zweiten Mal ist der Entwurf inkrementell und listet nur, was seit der letzten Veröffentlichung dazugekommen ist.</p>
+          <ul><li>Ansehen und Kopieren für alle</li><li>Veröffentlichen für Deployment Manager</li><li>Verlauf aller Stände</li></ul>
+        </article>
+
+        <article class="feat">
+          <h3>Timeline</h3>
+          <p>Was ging wann wohin. Für einen gewählten Release stehen Merge-Läufe, veröffentlichte Release Notes und die Importe je konfigurierter Umgebung auf einem gemeinsamen Zeitstrahl, neueste zuerst, mit Statusfarbe je Umgebung. Filter je Ereignisart. Eine Umgebung, die gerade nicht lesbar ist, erzeugt einen Hinweis statt die Ansicht zu blockieren.</p>
+          <ul><li>Reine Visualisierung vorhandener Daten</li></ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="group">
+      <header>
+        <h2>Validate</h2>
+        <p>Prüfungen vor dem Import und Kontrollen danach. Diese Gruppe setzt durchgehend die Deployment-Manager-Rolle voraus.</p>
+      </header>
+      <div class="feats">
+
+        <article class="feat">
+          <h3>Deployment Readiness <span class="gate">Deployment Manager</span></h3>
+          <p>Prüft eine Release-Solution gegen die Zielumgebungen auf Komponenten, die dort gebraucht, aber weder mitgeliefert noch vorhanden sind. Genau daran scheitert ein Import. Je Fund gibt es <em>Add to Solution</em>, um die fehlende Komponente direkt aufzunehmen. Typen, die über den Namen gematcht werden, gelten als vorhanden, wenn das Ziel sie unter gleichem Namen kennt.</p>
+          <ul><li>Vor dem Import</li><li>Fehlende Komponente direkt aufnehmen</li></ul>
+        </article>
+
+        <article class="feat">
+          <h3>Import History <span class="gate">Deployment Manager</span></h3>
+          <p>Die Import-Historie einer wählbaren Umgebung mit Start, Solution, Status, Fortschritt, Dauer und aufgelöstem Publisher. Beim Aufklappen wird das Import-Log geparst: das Manifest-Ergebnis und, als eigentlicher Kern, die Missing-Dependency-Fehler als präzise Tabelle. Links die im Ziel fehlende Komponente samt übergeordnetem Objekt und Herkunfts-Solution, rechts die importierte Komponente, die sie braucht.</p>
+          <ul><li>Schweres Log erst beim Aufklappen</li><li>Serverseitige Suche nach Status und Solution</li></ul>
+        </article>
+
+        <article class="feat wide">
+          <h3>Analyze <span class="gate">Deployment Manager</span></h3>
+          <p>Ein Klick auf <em>Run Analysis</em> lässt Abhängigkeiten, Vergleich, Layer und App-Freigaben in einem Durchlauf gegen die Zielumgebung laufen und verdichtet das Ergebnis zu einem Deployment Risk Score von 0 bis 100, Karten nach Schweregrad, einer Tabelle der wichtigsten Befunde, einer Komponentenübersicht nach Typ, abgeleiteten Empfehlungen und einer Readiness-Matrix je Bereich. Die drei fokussierten Einzelprüfungen sind als Tabs enthalten und teilen sich die einmal oben gewählte Release-Solution.</p>
+          <div class="subs">
+            <div>
+              <h4>Compare</h4>
+              <p>Cloud Flows, Workflows, Business Rules, Plugin-Steps und Scripts über alle Umgebungen, gruppiert nach Typ. Markiert und filterbar sind fehlende Komponenten und Status-Drift, etwa ein Flow, der in PROD als Entwurf liegt. Das Änderungsdatum zählt bewusst nicht als Drift-Signal, weil jeder Solution-Import es überschreibt.</p>
+            </div>
+            <div>
+              <h4>Layer Inspector</h4>
+              <p>Prüft alle Komponenten gegen die Layer-Stacks im Ziel. Findet unmanaged Layer über managed Komponenten, also direkte Customizings, die künftige Deployments maskieren, außerdem unmanaged-only und schlicht fehlende Komponenten. Je Fund ein Absprung auf die Layer-Seite im Maker-Portal der Zielumgebung.</p>
+            </div>
+            <div>
+              <h4>App Sharing</h4>
+              <p>Canvas Apps und Custom Pages daraufhin prüfen, mit wem sie je Umgebung geteilt sind. Ein Solution-Import überträgt keine Freigaben, eine deployte App erreicht also niemanden, bis sie im Ziel geteilt wird. Bei Custom Pages ist das anders, sie hängen an den Rollen der modellgetriebenen App.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="feat">
+          <h3>Env Config <span class="gate">Deployment Manager</span></h3>
+          <p>Environment Variables und Connection References über alle konfigurierten Umgebungen nebeneinander, gematcht über den import-stabilen Namen. Aufgezeigt werden die drei typischen Deploy-Lücken: kein Wert und kein Default in einer Umgebung, eine ungebundene Connection Reference und ein Setting, das in einer Umgebung existiert und in der anderen fehlt. Secrets bleiben maskiert.</p>
+          <ul><li>Filter auf eine Release-Solution</li><li>Zahl nutzender Cloud Flows je Referenz</li><li>Getrennt nach aktiv und inaktiv</li><li>Deep-Link in Power Automate</li></ul>
+        </article>
+
+        <article class="feat">
+          <h3>Audit Config <span class="gate">Deployment Manager</span></h3>
+          <p>Die Audit-Konfiguration einer wählbaren Umgebung: der Hauptschalter der Organisation mitsamt Aufbewahrungsdauer und darunter die Einstellung je Tabelle und je Spalte. Eine Tabelle auditiert nur dann wirklich, wenn beides eingeschaltet ist, deshalb wird der Fall <em>konfiguriert, aber aus</em> gesondert markiert. Ebenso der Fall, dass eine auditierte Tabelle keine einzige markierte Spalte hat und damit nur eine leere Hülle protokolliert.</p>
+          <ul><li>Spalten laden beim Aufklappen</li><li>Lesend</li></ul>
+        </article>
+
+        <article class="feat">
+          <h3>Dual-Write Maps <span class="gate">Deployment Manager</span></h3>
+          <p>Die Table Maps einer wählbaren Umgebung, nach Namen gruppiert, mit Zähler über die gespeicherten Versionen. Gezeigt wird nicht die höchste Nummer, sondern die tatsächlich laufende Version aus der Runtime-Konfiguration, sonst die zuletzt gespeicherte, und das offen gekennzeichnet. Liegt eine neuere Version über der laufenden, weist die Zeile sie als nicht in Betrieb aus. Der Menüpunkt erscheint nur, wenn Dual-Write in der Umgebung installiert ist.</p>
+          <ul><li>Quell- und Zieltabelle mit Richtung</li><li>Feld-Mapping im Overlay</li><li>Marker für unmanaged Layer</li></ul>
+        </article>
+
+        <article class="feat">
+          <h3>User Settings <span class="gate">Deployment Manager</span></h3>
+          <p>Ein Inventar der persönlichen Einstellungen aller aktiven Benutzer je Umgebung: Zeitzone, Währung, Oberflächensprache und Formate. Der Detaildialog zeigt eine Live-Vorschau der Formatfelder. Deployment Manager können die Werte ändern und speichern, mit Bestätigungsschritt und einer deutlich strengeren Rückfrage in PROD.</p>
+          <ul><li>Vergleich über Umgebungen</li><li>Einstellungen auf mehrere Benutzer ausrollen</li></ul>
+        </article>
+
+        <article class="feat">
+          <h3>Process Comparer <span class="gate">Deployment Manager</span></h3>
+          <p>Alle Prozessarten einer Release-Solution, also Cloud Flows, klassische Workflows, Business Rules, Actions und Business Process Flows, als Statusmatrix über die Umgebungen. Abweichende Zellen sind hervorgehoben. Je Zelle stehen Owner, das Ein- und Ausschalten und ein Deep-Link. Im Definitions-Modus wird gegen einen konfigurierten Soll-Zustand geprüft, dann zählt auch die Host-Umgebung mit.</p>
+          <ul><li>Gruppierung nach Typ oder Bereich</li><li>Sammelaktionen über Zeilenauswahl</li><li>Lauf überlebt den Tab-Wechsel</li></ul>
+        </article>
+
+        <article class="feat">
+          <h3>Plugin Comparer <span class="gate">Deployment Manager</span></h3>
+          <p>Dasselbe Prinzip für die Plugin-Steps einer Release-Solution, ergänzt um die Assembly-Version je Umgebung. Damit wird sichtbar, ob ein Step zwar existiert, aber gegen eine ältere Assembly läuft. Aktivieren und Deaktivieren geht je Zelle, mit Bestätigung und verschärfter Rückfrage in PROD.</p>
+          <ul><li>Assembly-Version je Umgebung</li><li>Enable und Disable je Zelle</li></ul>
+        </article>
+
+        <article class="feat wide">
+          <h3>Role Comparer <span class="gate">Deployment Manager</span></h3>
+          <p>Beantwortet die Frage, ob die Sicherheitsrollen heil angekommen sind. Standardmäßig zählen nur die eigenen Rollen, die rund 250 mitgelieferten bleiben ausgeblendet, und der Vergleich lässt sich auf eine Release-Solution einengen. Gematcht wird über den Namen, nicht über die ID, denn eine Rollen-GUID überlebt nur einen sauberen Solution-Transport. Gleicher Name bei abweichender ID bedeutet: von Hand nachgebaut statt transportiert. Das sieht heute richtig aus, driftet ab morgen still und wird von keinem Import je aktualisiert. Genau dafür gibt es das Kennzeichen <em>rebuilt</em>.</p>
+          <p>Je Zelle stehen die Zahl der Privilegien, der managed-Zustand und wie viele Privilegien diese Umgebung anders vergibt als die Referenz. Eine Umgebung, die nicht gelesen werden konnte, zeigt ein Fragezeichen und fließt in keinen Befund ein, gilt also nie als unauffällig. Der Bereich ist mit Absicht lesend: eine driftende Rolle gehört transportiert. Sie im Ziel zu bearbeiten erzeugt genau den unmanaged Layer, den der Layer Inspector danach meldet.</p>
+          <div class="subs">
+            <div>
+              <h4>Drilldown</h4>
+              <p>Je Rolle jede Tabelle und Aktion, die sie irgendwo gewährt, mit der Tiefe je Umgebung von Benutzer bis Organisation, wahlweise nur die Unterschiede. Darunter die übrigen Privilegien.</p>
+            </div>
+            <div>
+              <h4>Baseline einfrieren</h4>
+              <p>Der aktuelle Stand lässt sich als benannter Snapshot einfrieren. Danach wechselt die Frage von „stimmen die Umgebungen überein“ zu „was hat sich seit dem Einfrieren geändert“, und jede Umgebung wird gegen ihr eigenes früheres Ich geprüft.</p>
+            </div>
+            <div>
+              <h4>Security-Konzept</h4>
+              <p>Aus einem Snapshot entsteht ein fertiges Dokument mit Umgebungsübersicht und Privilegienmatrix. Mit einem zweiten Snapshot steht davor ein Änderungskapitel mit jedem verschobenen Privileg. Export als Markdown oder Text.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="group">
+      <header>
+        <h2>Operate</h2>
+        <p>Der laufende Betrieb: was das System gerade tut, was in der Datenbank steht, wer was darf und wie Konfigurationsdaten zwischen Umgebungen wandern.</p>
+      </header>
+      <div class="feats">
+
+        <article class="feat">
+          <h3>Plugin Traces</h3>
+          <p>Ein Stream über die Plugin-Trace-Logs, der alle 15 Sekunden nachlädt und pausiert, sobald der Browser-Tab in den Hintergrund geht. Gefiltert wird serverseitig nach Zeitfenster, Typ, Message, Tabelle, synchron oder asynchron und wahlweise nur auf Ausnahmen. Der schwere Meldungsblock wird erst beim Aufklappen einer Zeile geladen, nie im Stream selbst.</p>
+          <ul><li>Correlation-Timeline nach Aufrufstiefe</li><li>Laufzeit-Aggregate je Plugin und Message</li><li>Trace-Level umschaltbar</li></ul>
+        </article>
+
+        <article class="feat">
+          <h3>Role Analyzer <span class="gate">Deployment Manager</span></h3>
+          <p>Arbeitet auf einem zwischengespeicherten Abbild des Sicherheitsmodells. Enthalten sind die Matrix aus Rolle, Tabelle und Privileg mit Tiefenangabe, der Vergleich zweier Rollen, die effektiven Rechte eines Benutzers samt Herkunftspfad aus direkten und über Teams vererbten Rollen, die umgekehrte Suche nach allen, die eine bestimmte Aktion ausführen dürfen, sowie Hygiene-Befunde wie nicht zugewiesene Rollen.</p>
+          <ul><li>Org-Chart der Business Units und Teams</li><li>Field Security auf Spaltenebene</li><li>Core Roles bündeln mehrfach vergebene Privilegien</li></ul>
+        </article>
+
+        <article class="feat wide">
+          <h3>OData Browser <span class="gate">Deployment Manager</span></h3>
+          <p>Freies Durchsehen der Datenbank je Umgebung über die Dataverse Web API. Tabelle wählen, Spalten per Auswahl setzen, dabei sind nicht selektierbare Spalten ausgegraut samt Begründung und Lookups werden automatisch richtig aufgelöst. Der Filter-Builder bietet nur typrichtige Operatoren an, Choice-Werte erscheinen als Label statt als Zahl. Die Abfragezeile ist editierbar und bidirektional an den Builder gekoppelt: Was der Builder nicht abbilden kann, bleibt wörtlich stehen und wird als erweiterter Filter gekennzeichnet, statt umgeschrieben zu werden.</p>
+          <p>Ein Klick auf eine Zeile öffnet den vollständigen Datensatz, ohne Spaltenauswahl, weil das Panel zeigen soll, was wirklich gespeichert ist. Lookups sind dort überall klickbar und führen mit Rückweg zum Zielsatz, ein eigener Reiter listet die abhängigen Tabellen und springt vorgefiltert hinein. Ein zweiter Modus fährt FetchXML direkt, und die Metadaten-Sets stehen im Tabellenpicker, um das Schema selbst zu durchsuchen.</p>
+          <ul><li>Eingabehilfe mit Vervollständigung</li><li>Prüf-Hinweise, die warnen statt zu blockieren</li><li>Mehrfachsortierung und Zählung</li><li>Historie und gespeicherte Abfragen je Umgebung</li><li>Export als CSV oder JSON</li><li>Lesend</li></ul>
+        </article>
+
+        <article class="feat wide">
+          <h3>Data Transfer <span class="gate">Deployment Manager</span></h3>
+          <p>Der Configuration Data Transfer Hub bringt Konfigurationsdaten zwischen Umgebungen. Ein Paket besteht aus Zielumgebungen und einer Reihenfolge, ein Eintrag aus Quellumgebung, Tabelle, Filter und Spalten, wahlweise über eine System-Ansicht oder direkt als FetchXML mit Vorschau und Zeilenzähler. Dazu kommt das Record-Matching, entweder über die GUID oder über bis zu fünf fachliche Spalten, sowie die Frage, was mit Zielzeilen geschieht, die die Quelle nicht mehr liefert.</p>
+          <p>Ausgeführt wird nie in der Sitzung der App, sondern von mitinstallierten Cloud Flows. Der Abschnitt <em>Write plan</em> zeigt vorab je Spalte, was der Executor damit tun wird: kopieren, als Referenz binden oder mit Begründung überspringen. Er nennt auch die unangenehmen Fälle, etwa Referenzen, die verworfen werden, oder Lookups auf Tabellen, die das Paket gar nicht oder erst später transportiert. Ein leerer Plan blockiert das Speichern.</p>
+          <ul><li>Probelauf, der zählt und protokolliert, aber nichts schreibt</li><li>Sofort starten oder terminieren</li><li>Wiederkehrende Zeitpläne</li><li>Delta-Transfer je Zielumgebung</li><li>Ergebnis-Log füllt sich während der Ausführung</li><li>Zeilenlimit wird gemeldet statt teilweise geschrieben</li></ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="group">
+      <header>
+        <h2>Reference</h2>
+        <p>Einrichtung und die Handvoll Adressen, die man ständig braucht.</p>
+      </header>
+      <div class="feats">
+
+        <article class="feat">
+          <h3>Environment Setup</h3>
+          <p>Ein geführtes Erst-Setup für eine neue Umgebung. Startet die App ohne Konfiguration, schiebt sich der Assistent blockierend davor und legt die nötigen Datensätze an. Er bietet die über den Konnektor erreichbaren Umgebungen zur Auswahl, füllt die Kennung der aktuellen Umgebung selbst aus und schlägt Publisher und Deployment-Manager-Rolle vor. Speichern ist wiederholbar, ohne Duplikate zu erzeugen, und dieselbe Ansicht dient später zum Nachpflegen.</p>
+          <ul><li>Pflicht sind nur Umgebungen, Publisher und Rolle</li><li>Lädt die Konfiguration ohne Neuladen nach</li></ul>
+        </article>
+
+        <article class="feat">
+          <h3>Links</h3>
+          <p>Eine Matrix der ständig gebrauchten Adressen: eine Zeile je Linkart, eine Spalte je Umgebung. Enthalten sind System-App, Web API, Diagnose, die klassischen Einstellungsseiten, Maker-Portal und Power Automate sowie die Admin-Seiten, dazu ein globaler Block mit Admin Center, Kapazität, Release Planner und Service Health. Alles allein aus der Umgebungskonfiguration abgeleitet, ohne eigenen Datenzugriff.</p>
+          <ul><li>Kopierknopf je Zeile</li><li>Für alle Anwender offen</li></ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="group">
+      <header>
+        <h2>Quer durch die App</h2>
+        <p>Was überall gilt, unabhängig vom Arbeitsbereich.</p>
+      </header>
+      <div class="split">
+
+        <article class="panel">
+          <h3>Berechtigungen</h3>
+          <p>Die App kennt zwei Stufen. Offen für alle Anwender sind Workbench, Merge, Release Notes im Lesen, Timeline, Plugin Traces und die Linksammlung. Alles Weitere setzt eine konfigurierbare Sicherheitsrolle voraus, die direkt am Benutzer hängen muss. Gesperrte Menüpunkte bleiben sichtbar, sind aber ausgegraut und als solche gekennzeichnet.</p>
+          <p>Schreibende Aktionen laufen als angemeldeter Benutzer, nicht als technischer Dienst. Wo eine Aktion die Produktivumgebung trifft, ist die Rückfrage bewusst deutlich strenger als sonst.</p>
+        </article>
+
+        <article class="panel">
+          <h3>Umgebungen</h3>
+          <p>Die App wird in einer Umgebung installiert und liest von dort aus in die anderen hinein. Lesende Zugriffe über Umgebungsgrenzen laufen über den Microsoft-Dataverse-Konnektor, schreibende Zugriffe treffen technisch nur die eigene Umgebung. Ist eine fremde Umgebung ausgewählt, sind schreibende Aktionen deshalb abgeschaltet und als solche erklärt.</p>
+          <p>Eine Umgebung, die gerade nicht lesbar ist, führt nirgends zu einem Abbruch. Sie erscheint als offener Hinweis und wird in keinem Befund als unauffällig gewertet.</p>
+        </article>
+
+        <article class="panel">
+          <h3>Oberfläche</h3>
+          <p>Aufgebaut wie eine Dynamics-365-App: dunkle Kopfleiste mit Markenzeichen links und Statusanzeige rechts, darunter eine durchgehende Seitenleiste. Die Navigation ist in vier Gruppen geteilt, von denen immer genau eine offen ist, weil 21 Einträge sonst nicht auf einen Notebook-Bildschirm passen. Welche offen ist, folgt automatisch dem aktiven Arbeitsbereich.</p>
+          <p>In der Kopfleiste sitzen zwei Hilfen: eine Einführung für neue Kolleginnen und Kollegen, die den Weg von der Solution bis zum Merge erklärt, und eine Referenz, die den gerade geöffneten Bereich beschreibt.</p>
+        </article>
+
+        <article class="panel">
+          <h3>Bauweise</h3>
+          <p>Die Oberfläche hängt an einer Service-Schnittstelle, nicht direkt an Dataverse. Dadurch läuft die App auch ohne Verbindung mit Beispieldaten, was Demos und Entwicklung ohne Tenant möglich macht. Die Kopfleiste zeigt jederzeit, in welchem der beiden Modi sie gerade läuft.</p>
+          <p>Auswertende Logik liegt in reinen Funktionen mit Tests, getrennt vom Datenzugriff. Teure Ansichten werden erst bei Bedarf nachgeladen, schwere Inhalte wie Import-Logs oder Trace-Meldungen erst beim Aufklappen der jeweiligen Zeile.</p>
+        </article>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<section id="kontakt" class="contact">
+  <div class="wrap">
+    <div>
+      <h2>Interesse an der Konsole oder an einem System-Review?</h2>
+      <p>Die Suite wird derzeit zum Produkt für den DACH-Markt ausgebaut. Wenn Sie sie im eigenen Tenant sehen wollen oder erst einmal wissen möchten, was in Ihrer Umgebung eigentlich los ist, schreiben Sie mir kurz.</p>
+    </div>
+    <div class="card">
+      <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de<small>E-Mail, am zuverlässigsten</small></a>
+      <a href="tel:+491735274172">+49 173 5274172<small>Telefon</small></a>
+      <a href="/">Zurück zum Profil<small>Referenzen, Skills, Werdegang</small></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein bei Nürnberg</span>
+    <span><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
