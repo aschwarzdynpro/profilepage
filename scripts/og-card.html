@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face{font-family:"Manrope";font-weight:400 800;src:url(../assets/fonts/manrope-latin.woff2) format("woff2")}
+  @font-face{font-family:"IBM Plex Sans";font-weight:400 600;src:url(../assets/fonts/plex-latin.woff2) format("woff2")}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1200px;height:630px;background:#0F1E33;color:#fff;font-family:"IBM Plex Sans",sans-serif;position:relative;overflow:hidden}
+  body::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:48px 48px;
+    -webkit-mask-image:linear-gradient(105deg,transparent 30%,#000 100%)}
+  .card{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 88px}
+  .mark{display:flex;align-items:center;gap:16px;font-family:"Manrope",sans-serif;font-weight:700;font-size:30px;letter-spacing:-.02em;
+    position:absolute;top:46px;left:88px}
+  .mark svg{width:40px;height:40px}
+  .kicker{font-size:24px;font-weight:600;color:#6DB4FF;letter-spacing:.01em}
+  h1{font-family:"Manrope",sans-serif;font-weight:700;font-size:76px;line-height:1.06;letter-spacing:-.025em;margin:22px 0 26px;max-width:17ch}
+  p{font-size:26px;line-height:1.5;color:#B9C7DA;max-width:36ch}
+  .foot{position:absolute;bottom:60px;left:88px;right:88px;display:flex;justify-content:space-between;align-items:center;
+    font-size:23px;color:#8FA5C0;border-top:1px solid #2C4468;padding-top:26px}
+  .foot b{color:#fff;font-family:"Manrope",sans-serif;font-weight:600}
+</style>
+</head>
+<body>
+  <div class="mark">
+    <svg viewBox="0 0 26 26" fill="none"><rect x="3" y="3" width="8" height="8" fill="#6DB4FF"/><rect x="15" y="3" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><rect x="3" y="15" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><rect x="15" y="15" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><path d="M11 7h4M7 11v4M19 11v4M11 19h4" stroke="#6DB4FF" stroke-width="1.5"/></svg>
+    DynamicsPro
+  </div>
+  <div class="card">
+    <div class="kicker">Dynamics 365 Solution Architect</div>
+    <h1>Systemlandschaften, die nach dem Go-live noch tragen.</h1>
+    <p>Power Platform, Azure und ALM. Über 16 Jahre im Dynamics-365-Stack.</p>
+  </div>
+  <div class="foot">
+    <span><b>Andy Schwarz</b> · Freiberuflich, Nürnberg</span>
+    <span>dynamicspro.de</span>
+  </div>
+</body>
+</html>

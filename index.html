@@ -5,10 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Andy Schwarz · DynamicsPro — Dynamics 365 Solution Architect</title>
 <meta name="description" content="Andy Schwarz, freiberuflicher Dynamics 365 Solution Architect. Power Platform, Azure, ALM/DevOps Lead. 16+ Jahre Dynamics 365 CE, Sales, Customer Service und Field Service. Nürnberg, remote und vor Ort im DACH-Raum.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://dynamicspro.de/">
+<meta name="theme-color" content="#0F1E33">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/favicon.svg">
+
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="DynamicsPro">
+<meta property="og:url" content="https://dynamicspro.de/">
+<meta property="og:title" content="Andy Schwarz · Dynamics 365 Solution Architect">
+<meta property="og:description" content="Freiberuflicher Dynamics 365 Solution Architect. Power Platform, Azure und ALM/DevOps. Über 16 Jahre im Dynamics-365-Stack, Nürnberg und DACH-weit.">
+<meta property="og:image" content="https://dynamicspro.de/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DynamicsPro: Systemlandschaften, die nach dem Go-live noch tragen.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
   :root{
     --navy:#0F1E33;--navy-2:#162A46;--navy-line:#2C4468;
     --sky:#6DB4FF;--sky-soft:rgba(109,180,255,.16);
@@ -193,6 +216,35 @@
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
   footer a:hover{color:var(--ink)}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Andy Schwarz",
+  "jobTitle": "Dynamics 365 Solution Architect",
+  "url": "https://dynamicspro.de/",
+  "image": "https://dynamicspro.de/assets/andy-schwarz.jpg",
+  "email": "mailto:aschwarz@dynamicspro.de",
+  "telephone": "+49 173 5274172",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Stein bei Nürnberg",
+    "addressCountry": "DE"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/andy-schwarz-70543aa1"
+  ],
+  "knowsAbout": [
+    "Microsoft Dynamics 365",
+    "Microsoft Power Platform",
+    "Dataverse",
+    "Microsoft Azure",
+    "ALM",
+    "Azure DevOps"
+  ],
+  "description": "Andy Schwarz, freiberuflicher Dynamics 365 Solution Architect. Power Platform, Azure, ALM/DevOps Lead. 16+ Jahre Dynamics 365 CE, Sales, Customer Service und Field Service. Nürnberg, remote und vor Ort im DACH-Raum."
+}
+</script>
 </head>
 <body>
 

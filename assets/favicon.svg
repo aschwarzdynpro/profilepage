@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="DynamicsPro">
+  <rect width="32" height="32" rx="6" fill="#0F1E33"/>
+  <g transform="translate(3 3)" fill="none" stroke="#6DB4FF" stroke-width="1.8">
+    <rect x="3" y="3" width="8" height="8" fill="#6DB4FF" stroke="none"/>
+    <rect x="15" y="3" width="8" height="8"/>
+    <rect x="3" y="15" width="8" height="8"/>
+    <rect x="15" y="15" width="8" height="8"/>
+    <path d="M11 7h4M7 11v4M19 11v4M11 19h4"/>
+  </g>
+</svg>
