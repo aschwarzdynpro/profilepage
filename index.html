@@ -283,37 +283,42 @@
       </div>
     </div>
 
-    <figure aria-label="Schematische Systemlandschaft: Workday, Azure Service Bus, Logic Apps, Dataverse, Finance & Operations, SCM, Data Lake und Azure DevOps">
+    <figure aria-label="Schematische Systemlandschaft: Regelwerk aus Konfigurationstabellen, Aufbewahrungsklassen und Guard-Bedingungen steuern Dataverse; von dort führen Wege in ein unveränderliches Blob-Archiv und über Synapse Link in einen Data Lake Gen2. Drei geplante Jobs laufen als Kette: Bewertung, Archivierung, Löschung.">
       <svg class="blueprint" viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg">
         <rect class="frame" x="0.5" y="0.5" width="559" height="419" rx="4"/>
         <line class="frame" x1="0" y1="28" x2="560" y2="28"/>
-        <text class="title" x="14" y="18">Referenzlandschaft · CE + FinOps + HR</text>
+        <text class="title" x="14" y="18">Referenzlandschaft · Aufbewahrung + Löschung</text>
         <text class="title" x="546" y="18" text-anchor="end">Blatt 1 / 1</text>
-        <path id="w1" class="wire solid" d="M198 210 L270 210"/>
-        <path id="w2" class="wire solid" d="M370 210 L450 210"/>
-        <path id="w3" class="wire" d="M320 178 L320 120 L130 120 L130 140"/>
-        <path id="w4" class="wire" d="M130 140 L130 100"/>
-        <path id="w5" class="wire" d="M320 242 L320 320 L130 320 L130 340"/>
-        <path id="w6" class="wire" d="M320 320 L490 320 L490 340"/>
-        <path id="w7" class="wire" d="M490 178 L490 120 L400 120"/>
-        <g><rect class="box" x="62" y="58" width="136" height="42" rx="3"/><text class="lbl" x="130" y="76" text-anchor="middle">Workday</text><text class="sub" x="130" y="90" text-anchor="middle">HR · System of Record</text></g>
-        <g><rect class="box" x="62" y="140" width="136" height="42" rx="3"/><text class="lbl" x="130" y="158" text-anchor="middle">Azure Service Bus</text><text class="sub" x="130" y="172" text-anchor="middle">Queues · Idempotenz</text></g>
-        <g><rect class="box" x="62" y="189" width="136" height="42" rx="3"/><text class="lbl" x="130" y="207" text-anchor="middle">Logic Apps</text><text class="sub" x="130" y="221" text-anchor="middle">Orchestrierung</text></g>
-        <g><rect class="box core" x="270" y="178" width="100" height="64" rx="3"/><text class="lbl" x="320" y="206" text-anchor="middle">Dataverse</text><text class="sub" x="320" y="221" text-anchor="middle">CE · Plugins · PCF</text></g>
-        <g><rect class="box" x="450" y="178" width="90" height="64" rx="3"/><text class="lbl" x="495" y="206" text-anchor="middle">Finance &amp;</text><text class="lbl" x="495" y="221" text-anchor="middle">Operations</text></g>
-        <g><rect class="box" x="400" y="99" width="70" height="42" rx="3"/><text class="lbl" x="435" y="117" text-anchor="middle">SCM</text><text class="sub" x="435" y="131" text-anchor="middle">Price Master</text></g>
-        <g><rect class="box" x="62" y="340" width="136" height="42" rx="3"/><text class="lbl" x="130" y="358" text-anchor="middle">Data Lake</text><text class="sub" x="130" y="372" text-anchor="middle">Archiv · WORM</text></g>
-        <g><rect class="box" x="430" y="340" width="120" height="42" rx="3"/><text class="lbl" x="490" y="358" text-anchor="middle">Azure DevOps</text><text class="sub" x="490" y="372" text-anchor="middle">ALM · Pipelines</text></g>
-        <text class="note" x="330" y="264">Dual Write</text>
-        <text class="note" x="212" y="203">Web API</text>
-        <text class="note" x="200" y="112">Delta-Reports</text>
-        <text class="note" x="330" y="312">Archivierung</text>
-        <text class="note" x="418" y="312">Git als Wahrheit</text>
-        <circle class="pulse" r="3.2"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#w1"/></animateMotion></circle>
-        <circle class="pulse" r="3.2"><animateMotion dur="2.6s" repeatCount="indefinite" begin="1.2s"><mpath href="#w2"/></animateMotion></circle>
-        <circle class="pulse" r="3.2"><animateMotion dur="5s" repeatCount="indefinite" begin="0.6s" keyPoints="1;0" keyTimes="0;1"><mpath href="#w3"/></animateMotion></circle>
-        <circle class="pulse" r="3.2"><animateMotion dur="4.5s" repeatCount="indefinite" begin="2s"><mpath href="#w5"/></animateMotion></circle>
-        <circle class="pulse" r="3.2"><animateMotion dur="3.6s" repeatCount="indefinite" begin="3s" keyPoints="1;0" keyTimes="0;1"><mpath href="#w7"/></animateMotion></circle>
+        <path id="w1" class="wire" d="M190 78 L220 78 L220 126 L250 126"/>
+        <path id="w2" class="wire solid" d="M190 146 L250 146"/>
+        <path id="w3" class="wire" d="M190 214 L220 214 L220 170 L250 170"/>
+        <path id="w4" class="wire solid" d="M370 126 L430 126"/>
+        <path id="w5" class="wire" d="M370 170 L400 170 L400 194 L430 194"/>
+        <path id="w6" class="wire" d="M310 192 L310 250"/>
+        <path id="w7" class="wire" d="M110 250 L450 250"/>
+        <path id="w8" class="wire" d="M110 250 L110 286"/>
+        <path id="w9" class="wire" d="M280 250 L280 286"/>
+        <path id="w10" class="wire" d="M450 250 L450 286"/>
+        <path id="w11" class="wire solid" d="M180 308 L210 308"/>
+        <path id="w12" class="wire solid" d="M350 308 L380 308"/>
+        <g><rect class="box" x="40" y="56" width="150" height="44" rx="3"/><text class="lbl" x="115" y="76" text-anchor="middle">Regelwerk</text><text class="sub" x="115" y="90" text-anchor="middle">9 Konfigurationstabellen</text></g>
+        <g><rect class="box" x="40" y="124" width="150" height="44" rx="3"/><text class="lbl" x="115" y="144" text-anchor="middle">Aufbewahrungsklassen</text><text class="sub" x="115" y="158" text-anchor="middle">GoBD · DSGVO</text></g>
+        <g><rect class="box" x="40" y="192" width="150" height="44" rx="3"/><text class="lbl" x="115" y="212" text-anchor="middle">Guard-Bedingungen</text><text class="sub" x="115" y="226" text-anchor="middle">Feldausschlüsse</text></g>
+        <g><rect class="box core" x="250" y="104" width="120" height="88" rx="3"/><text class="lbl" x="310" y="146" text-anchor="middle">Dataverse</text><text class="sub" x="310" y="160" text-anchor="middle">CE · Plugins (.NET 8)</text></g>
+        <g><rect class="box" x="430" y="104" width="120" height="44" rx="3"/><text class="lbl" x="490" y="124" text-anchor="middle">Blob-Archiv</text><text class="sub" x="490" y="138" text-anchor="middle">unveränderlich</text></g>
+        <g><rect class="box" x="430" y="172" width="120" height="44" rx="3"/><text class="lbl" x="490" y="192" text-anchor="middle">Data Lake Gen2</text><text class="sub" x="490" y="206" text-anchor="middle">Synapse Link</text></g>
+        <g><rect class="box" x="40" y="286" width="140" height="44" rx="3"/><text class="lbl" x="110" y="306" text-anchor="middle">Bewertung</text><text class="sub" x="110" y="320" text-anchor="middle">geplanter Job</text></g>
+        <g><rect class="box" x="210" y="286" width="140" height="44" rx="3"/><text class="lbl" x="280" y="306" text-anchor="middle">Archivierung</text><text class="sub" x="280" y="320" text-anchor="middle">Blob je Datensatz</text></g>
+        <g><rect class="box" x="380" y="286" width="140" height="44" rx="3"/><text class="lbl" x="450" y="306" text-anchor="middle">Löschung</text><text class="sub" x="450" y="320" text-anchor="middle">nach Prüffenster</text></g>
+        <text class="note" x="430" y="96">Archiv je Datensatz</text>
+        <text class="note" x="376" y="188">Export</text>
+        <text class="note" x="318" y="244">geplante Jobs</text>
+        <circle class="pulse" r="3.2"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#w2"/></animateMotion></circle>
+        <circle class="pulse" r="3.2"><animateMotion dur="2.6s" repeatCount="indefinite" begin="1.2s"><mpath href="#w4"/></animateMotion></circle>
+        <circle class="pulse" r="3.2"><animateMotion dur="5s" repeatCount="indefinite" begin="0.6s"><mpath href="#w1"/></animateMotion></circle>
+        <circle class="pulse" r="3.2"><animateMotion dur="4.5s" repeatCount="indefinite" begin="2s"><mpath href="#w6"/></animateMotion></circle>
+        <circle class="pulse" r="3.2"><animateMotion dur="3.4s" repeatCount="indefinite" begin="2.6s"><mpath href="#w11"/></animateMotion></circle>
+        <circle class="pulse" r="3.2"><animateMotion dur="3.4s" repeatCount="indefinite" begin="3.8s"><mpath href="#w12"/></animateMotion></circle>
         <text class="title" x="546" y="405" text-anchor="end">gez. A. Schwarz · Nürnberg</text>
       </svg>
     </figure>
@@ -364,7 +369,7 @@
   <div class="wrap">
     <div class="head">
       <h2>Referenzen</h2>
-      <p>Fünf Vorhaben aus laufenden Mandaten, die zeigen, wie ich arbeite. Alle Einsätze seit 2022 als freiberuflicher Solution Architect, teils parallel. Kundennamen anonymisiert, Referenzen auf Anfrage.</p>
+      <p>Drei Vorhaben aus laufenden Mandaten und ein eigenes Produkt, die zeigen, wie ich arbeite. Die Mandate seit 2022 als freiberuflicher Solution Architect, teils parallel. Kundennamen anonymisiert, Referenzen auf Anfrage.</p>
     </div>
 
     <article class="case">
@@ -401,25 +406,6 @@
           <div><h4>Ausgangslage</h4><p>Sales, Customer Service und Field Service sollten in parallelen Strängen eingeführt werden, mit Customizing und Pro-Code-Entwicklung im selben Tenant. Ohne klare Architektur und Release-Disziplin wäre das in Konflikten und Handarbeit geendet.</p></div>
           <div><h4>Lösung</h4><p>Discovery- und Analyse-Workshops, Verantwortung für die Zielarchitektur und Steuerung der Umsetzung. Dazu die ALM-Strategie: Feature-Branch-Workflow, Unmanaged Solutions je Work Item, automatisierte Managed-Solution-Builds. Ergänzt um Code Apps wie ein Außendienst-Dashboard und eine offlinefähige Messe-App zur Lead-Erfassung.</p></div>
           <div class="result"><h4>Ergebnis</h4><p>Mehrere Stränge liefern gleichzeitig, ohne sich gegenseitig zu blockieren. Releases laufen nachvollziehbar über Pipelines statt über manuelle Exporte.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="case">
-      <div class="meta">
-        <div class="industry">Automation Engineering</div>
-        <dl>
-          <dt>Rolle</dt><dd>Solution Architect, alle CE-Workstreams</dd>
-          <dt>Thema</dt><dd>Sales, Field Service, Project Operations, Dual Write</dd>
-          <dt>Stack</dt><dd>D365 CE, Finance &amp; Operations, Dual Write, Workday, Azure Service Bus, Customer Voice</dd>
-        </dl>
-      </div>
-      <div>
-        <h3>Field Service und Sales mit Dual Write neben einem laufenden ERP-Go-live</h3>
-        <div class="story">
-          <div><h4>Ausgangslage</h4><p>Wartungsverträge je Anlage, Arbeitsaufträge mit gestaffelten Reaktionszeiten und parallel die Einführung von Finance &amp; Operations. Zusätzlich sollten Abwesenheiten aus Workday in die Einsatzplanung und erfasste Zeiten zurück in die Lohnabrechnung fließen.</p></div>
-          <div><h4>Lösung</h4><p>Ein Blueprint mit klarer Szenario-Empfehlung: Design parallel zum ERP-Build, Umsetzung gegen das produktive FinOps, versetzter Go-live ohne Jahreswechsel-Big-Bang, saubere Abgrenzung der Dual-Write-Strecken. Für Workday zwei getrennte Integrationsstrecken über Delta-Reports und Service Bus mit externen IDs für Idempotenz. Deployment- und Metadaten-Automation als Basis des Release-Prozesses.</p></div>
-          <div class="result"><h4>Ergebnis</h4><p>Der Lenkungskreis hat auf Basis des Blueprints entschieden und das Projekt freigegeben. Angebote des Implementierungspartners konnten Position für Position gegen ein eigenes Modell geprüft werden.</p></div>
         </div>
       </div>
     </article>
