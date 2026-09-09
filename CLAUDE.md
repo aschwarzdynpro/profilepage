@@ -4,6 +4,7 @@ Statische Single-File-Site (`index.html`), kein Build, kein Framework. Ausgelief
 
 ## Regeln
 - Alles bleibt in `index.html` (CSS im `<style>`, keine externen JS-Bundles). Bilder nach `assets/`.
+- Ausnahme: `impressum.html` und `datenschutz.html` sind eigene Seiten mit eigenem `<style>`. Anschrift, USt-IdNr. und Aufsichtsbehörde dort nur nach Rücksprache ändern.
 - Keine Frameworks, kein Tailwind, kein Build-Schritt einführen.
 - Deutsch, Sie-Ansprache, kein Marketing-Sprech. Keine Emojis, keine Bindestrich-Gedankenstriche.
 - Kundennamen bleiben anonymisiert (Branche statt Firma). Keine Tagessätze, keine Partner-Methodik.
@@ -26,6 +27,5 @@ Einrichtung und DNS stehen in `README.md`.
 Profil-Dokument `Profile_Andy_Schwarz_2026.docx` (englisch). Zahlen auf der Site müssen damit übereinstimmen.
 
 ## Offen
-- Impressum / Datenschutz als eigene Seiten (`impressum.html`, `datenschutz.html`) anlegen und im Footer verlinken. Footer-Links zeigen aktuell auf `#`. Beide Seiten in `pages.yml` aufnehmen.
 - Jahreszahlen zwischen deutschem und englischem Profil abgleichen.
 - Pro Referenz eine belastbare Kennzahl ergänzen.

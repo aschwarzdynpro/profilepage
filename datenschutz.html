@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutzerklärung · Andy Schwarz, DynamicsPro</title>
+<meta name="description" content="Datenschutzerklärung für dynamicspro.de. Keine Cookies, kein Tracking, keine Inhalte von Drittservern. Hosting, Rechtsgrundlagen und Betroffenenrechte nach DSGVO.">
+<link rel="canonical" href="https://dynamicspro.de/datenschutz.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0F1E33">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  :root{
+    --navy:#0F1E33;--navy-line:#2C4468;--sky:#6DB4FF;
+    --bg:#F6F7F9;--line:#D5DBE3;--white:#FFFFFF;
+    --ink:#14213A;--ink-2:#4A5A72;--ink-3:#7E8CA0;
+    --display:"Manrope",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--body);font-size:17px;line-height:1.65;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  a:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+  h1,h2{font-family:var(--display);font-weight:700;line-height:1.15;letter-spacing:-0.02em}
+  .wrap{width:min(1200px,100% - 3rem);margin-inline:auto}
+
+  .nav{background:var(--navy);border-bottom:1px solid var(--navy-line);color:#E6EDF7}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .mark{font-family:var(--display);font-weight:700;font-size:1.2rem;display:flex;align-items:center;gap:.6rem;letter-spacing:-0.02em;text-decoration:none}
+  .mark svg{width:26px;height:26px}
+  .nav .back{font-size:.95rem;color:#B9C7DA;font-weight:500;text-decoration:none}
+  .nav .back:hover{color:#fff}
+
+  main{padding:4rem 0 5rem}
+  .col{width:min(72ch,100%);margin-inline:auto}
+  .col h1{font-size:clamp(2rem,4vw,2.6rem)}
+  .col .lead{margin-top:.9rem;color:var(--ink-2);font-size:1.05rem}
+  .col h2{font-size:1.25rem;margin:2.6rem 0 .8rem}
+  .col p{margin:.8rem 0}
+  .col ul{margin:.8rem 0 .8rem 1.3rem}
+  .col li{margin:.35rem 0}
+  .col a{color:var(--ink)}
+  .col a:hover{color:var(--ink-2)}
+  address{font-style:normal;background:var(--white);border:1px solid var(--line);border-radius:6px;padding:1.2rem 1.4rem;margin:1rem 0}
+  .meta{font-size:.9rem;color:var(--ink-3);margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+  .col h2+p{margin-top:0}
+
+  footer{padding:2rem 0;font-size:.88rem;color:var(--ink-2);border-top:1px solid var(--line)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a{text-decoration:none}
+  footer a:hover{color:var(--ink)}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="DynamicsPro, zur Startseite">
+      <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#6DB4FF"/><rect x="15" y="3" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><rect x="3" y="15" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><rect x="15" y="15" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><path d="M11 7h4M7 11v4M19 11v4M11 19h4" stroke="#6DB4FF" stroke-width="1.5"/></svg>
+      DynamicsPro
+    </a>
+    <a class="back" href="/">Zurück zur Startseite</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="col">
+      <h1>Datenschutzerklärung</h1>
+      <p class="lead">Diese Website setzt keine Cookies, bindet keine Analyse- oder Werbedienste ein und lädt keine Inhalte von Servern Dritter nach. Erhoben wird nur, was für die Auslieferung der Seite technisch unvermeidbar ist.</p>
+
+      <h2>1. Verantwortlicher</h2>
+      <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO):</p>
+      <address>
+        Andy Schwarz<br>
+        Jagdweg 48A<br>
+        90547 Stein<br>
+        E-Mail: <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de</a><br>
+        Telefon: <a href="tel:+491735274172">+49 173 5274172</a>
+      </address>
+      <p>Ein Datenschutzbeauftragter ist gesetzlich nicht zu benennen.</p>
+
+      <h2>2. Hosting und Server-Protokolle</h2>
+      <p>Die Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA.</p>
+      <p>Beim Aufruf der Seite überträgt Ihr Browser technisch notwendige Verbindungsdaten an die Server von GitHub. Dazu gehören insbesondere Ihre IP-Adresse, Datum und Uhrzeit des Abrufs, die aufgerufene Datei, der verwendete Browser und das Betriebssystem. GitHub verarbeitet diese Daten zur Auslieferung der Seite und zur Abwehr von Angriffen. Ich selbst habe auf diese Protokolle keinen Zugriff, werte sie nicht aus und führe sie nicht mit anderen Daten zusammen.</p>
+      <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Mein berechtigtes Interesse liegt in der technisch fehlerfreien und sicheren Bereitstellung dieser Website.</p>
+      <p>Die Verarbeitung findet auch in den USA statt. GitHub ist unter dem EU-U.S. Data Privacy Framework zertifiziert, für das die EU-Kommission mit Durchführungsbeschluss vom 10. Juli 2023 ein angemessenes Schutzniveau festgestellt hat. Ergänzend stützt sich GitHub auf die Standardvertragsklauseln der EU-Kommission (Durchführungsbeschluss 2021/914). Einzelheiten stehen in der <a href="https://docs.github.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+
+      <h2>3. Keine Cookies, kein Tracking</h2>
+      <p>Es werden keine Cookies gesetzt und keine vergleichbaren Techniken wie Local Storage eingesetzt. Es findet keine Reichweitenmessung, keine Analyse des Nutzungsverhaltens und keine Profilbildung statt. Eine Einwilligung nach § 25 TDDDG ist deshalb nicht erforderlich, ein Cookie-Banner entfällt.</p>
+
+      <h2>4. Schriften und weitere Inhalte</h2>
+      <p>Die verwendeten Schriften Manrope und IBM Plex Sans werden vom selben Server ausgeliefert wie die Website. Es besteht keine Verbindung zu Google Fonts oder einem anderen Content-Delivery-Netzwerk. Auch Bilder, Grafiken und Symbole liegen ausschließlich lokal vor. Beim Aufruf der Seite wird daher keine Verbindung zu Servern Dritter aufgebaut.</p>
+
+      <h2>5. Kontaktaufnahme</h2>
+      <p>Diese Website enthält kein Kontaktformular. Wenn Sie mir per E-Mail oder telefonisch schreiben, verarbeite ich die von Ihnen übermittelten Angaben, um Ihre Anfrage zu beantworten.</p>
+      <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit die Anfrage auf den Abschluss oder die Durchführung eines Vertrages gerichtet ist, ansonsten Art. 6 Abs. 1 lit. f DSGVO aufgrund meines berechtigten Interesses an der Beantwortung von Anfragen.</p>
+      <p>Ihre Angaben lösche ich, sobald sie für den Zweck nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Für geschäftliche Korrespondenz gelten die handels- und steuerrechtlichen Fristen von sechs beziehungsweise zehn Jahren.</p>
+
+      <h2>6. Verlinkung zu LinkedIn</h2>
+      <p>Auf der Startseite befindet sich ein einfacher Textlink zu meinem LinkedIn-Profil. Es sind keine Schaltflächen, Zählpixel oder eingebetteten Inhalte von LinkedIn vorhanden. Eine Datenübertragung an LinkedIn findet erst statt, wenn Sie den Link aktiv anklicken. Ab diesem Zeitpunkt gilt die Datenschutzerklärung von LinkedIn.</p>
+
+      <h2>7. Verschlüsselung</h2>
+      <p>Die Übertragung erfolgt über TLS. Sie erkennen das an dem Präfix https in der Adresszeile Ihres Browsers.</p>
+
+      <h2>8. Ihre Rechte</h2>
+      <p>Sie haben mir gegenüber die folgenden Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:</p>
+      <ul>
+        <li>Auskunft über die verarbeiteten Daten (Art. 15 DSGVO)</li>
+        <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+        <li>Löschung (Art. 17 DSGVO)</li>
+        <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+        <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+        <li>Widerspruch gegen Verarbeitungen, die auf Art. 6 Abs. 1 lit. f DSGVO beruhen (Art. 21 DSGVO)</li>
+      </ul>
+      <p>Für die Ausübung genügt eine formlose Nachricht an die oben genannte E-Mail-Adresse.</p>
+
+      <h2>9. Beschwerderecht</h2>
+      <p>Unabhängig davon steht Ihnen ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde zu (Art. 77 DSGVO). Für mich zuständig ist:</p>
+      <address>
+        Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)<br>
+        Promenade 18<br>
+        91522 Ansbach<br>
+        <a href="https://www.lda.bayern.de" target="_blank" rel="noopener">www.lda.bayern.de</a>
+      </address>
+
+      <h2>10. Änderungen</h2>
+      <p>Ich passe diese Erklärung an, wenn sich die Website oder die Rechtslage ändert. Es gilt jeweils die hier veröffentlichte Fassung.</p>
+
+      <p class="meta">Stand: September 2026</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein bei Nürnberg</span>
+    <span><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -14,21 +14,30 @@ const browser = await chromium.launch();
 const foreign = new Set();
 let failed = false;
 
-for (const [name, width, height] of [['desktop', 1400, 900], ['mobile', 390, 844]]) {
-  const page = await browser.newPage({ viewport: { width, height } });
-  page.on('request', r => {
-    const host = new URL(r.url()).host;
-    if (host && host !== `localhost:${PORT}`) foreign.add(host);
-  });
-  await page.goto(`http://localhost:${PORT}/`, { waitUntil: 'networkidle' });
-  await page.evaluate(() => document.fonts.ready);
+const PAGES = [['start', '/'], ['impressum', '/impressum.html'], ['datenschutz', '/datenschutz.html']];
+const VIEWPORTS = [['desktop', 1400, 900], ['mobile', 390, 844]];
+const written = [];
 
-  const missing = await page.evaluate(() =>
-    ['Manrope', 'IBM Plex Sans'].filter(f => !document.fonts.check(`700 17px "${f}"`)));
-  if (missing.length) { console.error(`FEHLER ${name}: Schrift nicht geladen: ${missing.join(', ')}`); failed = true; }
+for (const [slug, path] of PAGES) {
+  for (const [view, width, height] of VIEWPORTS) {
+    const page = await browser.newPage({ viewport: { width, height } });
+    page.on('request', r => {
+      const host = new URL(r.url()).host;
+      if (host && host !== `localhost:${PORT}`) foreign.add(host);
+    });
+    const res = await page.goto(`http://localhost:${PORT}${path}`, { waitUntil: 'networkidle' });
+    if (res.status() !== 200) { console.error(`FEHLER ${path}: HTTP ${res.status()}`); failed = true; }
+    await page.evaluate(() => document.fonts.ready);
 
-  await page.screenshot({ path: `shots/${name}.png`, fullPage: true });
-  await page.close();
+    const missing = await page.evaluate(() =>
+      ['Manrope', 'IBM Plex Sans'].filter(f => !document.fonts.check(`700 17px "${f}"`)));
+    if (missing.length) { console.error(`FEHLER ${slug}/${view}: Schrift nicht geladen: ${missing.join(', ')}`); failed = true; }
+
+    const file = `shots/${slug}-${view}.png`;
+    await page.screenshot({ path: file, fullPage: true });
+    written.push(file);
+    await page.close();
+  }
 }
 
 await browser.close();
@@ -36,4 +45,5 @@ server.close();
 
 if (foreign.size) { console.error(`FEHLER: Request an Drittanbieter: ${[...foreign].join(', ')}`); failed = true; }
 if (failed) process.exit(1);
-console.log('shots/desktop.png, shots/mobile.png  ·  keine Fremd-Requests, Schriften geladen');
+console.log(`${written.length} Screenshots  ·  keine Fremd-Requests, Schriften geladen`);
+console.log(written.join('\n'));
