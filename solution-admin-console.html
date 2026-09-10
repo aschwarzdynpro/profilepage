@@ -617,6 +617,8 @@
 
   var pending = false;
   function onScroll() {
+    // Die Seite scrollt nur, wenn ein Sprung stattgefunden hat: Panel zu.
+    if (shell.hasAttribute('data-open') && Math.abs(window.scrollY - openedAt) > 120) setOpen(false, false);
     if (pending) return;
     pending = true;
     requestAnimationFrame(function () { pending = false; spy(); });
@@ -625,24 +627,38 @@
   window.addEventListener('resize', onScroll);
   spy();
 
-  function setOpen(state) {
+  var openedAt = 0;
+  function focus(el) {
+    try { el.focus({ preventScroll: true }); } catch (err) { el.focus(); }
+  }
+  function setOpen(state, moveFocus) {
     if (state) shell.setAttribute('data-open', ''); else shell.removeAttribute('data-open');
     backdrop.hidden = !state;
     fab.setAttribute('aria-expanded', state ? 'true' : 'false');
-    if (state) { if (current) keepVisible(current.link); close.focus(); }
-    else if (shell.contains(document.activeElement)) fab.focus();
+    if (state) {
+      if (current) keepVisible(current.link);
+      focus(close);
+      openedAt = window.scrollY;
+    } else if (moveFocus !== false && shell.contains(document.activeElement)) {
+      focus(fab);
+    }
   }
   fab.addEventListener('click', function () { setOpen(fab.getAttribute('aria-expanded') !== 'true'); });
   close.addEventListener('click', function () { setOpen(false); });
   backdrop.addEventListener('click', function () { setOpen(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
-  toc.addEventListener('click', function (e) {
-    var a = e.target.closest('a');
+  // Drei Wege zu, damit das Panel nach einem Sprung nie offen stehen bleibt:
+  // der Klick selbst, der Hash-Wechsel und das Scrollen zum Ziel.
+  shell.addEventListener('click', function (e) {
+    var node = e.target;
+    if (node && node.nodeType === 3) node = node.parentNode;
+    var a = node && node.closest ? node.closest('a[href^="#"]') : null;
     if (!a) return;
     var g = a.closest('.toc-group');
     if (g) open(g);
-    setOpen(false);
+    setOpen(false, false);
   });
+  window.addEventListener('hashchange', function () { setOpen(false, false); });
   window.addEventListener('resize', function () { if (window.innerWidth > 1100) setOpen(false); });
 })();
 </script>
