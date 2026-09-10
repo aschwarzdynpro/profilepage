@@ -120,6 +120,42 @@
   footer{padding:2rem 0;font-size:.88rem;color:var(--ink-2)}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
   footer a:hover{color:var(--ink)}
+  /* Schwebendes Inhaltsverzeichnis: Desktop als mitlaufende Spalte, mobil als Panel */
+  section[id],article[id]{scroll-margin-top:96px}
+  main .wrap{position:relative;padding-left:18rem}
+  .toc-shell{position:absolute;left:0;top:0;bottom:0;width:15rem}
+  .toc{position:sticky;top:88px;max-height:calc(100vh - 112px);overflow:auto;overscroll-behavior:contain}
+  .toc-title{font-family:var(--display);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);padding-left:.95rem;margin-bottom:.7rem}
+  .toc ul{list-style:none}
+  .toc-group+.toc-group{margin-top:.12rem}
+  .toc a{display:block;border-left:2px solid var(--line);padding:.3rem .4rem .3rem .95rem;color:var(--ink-2);font-size:.92rem;line-height:1.35}
+  .toc a:hover{color:var(--ink);border-left-color:var(--ink-3);background:var(--bg-2)}
+  .toc-head{font-family:var(--display);font-weight:700;font-size:.97rem;color:var(--ink);letter-spacing:-0.01em}
+  .toc-group.open>.toc-head{border-left-color:var(--navy)}
+  .toc-sub{margin-bottom:.35rem}
+  .toc-sub a{padding-left:1.7rem;padding-top:.22rem;padding-bottom:.22rem;font-size:.89rem}
+  .toc a.on{color:var(--navy);font-weight:600;border-left-color:var(--sky);background:var(--bg-2)}
+  .toc.js .toc-group:not(.open)>.toc-sub{display:none}
+  .toc-fab,.toc-backdrop,.toc-bar,.toc-close{display:none}
+
+  @media (max-width:1100px){
+    main .wrap{padding-left:0}
+    .toc-shell{position:fixed;left:0;right:0;bottom:0;top:auto;width:auto;z-index:60;display:flex;flex-direction:column;background:var(--white);border-top:1px solid var(--line);border-radius:6px 6px 0 0;box-shadow:0 -14px 34px rgba(15,30,51,.18);max-height:min(72vh,560px);overflow:hidden;transform:translateY(101%);visibility:hidden;transition:transform .22s ease,visibility .22s}
+    .toc-shell[data-open]{transform:none;visibility:visible}
+    .toc-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem .8rem .85rem 1.4rem;border-bottom:1px solid var(--line);font-family:var(--display);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3)}
+    .toc-close{display:flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;border:0;background:none;color:var(--ink-2);cursor:pointer;border-radius:4px}
+    .toc-close:hover{background:var(--bg-2);color:var(--ink)}
+    .toc-close svg{width:16px;height:16px}
+    .toc{position:static;flex:1 1 auto;max-height:none;overflow:auto;overscroll-behavior:contain;padding:1rem 1.4rem calc(1.4rem + env(safe-area-inset-bottom))}
+    .toc-title{display:none}
+    /* Im Panel stehen alle Gruppen offen, sonst wäre nur die aktive erreichbar */
+    .toc.js .toc-group:not(.open)>.toc-sub{display:block}
+    .toc-backdrop:not([hidden]){display:block;position:fixed;inset:0;z-index:55;background:rgba(15,30,51,.4)}
+    .toc-fab{display:inline-flex;align-items:center;gap:.5rem;position:fixed;right:1.1rem;bottom:calc(1.1rem + env(safe-area-inset-bottom));z-index:65;border:0;cursor:pointer;font-family:var(--display);font-weight:600;font-size:.95rem;color:#fff;background:var(--navy);border-radius:999px;padding:.75rem 1.15rem;box-shadow:0 10px 24px rgba(15,30,51,.28)}
+    .toc-fab svg{width:17px;height:17px;flex:none}
+    .toc-fab[aria-expanded="true"]{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){.toc-shell{transition:none}}
 </style>
 </head>
 
@@ -153,7 +189,75 @@
 <main>
   <div class="wrap">
 
-    <section class="intro">
+    <div class="toc-shell" id="toc-shell">
+      <div class="toc-bar">
+        <span>Auf dieser Seite</span>
+        <button class="toc-close" id="toc-close" type="button" aria-label="Inhaltsverzeichnis schließen">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>
+        </button>
+      </div>
+      <nav class="toc" id="toc" aria-labelledby="toc-title">
+        <p class="toc-title" id="toc-title">Auf dieser Seite</p>
+        <ul>
+          <li class="toc-group"><a class="toc-head" href="#wofuer">Wofür</a></li>
+          <li class="toc-group">
+            <a class="toc-head" href="#manage">Manage</a>
+            <ul class="toc-sub">
+              <li><a href="#workbench">Workbench</a></li>
+              <li><a href="#kollisions-radar">Kollisions-Radar</a></li>
+              <li><a href="#devops-abgleich">Azure-DevOps-Abgleich</a></li>
+              <li><a href="#merge">Merge</a></li>
+              <li><a href="#merge-rules">Merge Rules</a></li>
+              <li><a href="#release-notes">Release Notes</a></li>
+              <li><a href="#timeline">Timeline</a></li>
+            </ul>
+          </li>
+          <li class="toc-group">
+            <a class="toc-head" href="#validate">Validate</a>
+            <ul class="toc-sub">
+              <li><a href="#deployment-readiness">Deployment Readiness</a></li>
+              <li><a href="#import-history">Import History</a></li>
+              <li><a href="#analyze">Analyze</a></li>
+              <li><a href="#env-config">Env Config</a></li>
+              <li><a href="#audit-config">Audit Config</a></li>
+              <li><a href="#dual-write-maps">Dual-Write Maps</a></li>
+              <li><a href="#user-settings">User Settings</a></li>
+              <li><a href="#process-comparer">Process Comparer</a></li>
+              <li><a href="#plugin-comparer">Plugin Comparer</a></li>
+              <li><a href="#role-comparer">Role Comparer</a></li>
+            </ul>
+          </li>
+          <li class="toc-group">
+            <a class="toc-head" href="#operate">Operate</a>
+            <ul class="toc-sub">
+              <li><a href="#plugin-traces">Plugin Traces</a></li>
+              <li><a href="#role-analyzer">Role Analyzer</a></li>
+              <li><a href="#odata-browser">OData Browser</a></li>
+              <li><a href="#data-transfer">Data Transfer</a></li>
+            </ul>
+          </li>
+          <li class="toc-group">
+            <a class="toc-head" href="#reference">Reference</a>
+            <ul class="toc-sub">
+              <li><a href="#environment-setup">Environment Setup</a></li>
+              <li><a href="#links">Links</a></li>
+            </ul>
+          </li>
+          <li class="toc-group">
+            <a class="toc-head" href="#uebergreifend">Quer durch die App</a>
+            <ul class="toc-sub">
+              <li><a href="#berechtigungen">Berechtigungen</a></li>
+              <li><a href="#umgebungen">Umgebungen</a></li>
+              <li><a href="#oberflaeche">Oberfläche</a></li>
+              <li><a href="#bauweise">Bauweise</a></li>
+            </ul>
+          </li>
+          <li class="toc-group"><a class="toc-head" href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <section class="intro" id="wofuer">
       <h2>Wofür</h2>
       <p>In gewachsenen Umgebungen ist selten strittig, was deployt werden soll. Strittig ist, was dabei schiefgeht: eine Abhängigkeit, die im Ziel fehlt. Eine Environment Variable ohne Wert. Eine Connection Reference, die nirgends gebunden ist. Ein unmanaged Layer, der künftige Deployments stillschweigend maskiert. Eine Canvas App, die zwar ankommt, aber niemanden erreicht, weil Freigaben nicht mittransportiert werden. Eine Sicherheitsrolle, die von Hand nachgebaut statt transportiert wurde und ab morgen still auseinanderläuft.</p>
       <p>Jede dieser Fragen ist einzeln beantwortbar, mit genug Zeit und den richtigen Abfragen. Die Konsole beantwortet sie an einer Stelle, über alle konfigurierten Umgebungen hinweg, und zwar bevor importiert wird. Sie ersetzt keine Pipeline. Sie sagt Ihnen, ob der nächste Import durchgeht und was er im Ziel anrichtet.</p>
@@ -161,14 +265,14 @@
       <p>Alles dreht sich um die <em>Working Solution</em>: ein Datensatz mit Titel, Typ, Azure-DevOps-ID, Owner und Deployment-Status, verbunden mit der echten unmanaged Dataverse-Solution, die die Komponenten trägt. Beim Anlegen entsteht beides in einem Schritt. Unmanaged Solutions ohne Datensatz bleiben trotzdem sichtbar und werden über die Namenskonvention eingeordnet.</p>
     </section>
 
-    <section class="group">
+    <section class="group" id="manage">
       <header>
         <h2>Manage</h2>
         <p>Der tägliche Weg von der einzelnen Änderung bis zum fertig geschnürten Release.</p>
       </header>
       <div class="feats">
 
-        <article class="feat wide">
+        <article class="feat wide" id="workbench">
           <h3>Workbench</h3>
           <p>Liste aller Working Solutions mit Filter nach Feature, Bug und Deployment sowie Suche über Titel, Unique Name und Azure-DevOps-ID. Der Schalter <em>incl. components</em> durchsucht zusätzlich die Anzeigenamen der Komponenten in den offenen Solutions und beantwortet damit die Frage, welche Solution eine bestimmte Tabelle oder einen bestimmten Flow enthält. Anlegen erzeugt Datensatz und echte Solution zusammen, mit Live-Vorschau des Unique Name und Dublettenprüfung.</p>
           <ul><li>Detail inline unter der Zeile</li><li>Komponenten nach Typ gruppiert</li><li>Owner zuweisen</li><li>Deep-Link ins Maker-Portal</li><li>Löschen mit drei Sekunden Undo</li></ul>
@@ -178,19 +282,19 @@
           </figure>
         </article>
 
-        <article class="feat">
+        <article class="feat" id="kollisions-radar">
           <h3>Kollisions-Radar</h3>
           <p>Lädt die Komponenten aller offenen Working Solutions und markiert jede Komponente, die in mehr als einer davon steckt. Genau dort überschreibt derjenige, der zuletzt deployt, die Arbeit des anderen. Betroffene Solutions bekommen einen Warnhinweis, die Detailansicht nennt die geteilten Komponenten und die Gegenseite.</p>
           <ul><li>Beschränkt auf den offenen Satz</li><li>Nennt die konkurrierende Solution</li></ul>
         </article>
 
-        <article class="feat">
+        <article class="feat" id="devops-abgleich">
           <h3>Azure-DevOps-Abgleich</h3>
           <p>Ein Cloud Flow synchronisiert den Status der verknüpften Work Items zurück in die Working Solutions. Steht ein Work Item auf <em>Closed</em> oder <em>Done</em>, während die Solution noch offen ist, markiert die Liste den Eintrag als <em>to be completed</em> und hebt die Abschluss-Aktion hervor. Das Kennzeichen wird abgeleitet, nicht gespeichert, und rechnet nach jeder Synchronisation neu.</p>
           <ul><li>Work-Item-Link je Eintrag</li><li>Abschließen und Wiedereröffnen</li></ul>
         </article>
 
-        <article class="feat wide">
+        <article class="feat wide" id="merge">
           <h3>Merge</h3>
           <p>Deployment-Solution als Ziel wählen, Feature- und Bug-Solutions ankreuzen, den Komponentenplan prüfen und zusammenführen. Konflikte sind markiert, Duplikate werden übersprungen. Jeder Lauf schreibt eine Historienzeile mit Anzahl, Quell-Solutions und den hinzugefügten Komponenten, die im Detail des Release als Merge-Historie erscheint.</p>
           <ul><li>Komponentenplan vor dem Lauf</li><li>Quell-Solutions werden automatisch gestempelt</li></ul>
@@ -200,19 +304,19 @@
           </figure>
         </article>
 
-        <article class="feat">
+        <article class="feat" id="merge-rules">
           <h3>Merge Rules <span class="gate">Deployment Manager</span></h3>
           <p>Je Release lässt sich festlegen, welche Komponententypen überhaupt mitwandern dürfen: eine Positivliste und eine Ausschlussliste. Mergebar ist ein Typ, wenn er in der Positivliste steht oder diese leer ist, und nicht in der Ausschlussliste. Blockierte Komponenten erscheinen im Plan ausgegraut und werden beim Lauf gesondert gezählt.</p>
           <ul><li>Pro Release konfigurierbar</li><li>In der Workbench nur lesend sichtbar</li></ul>
         </article>
 
-        <article class="feat">
+        <article class="feat" id="release-notes">
           <h3>Release Notes</h3>
           <p>Werden aus der Merge-Historie erzeugt: enthaltene Quell-Solutions samt Azure-DevOps-Link und alle hinzugefügten Komponenten nach Typ. Umschaltbar zwischen Markdown und Rohtext. Veröffentlichen friert den Stand als versionierten Snapshot ein. Ab dem zweiten Mal ist der Entwurf inkrementell und listet nur, was seit der letzten Veröffentlichung dazugekommen ist.</p>
           <ul><li>Ansehen und Kopieren für alle</li><li>Veröffentlichen für Deployment Manager</li><li>Verlauf aller Stände</li></ul>
         </article>
 
-        <article class="feat">
+        <article class="feat" id="timeline">
           <h3>Timeline</h3>
           <p>Was ging wann wohin. Für einen gewählten Release stehen Merge-Läufe, veröffentlichte Release Notes und die Importe je konfigurierter Umgebung auf einem gemeinsamen Zeitstrahl, neueste zuerst, mit Statusfarbe je Umgebung. Filter je Ereignisart. Eine Umgebung, die gerade nicht lesbar ist, erzeugt einen Hinweis statt die Ansicht zu blockieren.</p>
           <ul><li>Reine Visualisierung vorhandener Daten</li></ul>
@@ -221,14 +325,14 @@
       </div>
     </section>
 
-    <section class="group">
+    <section class="group" id="validate">
       <header>
         <h2>Validate</h2>
         <p>Prüfungen vor dem Import und Kontrollen danach. Diese Gruppe setzt durchgehend die Deployment-Manager-Rolle voraus.</p>
       </header>
       <div class="feats">
 
-        <article class="feat wide">
+        <article class="feat wide" id="deployment-readiness">
           <h3>Deployment Readiness <span class="gate">Deployment Manager</span></h3>
           <p>Prüft eine Release-Solution gegen die Zielumgebungen auf Komponenten, die dort gebraucht, aber weder mitgeliefert noch vorhanden sind. Genau daran scheitert ein Import. Je Fund gibt es <em>Add to Solution</em>, um die fehlende Komponente direkt aufzunehmen. Typen, die über den Namen gematcht werden, gelten als vorhanden, wenn das Ziel sie unter gleichem Namen kennt.</p>
           <ul><li>Vor dem Import</li><li>Fehlende Komponente direkt aufnehmen</li></ul>
@@ -238,7 +342,7 @@
           </figure>
         </article>
 
-        <article class="feat wide">
+        <article class="feat wide" id="import-history">
           <h3>Import History <span class="gate">Deployment Manager</span></h3>
           <p>Die Import-Historie einer wählbaren Umgebung mit Start, Solution, Status, Fortschritt, Dauer und aufgelöstem Publisher. Beim Aufklappen wird das Import-Log geparst: das Manifest-Ergebnis und, als eigentlicher Kern, die Missing-Dependency-Fehler als präzise Tabelle. Links die im Ziel fehlende Komponente samt übergeordnetem Objekt und Herkunfts-Solution, rechts die importierte Komponente, die sie braucht.</p>
           <ul><li>Schweres Log erst beim Aufklappen</li><li>Serverseitige Suche nach Status und Solution</li></ul>
@@ -248,7 +352,7 @@
           </figure>
         </article>
 
-        <article class="feat wide">
+        <article class="feat wide" id="analyze">
           <h3>Analyze <span class="gate">Deployment Manager</span></h3>
           <p>Ein Klick auf <em>Run Analysis</em> lässt Abhängigkeiten, Vergleich, Layer und App-Freigaben in einem Durchlauf gegen die Zielumgebung laufen und verdichtet das Ergebnis zu einem Deployment Risk Score von 0 bis 100, Karten nach Schweregrad, einer Tabelle der wichtigsten Befunde, einer Komponentenübersicht nach Typ, abgeleiteten Empfehlungen und einer Readiness-Matrix je Bereich. Die drei fokussierten Einzelprüfungen sind als Tabs enthalten und teilen sich die einmal oben gewählte Release-Solution.</p>
           <figure class="shot">
@@ -271,43 +375,43 @@
           </div>
         </article>
 
-        <article class="feat">
+        <article class="feat" id="env-config">
           <h3>Env Config <span class="gate">Deployment Manager</span></h3>
           <p>Environment Variables und Connection References über alle konfigurierten Umgebungen nebeneinander, gematcht über den import-stabilen Namen. Aufgezeigt werden die drei typischen Deploy-Lücken: kein Wert und kein Default in einer Umgebung, eine ungebundene Connection Reference und ein Setting, das in einer Umgebung existiert und in der anderen fehlt. Secrets bleiben maskiert.</p>
           <ul><li>Filter auf eine Release-Solution</li><li>Zahl nutzender Cloud Flows je Referenz</li><li>Getrennt nach aktiv und inaktiv</li><li>Deep-Link in Power Automate</li></ul>
         </article>
 
-        <article class="feat">
+        <article class="feat" id="audit-config">
           <h3>Audit Config <span class="gate">Deployment Manager</span></h3>
           <p>Die Audit-Konfiguration einer wählbaren Umgebung: der Hauptschalter der Organisation mitsamt Aufbewahrungsdauer und darunter die Einstellung je Tabelle und je Spalte. Eine Tabelle auditiert nur dann wirklich, wenn beides eingeschaltet ist, deshalb wird der Fall <em>konfiguriert, aber aus</em> gesondert markiert. Ebenso der Fall, dass eine auditierte Tabelle keine einzige markierte Spalte hat und damit nur eine leere Hülle protokolliert.</p>
           <ul><li>Spalten laden beim Aufklappen</li><li>Lesend</li></ul>
         </article>
 
-        <article class="feat">
+        <article class="feat" id="dual-write-maps">
           <h3>Dual-Write Maps <span class="gate">Deployment Manager</span></h3>
           <p>Die Table Maps einer wählbaren Umgebung, nach Namen gruppiert, mit Zähler über die gespeicherten Versionen. Gezeigt wird nicht die höchste Nummer, sondern die tatsächlich laufende Version aus der Runtime-Konfiguration, sonst die zuletzt gespeicherte, und das offen gekennzeichnet. Liegt eine neuere Version über der laufenden, weist die Zeile sie als nicht in Betrieb aus. Der Menüpunkt erscheint nur, wenn Dual-Write in der Umgebung installiert ist.</p>
           <ul><li>Quell- und Zieltabelle mit Richtung</li><li>Feld-Mapping im Overlay</li><li>Marker für unmanaged Layer</li></ul>
         </article>
 
-        <article class="feat">
+        <article class="feat" id="user-settings">
           <h3>User Settings <span class="gate">Deployment Manager</span></h3>
           <p>Ein Inventar der persönlichen Einstellungen aller aktiven Benutzer je Umgebung: Zeitzone, Währung, Oberflächensprache und Formate. Der Detaildialog zeigt eine Live-Vorschau der Formatfelder. Deployment Manager können die Werte ändern und speichern, mit Bestätigungsschritt und einer deutlich strengeren Rückfrage in PROD.</p>
           <ul><li>Vergleich über Umgebungen</li><li>Einstellungen auf mehrere Benutzer ausrollen</li></ul>
         </article>
 
-        <article class="feat">
+        <article class="feat" id="process-comparer">
           <h3>Process Comparer <span class="gate">Deployment Manager</span></h3>
           <p>Alle Prozessarten einer Release-Solution, also Cloud Flows, klassische Workflows, Business Rules, Actions und Business Process Flows, als Statusmatrix über die Umgebungen. Abweichende Zellen sind hervorgehoben. Je Zelle stehen Owner, das Ein- und Ausschalten und ein Deep-Link. Im Definitions-Modus wird gegen einen konfigurierten Soll-Zustand geprüft, dann zählt auch die Host-Umgebung mit.</p>
           <ul><li>Gruppierung nach Typ oder Bereich</li><li>Sammelaktionen über Zeilenauswahl</li><li>Lauf überlebt den Tab-Wechsel</li></ul>
         </article>
 
-        <article class="feat">
+        <article class="feat" id="plugin-comparer">
           <h3>Plugin Comparer <span class="gate">Deployment Manager</span></h3>
           <p>Dasselbe Prinzip für die Plugin-Steps einer Release-Solution, ergänzt um die Assembly-Version je Umgebung. Damit wird sichtbar, ob ein Step zwar existiert, aber gegen eine ältere Assembly läuft. Aktivieren und Deaktivieren geht je Zelle, mit Bestätigung und verschärfter Rückfrage in PROD.</p>
           <ul><li>Assembly-Version je Umgebung</li><li>Enable und Disable je Zelle</li></ul>
         </article>
 
-        <article class="feat wide">
+        <article class="feat wide" id="role-comparer">
           <h3>Role Comparer <span class="gate">Deployment Manager</span></h3>
           <p>Beantwortet die Frage, ob die Sicherheitsrollen heil angekommen sind. Standardmäßig zählen nur die eigenen Rollen, die rund 250 mitgelieferten bleiben ausgeblendet, und der Vergleich lässt sich auf eine Release-Solution einengen. Gematcht wird über den Namen, nicht über die ID, denn eine Rollen-GUID überlebt nur einen sauberen Solution-Transport. Gleicher Name bei abweichender ID bedeutet: von Hand nachgebaut statt transportiert. Das sieht heute richtig aus, driftet ab morgen still und wird von keinem Import je aktualisiert. Genau dafür gibt es das Kennzeichen <em>rebuilt</em>.</p>
           <p>Je Zelle stehen die Zahl der Privilegien, der managed-Zustand und wie viele Privilegien diese Umgebung anders vergibt als die Referenz. Eine Umgebung, die nicht gelesen werden konnte, zeigt ein Fragezeichen und fließt in keinen Befund ein, gilt also nie als unauffällig. Der Bereich ist mit Absicht lesend: eine driftende Rolle gehört transportiert. Sie im Ziel zu bearbeiten erzeugt genau den unmanaged Layer, den der Layer Inspector danach meldet.</p>
@@ -330,20 +434,20 @@
       </div>
     </section>
 
-    <section class="group">
+    <section class="group" id="operate">
       <header>
         <h2>Operate</h2>
         <p>Der laufende Betrieb: was das System gerade tut, was in der Datenbank steht, wer was darf und wie Konfigurationsdaten zwischen Umgebungen wandern.</p>
       </header>
       <div class="feats">
 
-        <article class="feat">
+        <article class="feat" id="plugin-traces">
           <h3>Plugin Traces</h3>
           <p>Ein Stream über die Plugin-Trace-Logs, der alle 15 Sekunden nachlädt und pausiert, sobald der Browser-Tab in den Hintergrund geht. Gefiltert wird serverseitig nach Zeitfenster, Typ, Message, Tabelle, synchron oder asynchron und wahlweise nur auf Ausnahmen. Der schwere Meldungsblock wird erst beim Aufklappen einer Zeile geladen, nie im Stream selbst.</p>
           <ul><li>Correlation-Timeline nach Aufrufstiefe</li><li>Laufzeit-Aggregate je Plugin und Message</li><li>Trace-Level umschaltbar</li></ul>
         </article>
 
-        <article class="feat wide">
+        <article class="feat wide" id="role-analyzer">
           <h3>Role Analyzer <span class="gate">Deployment Manager</span></h3>
           <p>Arbeitet auf einem zwischengespeicherten Abbild des Sicherheitsmodells. Enthalten sind die Matrix aus Rolle, Tabelle und Privileg mit Tiefenangabe, der Vergleich zweier Rollen, die effektiven Rechte eines Benutzers samt Herkunftspfad aus direkten und über Teams vererbten Rollen, die umgekehrte Suche nach allen, die eine bestimmte Aktion ausführen dürfen, sowie Hygiene-Befunde wie nicht zugewiesene Rollen.</p>
           <ul><li>Org-Chart der Business Units und Teams</li><li>Field Security auf Spaltenebene</li><li>Core Roles bündeln mehrfach vergebene Privilegien</li></ul>
@@ -353,14 +457,14 @@
           </figure>
         </article>
 
-        <article class="feat wide">
+        <article class="feat wide" id="odata-browser">
           <h3>OData Browser <span class="gate">Deployment Manager</span></h3>
           <p>Freies Durchsehen der Datenbank je Umgebung über die Dataverse Web API. Tabelle wählen, Spalten per Auswahl setzen, dabei sind nicht selektierbare Spalten ausgegraut samt Begründung und Lookups werden automatisch richtig aufgelöst. Der Filter-Builder bietet nur typrichtige Operatoren an, Choice-Werte erscheinen als Label statt als Zahl. Die Abfragezeile ist editierbar und bidirektional an den Builder gekoppelt: Was der Builder nicht abbilden kann, bleibt wörtlich stehen und wird als erweiterter Filter gekennzeichnet, statt umgeschrieben zu werden.</p>
           <p>Ein Klick auf eine Zeile öffnet den vollständigen Datensatz, ohne Spaltenauswahl, weil das Panel zeigen soll, was wirklich gespeichert ist. Lookups sind dort überall klickbar und führen mit Rückweg zum Zielsatz, ein eigener Reiter listet die abhängigen Tabellen und springt vorgefiltert hinein. Ein zweiter Modus fährt FetchXML direkt, und die Metadaten-Sets stehen im Tabellenpicker, um das Schema selbst zu durchsuchen.</p>
           <ul><li>Eingabehilfe mit Vervollständigung</li><li>Prüf-Hinweise, die warnen statt zu blockieren</li><li>Mehrfachsortierung und Zählung</li><li>Historie und gespeicherte Abfragen je Umgebung</li><li>Export als CSV oder JSON</li><li>Lesend</li></ul>
         </article>
 
-        <article class="feat wide">
+        <article class="feat wide" id="data-transfer">
           <h3>Data Transfer <span class="gate">Deployment Manager</span></h3>
           <p>Der Configuration Data Transfer Hub bringt Konfigurationsdaten zwischen Umgebungen. Ein Paket besteht aus Zielumgebungen und einer Reihenfolge, ein Eintrag aus Quellumgebung, Tabelle, Filter und Spalten, wahlweise über eine System-Ansicht oder direkt als FetchXML mit Vorschau und Zeilenzähler. Dazu kommt das Record-Matching, entweder über die GUID oder über bis zu fünf fachliche Spalten, sowie die Frage, was mit Zielzeilen geschieht, die die Quelle nicht mehr liefert.</p>
           <p>Ausgeführt wird nie in der Sitzung der App, sondern von mitinstallierten Cloud Flows. Der Abschnitt <em>Write plan</em> zeigt vorab je Spalte, was der Executor damit tun wird: kopieren, als Referenz binden oder mit Begründung überspringen. Er nennt auch die unangenehmen Fälle, etwa Referenzen, die verworfen werden, oder Lookups auf Tabellen, die das Paket gar nicht oder erst später transportiert. Ein leerer Plan blockiert das Speichern.</p>
@@ -374,20 +478,20 @@
       </div>
     </section>
 
-    <section class="group">
+    <section class="group" id="reference">
       <header>
         <h2>Reference</h2>
         <p>Einrichtung und die Handvoll Adressen, die man ständig braucht.</p>
       </header>
       <div class="feats">
 
-        <article class="feat">
+        <article class="feat" id="environment-setup">
           <h3>Environment Setup</h3>
           <p>Ein geführtes Erst-Setup für eine neue Umgebung. Startet die App ohne Konfiguration, schiebt sich der Assistent blockierend davor und legt die nötigen Datensätze an. Er bietet die über den Konnektor erreichbaren Umgebungen zur Auswahl, füllt die Kennung der aktuellen Umgebung selbst aus und schlägt Publisher und Deployment-Manager-Rolle vor. Speichern ist wiederholbar, ohne Duplikate zu erzeugen, und dieselbe Ansicht dient später zum Nachpflegen.</p>
           <ul><li>Pflicht sind nur Umgebungen, Publisher und Rolle</li><li>Lädt die Konfiguration ohne Neuladen nach</li></ul>
         </article>
 
-        <article class="feat">
+        <article class="feat" id="links">
           <h3>Links</h3>
           <p>Eine Matrix der ständig gebrauchten Adressen: eine Zeile je Linkart, eine Spalte je Umgebung. Enthalten sind System-App, Web API, Diagnose, die klassischen Einstellungsseiten, Maker-Portal und Power Automate sowie die Admin-Seiten, dazu ein globaler Block mit Admin Center, Kapazität, Release Planner und Service Health. Alles allein aus der Umgebungskonfiguration abgeleitet, ohne eigenen Datenzugriff.</p>
           <ul><li>Kopierknopf je Zeile</li><li>Für alle Anwender offen</li></ul>
@@ -396,32 +500,32 @@
       </div>
     </section>
 
-    <section class="group">
+    <section class="group" id="uebergreifend">
       <header>
         <h2>Quer durch die App</h2>
         <p>Was überall gilt, unabhängig vom Arbeitsbereich.</p>
       </header>
       <div class="split">
 
-        <article class="panel">
+        <article class="panel" id="berechtigungen">
           <h3>Berechtigungen</h3>
           <p>Die App kennt zwei Stufen. Offen für alle Anwender sind Workbench, Merge, Release Notes im Lesen, Timeline, Plugin Traces und die Linksammlung. Alles Weitere setzt eine konfigurierbare Sicherheitsrolle voraus, die direkt am Benutzer hängen muss. Gesperrte Menüpunkte bleiben sichtbar, sind aber ausgegraut und als solche gekennzeichnet.</p>
           <p>Schreibende Aktionen laufen als angemeldeter Benutzer, nicht als technischer Dienst. Wo eine Aktion die Produktivumgebung trifft, ist die Rückfrage bewusst deutlich strenger als sonst.</p>
         </article>
 
-        <article class="panel">
+        <article class="panel" id="umgebungen">
           <h3>Umgebungen</h3>
           <p>Die App wird in einer Umgebung installiert und liest von dort aus in die anderen hinein. Lesende Zugriffe über Umgebungsgrenzen laufen über den Microsoft-Dataverse-Konnektor, schreibende Zugriffe treffen technisch nur die eigene Umgebung. Ist eine fremde Umgebung ausgewählt, sind schreibende Aktionen deshalb abgeschaltet und als solche erklärt.</p>
           <p>Eine Umgebung, die gerade nicht lesbar ist, führt nirgends zu einem Abbruch. Sie erscheint als offener Hinweis und wird in keinem Befund als unauffällig gewertet.</p>
         </article>
 
-        <article class="panel">
+        <article class="panel" id="oberflaeche">
           <h3>Oberfläche</h3>
           <p>Aufgebaut wie eine Dynamics-365-App: dunkle Kopfleiste mit Markenzeichen links und Statusanzeige rechts, darunter eine durchgehende Seitenleiste. Die Navigation ist in vier Gruppen geteilt, von denen immer genau eine offen ist, weil 21 Einträge sonst nicht auf einen Notebook-Bildschirm passen. Welche offen ist, folgt automatisch dem aktiven Arbeitsbereich.</p>
           <p>In der Kopfleiste sitzen zwei Hilfen: eine Einführung für neue Kolleginnen und Kollegen, die den Weg von der Solution bis zum Merge erklärt, und eine Referenz, die den gerade geöffneten Bereich beschreibt.</p>
         </article>
 
-        <article class="panel">
+        <article class="panel" id="bauweise">
           <h3>Bauweise</h3>
           <p>Die Oberfläche hängt an einer Service-Schnittstelle, nicht direkt an Dataverse. Dadurch läuft die App auch ohne Verbindung mit Beispieldaten, was Demos und Entwicklung ohne Tenant möglich macht. Die Kopfleiste zeigt jederzeit, in welchem der beiden Modi sie gerade läuft.</p>
           <p>Auswertende Logik liegt in reinen Funktionen mit Tests, getrennt vom Datenzugriff. Teure Ansichten werden erst bei Bedarf nachgeladen, schwere Inhalte wie Import-Logs oder Trace-Meldungen erst beim Aufklappen der jeweiligen Zeile.</p>
@@ -432,6 +536,12 @@
 
   </div>
 </main>
+
+<button class="toc-fab" id="toc-fab" type="button" aria-expanded="false" aria-controls="toc-shell">
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h8"/></svg>
+  Inhalt
+</button>
+<div class="toc-backdrop" id="toc-backdrop" hidden></div>
 
 <section id="kontakt" class="contact">
   <div class="wrap">
@@ -454,5 +564,103 @@
   </div>
 </footer>
 
+
+<script>
+// Inhaltsverzeichnis: aktiver Eintrag folgt der Scrollposition, offen ist immer
+// genau eine Gruppe. Ohne JavaScript stehen alle Eintraege ausgeklappt da.
+(function () {
+  var shell = document.getElementById('toc-shell');
+  var toc = document.getElementById('toc');
+  var fab = document.getElementById('toc-fab');
+  var backdrop = document.getElementById('toc-backdrop');
+  var close = document.getElementById('toc-close');
+  if (!shell || !toc || !fab || !backdrop || !close) return;
+  toc.classList.add('js');
+
+  var entries = [];
+  Array.prototype.forEach.call(toc.querySelectorAll('a[href^="#"]'), function (a) {
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if (el) entries.push({ link: a, el: el, group: a.closest('.toc-group') });
+  });
+  var groups = Array.prototype.slice.call(toc.querySelectorAll('.toc-group'));
+  var current = null;
+
+  function keepVisible(a) {
+    var box = toc.scrollHeight > toc.clientHeight + 2 ? toc : shell;
+    if (box.scrollHeight <= box.clientHeight + 2) return;
+    var ar = a.getBoundingClientRect(), br = box.getBoundingClientRect();
+    if (ar.top < br.top + 8) box.scrollTop -= br.top + 8 - ar.top;
+    else if (ar.bottom > br.bottom - 8) box.scrollTop += ar.bottom - br.bottom + 8;
+  }
+
+  function open(group) {
+    groups.forEach(function (g) { g.classList.toggle('open', g === group); });
+  }
+
+  function spy() {
+    if (!entries.length) return;
+    var active = entries[0];
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].el.getBoundingClientRect().top <= 120) active = entries[i];
+    }
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+      active = entries[entries.length - 1];
+    }
+    if (active === current) return;
+    current = active;
+    entries.forEach(function (e) { e.link.classList.remove('on'); e.link.removeAttribute('aria-current'); });
+    active.link.classList.add('on');
+    active.link.setAttribute('aria-current', 'location');
+    open(active.group);
+    keepVisible(active.link);
+  }
+
+  var pending = false;
+  function onScroll() {
+    // Die Seite scrollt nur, wenn ein Sprung stattgefunden hat: Panel zu.
+    if (shell.hasAttribute('data-open') && Math.abs(window.scrollY - openedAt) > 120) setOpen(false, false);
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(function () { pending = false; spy(); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  spy();
+
+  var openedAt = 0;
+  function focus(el) {
+    try { el.focus({ preventScroll: true }); } catch (err) { el.focus(); }
+  }
+  function setOpen(state, moveFocus) {
+    if (state) shell.setAttribute('data-open', ''); else shell.removeAttribute('data-open');
+    backdrop.hidden = !state;
+    fab.setAttribute('aria-expanded', state ? 'true' : 'false');
+    if (state) {
+      if (current) keepVisible(current.link);
+      focus(close);
+      openedAt = window.scrollY;
+    } else if (moveFocus !== false && shell.contains(document.activeElement)) {
+      focus(fab);
+    }
+  }
+  fab.addEventListener('click', function () { setOpen(fab.getAttribute('aria-expanded') !== 'true'); });
+  close.addEventListener('click', function () { setOpen(false); });
+  backdrop.addEventListener('click', function () { setOpen(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  // Drei Wege zu, damit das Panel nach einem Sprung nie offen stehen bleibt:
+  // der Klick selbst, der Hash-Wechsel und das Scrollen zum Ziel.
+  shell.addEventListener('click', function (e) {
+    var node = e.target;
+    if (node && node.nodeType === 3) node = node.parentNode;
+    var a = node && node.closest ? node.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var g = a.closest('.toc-group');
+    if (g) open(g);
+    setOpen(false, false);
+  });
+  window.addEventListener('hashchange', function () { setOpen(false, false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 1100) setOpen(false); });
+})();
+</script>
 </body>
 </html>
