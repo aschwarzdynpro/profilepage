@@ -45,11 +45,26 @@ an der App dort abgleichen. **ALM Detective und Job Monitor stehen bewusst nicht
 beide sind aus dem Menü der App entfernt. Verlinkt ist die Seite aus der Referenzkarte
 und aus dem Werkzeuge-Abschnitt der Startseite.
 
-Die Seite hat als einzige ein Inhaltsverzeichnis (`.toc`): am Desktop eine mitlaufende
-Spalte links, unter 1100px ein Panel über den Knopf „Inhalt". Dazu gehört das einzige
-Inline-Skript der Site (Scrollspy, offen ist immer genau eine Gruppe). Jeder Arbeitsbereich
-braucht eine `id` am `<article>` und einen Eintrag im Inhaltsverzeichnis, sonst fehlt er
-in der Navigation.
+Jeder Arbeitsbereich braucht eine `id` am `<article>` und einen Eintrag im
+Inhaltsverzeichnis, sonst fehlt er in der Navigation. Wie das aussieht, steht unter
+Navigation.
+
+## Navigation
+Beide Seiten markieren den Abschnitt, in dem man gerade steht, und haben unter ihrem
+Breakpoint dasselbe Panel von unten. Klassennamen (`.toc-shell`, `.toc`, `.toc-fab`,
+`.toc-backdrop`) und Verhalten sind absichtlich gleich, jede Datei trägt ihre eigene
+Kopie von CSS und Skript.
+
+- `index.html`: Kopfleiste mit den sechs Abschnitten, aktiver Eintrag weiss mit
+  Unterstrich in `--sky`. Unter 900px Panel über den Knopf „Menü" rechts unten.
+- `solution-admin-console.html`: mitlaufende Spalte links mit allen 27 Sprungzielen,
+  offen ist immer genau eine Gruppe. Unter 1100px Panel über den Knopf „Inhalt",
+  dort stehen alle Gruppen offen.
+
+Das Panel schliesst nach einem Sprung über drei unabhängige Wege: den Klick selbst,
+`hashchange` und das Scrollen des Fensters um mehr als 120px. Das ist Absicht und darf
+nicht auf einen Weg eingedampft werden, ein `<details>`-Menü blieb hier offen stehen.
+Ohne JavaScript bleiben alle Links erreichbar.
 
 ## Inhaltliche Quelle
 Massgeblich ist das **englische** Profil-Dokument `Profile_Andy_Schwarz_2026.docx`

@@ -47,6 +47,7 @@
   a:focus-visible,button:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
   h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.1;letter-spacing:-0.02em}
   .wrap{width:min(1200px,100% - 3rem);margin-inline:auto}
+  section[id]{scroll-margin-top:88px}
   .kicker{font-size:.95rem;font-weight:600;color:var(--ink-3);margin-bottom:.9rem}
 
   .nav{position:sticky;top:0;z-index:30;background:var(--navy);border-bottom:1px solid var(--navy-line);color:#E6EDF7}
@@ -61,16 +62,31 @@
   .nav li.cta a:hover{background:#8CC6FF}
   @media (max-width:900px){.nav .main li:not(.cta){display:none}}
 
-  .nav .menu{display:none;position:relative}
-  .nav .menu>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;font-size:.95rem;font-weight:500;color:#B9C7DA;padding:.45rem .2rem}
-  .nav .menu>summary::-webkit-details-marker{display:none}
-  .nav .menu>summary::marker{content:""}
-  .nav .menu>summary svg{width:18px;height:13px;stroke:currentColor;stroke-width:1.6;fill:none}
-  .nav .menu[open]>summary{color:#fff}
-  .nav .menu>ul{position:absolute;right:0;top:calc(100% + .6rem);z-index:40;display:flex;flex-direction:column;align-items:stretch;gap:0;min-width:190px;list-style:none;background:var(--navy-2);border:1px solid var(--navy-line);border-radius:6px;padding:.4rem;box-shadow:0 14px 30px rgba(0,0,0,.4)}
-  .nav .menu>ul li a{display:block;padding:.6rem .8rem;border-radius:4px;font-size:.95rem;color:#B9C7DA;font-weight:500}
-  .nav .menu>ul li a:hover{background:rgba(255,255,255,.07);color:#fff}
-  @media (max-width:900px){.nav .menu{display:block}}
+  /* Aktueller Abschnitt in der Kopfleiste */
+  .nav .main li a{position:relative}
+  .nav .main li:not(.cta) a.on{color:#fff}
+  .nav .main li:not(.cta) a.on::after{content:"";position:absolute;left:0;right:0;bottom:-.5rem;height:2px;background:var(--sky)}
+
+  /* Mobiles Menü als Panel von unten, wie auf der Konsolen-Seite */
+  .toc-shell,.toc-fab,.toc-backdrop,.toc-bar,.toc-close{display:none}
+  @media (max-width:900px){
+    .toc-shell{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;flex-direction:column;background:var(--white);border-top:1px solid var(--line);border-radius:6px 6px 0 0;box-shadow:0 -14px 34px rgba(15,30,51,.18);max-height:min(72vh,560px);overflow:hidden;transform:translateY(101%);visibility:hidden;transition:transform .22s ease,visibility .22s}
+    .toc-shell[data-open]{transform:none;visibility:visible}
+    .toc-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem .8rem .85rem 1.4rem;border-bottom:1px solid var(--line);font-family:var(--display);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3)}
+    .toc-close{display:flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;border:0;background:none;color:var(--ink-2);cursor:pointer;border-radius:4px}
+    .toc-close:hover{background:var(--bg-2);color:var(--ink)}
+    .toc-close svg{width:16px;height:16px}
+    .toc{flex:1 1 auto;overflow:auto;overscroll-behavior:contain;padding:1rem 1.4rem calc(1.4rem + env(safe-area-inset-bottom))}
+    .toc ul{list-style:none}
+    .toc a{display:block;border-left:2px solid var(--line);padding:.45rem .4rem .45rem .95rem;color:var(--ink-2);font-family:var(--display);font-weight:700;font-size:.97rem;letter-spacing:-0.01em;line-height:1.35}
+    .toc a:hover{color:var(--ink);border-left-color:var(--ink-3);background:var(--bg-2)}
+    .toc a.on{color:var(--navy);border-left-color:var(--sky);background:var(--bg-2)}
+    .toc-backdrop:not([hidden]){display:block;position:fixed;inset:0;z-index:55;background:rgba(15,30,51,.4)}
+    .toc-fab{display:inline-flex;align-items:center;gap:.5rem;position:fixed;right:1.1rem;bottom:calc(1.1rem + env(safe-area-inset-bottom));z-index:65;border:0;cursor:pointer;font-family:var(--display);font-weight:600;font-size:.95rem;color:#fff;background:var(--navy);border-radius:999px;padding:.75rem 1.15rem;box-shadow:0 10px 24px rgba(15,30,51,.28)}
+    .toc-fab svg{width:17px;height:17px;flex:none}
+    .toc-fab[aria-expanded="true"]{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){.toc-shell{transition:none}}
 
   .hero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
   .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:40px 40px;mask-image:linear-gradient(90deg,transparent 25%,#000 70%);-webkit-mask-image:linear-gradient(90deg,transparent 25%,#000 70%)}
@@ -281,17 +297,6 @@
         <li class="cta"><a href="#kontakt">Kontakt</a></li>
       </ul>
     </nav>
-    <details class="menu">
-      <summary><svg viewBox="0 0 20 14" aria-hidden="true"><path d="M0 1h20M0 7h20M0 13h20"/></svg>Menü</summary>
-      <ul>
-        <li><a href="#leistungen">Leistungen</a></li>
-        <li><a href="#referenzen">Referenzen</a></li>
-        <li><a href="#signature">Werkzeuge</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#werdegang">Werdegang</a></li>
-        <li><a href="#ueber">Über mich</a></li>
-      </ul>
-    </details>
   </div>
 </header>
 
@@ -603,6 +608,112 @@
     <span><a href="impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="datenschutz.html">Datenschutz</a></span>
   </div>
 </footer>
+
+<div class="toc-shell" id="toc-shell">
+  <div class="toc-bar">
+    <span>Auf dieser Seite</span>
+    <button class="toc-close" id="toc-close" type="button" aria-label="Menü schließen">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>
+    </button>
+  </div>
+  <nav class="toc" id="toc" aria-label="Menü">
+    <ul>
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#referenzen">Referenzen</a></li>
+      <li><a href="#signature">Werkzeuge</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#werdegang">Werdegang</a></li>
+      <li><a href="#ueber">Über mich</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+</div>
+<button class="toc-fab" id="toc-fab" type="button" aria-expanded="false" aria-controls="toc-shell">
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h8"/></svg>
+  Menü
+</button>
+<div class="toc-backdrop" id="toc-backdrop" hidden></div>
+
+<script>
+// Menü: markiert den Abschnitt zur Scrollposition in Kopfleiste und Panel.
+// Mobil liegt das Menü als Panel unten, dasselbe Verhalten wie auf der
+// Seite der Solution Administration Console.
+(function () {
+  var shell = document.getElementById('toc-shell');
+  var toc = document.getElementById('toc');
+  var fab = document.getElementById('toc-fab');
+  var backdrop = document.getElementById('toc-backdrop');
+  var close = document.getElementById('toc-close');
+  if (!shell || !toc || !fab || !backdrop || !close) return;
+
+  var entries = [];
+  Array.prototype.forEach.call(toc.querySelectorAll('a[href^="#"]'), function (a) {
+    var id = a.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (!el) return;
+    var mirror = document.querySelectorAll('.nav .main li:not(.cta) a[href="#' + id + '"]');
+    entries.push({ el: el, links: [a].concat(Array.prototype.slice.call(mirror)) });
+  });
+  var current = null;
+
+  function spy() {
+    if (!entries.length) return;
+    var active = null;
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].el.getBoundingClientRect().top <= 120) active = entries[i];
+    }
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+      active = entries[entries.length - 1];
+    }
+    if (active === current) return;
+    current = active;
+    entries.forEach(function (e) {
+      e.links.forEach(function (a) { a.classList.remove('on'); a.removeAttribute('aria-current'); });
+    });
+    if (!active) return;
+    active.links.forEach(function (a) { a.classList.add('on'); a.setAttribute('aria-current', 'location'); });
+  }
+
+  var openedAt = 0;
+  function focus(el) {
+    try { el.focus({ preventScroll: true }); } catch (err) { el.focus(); }
+  }
+  function setOpen(state, moveFocus) {
+    if (state) shell.setAttribute('data-open', ''); else shell.removeAttribute('data-open');
+    backdrop.hidden = !state;
+    fab.setAttribute('aria-expanded', state ? 'true' : 'false');
+    if (state) { focus(close); openedAt = window.scrollY; }
+    else if (moveFocus !== false && shell.contains(document.activeElement)) focus(fab);
+  }
+
+  var pending = false;
+  function onScroll() {
+    // Die Seite scrollt nur, wenn ein Sprung stattgefunden hat: Panel zu.
+    if (shell.hasAttribute('data-open') && Math.abs(window.scrollY - openedAt) > 120) setOpen(false, false);
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(function () { pending = false; spy(); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  spy();
+
+  fab.addEventListener('click', function () { setOpen(fab.getAttribute('aria-expanded') !== 'true'); });
+  close.addEventListener('click', function () { setOpen(false); });
+  backdrop.addEventListener('click', function () { setOpen(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  // Drei Wege zu, damit das Panel nach einem Sprung nie offen stehen bleibt:
+  // der Klick selbst, der Hash-Wechsel und das Scrollen zum Ziel.
+  shell.addEventListener('click', function (e) {
+    var node = e.target;
+    if (node && node.nodeType === 3) node = node.parentNode;
+    var a = node && node.closest ? node.closest('a[href^="#"]') : null;
+    if (a) setOpen(false, false);
+  });
+  window.addEventListener('hashchange', function () { setOpen(false, false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 900) setOpen(false); });
+})();
+</script>
 
 </body>
 </html>
