@@ -31,6 +31,7 @@ jobs:
           mkdir -p _site
           cp index.html solution-admin-console.html impressum.html datenschutz.html robots.txt sitemap.xml CNAME .nojekyll _site/
           cp -r assets _site/assets
+          mkdir -p _site/health-check && cp health-check/index.html _site/health-check/
           find _site -type f | sort
 
       - uses: actions/configure-pages@v5

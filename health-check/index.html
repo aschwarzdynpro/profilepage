@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dynamics 365 Health Check zum Festpreis | DynamicsPro</title>
+<meta name="description" content="Unabhängiger Health Check für Dynamics 365 CE und Power Platform: Scorecard, Risiken und Maßnahmenplan in 5 Tagen. Festpreis 5.000 €.">
+<link rel="canonical" href="https://dynamicspro.de/health-check/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0F1E33">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="DynamicsPro">
+<meta property="og:url" content="https://dynamicspro.de/health-check/">
+<meta property="og:title" content="Dynamics 365 Health Check zum Festpreis">
+<meta property="og:description" content="In 5 Tagen zu Scorecard, Top-10-Risiken und priorisiertem Maßnahmenplan für Dynamics 365 CE und Power Platform. Unabhängig, toolgestützt, ohne Eingriff in Ihre Umgebungen.">
+<meta property="og:image" content="https://dynamicspro.de/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DynamicsPro: Systemlandschaften, die nach dem Go-live noch tragen.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+  :root{
+    --navy:#0F1E33;--navy-2:#162A46;--navy-line:#2C4468;
+    --sky:#6DB4FF;--bg:#F6F7F9;--bg-2:#ECEFF3;--line:#D5DBE3;--white:#FFFFFF;
+    --ink:#14213A;--ink-2:#4A5A72;--ink-3:#7E8CA0;
+    --display:"Manrope",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:var(--body);font-size:17px;line-height:1.65;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.15;letter-spacing:-0.02em}
+  em{font-style:normal;color:var(--ink);font-weight:600}
+  .wrap{width:min(1200px,100% - 3rem);margin-inline:auto}
+  .kicker{font-size:.95rem;font-weight:600;color:var(--ink-3)}
+
+  .nav{position:sticky;top:0;z-index:30;background:var(--navy);border-bottom:1px solid var(--navy-line);color:#E6EDF7}
+  .nav .wrap{display:flex;align-items:center;gap:1rem;height:68px}
+  .mark{font-family:var(--display);font-weight:700;font-size:1.2rem;display:flex;align-items:center;gap:.6rem;letter-spacing:-0.02em;margin-right:auto}
+  .mark svg{width:26px;height:26px}
+  .nav .back{font-size:.95rem;color:#B9C7DA;font-weight:500}
+  .nav .back:hover{color:#fff}
+  .nav .cta{color:var(--navy);background:var(--sky);padding:.55rem 1.05rem;border-radius:4px;font-weight:600;font-size:.95rem;font-family:var(--display);white-space:nowrap}
+  .nav .cta:hover{background:#8CC6FF}
+  @media (max-width:640px){.nav .back{display:none}}
+  /* Unter 440px passt der volle Knopftext nicht neben die Marke, dann die Kurzform. */
+  .nav .cta .short{display:none}
+  @media (max-width:440px){.nav .cta .long{display:none}.nav .cta .short{display:inline}}
+
+  .btn{display:inline-flex;align-items:center;padding:.9rem 1.5rem;font-weight:600;font-size:1rem;border-radius:4px;border:1px solid transparent;transition:background .15s,border-color .15s;font-family:var(--display)}
+  .btn.primary{background:var(--sky);color:var(--navy)}.btn.primary:hover{background:#8CC6FF}
+  .btn.outline{border-color:#4E678E;color:#fff}.btn.outline:hover{border-color:#fff}
+  .actions{margin-top:2rem;display:flex;gap:.9rem;flex-wrap:wrap}
+
+  .head{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .head::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:40px 40px;mask-image:linear-gradient(90deg,transparent 35%,#000 100%);-webkit-mask-image:linear-gradient(90deg,transparent 35%,#000 100%)}
+  .head .wrap{position:relative;padding:4.5rem 0 3.5rem}
+  .head .kicker{color:var(--sky)}
+  .head h1{font-size:clamp(2.1rem,4.4vw,3.3rem);margin-top:.9rem;max-width:18ch}
+  .head .lead{margin-top:1.4rem;font-size:1.15rem;line-height:1.55;color:#B9C7DA;max-width:58ch}
+  .facts{margin-top:2.8rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;border-top:1px solid var(--navy-line);padding-top:1.6rem}
+  .facts dt{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#7F98BC;font-weight:600}
+  .facts dd{margin-top:.35rem;font-size:.97rem;color:#E6EDF7}
+  @media (max-width:900px){.facts{grid-template-columns:repeat(2,1fr);gap:1.3rem}}
+  @media (max-width:480px){.facts{grid-template-columns:1fr}}
+
+  main{padding:4.5rem 0 5rem}
+  section+section{margin-top:4.5rem}
+  .intro{width:min(72ch,100%)}
+  .intro h2{font-size:clamp(1.6rem,3vw,2.1rem)}
+  .intro p{margin-top:1rem;color:var(--ink-2)}
+
+  section>.wrap>header{border-top:2px solid var(--navy);padding-top:1.1rem;margin-bottom:2rem}
+  section>.wrap>header h2{font-size:1.7rem}
+  section>.wrap>header p{margin-top:.5rem;color:var(--ink-2);font-size:.98rem;max-width:62ch}
+
+  /* Acht Prüfdimensionen. Zwei Spalten, damit Titel und Leitfrage nebeneinander lesbar bleiben. */
+  .dims{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+  @media (max-width:900px){.dims{grid-template-columns:1fr}}
+  .dim{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:1.5rem 1.6rem}
+  .dim .no{font-family:var(--display);font-size:.78rem;font-weight:700;letter-spacing:.06em;color:var(--ink-3)}
+  .dim h3{font-size:1.12rem;margin-top:.35rem}
+  .dim p{margin-top:.75rem;color:var(--ink-2);font-size:.97rem}
+  .note{margin-top:1.6rem;border-left:2px solid var(--sky);padding:.15rem 0 .15rem 1.1rem;color:var(--ink-2);font-size:.95rem;max-width:72ch}
+
+  /* Ablauf: vier Schritte, Nummer in der Randspalte. */
+  .steps{list-style:none;counter-reset:step;border-top:1px solid var(--line)}
+  .steps li{counter-increment:step;display:grid;grid-template-columns:3.2rem 1fr;gap:1.2rem;align-items:baseline;padding:1.3rem 0;border-bottom:1px solid var(--line)}
+  .steps li::before{content:counter(step);font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--sky);line-height:1}
+  .steps h3{font-size:1.08rem}
+  .steps p{margin-top:.3rem;color:var(--ink-2);font-size:.97rem}
+
+  /* Ergebnis: drei Lieferobjekte nebeneinander. */
+  .outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  @media (max-width:900px){.outcomes{grid-template-columns:1fr}}
+  .outcome{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:1.5rem 1.6rem}
+  .outcome h3{font-size:1.08rem}
+  .outcome p{margin-top:.7rem;color:var(--ink-2);font-size:.97rem}
+
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  @media (max-width:900px){.why{grid-template-columns:1fr;gap:1.2rem}}
+  .why h3{font-size:1.05rem}
+  .why p{margin-top:.5rem;color:var(--ink-2);font-size:.96rem}
+
+  .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.4rem}
+  @media (max-width:900px){.split{grid-template-columns:1fr}}
+  .panel{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:1.6rem 1.7rem}
+  .panel h3{font-size:1.12rem}
+  .panel ul{margin-top:1rem;list-style:none;display:grid;gap:.7rem}
+  .panel li{color:var(--ink-2);font-size:.97rem;padding-left:1.1rem;position:relative}
+  .panel li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--ink-3)}
+  .panel.out li::before{border-radius:0;height:1px;width:8px;top:.85em}
+
+  .contact{background:var(--navy);color:#fff;margin-top:4.5rem}
+  .contact .wrap{padding:4rem 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:3rem;align-items:center}
+  .contact h2{font-size:clamp(1.6rem,3vw,2.1rem);max-width:20ch}
+  .contact p{margin-top:1rem;color:#B9C7DA;max-width:48ch}
+  .contact .fine{margin-top:1.4rem;font-size:.88rem;color:#7F98BC}
+  .contact .card{background:var(--navy-2);border:1px solid var(--navy-line);border-radius:6px;padding:.6rem}
+  .contact .card a{display:block;padding:.9rem 1rem;border-radius:4px;font-family:var(--display);font-weight:600}
+  .contact .card a:hover{background:rgba(255,255,255,.06)}
+  .contact .card small{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;color:#8FA5C0;margin-top:.15rem}
+  @media (max-width:900px){.contact .wrap{grid-template-columns:1fr;gap:2rem}}
+
+  footer{padding:2rem 0;font-size:.88rem;color:var(--ink-2)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a:hover{color:var(--ink)}
+  section[id]{scroll-margin-top:96px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="DynamicsPro, zur Startseite">
+      <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#6DB4FF"/><rect x="15" y="3" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><rect x="3" y="15" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><rect x="15" y="15" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><path d="M11 7h4M7 11v4M19 11v4M11 19h4" stroke="#6DB4FF" stroke-width="1.5"/></svg>
+      DynamicsPro
+    </a>
+    <a class="back" href="/">Zurück zur Startseite</a>
+    <a class="cta" href="mailto:aschwarz@dynamicspro.de?subject=Health%20Check%20Dynamics%20365"><span class="long">Erstgespräch vereinbaren</span><span class="short">Erstgespräch</span></a>
+  </div>
+</header>
+
+<section class="head">
+  <div class="wrap">
+    <div class="kicker">Festpreis-Angebot · Remote · 5 Tage</div>
+    <h1>Wie gesund ist Ihr Dynamics 365?</h1>
+    <p class="lead">Unabhängiger Health Check für Dynamics 365 CE und Power Platform. In 5 Tagen zu Scorecard, Risikoliste und konkretem Maßnahmenplan. Festpreis 5.000 €.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:aschwarz@dynamicspro.de?subject=Health%20Check%20Dynamics%20365">Erstgespräch vereinbaren</a>
+      <a class="btn outline" href="#dimensionen">Was geprüft wird</a>
+    </div>
+    <dl class="facts">
+      <div><dt>Dauer</dt><dd>5 Tage, Start in der Regel zwei bis drei Wochen nach Beauftragung</dd></div>
+      <div><dt>Preis</dt><dd>5.000 € zzgl. USt., fester Umfang</dd></div>
+      <div><dt>Ihr Aufwand</dt><dd>Rund 6 Stunden im Team, verteilt auf Kickoff, Interviews und Präsentation</dd></div>
+      <div><dt>Eingriff</dt><dd>Keiner. Lesezugriff, an Ihren Umgebungen wird nichts verändert</dd></div>
+    </dl>
+  </div>
+</section>
+
+<main>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Über Jahre gewachsen, selten geprüft</h2>
+      <p>Customizing-Altlasten, langsame Formulare, fehlerhafte Flows, unklare Berechtigungen. Die meisten Systeme laufen, aber niemand weiß genau, wie stabil. Der Health Check schafft Klarheit, bevor aus Risiken Ausfälle werden.</p>
+    </div>
+  </div>
+</section>
+
+<section id="dimensionen">
+  <div class="wrap">
+    <header>
+      <h2>Was geprüft wird</h2>
+      <p>Acht Dimensionen, jede mit einer Leitfrage, die am Ende beantwortet ist.</p>
+    </header>
+    <div class="dims">
+      <article class="dim">
+        <div class="no">01</div>
+        <h3>Solution-Architektur und Layering</h3>
+        <p>Sind Solutions sinnvoll geschnitten, Publisher konsistent, Layer beherrscht?</p>
+      </article>
+      <article class="dim">
+        <div class="no">02</div>
+        <h3>Customizing-Qualität</h3>
+        <p>Wie viel Altlast, Ungenutztes und Überladenes steckt in Tabellen, Formularen und Ansichten?</p>
+      </article>
+      <article class="dim">
+        <div class="no">03</div>
+        <h3>Code-Qualität</h3>
+        <p>Sind Plugins, JavaScript und PCF wartbar, aktuell und frei von Solution-Checker-Befunden?</p>
+      </article>
+      <article class="dim">
+        <div class="no">04</div>
+        <h3>Automatisierung</h3>
+        <p>Laufen Flows und Workflows stabil, mit klaren Eigentümern und ohne veraltete Technik?</p>
+      </article>
+      <article class="dim">
+        <div class="no">05</div>
+        <h3>Performance</h3>
+        <p>Wo bremsen Abfragen, synchrone Logik oder API-Limits die Anwender?</p>
+      </article>
+      <article class="dim">
+        <div class="no">06</div>
+        <h3>Daten und Kapazität</h3>
+        <p>Wie entwickeln sich Speicher, Datenqualität und Wachstum?</p>
+      </article>
+      <article class="dim">
+        <div class="no">07</div>
+        <h3>Sicherheit und Berechtigungen (Überblick)</h3>
+        <p>Gibt es offensichtliche Risiken bei Rollen, Admin-Rechten und Zugriffen?</p>
+      </article>
+      <article class="dim">
+        <div class="no">08</div>
+        <h3>ALM und Betrieb (Überblick)</h3>
+        <p>Sind Transporte, Umgebungen, Rollback und Dokumentation tragfähig?</p>
+      </article>
+    </div>
+    <p class="note">Sicherheit, ALM sowie Lizenzen und Kapazität werden im Überblick bewertet. Für eine Tiefenanalyse gibt es jeweils eigene Reports.</p>
+  </div>
+</section>
+
+<section id="ablauf">
+  <div class="wrap">
+    <header>
+      <h2>Ablauf</h2>
+      <p>Vier Termine über fünf Tage, dazwischen die toolgestützte Analyse.</p>
+    </header>
+    <ol class="steps">
+      <li>
+        <div>
+          <h3>Kickoff (90 Minuten)</h3>
+          <p>Ist-Situation, Schmerzpunkte, Ziele, Zugriffe klären</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Toolgestützte Analyse mit Lesezugriff</h3>
+          <p>Auswertung der Umgebungen mit eigenem Analyse-Toolset</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Zwei bis drei Kurzinterviews</h3>
+          <p>Mit Entwicklung, Makern und Betrieb, je 45 Minuten</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Ergebnispräsentation (2 Stunden)</h3>
+          <p>Scorecard, Risiken und Maßnahmenplan im Gespräch durchgehen</p>
+        </div>
+      </li>
+    </ol>
+    <p class="note">Ihr Team ist insgesamt rund 6 Stunden eingebunden. An Ihren Umgebungen wird nichts verändert.</p>
+  </div>
+</section>
+
+<section id="ergebnis">
+  <div class="wrap">
+    <header>
+      <h2>Ihr Ergebnis</h2>
+      <p>Drei Dokumente, die Sie ohne mich weiterverwenden können.</p>
+    </header>
+    <div class="outcomes">
+      <article class="outcome">
+        <h3>Health-Scorecard</h3>
+        <p>Über acht Dimensionen mit Ampel und Begründung.</p>
+      </article>
+      <article class="outcome">
+        <h3>Top-10-Risiken</h3>
+        <p>Mit Auswirkung und betroffenen Umgebungen.</p>
+      </article>
+      <article class="outcome">
+        <h3>Priorisierter Maßnahmenkatalog</h3>
+        <p>In drei Stufen: Quick Wins, 90 Tage, Zielarchitektur.</p>
+      </article>
+    </div>
+    <p class="note">Der Maßnahmenkatalog gehört Ihnen. Sie setzen ihn intern, mit Ihrem Partner oder mit mir um.</p>
+  </div>
+</section>
+
+<section id="warum">
+  <div class="wrap">
+    <header>
+      <h2>Warum DynamicsPro</h2>
+    </header>
+    <div class="why">
+      <div>
+        <h3>Über 16 Jahre Dynamics 365 und Power Platform</h3>
+        <p>Vom Entwickler zum Solution Architect, ohne den Code aus der Hand zu geben.</p>
+      </div>
+      <div>
+        <h3>Unabhängig</h3>
+        <p>Kein Lizenzvertrieb, keine Bindung an einen Implementierungspartner.</p>
+      </div>
+      <div>
+        <h3>Eigenes Analyse-Toolset statt Bauchgefühl</h3>
+        <p>Befunde sind gemessen und belegt, nicht geschätzt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rahmen">
+  <div class="wrap">
+    <header>
+      <h2>Voraussetzungen und Abgrenzung</h2>
+      <p>Damit vor der Beauftragung klar ist, was Sie beistellen und was der Health Check nicht leistet.</p>
+    </header>
+    <div class="split">
+      <div class="panel">
+        <h3>Voraussetzungen</h3>
+        <ul>
+          <li>Lesezugriff auf die produktive und eine vorgelagerte Dataverse-Umgebung sowie das Power Platform Admin Center</li>
+          <li>Lesezugriff auf Azure DevOps oder GitHub, sofern vorhanden</li>
+          <li>Ein fester Ansprechpartner und zwei bis drei Interviewpartner</li>
+        </ul>
+      </div>
+      <div class="panel out">
+        <h3>Nicht enthalten</h3>
+        <ul>
+          <li>Umsetzung von Maßnahmen</li>
+          <li>Fachliche Prozessberatung und Lizenzberatung</li>
+          <li>Finance &amp; Operations sowie Integrationen außerhalb der Power Platform</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section id="kontakt" class="contact">
+  <div class="wrap">
+    <div>
+      <h2>5.000 € Festpreis. 5 Tage. Klare Antworten.</h2>
+      <p>Durchführung remote, Start in der Regel innerhalb von zwei bis drei Wochen nach Beauftragung.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:aschwarz@dynamicspro.de?subject=Health%20Check%20Dynamics%20365">Erstgespräch vereinbaren</a>
+      </div>
+      <p class="fine">Preis zzgl. USt. Das Erstgespräch dauert rund 30 Minuten und ist kostenfrei.</p>
+    </div>
+    <div class="card">
+      <a href="mailto:aschwarz@dynamicspro.de?subject=Health%20Check%20Dynamics%20365">aschwarz@dynamicspro.de<small>E-Mail, am zuverlässigsten</small></a>
+      <a href="tel:+491735274172">+49 173 5274172<small>Telefon</small></a>
+      <a href="/">Zum Profil<small>Referenzen, Skills, Werdegang</small></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein bei Nürnberg</span>
+    <span><a href="/impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="/datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

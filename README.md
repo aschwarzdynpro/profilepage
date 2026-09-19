@@ -12,13 +12,13 @@ npm run serve   # dann http://localhost:8080
 npm install && npx playwright install chromium   # einmalig
 npm run shot
 ```
-Schreibt je einen Screenshot in 1400px und 390px für alle vier Seiten nach `shots/` und bricht ab, wenn eine Seite keinen HTTP 200 liefert,
+Schreibt je einen Screenshot in 1400px und 390px für alle fünf Seiten nach `shots/` und bricht ab, wenn eine Seite keinen HTTP 200 liefert,
 einen Fremd-Request absetzt oder eine der beiden Schriften nicht lädt.
 
 ## Deploy
 GitHub Actions, Workflow `.github/workflows/pages.yml`. Jeder Push auf `main` deployt.
 Ausgeliefert werden nur `index.html`, `solution-admin-console.html`, `impressum.html`,
-`datenschutz.html`, `assets/`, `robots.txt`, `sitemap.xml`, `CNAME` und `.nojekyll`; `README.md`, `CLAUDE.md`, `package.json` und `scripts/` bleiben aus dem Web heraus.
+`datenschutz.html`, `health-check/`, `assets/`, `robots.txt`, `sitemap.xml`, `CNAME` und `.nojekyll`; `README.md`, `CLAUDE.md`, `content/`, `package.json` und `scripts/` bleiben aus dem Web heraus.
 
 Einmalige Einrichtung im Repository:
 
