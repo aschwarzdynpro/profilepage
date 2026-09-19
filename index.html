@@ -238,6 +238,14 @@
   .about dl{margin-top:2rem;display:grid;grid-template-columns:auto 1fr;gap:.6rem 2rem;font-size:.97rem;max-width:62ch}
   .about dt{color:var(--ink-3)}
   @media (max-width:820px){.about{grid-template-columns:1fr;gap:2rem}.portrait{max-width:260px}}
+  /* Die zweispaltige Liste schob die Seite auf schmalen Geraeten um sieben Pixel
+     ueber den Rand: die Wertspalte kann unter ihre laengste Zeile nicht schrumpfen.
+     Ab hier steht der Begriff ueber dem Wert. */
+  .about>div{min-width:0}
+  @media (max-width:560px){
+    .about dl{grid-template-columns:1fr;gap:0}
+    .about dd+dt{margin-top:.9rem}
+  }
 
   .contact{background:var(--navy);color:#fff}
   .contact .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center}

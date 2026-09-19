@@ -56,6 +56,11 @@ Unterzeile: Acht Dimensionen, jede mit einer Leitfrage, die am Ende beantwortet 
 
 Hinweis unter den Kacheln (`p.note`): Sicherheit, ALM sowie Lizenzen und Kapazität
 werden im Überblick bewertet. Für eine Tiefenanalyse gibt es jeweils eigene Reports.
+Die Umsetzung der Maßnahmen ist nicht enthalten. Voraussetzungen und Abgrenzung stehen
+am Seitenende.
+
+Die beiden letzten Sätze nehmen den Einwand vorweg, den Block 8 sonst erst unmittelbar
+vor dem Abschluss-Knopf bringen würde, und weisen den Weg zum ausführlichen Block.
 
 Der Hinweis ist die Brücke zur restlichen Angebotsfamilie. Er bleibt stehen, bis die
 Seiten dazu existieren, und wird dann verlinkt.
@@ -100,7 +105,25 @@ Ihrem Partner oder mit mir um.
 Die Jahreszahl steht bewusst auf „über 16", passend zu Hero und OG-Beschreibung der
 Startseite. Siehe CLAUDE.md, Abschnitt Inhaltliche Quelle.
 
-## Block 7 — Zwei Listen nebeneinander
+## Block 7 — Abschluss-CTA (navy, mit Kontaktkarte)
+
+Headline: 5.000 € Festpreis. 5 Tage. Klare Antworten.
+
+Subline: Durchführung remote, Start in der Regel innerhalb von zwei bis drei Wochen
+nach Beauftragung.
+
+Button: Erstgespräch vereinbaren
+
+Kleingedrucktes: Preis zzgl. USt. Das Erstgespräch dauert rund 30 Minuten und ist
+kostenfrei.
+
+Kontaktkarte: E-Mail, Telefon, Zum Profil. Dieselben drei Wege wie auf der Startseite.
+
+## Block 8 — Zwei Listen nebeneinander, hinter dem CTA
+
+Steht bewusst als letzter Abschnitt hinter dem Abschluss-CTA. Drei Absagen unmittelbar
+vor dem Knopf bremsen den Abschluss, gebraucht wird der Block trotzdem: wer bis hier
+liest, prüft gerade die Machbarkeit.
 
 Überschrift: Voraussetzungen und Abgrenzung
 Unterzeile: Damit vor der Beauftragung klar ist, was Sie beistellen und was der
@@ -117,20 +140,6 @@ Nicht enthalten:
 - Umsetzung von Maßnahmen
 - Fachliche Prozessberatung und Lizenzberatung
 - Finance & Operations sowie Integrationen außerhalb der Power Platform
-
-## Block 8 — Abschluss-CTA (navy, mit Kontaktkarte)
-
-Headline: 5.000 € Festpreis. 5 Tage. Klare Antworten.
-
-Subline: Durchführung remote, Start in der Regel innerhalb von zwei bis drei Wochen
-nach Beauftragung.
-
-Button: Erstgespräch vereinbaren
-
-Kleingedrucktes: Preis zzgl. USt. Das Erstgespräch dauert rund 30 Minuten und ist
-kostenfrei.
-
-Kontaktkarte: E-Mail, Telefon, Zum Profil. Dieselben drei Wege wie auf der Startseite.
 
 ## SEO
 

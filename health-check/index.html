@@ -140,6 +140,10 @@
   footer{padding:2rem 0;font-size:.88rem;color:var(--ink-2)}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
   footer a:hover{color:var(--ink)}
+  /* Voraussetzungen und Abgrenzung stehen bewusst hinter dem Abschluss-CTA:
+     drei Absagen unmittelbar vor dem Knopf bremsen den Abschluss. Der Einwand
+     ist unter den Kacheln bereits benannt. */
+  .after-cta{margin-top:0;padding:3.5rem 0 1rem}
   section[id]{scroll-margin-top:96px}
 </style>
 </head>
@@ -233,7 +237,7 @@
         <p>Sind Transporte, Umgebungen, Rollback und Dokumentation tragfähig?</p>
       </article>
     </div>
-    <p class="note">Sicherheit, ALM sowie Lizenzen und Kapazität werden im Überblick bewertet. Für eine Tiefenanalyse gibt es jeweils eigene Reports.</p>
+    <p class="note">Sicherheit, ALM sowie Lizenzen und Kapazität werden im Überblick bewertet. Für eine Tiefenanalyse gibt es jeweils eigene Reports. Die Umsetzung der Maßnahmen ist nicht enthalten. Voraussetzungen und Abgrenzung stehen am Seitenende.</p>
   </div>
 </section>
 
@@ -319,7 +323,27 @@
   </div>
 </section>
 
-<section id="rahmen">
+</main>
+
+<section id="kontakt" class="contact">
+  <div class="wrap">
+    <div>
+      <h2>5.000 € Festpreis. 5 Tage. Klare Antworten.</h2>
+      <p>Durchführung remote, Start in der Regel innerhalb von zwei bis drei Wochen nach Beauftragung.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:aschwarz@dynamicspro.de?subject=Health%20Check%20Dynamics%20365">Erstgespräch vereinbaren</a>
+      </div>
+      <p class="fine">Preis zzgl. USt. Das Erstgespräch dauert rund 30 Minuten und ist kostenfrei.</p>
+    </div>
+    <div class="card">
+      <a href="mailto:aschwarz@dynamicspro.de?subject=Health%20Check%20Dynamics%20365">aschwarz@dynamicspro.de<small>E-Mail, am zuverlässigsten</small></a>
+      <a href="tel:+491735274172">+49 173 5274172<small>Telefon</small></a>
+      <a href="/">Zum Profil<small>Referenzen, Skills, Werdegang</small></a>
+    </div>
+  </div>
+</section>
+
+<section id="rahmen" class="after-cta">
   <div class="wrap">
     <header>
       <h2>Voraussetzungen und Abgrenzung</h2>
@@ -342,26 +366,6 @@
           <li>Finance &amp; Operations sowie Integrationen außerhalb der Power Platform</li>
         </ul>
       </div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<section id="kontakt" class="contact">
-  <div class="wrap">
-    <div>
-      <h2>5.000 € Festpreis. 5 Tage. Klare Antworten.</h2>
-      <p>Durchführung remote, Start in der Regel innerhalb von zwei bis drei Wochen nach Beauftragung.</p>
-      <div class="actions">
-        <a class="btn primary" href="mailto:aschwarz@dynamicspro.de?subject=Health%20Check%20Dynamics%20365">Erstgespräch vereinbaren</a>
-      </div>
-      <p class="fine">Preis zzgl. USt. Das Erstgespräch dauert rund 30 Minuten und ist kostenfrei.</p>
-    </div>
-    <div class="card">
-      <a href="mailto:aschwarz@dynamicspro.de?subject=Health%20Check%20Dynamics%20365">aschwarz@dynamicspro.de<small>E-Mail, am zuverlässigsten</small></a>
-      <a href="tel:+491735274172">+49 173 5274172<small>Telefon</small></a>
-      <a href="/">Zum Profil<small>Referenzen, Skills, Werdegang</small></a>
     </div>
   </div>
 </section>

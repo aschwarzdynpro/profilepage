@@ -77,20 +77,25 @@ Erfahrung, Unabhängigkeit, Werkzeug. Je Titel und ein Satz Beleg.
 Keine Kundennamen, keine Logos, keine Stimmen, keine Fallzahlen. NDA.
 Jahreszahlen folgen der Startseite und dem englischen Profil-Dokument.
 
-## Block 7 — Zwei Listen nebeneinander: Rahmen
-
-Voraussetzungen: drei Punkte, was der Kunde beistellt, Zugriffe zuerst.
-
-Nicht enthalten: drei Punkte, was das Angebot nicht leistet. Immer dabei ist die
-Umsetzung der Maßnahmen, weil sie getrennt verkauft wird.
-
-## Block 8 — Abschluss-CTA (navy, mit Kontaktkarte)
+## Block 7 — Abschluss-CTA (navy, mit Kontaktkarte)
 
 Headline: Preis, Dauer, Nutzen in drei kurzen Sätzen.
 Subline: Durchführungsform und Vorlauf.
 Button: Erstgespräch vereinbaren
 Kleingedrucktes: Preis zzgl. USt. und die Länge des Erstgesprächs.
 Kontaktkarte: E-Mail, Telefon, Zum Profil.
+
+## Block 8 — Zwei Listen nebeneinander: Rahmen, hinter dem CTA
+
+Letzter Abschnitt der Seite, hinter dem Abschluss-CTA. Drei Absagen unmittelbar vor dem
+Knopf bremsen den Abschluss. Der Einwand wird stattdessen schon unter den Kacheln in
+einem Satz benannt, zusammen mit dem Hinweis, dass der ausführliche Block am Seitenende
+steht.
+
+Voraussetzungen: drei Punkte, was der Kunde beistellt, Zugriffe zuerst.
+
+Nicht enthalten: drei Punkte, was das Angebot nicht leistet. Immer dabei ist die
+Umsetzung der Maßnahmen, weil sie getrennt verkauft wird.
 
 ## SEO
 
