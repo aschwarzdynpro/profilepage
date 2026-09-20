@@ -7,7 +7,7 @@ Block auf der Seite, in derselben Reihenfolge. Wer Text ändert, ändert beides.
 - Datei: `health-check/index.html`
 - Sprache: Deutsch, Sie-Ansprache. Gilt für die ganze Site, siehe CLAUDE.md.
 - Preis: 5.000 € zzgl. USt. Fest, ohne Stufen und ohne Rabatt.
-- CTA-Ziel: Microsoft Bookings, als Link in einem neuen Tab. Kopfleiste, Hero und
+- CTA-Ziel: `https://book.ms/b/BookanExpert@dynamicspro.de`, als Link in einem neuen Tab. Kopfleiste, Hero und
   Abschluss-CTA zeigen dorthin. Die Kontaktkarte behält E-Mail und Telefon als Ausweichweg.
   Kein eingebettetes Buchungsfenster: das wäre ein Request an Microsoft beim Seitenaufruf
   und würde die Aussagen in den Nummern 3 und 4 der Datenschutzerklärung aufheben.
