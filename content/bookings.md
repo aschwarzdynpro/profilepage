@@ -103,19 +103,26 @@ gegengelesen, der Abschnitt ist ein Entwurf und kein geprüfter Rechtstext.
 
 ## Stand der Einrichtung, geprüft am 20.09.2026
 
-Gesetzt: neue Adresse, Geschäftsname DynamicsPro, Dienst „Erstgespräch Health Check",
-30 Minuten, ohne Microsoft-Konto buchbar, Verfügbarkeit eingegrenzt.
+Gesetzt: Adresse, Geschäftsname DynamicsPro, Dienst „Erstgespräch Health Check" mit der
+deutschen Beschreibung, 30 Minuten, ohne Microsoft-Konto buchbar, Verfügbarkeit eingegrenzt,
+Oberfläche auf Deutsch, Adressfeld aus dem Formular entfernt, Anschrift und Telefon stehen
+im Seitenfuß.
 
-Offen, jeweils in den Bookings-Einstellungen:
+Offen:
 
-| Befund auf der Seite | Was fehlt |
-| --- | --- |
-| „ADD YOUR DETAILS", „First and last name", „Book", Monatsnamen englisch, Wochenstart Sonntag | Sprache und Region auf Deutsch, Deutschland |
-| „All times are in (UTC) Coordinated Universal Time", Slots im 12-Stunden-Format | Zeitzone auf Berlin. Danach die Geschäftszeiten erneut prüfen, die angezeigten Zeiten verschieben sich dabei |
-| „Grab some time with us for an appointment" | Beschreibung des Dienstes, Text steht oben |
-| „SELECT STAFF (OPTIONAL)", „Anyone" | Mitarbeiterauswahl ausblenden |
-| Feld „Address" im Formular | ausblenden, wird nicht gebraucht |
-| „The Policies and Practices of DynamicsPro apply to the use of your data" | eigener Einwilligungstext, steht oben. Der Standardsatz verweist auf nichts und verlinkt die Datenschutzerklärung nicht |
+| Befund auf der Seite | Was fehlt | Wo |
+| --- | --- | --- |
+| „Alle Zeiten sind in (UTC) Koordinierte Weltzeit" | Zeitzone auf Berlin. Danach Geschäftszeiten erneut prüfen | Unternehmensinformationen |
+| Uhrzeiten als 11:00 AM bis 2:30 PM, Woche beginnt sonntags („S M D M D F S") | Region auf Deutschland. Die Sprache steht schon auf Deutsch, die Region noch nicht. Sie steuert 24-Stunden-Format und Wochenbeginn | Buchungsseite, neben der Sprache |
+| „MITARBEITER AUSWÄHLEN (OPTIONAL)", „Jeder" | zweiter Schalter für die Auswahl des Dienstleisters | Buchungsseite |
+| „Die Richtlinien und Methoden von DynamicsPro gelten für die Verwendung Ihrer Daten." | eigener Einwilligungstext. Das ist der übersetzte Microsoft-Standardsatz, er verlinkt die Datenschutzerklärung nicht | Buchungsseite, Kundendatennutzung |
+
+Zwei Kleinigkeiten nebenbei:
+
+- Das Freitextfeld für das Anliegen ist mit dem Adressfeld zusammen verschwunden. Es war als
+  freiwilliges Feld vorgesehen, damit vor dem Gespräch klar ist, worum es geht. Wieder
+  einschalten oder bewusst weglassen.
+- Der Titel im Browser-Tab lautet „Bookings – – Outlook" statt des Firmennamens.
 
 ## Wo die Einstellungen liegen
 
