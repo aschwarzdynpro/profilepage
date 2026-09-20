@@ -95,7 +95,9 @@ und danach hier.
 **Seitenmuster.** Jede Angebotsseite liegt unter `<slug>/index.html`, damit die URL ohne
 `.html` auskommt, und folgt den acht Blöcken aus `content/offer-page-template.md`:
 Hero mit Kennzahlenleiste, Problem, Prüfumfang als Kacheln, Ablauf als nummerierte Liste,
-Ergebnis als Dreierraster, Warum DynamicsPro, Voraussetzungen und Abgrenzung, Abschluss-CTA.
+Ergebnis als Dreierraster, Warum DynamicsPro, Abschluss-CTA, Voraussetzungen und Abgrenzung.
+Der Rahmen steht bewusst hinter dem CTA, der Einwand wird schon unter den Kacheln in einem
+Satz benannt. Drei Absagen unmittelbar vor dem Knopf bremsen den Abschluss.
 Gestaltung und Design-Tokens sind die der übrigen Seiten, jede Datei trägt ihre eigene
 Kopie von CSS.
 
@@ -140,13 +142,18 @@ Navigationseintrag in Kopfleiste und Panel, Teaser unter dem Hero der Startseite
 CTA verdrahtet, Verzeichnis im Deploy-Workflow, Eintrag in `sitemap.xml` und in `scripts/shot.mjs`.
 Offen bleibt:
 
-- [ ] `npm run shot` lokal laufen lassen und Desktop 1400px sowie mobil 390px sichten.
-      Die Kopfleiste trägt jetzt acht Einträge, dort zuerst hinsehen.
-- [ ] Nach dem Merge auf `main` prüfen, ob `https://dynamicspro.de/health-check` erreichbar ist
-      und nicht auf 404 läuft.
+Geprüft und live: `npm run shot` läuft durch (10 Screenshots, keine Fremd-Requests, Schriften
+geladen), Desktop 1400px und mobil 390px gesichtet, `https://dynamicspro.de/health-check`
+liefert 200 und entspricht dem Stand auf `main`. Offen bleibt:
+
 - [ ] Buchungsziel entscheiden. Der CTA zeigt auf `mailto:` mit vorbelegtem Betreff. Wenn ein
       Terminwerkzeug dazukommt, wäre das der erste Fremd-Host der Site und `npm run shot` bricht
       ab. Dann braucht es eine bewusste Entscheidung samt Datenschutzerklärung.
 - [ ] Eigene OG-Karte für die Seite erwägen. Derzeit liegt `assets/og.png` der Startseite darunter,
       Quelle wäre `scripts/og-card.html`.
 - [ ] Einen belegbaren Satz zum Analyse-Toolset ergänzen, sobald einer ohne Kundenbezug formulierbar ist.
+- [ ] Nach den ersten zwei, drei Durchläufen eine belastbare Kennzahl in den Hero nehmen, etwa die
+      Zahl der Befunde je Umgebung und wie viele davon ein Ausfallrisiko tragen. Bis dahin steht
+      dort nichts Messbares, und erfunden wird nichts.
+- [ ] Muster-Scorecard auf der Seite zeigen, sobald das Ergebnisdokument einmal real erstellt ist.
+      Ein Entwurf vorher hieße erfundene Befunde auf der Seite, auch als Beispiel ausgewiesen.
