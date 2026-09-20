@@ -153,12 +153,12 @@ Geprüft und live: `npm run shot` läuft durch (10 Screenshots, keine Fremd-Requ
 geladen), Desktop 1400px und mobil 390px gesichtet, `https://dynamicspro.de/health-check`
 liefert 200 und entspricht dem Stand auf `main`. Offen bleibt:
 
-- [ ] **Buchungsseite neu anlegen und Adresse eintragen.** Einstellungen und Texte stehen in
-      `content/bookings.md`, dort auch die Prüfliste. Die erste Fassung („Book an Expert") wird
-      ersetzt, weil die Adresse am Alias des Bookings-Postfachs hängt und sich durch Umbenennen
-      des Anzeigenamens nicht ändert. Bis die neue Adresse vorliegt, zeigen die drei CTA-Knöpfe
-      auf `https://bookings-url-fehlt.invalid/` und `npm run shot` bricht ab. Das blockt den
-      Merge absichtlich.
+- [ ] **Buchungsseite fertig einrichten, bevor gemergt wird.** Die Adresse
+      `https://bookings.cloud.microsoft/book/DynamicsPro@dynamicspro.de/` ist eingetragen und
+      die Seite ist ohne Microsoft-Konto buchbar. Sie ist aber noch englisch, die Zeiten stehen
+      in UTC, die Dienstbeschreibung ist der Microsoft-Platzhalter, die Mitarbeiterauswahl ist
+      sichtbar, das Adressfeld steht im Formular und der Einwilligungstext fehlt.
+      `content/bookings.md` listet alle sechs Punkte mit dem jeweiligen Befund.
 - [ ] **Abschnitt 6 der Datenschutzerklärung gegenlesen.** Der Text zu Microsoft Bookings ist
       ein Entwurf, kein geprüfter Rechtstext. Prüfen Sie Anbieterangabe, Auftragsverarbeitung
       und Aufbewahrungsfristen, bevor die Seite live geht.

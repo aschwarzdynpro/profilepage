@@ -14,10 +14,18 @@ Buchungsseite kommt vom Alias des Bookings-Postfachs, das beim Anlegen entsteht.
 geänderter Anzeigename ändert die Adresse nicht, `book.ms/b/BookanExpert@dynamicspro.de`
 bliebe sonst stehen und stünde in jeder Bestätigungsmail.
 
-Nach dem Anlegen lautet die Adresse `https://book.ms/b/<Alias>@dynamicspro.de`. Sie gehört
-an drei Stellen in `health-check/index.html`: Kopfleiste, Hero und Abschluss-CTA. Bis sie
-vorliegt, steht dort `https://bookings-url-fehlt.invalid/`, und `scripts/shot.mjs` bricht
-ab, solange der Platzhalter drin ist.
+Die Seite ist angelegt, die Adresse lautet:
+
+    https://bookings.cloud.microsoft/book/DynamicsPro@dynamicspro.de/
+
+Sie steht an drei Stellen in `health-check/index.html`: Kopfleiste, Hero und Abschluss-CTA.
+Bewusst die direkte Adresse und nicht die Kurzform über `book.ms`, das spart zwei
+Weiterleitungen und der Gastgeber ist am Hostnamen erkennbar.
+
+`scripts/shot.mjs` bricht ab, sobald irgendein Link auf die reservierte Domain `.invalid`
+zeigt. Falls die Adresse je wieder offen ist, gehört der Platzhalter
+`https://bookings-url-fehlt.invalid/` zurück an diese drei Stellen, dann blockt der
+Prüflauf den Merge von allein.
 
 ## Geschäftsinformationen
 
@@ -92,6 +100,22 @@ Im Feld für die Einwilligung zur Datenverwendung:
 
 Der Text greift auf Abschnitt 6 der Datenschutzerklärung zurück. Beide gehören zusammen
 gegengelesen, der Abschnitt ist ein Entwurf und kein geprüfter Rechtstext.
+
+## Stand der Einrichtung, geprüft am 20.09.2026
+
+Gesetzt: neue Adresse, Geschäftsname DynamicsPro, Dienst „Erstgespräch Health Check",
+30 Minuten, ohne Microsoft-Konto buchbar, Verfügbarkeit eingegrenzt.
+
+Offen, jeweils in den Bookings-Einstellungen:
+
+| Befund auf der Seite | Was fehlt |
+| --- | --- |
+| „ADD YOUR DETAILS", „First and last name", „Book", Monatsnamen englisch, Wochenstart Sonntag | Sprache und Region auf Deutsch, Deutschland |
+| „All times are in (UTC) Coordinated Universal Time", Slots im 12-Stunden-Format | Zeitzone auf Berlin. Danach die Geschäftszeiten erneut prüfen, die angezeigten Zeiten verschieben sich dabei |
+| „Grab some time with us for an appointment" | Beschreibung des Dienstes, Text steht oben |
+| „SELECT STAFF (OPTIONAL)", „Anyone" | Mitarbeiterauswahl ausblenden |
+| Feld „Address" im Formular | ausblenden, wird nicht gebraucht |
+| „The Policies and Practices of DynamicsPro apply to the use of your data" | eigener Einwilligungstext, steht oben. Der Standardsatz verweist auf nichts und verlinkt die Datenschutzerklärung nicht |
 
 ## Prüfen, wenn die Seite steht
 
