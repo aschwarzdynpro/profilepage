@@ -104,25 +104,26 @@ gegengelesen, der Abschnitt ist ein Entwurf und kein geprüfter Rechtstext.
 ## Stand der Einrichtung, geprüft am 20.09.2026
 
 Gesetzt: Adresse, Geschäftsname DynamicsPro, Dienst „Erstgespräch Health Check" mit der
-deutschen Beschreibung, 30 Minuten, ohne Microsoft-Konto buchbar, Verfügbarkeit eingegrenzt,
-Oberfläche auf Deutsch, Adressfeld aus dem Formular entfernt, Anschrift und Telefon stehen
-im Seitenfuß.
+deutschen Beschreibung, 30 Minuten, ohne Microsoft-Konto buchbar, Oberfläche auf Deutsch,
+Region Deutschland (24-Stunden-Format, Woche ab Montag), Zeitzone Berlin, Adressfeld aus
+dem Formular entfernt, eigener Einwilligungstext gesetzt, Anschrift und Telefon im Seitenfuß.
+Angebotene Zeiten: 13:00 bis 16:30 Berliner Zeit.
 
 Offen:
 
 | Befund auf der Seite | Was fehlt | Wo |
 | --- | --- | --- |
-| „Alle Zeiten sind in (UTC) Koordinierte Weltzeit" | Zeitzone auf Berlin. Danach Geschäftszeiten erneut prüfen | Unternehmensinformationen |
-| Uhrzeiten als 11:00 AM bis 2:30 PM, Woche beginnt sonntags („S M D M D F S") | Region auf Deutschland. Die Sprache steht schon auf Deutsch, die Region noch nicht. Sie steuert 24-Stunden-Format und Wochenbeginn | Buchungsseite, neben der Sprache |
-| „MITARBEITER AUSWÄHLEN (OPTIONAL)", „Jeder" | zweiter Schalter für die Auswahl des Dienstleisters | Buchungsseite |
-| „Die Richtlinien und Methoden von DynamicsPro gelten für die Verwendung Ihrer Daten." | eigener Einwilligungstext. Das ist der übersetzte Microsoft-Standardsatz, er verlinkt die Datenschutzerklärung nicht | Buchungsseite, Kundendatennutzung |
+| „MITARBEITER AUSWÄHLEN (OPTIONAL)", „Jeder" | Schalter für die Auswahl des Dienstleisters. Es gibt ihn im Dienst und auf der Buchungsseite, beide müssen aus sein | Dienst und Buchungsseite |
+| Der Einwilligungstext beginnt mit „ch verarbeite die hier eingegebenen Daten" | Das „I" von „Ich" fehlt. Über zwei Aufrufe hinweg stabil, also kein Anzeigefehler, sondern der gespeicherte Text | Buchungsseite, Kundendatennutzung |
 
-Zwei Kleinigkeiten nebenbei:
+Nicht zu beheben, nur zu wissen:
 
-- Das Freitextfeld für das Anliegen ist mit dem Adressfeld zusammen verschwunden. Es war als
-  freiwilliges Feld vorgesehen, damit vor dem Gespräch klar ist, worum es geht. Wieder
-  einschalten oder bewusst weglassen.
-- Der Titel im Browser-Tab lautet „Bookings – – Outlook" statt des Firmennamens.
+- Die Dauer erscheint mal als „30 Minuten", mal als „30 minutes". Über zwei Aufrufe hinweg
+  wechselnd, also ein Lokalisierungsfehler bei Microsoft und keine Einstellung.
+- Im Seitenfuß steht zusätzlich der Microsoft-Standardsatz „Die Richtlinien und Methoden von
+  DynamicsPro gelten für die Verwendung Ihrer Daten." Er steht neben dem eigenen Text im
+  Formular, doppelt sich also inhaltlich. Er hängt am Feld für die Geschäftsbedingungen.
+- Der Titel im Browser-Tab lautet „Bookings" statt des Firmennamens.
 
 ## Wo die Einstellungen liegen
 
