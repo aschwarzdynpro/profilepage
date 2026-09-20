@@ -153,15 +153,10 @@ Geprüft und live: `npm run shot` läuft durch (10 Screenshots, keine Fremd-Requ
 geladen), Desktop 1400px und mobil 390px gesichtet, `https://dynamicspro.de/health-check`
 liefert 200 und entspricht dem Stand auf `main`. Offen bleibt:
 
-- [ ] **Buchungsseite fertig einrichten, bevor gemergt wird.** Die Adresse
-      `https://bookings.cloud.microsoft/book/DynamicsPro@dynamicspro.de/` ist eingetragen und
-      die Seite ist ohne Microsoft-Konto buchbar. Sie ist aber noch englisch, die Zeiten stehen
-      in UTC, die Dienstbeschreibung ist der Microsoft-Platzhalter, die Mitarbeiterauswahl ist
-      sichtbar, das Adressfeld steht im Formular und der Einwilligungstext fehlt.
-      `content/bookings.md` listet alle sechs Punkte mit dem jeweiligen Befund.
 - [ ] **Abschnitt 6 der Datenschutzerklärung gegenlesen.** Der Text zu Microsoft Bookings ist
       ein Entwurf, kein geprüfter Rechtstext. Prüfen Sie Anbieterangabe, Auftragsverarbeitung
-      und Aufbewahrungsfristen, bevor die Seite live geht.
+      und Aufbewahrungsfristen, bevor die Seite live geht. Das ist der letzte Punkt vor dem
+      Merge, die Buchungsseite selbst ist fertig und geprüft (`content/bookings.md`).
 - [ ] Eigene OG-Karte für die Seite erwägen. Derzeit liegt `assets/og.png` der Startseite darunter,
       Quelle wäre `scripts/og-card.html`.
 - [ ] Einen belegbaren Satz zum Analyse-Toolset ergänzen, sobald einer ohne Kundenbezug formulierbar ist.

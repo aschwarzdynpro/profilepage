@@ -103,27 +103,33 @@ gegengelesen, der Abschnitt ist ein Entwurf und kein geprüfter Rechtstext.
 
 ## Stand der Einrichtung, geprüft am 20.09.2026
 
-Gesetzt: Adresse, Geschäftsname DynamicsPro, Dienst „Erstgespräch Health Check" mit der
-deutschen Beschreibung, 30 Minuten, ohne Microsoft-Konto buchbar, Oberfläche auf Deutsch,
-Region Deutschland (24-Stunden-Format, Woche ab Montag), Zeitzone Berlin, Adressfeld aus
-dem Formular entfernt, eigener Einwilligungstext gesetzt, Anschrift und Telefon im Seitenfuß.
-Angebotene Zeiten: 13:00 bis 16:30 Berliner Zeit.
+Fertig. Geprüft mit einem Browser ohne angemeldetes Microsoft-Konto, zwei Aufrufe:
 
-Offen:
+| Punkt | Stand |
+| --- | --- |
+| Adresse | `https://bookings.cloud.microsoft/book/DynamicsPro@dynamicspro.de/` |
+| Buchbar ohne Microsoft-Konto | ja |
+| Geschäftsname | DynamicsPro |
+| Dienst | Erstgespräch Health Check, 30 Minuten, deutsche Beschreibung |
+| Sprache | deutsch |
+| Region | Deutschland, 24-Stunden-Format, Woche ab Montag |
+| Zeitzone | (UTC+01:00) Amsterdam, Berlin, Bern, Rom, Stockholm, Wien |
+| Angebotene Zeiten | 13:00 bis 16:30 |
+| Formularfelder | Vor- und Nachname, E-Mail, Telefonnummer |
+| Einwilligungstext | eigener Text, vollständig, mit Verweis auf die Datenschutzerklärung |
+| Mitarbeiterauswahl | ausgeblendet |
 
-| Befund auf der Seite | Was fehlt | Wo |
-| --- | --- | --- |
-| „MITARBEITER AUSWÄHLEN (OPTIONAL)", „Jeder" | Schalter für die Auswahl des Dienstleisters. Es gibt ihn im Dienst und auf der Buchungsseite, beide müssen aus sein | Dienst und Buchungsseite |
-| Der Einwilligungstext beginnt mit „ch verarbeite die hier eingegebenen Daten" | Das „I" von „Ich" fehlt. Über zwei Aufrufe hinweg stabil, also kein Anzeigefehler, sondern der gespeicherte Text | Buchungsseite, Kundendatennutzung |
+Drei Eigenheiten von Microsoft, die sich nicht einstellen lassen:
 
-Nicht zu beheben, nur zu wissen:
-
-- Die Dauer erscheint mal als „30 Minuten", mal als „30 minutes". Über zwei Aufrufe hinweg
-  wechselnd, also ein Lokalisierungsfehler bei Microsoft und keine Einstellung.
-- Im Seitenfuß steht zusätzlich der Microsoft-Standardsatz „Die Richtlinien und Methoden von
-  DynamicsPro gelten für die Verwendung Ihrer Daten." Er steht neben dem eigenen Text im
-  Formular, doppelt sich also inhaltlich. Er hängt am Feld für die Geschäftsbedingungen.
+- Die Dauer erscheint mal als „30 Minuten", mal als „30 minutes". Über mehrere Aufrufe
+  hinweg wechselnd, also ein Lokalisierungsfehler auf Microsoft-Seite.
+- Im Seitenfuß steht zusätzlich der Standardsatz „Die Richtlinien und Methoden von
+  DynamicsPro gelten für die Verwendung Ihrer Daten." Er doppelt den eigenen
+  Einwilligungstext im Formular und hängt am Feld für die Geschäftsbedingungen.
 - Der Titel im Browser-Tab lautet „Bookings" statt des Firmennamens.
+
+Das Freitextfeld für das Anliegen ist bewusst nicht gesetzt. Wer es später will, findet es
+bei den Formularfeldern des Dienstes.
 
 ## Wo die Einstellungen liegen
 
