@@ -13,7 +13,8 @@ Wer Blöcke umsortiert, verliert die Wiedererkennung zwischen den Angeboten.
 - Datei: `<slug>/index.html` (eigenes Verzeichnis, damit die URL ohne `.html` auskommt)
 - Sprache: Deutsch, Sie-Ansprache
 - Preis: `<Betrag>` € zzgl. USt., fest, ohne Stufen
-- CTA-Ziel: `mailto:aschwarz@dynamicspro.de?subject=<Angebot>%20Dynamics%20365`
+- CTA-Ziel: die Bookings-Seite als Link mit `target="_blank" rel="noopener"`, niemals als
+  eingebettetes Fenster. E-Mail und Telefon bleiben in der Kontaktkarte als Ausweichweg.
 
 ## Block 1 — Hero (navy, Kopfbereich mit Kennzahlenleiste)
 

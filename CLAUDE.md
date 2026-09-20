@@ -114,6 +114,13 @@ SEO-Felder werden nicht ins Englische übersetzt, auch nicht teilweise. Sollte d
 später englische Fassungen bekommen, kommen sie als eigene Seiten dazu und ersetzen die
 deutschen nicht.
 
+**Buchung nur als Link.** Die CTA-Knöpfe verweisen auf Microsoft Bookings, sie betten nichts
+ein. Ein eingebettetes Buchungsfenster lädt beim Seitenaufruf von `outlook.office365.com` und
+setzt Cookies. Damit wären die Nummern 3 und 4 der Datenschutzerklärung falsch („keine Cookies",
+„keine Verbindung zu Servern Dritter"), es bräuchte ein Consent-Management, das es hier nicht
+gibt, und `npm run shot` würde abbrechen. Als Link fließen Daten erst nach einem Klick, Abschnitt
+6 der Datenschutzerklärung deckt das ab.
+
 **Kein CMS.** Es gibt keine Redaktionsoberfläche und keinen Sync in ein fremdes System.
 Seite, Blöcke, SEO-Felder, Navigationseintrag und Teaser sind Code in diesem Repo.
 
@@ -146,9 +153,15 @@ Geprüft und live: `npm run shot` läuft durch (10 Screenshots, keine Fremd-Requ
 geladen), Desktop 1400px und mobil 390px gesichtet, `https://dynamicspro.de/health-check`
 liefert 200 und entspricht dem Stand auf `main`. Offen bleibt:
 
-- [ ] Buchungsziel entscheiden. Der CTA zeigt auf `mailto:` mit vorbelegtem Betreff. Wenn ein
-      Terminwerkzeug dazukommt, wäre das der erste Fremd-Host der Site und `npm run shot` bricht
-      ab. Dann braucht es eine bewusste Entscheidung samt Datenschutzerklärung.
+- [ ] **Bookings-URL eintragen.** Die drei CTA-Knöpfe zeigen auf den Platzhalter
+      `https://bookings-url-fehlt.invalid/`. `npm run shot` bricht ab, solange er drinsteht,
+      und blockt damit den Merge. URL an allen drei Stellen ersetzen, dann prüfen.
+- [ ] **Abschnitt 6 der Datenschutzerklärung gegenlesen.** Der Text zu Microsoft Bookings ist
+      ein Entwurf, kein geprüfter Rechtstext. Prüfen Sie Anbieterangabe, Auftragsverarbeitung
+      und Aufbewahrungsfristen, bevor die Seite live geht.
+- [ ] Beim Anlegen der Bookings-Seite zwei Schalter prüfen: Buchung ohne Microsoft-Konto muss
+      erlaubt sein, und die Indexierung durch Suchmaschinen gehört aus, damit die Buchungsseite
+      nicht neben der Landingpage in den Suchergebnissen steht.
 - [ ] Eigene OG-Karte für die Seite erwägen. Derzeit liegt `assets/og.png` der Startseite darunter,
       Quelle wäre `scripts/og-card.html`.
 - [ ] Einen belegbaren Satz zum Analyse-Toolset ergänzen, sobald einer ohne Kundenbezug formulierbar ist.

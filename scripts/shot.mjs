@@ -44,6 +44,12 @@ for (const [slug, path] of PAGES) {
       [...document.images].filter(i => !i.complete || i.naturalWidth === 0).map(i => i.getAttribute('src')));
     if (broken.length) { console.error(`FEHLER ${slug}/${view}: Bild laedt nicht: ${broken.join(', ')}`); failed = true; }
 
+    // Platzhalter-Links duerfen nicht live gehen. Die .invalid-Domain ist
+    // reserviert und loest nie auf, ein vergessener Platzhalter faellt hier auf.
+    const placeholders = await page.evaluate(() =>
+      [...document.querySelectorAll('a[href]')].map(a => a.getAttribute('href')).filter(h => h.includes('.invalid')));
+    if (placeholders.length) { console.error(`FEHLER ${slug}/${view}: Platzhalter-Link: ${[...new Set(placeholders)].join(', ')}`); failed = true; }
+
     const file = `shots/${slug}-${view}.png`;
     await page.screenshot({ path: file, fullPage: true });
     written.push(file);
