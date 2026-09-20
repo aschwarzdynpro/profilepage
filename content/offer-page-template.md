@@ -15,6 +15,7 @@ Wer Blöcke umsortiert, verliert die Wiedererkennung zwischen den Angeboten.
 - Preis: `<Betrag>` € zzgl. USt., fest, ohne Stufen
 - CTA-Ziel: die Bookings-Seite als Link mit `target="_blank" rel="noopener"`, niemals als
   eingebettetes Fenster. E-Mail und Telefon bleiben in der Kontaktkarte als Ausweichweg.
+  Einrichtung und Texte der Buchungsseite stehen in `content/bookings.md`.
 
 ## Block 1 — Hero (navy, Kopfbereich mit Kennzahlenleiste)
 

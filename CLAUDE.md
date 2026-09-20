@@ -153,16 +153,12 @@ Geprüft und live: `npm run shot` läuft durch (10 Screenshots, keine Fremd-Requ
 geladen), Desktop 1400px und mobil 390px gesichtet, `https://dynamicspro.de/health-check`
 liefert 200 und entspricht dem Stand auf `main`. Offen bleibt:
 
-- [ ] **Bookings-Seite einrichten, bevor der Link live geht.** Die URL
-      `https://book.ms/b/BookanExpert@dynamicspro.de` ist eingetragen und öffentlich buchbar,
-      die Zielseite steht aber noch auf den Voreinstellungen und ist durchgehend englisch.
-      Wer auf einer deutschen Seite „Erstgespräch vereinbaren" klickt, landet bei
-      „Book an Expert / IT support / Grab some time with us". Zu ändern in Bookings:
-      Name der Buchungsseite, Dienst („Erstgespräch Health Check", 30 Minuten) samt deutscher
-      Beschreibung, Sprache und Region auf Deutschland, Zeitzone auf Berlin statt UTC
-      (Slots stehen sonst in UTC und im 12-Stunden-Format), Mitarbeiterauswahl ausblenden,
-      Geschäftszeiten prüfen. Indexierung durch Suchmaschinen abschalten, damit die
-      Buchungsseite nicht neben der Landingpage in den Ergebnissen steht.
+- [ ] **Buchungsseite neu anlegen und Adresse eintragen.** Einstellungen und Texte stehen in
+      `content/bookings.md`, dort auch die Prüfliste. Die erste Fassung („Book an Expert") wird
+      ersetzt, weil die Adresse am Alias des Bookings-Postfachs hängt und sich durch Umbenennen
+      des Anzeigenamens nicht ändert. Bis die neue Adresse vorliegt, zeigen die drei CTA-Knöpfe
+      auf `https://bookings-url-fehlt.invalid/` und `npm run shot` bricht ab. Das blockt den
+      Merge absichtlich.
 - [ ] **Abschnitt 6 der Datenschutzerklärung gegenlesen.** Der Text zu Microsoft Bookings ist
       ein Entwurf, kein geprüfter Rechtstext. Prüfen Sie Anbieterangabe, Auftragsverarbeitung
       und Aufbewahrungsfristen, bevor die Seite live geht.
