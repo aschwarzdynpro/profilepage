@@ -31,7 +31,7 @@ Kennzahlenleiste (vier Einträge, `dl.facts`):
 | --- | --- |
 | Dauer | 5 Tage, Start in der Regel zwei bis drei Wochen nach Beauftragung |
 | Preis | 5.000 € zzgl. USt., fester Umfang |
-| Ihr Aufwand | Rund 6 Stunden im Team, verteilt auf Kickoff, Interviews und Präsentation |
+| Ihr Aufwand | Rund 4 bis 5 Stunden im Team, verteilt auf Kickoff, Interviews und Präsentation |
 | Eingriff | Keiner. Lesezugriff, an Ihren Umgebungen wird nichts verändert |
 
 ## Block 2 — Textabschnitt
@@ -72,15 +72,27 @@ Seiten dazu existieren, und wird dann verlinkt.
 ## Block 4 — Nummerierte Liste, 4 Schritte
 
 Überschrift: Ablauf
-Unterzeile: Vier Termine über fünf Tage, dazwischen die toolgestützte Analyse.
+Unterzeile: Vier Termine über fünf Tage, dazwischen die toolgestützte Analyse. Der Workshop
+danach ist optional.
 
 1. Kickoff (90 Minuten) — Ist-Situation, Schmerzpunkte, Ziele, Zugriffe klären
 2. Toolgestützte Analyse mit Lesezugriff — Auswertung der Umgebungen mit eigenem Analyse-Toolset
 3. Zwei bis drei Kurzinterviews — mit Entwicklung, Makern und Betrieb, je 45 Minuten
-4. Ergebnispräsentation (2 Stunden) — Scorecard, Risiken und Maßnahmenplan im Gespräch durchgehen
+4. Ergebnispräsentation (1 Stunde) — Scorecard, Risiken und Maßnahmenplan im Gespräch durchgehen
+5. Workshop (2 Stunden), gekennzeichnet als **optional** — Die Handlungsempfehlungen
+   konzeptionell durchsprechen: Zuschnitt der Maßnahmen, Reihenfolge und wer was übernimmt.
+   Nicht im Festpreis enthalten.
 
-Hinweis (`p.note`): Ihr Team ist insgesamt rund 6 Stunden eingebunden. An Ihren
-Umgebungen wird nichts verändert.
+Der fünfte Eintrag trägt die Klasse `optional`: Nummer in `--ink-3` statt `--sky` und ein
+Kennzeichen neben der Überschrift, wie die `.gate`-Marke auf der Konsolenseite. Die vier
+Schritte davor sind der Festpreis-Umfang, der fünfte steht sichtbar daneben.
+
+Hinweis (`p.note`): Ihr Team ist insgesamt rund 4 bis 5 Stunden eingebunden, mit dem
+optionalen Workshop rund 7 Stunden. An Ihren Umgebungen wird nichts verändert.
+
+Rechnung dahinter: Kickoff 1,5 Stunden, zwei bis drei Interviews zu 45 Minuten, Präsentation
+1 Stunde, macht 4 bis 4,75 Stunden. Mit dem Workshop 6 bis 6,75. Wer eine der Dauern ändert,
+rechnet hier und in der Kennzahlenleiste des Hero nach.
 
 ## Block 5 — Dreierraster Lieferobjekte
 

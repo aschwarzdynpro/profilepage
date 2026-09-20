@@ -104,6 +104,8 @@
   .steps li::before{content:counter(step);font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--sky);line-height:1}
   .steps h3{font-size:1.08rem}
   .steps p{margin-top:.3rem;color:var(--ink-2);font-size:.97rem}
+  .steps li.optional::before{color:var(--ink-3)}
+  .steps .opt{font-family:var(--body);font-size:.7rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:3px;padding:.15rem .45rem;margin-left:.6rem;white-space:nowrap}
 
   /* Ergebnis: drei Lieferobjekte nebeneinander. */
   .outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
@@ -172,7 +174,7 @@
     <dl class="facts">
       <div><dt>Dauer</dt><dd>5 Tage, Start in der Regel zwei bis drei Wochen nach Beauftragung</dd></div>
       <div><dt>Preis</dt><dd>5.000 € zzgl. USt., fester Umfang</dd></div>
-      <div><dt>Ihr Aufwand</dt><dd>Rund 6 Stunden im Team, verteilt auf Kickoff, Interviews und Präsentation</dd></div>
+      <div><dt>Ihr Aufwand</dt><dd>Rund 4 bis 5 Stunden im Team, verteilt auf Kickoff, Interviews und Präsentation</dd></div>
       <div><dt>Eingriff</dt><dd>Keiner. Lesezugriff, an Ihren Umgebungen wird nichts verändert</dd></div>
     </dl>
   </div>
@@ -245,7 +247,7 @@
   <div class="wrap">
     <header>
       <h2>Ablauf</h2>
-      <p>Vier Termine über fünf Tage, dazwischen die toolgestützte Analyse.</p>
+      <p>Vier Termine über fünf Tage, dazwischen die toolgestützte Analyse. Der Workshop danach ist optional.</p>
     </header>
     <ol class="steps">
       <li>
@@ -268,12 +270,18 @@
       </li>
       <li>
         <div>
-          <h3>Ergebnispräsentation (2 Stunden)</h3>
+          <h3>Ergebnispräsentation (1 Stunde)</h3>
           <p>Scorecard, Risiken und Maßnahmenplan im Gespräch durchgehen</p>
         </div>
       </li>
+      <li class="optional">
+        <div>
+          <h3>Workshop (2 Stunden)<span class="opt">optional</span></h3>
+          <p>Die Handlungsempfehlungen konzeptionell durchsprechen: Zuschnitt der Maßnahmen, Reihenfolge und wer was übernimmt. Nicht im Festpreis enthalten.</p>
+        </div>
+      </li>
     </ol>
-    <p class="note">Ihr Team ist insgesamt rund 6 Stunden eingebunden. An Ihren Umgebungen wird nichts verändert.</p>
+    <p class="note">Ihr Team ist insgesamt rund 4 bis 5 Stunden eingebunden, mit dem optionalen Workshop rund 7 Stunden. An Ihren Umgebungen wird nichts verändert.</p>
   </div>
 </section>
 
