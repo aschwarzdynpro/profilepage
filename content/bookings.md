@@ -117,6 +117,27 @@ Offen, jeweils in den Bookings-Einstellungen:
 | Feld „Address" im Formular | ausblenden, wird nicht gebraucht |
 | „The Policies and Practices of DynamicsPro apply to the use of your data" | eigener Einwilligungstext, steht oben. Der Standardsatz verweist auf nichts und verlinkt die Datenschutzerklärung nicht |
 
+## Wo die Einstellungen liegen
+
+Einstieg `https://outlook.office.com/bookings/`, Kalender „DynamicsPro". Die Bezeichnungen
+in der Oberfläche ändern sich bei Microsoft gelegentlich, die Zuordnung bleibt:
+
+| Bildschirm | Was dort liegt |
+| --- | --- |
+| Unternehmensinformationen | Name, Website, Logo, **Zeitzone**, Geschäftszeiten |
+| Dienste, Eintrag „Erstgespräch Health Check" | **Beschreibung**, Dauer, Preis, Ort, Puffer, Vorlaufzeit, **Mitarbeiterauswahl**, **Formularfelder** samt Adressfeld |
+| Buchungsseite | **Sprache und Region**, Anzeige in Unternehmenszeitzone, Zugriff ohne Microsoft-Konto, **Einwilligungstext**, **Suchmaschinenindizierung** |
+
+Zwei Fallen:
+
+- Die Zeitzone verschiebt die Anzeige der Geschäftszeiten, nicht die Zeiten selbst. Nach dem
+  Umstellen von UTC auf Berlin müssen die Fenster erneut geprüft werden.
+- Die Mitarbeiterauswahl hat zwei Schalter, einen im Dienst und einen auf der Buchungsseite.
+  Erst wenn beide aus sind, verschwindet „SELECT STAFF (OPTIONAL)".
+
+Nach dem Speichern neu veröffentlichen und im privaten Fenster nachsehen, sonst zeigt der
+Cache die alte Fassung und man ist als angemeldeter Benutzer unterwegs statt als Interessent.
+
 ## Prüfen, wenn die Seite steht
 
 - [ ] Seite im privaten Fenster öffnen, also ohne angemeldetes Microsoft-Konto
