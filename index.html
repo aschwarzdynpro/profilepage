@@ -113,14 +113,6 @@
   .band span{font-size:.92rem;color:var(--ink-2);display:block;margin-top:.35rem}
   @media (max-width:820px){.band .wrap{grid-template-columns:1fr 1fr}.band div{border-right:0;border-bottom:1px solid var(--line);padding-left:0}.band div + div{padding-left:0}}
 
-  /* Teaser fuer das Festpreis-Angebot, steht bewusst zwischen Hero und Kennzahlen. */
-  .teaser{background:var(--white);border-top:3px solid var(--sky);border-bottom:1px solid var(--line);padding:0}
-  .teaser .wrap{display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:2.2rem 0;flex-wrap:wrap}
-  .teaser h2{font-size:clamp(1.3rem,2.4vw,1.7rem)}
-  .teaser p{margin-top:.5rem;color:var(--ink-2);max-width:74ch}
-  .teaser .btn{background:var(--navy);color:#fff;flex:none}
-  .teaser .btn:hover{background:var(--navy-2)}
-  @media (max-width:640px){.teaser .wrap{gap:1.4rem}.teaser .btn{width:100%;justify-content:center}}
 
   section{padding:6rem 0}
   .head{max-width:62ch;margin-bottom:3.5rem}
@@ -135,6 +127,16 @@
   .service ul{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem}
   .service li{font-size:.86rem;font-weight:500;padding:.3rem .7rem;background:var(--bg-2);border-radius:3px}
   .service.wide{grid-column:1/-1}
+  /* Festpreis-Einstieg als erste Karte, dunkel abgesetzt. Die Karte "Systemanalyse und
+     Reviews" bleibt der Einstieg fuer den individuell geschnittenen Auftrag. */
+  .service.offer{grid-column:1/-1;background:var(--navy);color:#fff;border-top:3px solid var(--sky);display:grid;grid-template-columns:1fr auto;gap:2rem 3rem;align-items:center}
+  .service.offer .kicker{color:var(--sky);margin-bottom:.6rem}
+  .service.offer p{color:#B9C7DA;margin-bottom:0;max-width:62ch}
+  .service.offer ul{margin-top:1.25rem}
+  .service.offer li{background:rgba(255,255,255,.08);color:#E6EDF7}
+  .service.offer .btn{background:var(--sky);color:var(--navy);white-space:nowrap}
+  .service.offer .btn:hover{background:#8CC6FF}
+  @media (max-width:820px){.service.offer{grid-template-columns:1fr}.service.offer .btn{width:100%;justify-content:center}}
   @media (max-width:820px){.services{grid-template-columns:1fr}.service{padding:1.75rem}}
 
   .cases-section{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -152,18 +154,22 @@
   .case .story .result p{color:var(--ink)}
   @media (max-width:960px){.case{grid-template-columns:1fr;gap:1.5rem;padding:2.75rem 0}.case .story{grid-template-columns:1fr;gap:1.25rem}}
 
+  /* Mandatsliste kompakt: eine Zeile je Einsatz. Die Geschichten stehen in den Karten darueber. */
   .mandates{margin-top:4rem}
   .mandates h3{font-size:1.4rem;margin-bottom:.5rem}
   .mandates>p{color:var(--ink-2);margin-bottom:1.5rem;max-width:62ch}
-  .mandate{display:grid;grid-template-columns:160px 1fr;gap:2rem;padding:1.4rem 0;border-top:1px solid var(--line)}
+  .mandate{display:grid;grid-template-columns:150px 300px 1fr;gap:1.5rem;padding:.9rem 0;border-top:1px solid var(--line);align-items:baseline}
   .mandate:last-child{border-bottom:1px solid var(--line)}
-  .mandate .when{font-family:var(--display);font-weight:600;color:var(--ink-2);font-size:.95rem;padding-top:.15rem}
-  .mandate .who{font-family:var(--display);font-weight:700;font-size:1.1rem}
-  .mandate .who span{font-weight:500;color:var(--ink-3);font-size:.95rem}
-  .mandate p{color:var(--ink-2);font-size:.98rem;margin-top:.35rem;max-width:80ch}
-  .mandate .stack{font-size:.88rem;color:var(--ink-3);margin-top:.5rem}
-  @media (max-width:720px){.mandate{grid-template-columns:1fr;gap:.3rem}}
+  .mandate .when{font-family:var(--display);font-weight:600;color:var(--ink-2);font-size:.92rem;white-space:nowrap}
+  .mandate .who{font-family:var(--display);font-weight:700;font-size:1.02rem}
+  .mandate .who span{display:block;font-weight:500;color:var(--ink-3);font-size:.9rem}
+  .mandate p{color:var(--ink-2);font-size:.95rem}
+  @media (max-width:900px){.mandate{grid-template-columns:150px 1fr}.mandate p{grid-column:2}}
+  @media (max-width:560px){.mandate{grid-template-columns:1fr;gap:.25rem}.mandate p{grid-column:1}}
 
+  .tools{margin-top:4.5rem}
+  .tools h3.sub{font-size:1.4rem;margin-bottom:.5rem}
+  .tools>p{color:var(--ink-2);margin-bottom:1.5rem;max-width:62ch}
   .signature{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
   .sig{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--navy);padding:2rem;display:flex;flex-direction:column}
   .sig.lead{background:var(--navy);color:#fff;border-color:var(--navy);border-top-color:var(--sky)}
@@ -174,24 +180,7 @@
   .sig.lead .stack{color:#9DB2CE}
   @media (max-width:960px){.signature{grid-template-columns:1fr}}
 
-  .skills-section{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem}
-  .skillgroup h3{font-size:1.15rem;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:2px solid var(--navy)}
-  .skillgroup ul{list-style:none}
-  .skillgroup li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
-  .skillgroup li span{color:var(--ink-3);white-space:nowrap;font-variant-numeric:tabular-nums}
-  @media (max-width:900px){.skills{grid-template-columns:1fr;gap:2rem}}
-
-  .skills-grid{display:grid;grid-template-columns:440px 1fr;gap:4rem;align-items:start}
-  .radar{width:100%;height:auto;display:block}
-  .radar .ring{fill:none;stroke:var(--line);stroke-width:1}
-  .radar .spoke{stroke:var(--line);stroke-width:1}
-  .radar .area{fill:rgba(109,180,255,.28);stroke:var(--navy);stroke-width:2;stroke-linejoin:round}
-  .radar .dot{fill:var(--navy)}
-  .radar .ax{font-family:var(--display);font-size:12px;font-weight:600;fill:var(--ink)}
-  .radar .axv{font-family:var(--body);font-size:11px;fill:var(--ink-3)}
-  .radar-wrap .cap{font-size:.9rem;color:var(--ink-2);margin-top:1rem;text-align:center}
-  .bars{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem 3rem}
+  .bars{display:grid;gap:2.25rem}
   .sg h3{font-size:1.05rem;margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:2px solid var(--navy)}
   .sg ul{list-style:none}
   .sg li{display:grid;grid-template-columns:1fr 44px 96px;align-items:center;gap:.8rem;padding:.45rem 0;font-size:.9rem;border-bottom:1px solid var(--line)}
@@ -199,7 +188,6 @@
   .sg .lvl{display:grid;grid-template-columns:repeat(5,1fr);gap:3px}
   .sg .lvl i{display:block;height:9px;background:var(--bg-2);border-radius:1px}
   .sg .lvl i.on{background:var(--navy)}
-  @media (max-width:1000px){.skills-grid{grid-template-columns:1fr;gap:2.5rem}.radar-wrap{max-width:420px;margin-inline:auto}.bars{grid-template-columns:1fr}}
 
   .timeline{border-left:2px solid var(--line);margin-left:.5rem}
   .tl{position:relative;padding:0 0 2rem 2.25rem}
@@ -209,30 +197,32 @@
   .tl h3{font-size:1.15rem;margin:.2rem 0 .15rem}
   .tl .org{color:var(--ink-2);font-size:.95rem}
   .tl p{color:var(--ink-2);font-size:.95rem;margin-top:.4rem;max-width:70ch}
-  .two{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+  .two{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:start}
+  .cv-section{background:var(--white);border-top:1px solid var(--line)}
   @media (max-width:900px){.two{grid-template-columns:1fr;gap:3rem}}
 
-  .principles{display:grid;gap:1.75rem}
+  .principles{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem 3rem;margin-top:3.5rem}
+  @media (max-width:820px){.principles{grid-template-columns:1fr}}
   .principle{border-top:2px solid var(--navy);padding-top:1rem}
   .principle h3{font-size:1.2rem;margin-bottom:.5rem}
   .principle p{color:var(--ink-2);font-size:.98rem}
 
-  .about-section{background:var(--white);border-top:1px solid var(--line)}
   .about{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:start}
   .portrait{width:100%;aspect-ratio:420/576;object-fit:cover;border-radius:6px;display:block;border:1px solid var(--line)}
   .about h2{font-size:clamp(2rem,3.6vw,2.9rem);margin-bottom:1.25rem}
+  .about .lead-in{font-size:1.15rem;color:var(--ink-2);margin-bottom:1.25rem}
   .about p{color:var(--ink-2);max-width:62ch}
   .about p + p{margin-top:1rem}
-  .about dl{margin-top:2rem;display:grid;grid-template-columns:auto 1fr;gap:.6rem 2rem;font-size:.97rem;max-width:62ch}
-  .about dt{color:var(--ink-3)}
+  .facts{margin-top:1rem;display:grid;grid-template-columns:auto 1fr;gap:.6rem 2rem;font-size:.97rem;max-width:62ch}
+  .facts dt{color:var(--ink-3)}
   @media (max-width:820px){.about{grid-template-columns:1fr;gap:2rem}.portrait{max-width:260px}}
   /* Die zweispaltige Liste schob die Seite auf schmalen Geraeten um sieben Pixel
      ueber den Rand: die Wertspalte kann unter ihre laengste Zeile nicht schrumpfen.
      Ab hier steht der Begriff ueber dem Wert. */
   .about>div{min-width:0}
   @media (max-width:560px){
-    .about dl{grid-template-columns:1fr;gap:0}
-    .about dd+dt{margin-top:.9rem}
+    .facts{grid-template-columns:1fr;gap:0}
+    .facts dd+dt{margin-top:.9rem}
   }
 
   .contact{background:var(--navy);color:#fff}
@@ -297,10 +287,8 @@
         <li><a href="#leistungen">Leistungen</a></li>
         <li><a href="health-check/">Health Check</a></li>
         <li><a href="#referenzen">Referenzen</a></li>
-        <li><a href="#signature">Werkzeuge</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#werdegang">Werdegang</a></li>
-        <li><a href="#ueber">Über mich</a></li>
+        <li><a href="#arbeitsweise">Arbeitsweise</a></li>
+        <li><a href="#werdegang">Skills und Werdegang</a></li>
         <li class="cta"><a href="#kontakt">Kontakt</a></li>
       </ul>
     </nav>
@@ -324,16 +312,6 @@
   </div>
 </section>
 
-<section class="teaser">
-  <div class="wrap">
-    <div>
-      <h2>Neu: Dynamics 365 Health Check zum Festpreis</h2>
-      <p>Scorecard, Risiken und Maßnahmenplan in 5 Tagen. Unabhängig und toolgestützt.</p>
-    </div>
-    <a class="btn" href="health-check/">Mehr erfahren</a>
-  </div>
-</section>
-
 <div class="band">
   <div class="wrap">
     <div><strong>16+</strong><span>Jahre Dynamics 365 CE, seit 2022 freiberuflich unter DynamicsPro</span></div>
@@ -350,6 +328,15 @@
       <p>Architekturverantwortung über das gesamte Spektrum von Low-Code bis Pro-Code, Steuerung von Umsetzungsteams, Discovery-Workshops mit Fachbereich und IT. Und wo es nötig ist, schreibe ich den Code selbst.</p>
     </div>
     <div class="services">
+      <article class="service offer">
+        <div>
+          <div class="kicker">Einstieg zum Festpreis</div>
+          <h3>Dynamics 365 Health Check</h3>
+          <p>Scorecard, Risiken und Maßnahmenplan in 5 Tagen. Unabhängig und toolgestützt, mit festem Umfang und festem Preis.</p>
+          <ul><li>Performance</li><li>Sicherheitsrollen</li><li>Solution-Schnitt</li><li>Kapazität &amp; Lizenzen</li><li>Maßnahmenplan</li></ul>
+        </div>
+        <a class="btn" href="health-check/">Health Check ansehen</a>
+      </article>
       <article class="service">
         <h3>Solution Architecture</h3>
         <p>Zielarchitektur für Dynamics 365 Sales, Customer Service und Field Service: Dataverse-Datenmodell, Berechtigungskonzept, Multi-Company-Setups und die Frage, welches System welche Daten führt. Discovery- und Analyse-Workshops inklusive.</p>
@@ -384,7 +371,7 @@
   <div class="wrap">
     <div class="head">
       <h2>Referenzen</h2>
-      <p>Drei Vorhaben aus Mandaten und ein eigenes Produkt, die zeigen, wie ich arbeite. Die Mandate seit 2022 freiberuflich unter DynamicsPro, teils parallel. Kundennamen anonymisiert, Referenzen auf Anfrage.</p>
+      <p>Drei Vorhaben aus Mandaten und ein eigenes Produkt, die zeigen, wie ich arbeite. Darunter alle Mandate seit 2022 im Überblick. Kundennamen anonymisiert, Referenzen auf Anfrage.</p>
     </div>
 
     <article class="case">
@@ -465,57 +452,59 @@
 
     <div class="mandates">
       <h3>Mandate seit 2022</h3>
-      <p>Alle Einsätze freiberuflich unter DynamicsPro, teils parallel; die laufenden Mandate binden zusammen zwei bis drei Tage pro Woche. Dazu Lead-Architect-Rollen, ALM-Einführungen, System-Health-Checks sowie Diagnose- und Analysearbeit in über zehn weiteren Projekten.</p>
-      <div class="mandate"><div class="when">02/2026 – heute</div><div><div class="who">Travel Industry <span>· Solution Architect</span></div><p>Analyse und Design einer Dynamics 365 Contact Center Lösung. Aufbau des ALM auf Azure DevOps, Leitung der Umsetzung von WhatsApp- und E-Mail-Kanal auf dem Omnichannel-Stack.</p><div class="stack">D365 Contact Center, Omnichannel, Azure Communication Services, Azure DevOps, Power Platform</div></div></div>
-      <div class="mandate"><div class="when">02/2024 – heute</div><div><div class="who">Industrial Lighting Manufacturer <span>· Solution Architect</span></div><p>Architectural Lead einer Multi-Stream-Einführung von Sales, Customer Service und Field Service. Discovery-Workshops, Zielarchitektur, Steuerung von Customizing und Pro-Code-Entwicklung, ALM-Strategie mit Feature-Branch-Workflow und automatisierten Managed-Solution-Builds. Code Apps für Außendienst-Dashboard und Messe-Lead-Erfassung.</p><div class="stack">D365 Sales / Customer Service / Field Service, Power Platform CLI, PCF, JavaScript, C# Plugins, Azure DevOps</div></div></div>
-      <div class="mandate"><div class="when">02/2024 – heute</div><div><div class="who">Engineering <span>· Architecture Advisor</span></div><p>Beratende Rolle bei der Konfiguration einer Branchenlösung auf Dynamics 365. Architektur-Workshops zu Multi-Company-Kundensetup, Integrationsszenarien und Multi-Workload-Ansätzen über den Customer-Engagement-Stack.</p><div class="stack">D365 Sales / Marketing / Customer Service / Field Service, Power Platform</div></div></div>
-      <div class="mandate"><div class="when">09/2022 – 10/2026</div><div><div class="who">Payment Services <span>· Dynamics 365 Specialist</span></div><p>Implementierungsrichtlinien und Architekturstandards, Aufbau von Monitoring und Center-of-Excellence-Praktiken, Performance-Analyse über Power Platform und Azure-Integrationskomponenten. Architektur und Umsetzung einer regelbasierten, revisionssicheren Archivierungs- und Löschpipeline für Dataverse (GoBD, DSGVO).</p><div class="stack">Azure Logic Apps, Application Insights, Azure Monitoring, Power Platform, Center of Excellence</div></div></div>
-      <div class="mandate"><div class="when">08/2022 – heute</div><div><div class="who">Automation Engineering <span>· Solution Architect</span></div><p>Design und Leitung der Einführung von D365 Sales, Field Service und Project Operations mit Dual-Write-Integration zu Finance &amp; Operations. Verantwortlich für alle CE-Workstreams und Berater. Integrationskonzept Workday ↔ Field Service (Abwesenheiten, Zeiterfassung) über Service Bus. Aufbau der Deployment- und Metadaten-Automation für den Release-Prozess.</p><div class="stack">D365 Sales / Field Service, F&amp;O, Dual Write, Power Automate, Customer Voice, Azure DevOps, Power Platform CLI</div></div></div>
+      <p>Alle Einsätze freiberuflich unter DynamicsPro, teils parallel. Dazu Lead-Architect-Rollen, ALM-Einführungen, System-Health-Checks sowie Diagnose- und Analysearbeit in über zehn weiteren Projekten.</p>
+      <div class="mandate"><div class="when">02/2026 – heute</div><div class="who">Travel Industry<span>Solution Architect</span></div><p>Analyse und Design einer Contact-Center-Lösung, ALM auf Azure DevOps, Leitung der Umsetzung von WhatsApp- und E-Mail-Kanal.</p></div>
+      <div class="mandate"><div class="when">02/2024 – heute</div><div class="who">Industrial Lighting Manufacturer<span>Solution Architect</span></div><p>Architectural Lead einer Multi-Stream-Einführung von Sales, Customer Service und Field Service, ALM-Strategie, Code Apps für den Außendienst.</p></div>
+      <div class="mandate"><div class="when">02/2024 – heute</div><div class="who">Engineering<span>Architecture Advisor</span></div><p>Architektur-Workshops zu Multi-Company-Setup, Integrationsszenarien und Multi-Workload-Ansätzen für eine Branchenlösung auf Dynamics 365.</p></div>
+      <div class="mandate"><div class="when">09/2022 – 10/2026</div><div class="who">Payment Services<span>Dynamics 365 Specialist</span></div><p>Architekturstandards, Monitoring und Center-of-Excellence-Praktiken, revisionssichere Archivierungs- und Löschpipeline für Dataverse.</p></div>
+      <div class="mandate"><div class="when">08/2022 – heute</div><div class="who">Automation Engineering<span>Solution Architect</span></div><p>Einführung von Sales, Field Service und Project Operations mit Dual Write zu Finance &amp; Operations, Integration Workday ↔ Field Service, Release-Automation.</p></div>
     </div>
   </div>
 </section>
 
-<section id="signature">
+<section id="arbeitsweise">
   <div class="wrap">
-    <div class="head">
-      <h2>Werkzeuge und Arbeitsweise</h2>
-      <p>Außerhalb einzelner Mandate entwickelt und projektübergreifend im Einsatz. Das bringe ich in ein Projekt mit, statt es dort neu zu erfinden.</p>
+    <div class="about">
+      <img class="portrait" src="assets/andy-schwarz.jpg" alt="Andy Schwarz">
+      <div>
+        <h2>Wie ich arbeite</h2>
+        <p class="lead-in">Dipl.-Inf. (FH), seit 2007 im Microsoft-CRM-Umfeld. 15 Jahre als angestellter Entwickler, Berater und Architekt, seit 2022 freiberuflich unter der Marke DynamicsPro, eingebettet in Kundenteams oder als Subunternehmer für Microsoft-Partner.</p>
+        <p>Was mich von reinen Beratern unterscheidet: Ich schreibe den Code selbst. Was mich von reinen Entwicklern unterscheidet: Ich sitze auch im Lenkungskreis und erkläre dem Betriebsrat, was ein KI-Feld tut. Vier Grundsätze, die sich über die Jahre bewährt haben:</p>
+      </div>
     </div>
-    <div class="signature">
-      <article class="sig lead">
-        <h3>Solution Admin Console und Code-App-Tooling</h3>
-        <p>Das Schweizer Taschenmesser für alle, die Dataverse administrieren: Solution- und Umgebungsverwaltung an einem Ort, mit Kapazitätsdashboard. Drumherum Security Role Analyzer, Plugin Trace Explorer und eine Bibliothek wiederverwendbarer PCF-Controls, darunter ein polymorpher Kunden-Lookup als Flyout.</p>
-        <div class="stack">Power Platform Code Apps, React, TypeScript, Vite, Fluent UI v9, PCF, Dataverse Web API</div>
-        <p class="more-line"><a class="more" href="solution-admin-console.html">Alle Funktionen im Detail</a></p>
-      </article>
-      <article class="sig">
-        <h3>ALM-Pipeline-Toolset</h3>
-        <p>Azure-DevOps-Pipelines für den Solution-Transport entlang der Umgebungskette, automatisierte Validierung vor dem Deployment, generierte Solution-Dokumentation und wiederkehrende Health Checks. Verkürzt den Anlauf eines neuen Projekts von Wochen Pipeline-Bau auf Konfiguration.</p>
-        <div class="stack">Azure DevOps Pipelines &amp; Repos, Power Platform CLI, Managed/Unmanaged Lifecycle, .NET Plugin Build Chain</div>
-      </article>
-      <article class="sig">
-        <h3>KI-gestützte Umsetzung und System-Reviews mit Claude Code</h3>
-        <p>Fester Bestandteil meiner Arbeitsweise: Konzepte entwerfen und gegen Dataverse-Grenzen prüfen, Plugins, PCF und Code Apps implementieren, Testabdeckung erzeugen. Skaliert bis zum vollständigen System-Review einer bestehenden Umgebung, verdichtet zu priorisierten Findings. Läuft auf einem Mono-Repo mit Multi-Agent-Setup und eigenen Dataverse-Skills, damit Namenskonventionen und Coding-Standards konsistent gelten.</p>
-        <div class="stack">Claude Code, eigene Dataverse-Skills, Multi-Agent-Mono-Repo, Azure DevOps Work Items</div>
-      </article>
+    <div class="principles">
+      <div class="principle"><h3>Erst das führende System, dann die Schnittstelle</h3><p>Preise gehören ins ERP, Personaldaten ins HR-System, Kunden an einen definierten Ort. Wer das zu Beginn festlegt, erspart sich später den Streit darüber, welche Kopie recht hat.</p></div>
+      <div class="principle"><h3>Ehrlich über KI</h3><p>Copilot und Agenten können viel. Sie kosten Credits, laufen asynchron und füllen keine Historie nach. Ich sage das vor dem Kauf, nicht danach, und plane die Einführung in Stufen.</p></div>
+      <div class="principle"><h3>Compliance ist Teil der Architektur</h3><p>DSGVO, GoBD und Mitbestimmung nach §&nbsp;87 BetrVG sind im DACH-Raum keine Randthemen. Ich kenne die Fragen von Datenschutzbeauftragten und Betriebsräten und baue die Antworten in die Lösung ein.</p></div>
+      <div class="principle"><h3>Übergabe gehört zum Auftrag</h3><p>Jede Lösung kommt mit Pipeline, Dokumentation und einem Team, das sie versteht. Ich habe kein Interesse daran, unersetzlich zu bleiben.</p></div>
+    </div>
+
+    <div class="tools">
+      <h3 class="sub">Werkzeuge, die ich mitbringe</h3>
+      <p>Außerhalb einzelner Mandate entwickelt und projektübergreifend im Einsatz, statt es in jedem Projekt neu zu erfinden.</p>
+      <div class="signature">
+        <article class="sig lead">
+          <h3>Solution Admin Console und Code-App-Tooling</h3>
+          <p>Das Schweizer Taschenmesser für alle, die Dataverse administrieren: Solution- und Umgebungsverwaltung an einem Ort, mit Kapazitätsdashboard. Drumherum Security Role Analyzer, Plugin Trace Explorer und eine Bibliothek wiederverwendbarer PCF-Controls, darunter ein polymorpher Kunden-Lookup als Flyout.</p>
+          <div class="stack">Power Platform Code Apps, React, TypeScript, Vite, Fluent UI v9, PCF, Dataverse Web API</div>
+          <p class="more-line"><a class="more" href="solution-admin-console.html">Alle Funktionen im Detail</a></p>
+        </article>
+        <article class="sig">
+          <h3>ALM-Pipeline-Toolset</h3>
+          <p>Azure-DevOps-Pipelines für den Solution-Transport entlang der Umgebungskette, automatisierte Validierung vor dem Deployment, generierte Solution-Dokumentation und wiederkehrende Health Checks. Verkürzt den Anlauf eines neuen Projekts von Wochen Pipeline-Bau auf Konfiguration.</p>
+          <div class="stack">Azure DevOps Pipelines &amp; Repos, Power Platform CLI, Managed/Unmanaged Lifecycle, .NET Plugin Build Chain</div>
+        </article>
+        <article class="sig">
+          <h3>KI-gestützte Umsetzung und System-Reviews mit Claude Code</h3>
+          <p>Fester Bestandteil meiner Arbeitsweise: Konzepte entwerfen und gegen Dataverse-Grenzen prüfen, Plugins, PCF und Code Apps implementieren, Testabdeckung erzeugen. Skaliert bis zum vollständigen System-Review einer bestehenden Umgebung, verdichtet zu priorisierten Findings. Läuft auf einem Mono-Repo mit Multi-Agent-Setup und eigenen Dataverse-Skills, damit Namenskonventionen und Coding-Standards konsistent gelten.</p>
+          <div class="stack">Claude Code, eigene Dataverse-Skills, Multi-Agent-Mono-Repo, Azure DevOps Work Items</div>
+        </article>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="skills" class="skills-section">
-  <div class="wrap">
-    <div class="head">
-      <h2>Skills</h2>
-      <p>Niveau auf einer Skala von 1 bis 5 und Jahre praktischer Erfahrung je Technologie, Stand 2026.</p>
-    </div>
-    <div class="skills-grid">
-      <div class="radar-wrap"><svg class="radar" viewBox="0 0 500 420" role="img" aria-label="Niveau je Technologie als Netzdiagramm, Skala 1 bis 5"><polygon class="ring" points="250.0,179.0 268.4,186.6 276.0,205.0 268.4,223.4 250.0,231.0 231.6,223.4 224.0,205.0 231.6,186.6"/><polygon class="ring" points="250.0,153.0 286.8,168.2 302.0,205.0 286.8,241.8 250.0,257.0 213.2,241.8 198.0,205.0 213.2,168.2"/><polygon class="ring" points="250.0,127.0 305.2,149.8 328.0,205.0 305.2,260.2 250.0,283.0 194.8,260.2 172.0,205.0 194.8,149.8"/><polygon class="ring" points="250.0,101.0 323.5,131.5 354.0,205.0 323.5,278.5 250.0,309.0 176.5,278.5 146.0,205.0 176.5,131.5"/><polygon class="ring" points="250.0,75.0 341.9,113.1 380.0,205.0 341.9,296.9 250.0,335.0 158.1,296.9 120.0,205.0 158.1,113.1"/><line class="spoke" x1="250" y1="205" x2="250.0" y2="75.0"/><line class="spoke" x1="250" y1="205" x2="341.9" y2="113.1"/><line class="spoke" x1="250" y1="205" x2="380.0" y2="205.0"/><line class="spoke" x1="250" y1="205" x2="341.9" y2="296.9"/><line class="spoke" x1="250" y1="205" x2="250.0" y2="335.0"/><line class="spoke" x1="250" y1="205" x2="158.1" y2="296.9"/><line class="spoke" x1="250" y1="205" x2="120.0" y2="205.0"/><line class="spoke" x1="250" y1="205" x2="158.1" y2="113.1"/><polygon class="area" points="250.0,75.0 305.2,149.8 354.0,205.0 286.8,241.8 250.0,335.0 158.1,296.9 172.0,205.0 158.1,113.1"/><circle class="dot" cx="250.0" cy="75.0" r="3.5"/><circle class="dot" cx="305.2" cy="149.8" r="3.5"/><circle class="dot" cx="354.0" cy="205.0" r="3.5"/><circle class="dot" cx="286.8" cy="241.8" r="3.5"/><circle class="dot" cx="250.0" cy="335.0" r="3.5"/><circle class="dot" cx="158.1" cy="296.9" r="3.5"/><circle class="dot" cx="172.0" cy="205.0" r="3.5"/><circle class="dot" cx="158.1" cy="113.1" r="3.5"/><text class="ax" x="250.0" y="47.0" text-anchor="middle">Sales</text><text class="axv" x="250.0" y="60.0" text-anchor="middle">5 / 5</text><text class="ax" x="358.9" y="92.1" text-anchor="start">Customer Service</text><text class="axv" x="358.9" y="105.1" text-anchor="start">3 / 5</text><text class="ax" x="404.0" y="207.0" text-anchor="start">Field Service</text><text class="axv" x="404.0" y="220.0" text-anchor="start">4 / 5</text><text class="ax" x="358.9" y="321.9" text-anchor="start">Marketing</text><text class="axv" x="358.9" y="334.9" text-anchor="start">2 / 5</text><text class="ax" x="250.0" y="367.0" text-anchor="middle">Dataverse</text><text class="axv" x="250.0" y="380.0" text-anchor="middle">5 / 5</text><text class="ax" x="141.1" y="321.9" text-anchor="end">Power Automate</text><text class="axv" x="141.1" y="334.9" text-anchor="end">5 / 5</text><text class="ax" x="96.0" y="207.0" text-anchor="end">Integration</text><text class="axv" x="96.0" y="220.0" text-anchor="end">3 / 5</text><text class="ax" x="141.1" y="92.1" text-anchor="end">Pro-Code</text><text class="axv" x="141.1" y="105.1" text-anchor="end">5 / 5</text></svg><p class="cap">Profilform nach Niveau: tief in Sales, Plattform und Pro-Code, solide in Integration und Service.</p></div>
-      <div class="bars"><div class="sg"><h3>Architektur, ALM &amp; DevOps</h3><ul><li><span class="n">Solution Architecture D365 CE / Power Platform</span><span class="y">7 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">Azure DevOps</span><span class="y">12 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">Application Lifecycle Management</span><span class="y">10 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">Security Concept &amp; Role Design</span><span class="y">12 J.</span><span class="lvl" aria-label="Niveau 4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></li><li><span class="n">Scrum / Agile Delivery</span><span class="y">12 J.</span><span class="lvl" aria-label="Niveau 4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></li></ul></div><div class="sg"><h3>Dynamics 365 Module</h3><ul><li><span class="n">Dynamics 365 Sales</span><span class="y">14 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">Field Service</span><span class="y">6 J.</span><span class="lvl" aria-label="Niveau 4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></li><li><span class="n">Customer Service</span><span class="y">8 J.</span><span class="lvl" aria-label="Niveau 3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></li><li><span class="n">Marketing / Customer Insights</span><span class="y">3 J.</span><span class="lvl" aria-label="Niveau 2 von 5"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></li></ul></div><div class="sg"><h3>Power Platform</h3><ul><li><span class="n">Dataverse</span><span class="y">8 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">Power Automate</span><span class="y">8 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">Power Apps</span><span class="y">8 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">Power Fx</span><span class="y">4 J.</span><span class="lvl" aria-label="Niveau 3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></li><li><span class="n">Power Pages</span><span class="y">2 J.</span><span class="lvl" aria-label="Niveau 1 von 5"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></li><li><span class="n">Power BI</span><span class="y">2 J.</span><span class="lvl" aria-label="Niveau 1 von 5"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></li><li><span class="n">Dataflows</span><span class="y">4 J.</span><span class="lvl" aria-label="Niveau 1 von 5"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></li></ul></div><div class="sg"><h3>Pro-Code &amp; Azure</h3><ul><li><span class="n">Plugins &amp; Workflow Activities</span><span class="y">15 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">.NET / C#</span><span class="y">16 J.</span><span class="lvl" aria-label="Niveau 4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></li><li><span class="n">JavaScript / TypeScript</span><span class="y">15 J.</span><span class="lvl" aria-label="Niveau 4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></li><li><span class="n">PCF / Code Apps (React)</span><span class="y">4 J.</span><span class="lvl" aria-label="Niveau 3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></li><li><span class="n">Azure Integration Services</span><span class="y">10 J.</span><span class="lvl" aria-label="Niveau 3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></li><li><span class="n">Application Insights</span><span class="y">3 J.</span><span class="lvl" aria-label="Niveau 2 von 5"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></li><li><span class="n">Azure Databases</span><span class="y">5 J.</span><span class="lvl" aria-label="Niveau 3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></li></ul></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="werdegang">
+<section id="werdegang" class="cv-section">
   <div class="wrap">
     <div class="two">
       <div>
@@ -532,38 +521,20 @@
           <div class="tl"><div class="when">01/2013 – 06/2013</div><h3>Microsoft CRM Consultant</h3><div class="org">curexus GmbH, Nürnberg</div></div>
           <div class="tl"><div class="when">05/2007 – 12/2012</div><h3>Technology Specialist</h3><div class="org">Rödl Consulting AG, Nürnberg</div><p>Entwickler auf CRM/XRM-Projekten. BizTalk-Adapter für Microsoft CRM und ein Event-Pipeline-Framework zur Ansteuerung externer Systeme gebaut und betreut.</p></div>
         </div>
-      </div>
-      <div>
-        <div class="head" style="margin-bottom:2.5rem">
-          <h2>Wie ich arbeite</h2>
-          <p>Vier Grundsätze, die sich über die Jahre bewährt haben.</p>
-        </div>
-        <div class="principles">
-          <div class="principle"><h3>Erst das führende System, dann die Schnittstelle</h3><p>Preise gehören ins ERP, Personaldaten ins HR-System, Kunden an einen definierten Ort. Wer das zu Beginn festlegt, erspart sich später den Streit darüber, welche Kopie recht hat.</p></div>
-          <div class="principle"><h3>Ehrlich über KI</h3><p>Copilot und Agenten können viel. Sie kosten Credits, laufen asynchron und füllen keine Historie nach. Ich sage das vor dem Kauf, nicht danach, und plane die Einführung in Stufen.</p></div>
-          <div class="principle"><h3>Compliance ist Teil der Architektur</h3><p>DSGVO, GoBD und Mitbestimmung nach §&nbsp;87 BetrVG sind im DACH-Raum keine Randthemen. Ich kenne die Fragen von Datenschutzbeauftragten und Betriebsräten und baue die Antworten in die Lösung ein.</p></div>
-          <div class="principle"><h3>Übergabe gehört zum Auftrag</h3><p>Jede Lösung kommt mit Pipeline, Dokumentation und einem Team, das sie versteht. Ich habe kein Interesse daran, unersetzlich zu bleiben.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="ueber" class="about-section">
-  <div class="wrap">
-    <div class="about">
-      <img class="portrait" src="assets/andy-schwarz.jpg" alt="Andy Schwarz">
-      <div>
-        <h2>Über mich</h2>
-        <p>Dipl.-Inf. (FH) mit Schwerpunkt Telekommunikationsinformatik, seit 2007 im Microsoft-CRM-Umfeld. 15 Jahre als angestellter Entwickler, Berater und Architekt, seit 2022 freiberuflich unter der Marke DynamicsPro, eingebettet in Kundenteams oder als Subunternehmer für Microsoft-Partner.</p>
-        <p>Was mich von reinen Beratern unterscheidet: Ich schreibe den Code selbst. Was mich von reinen Entwicklern unterscheidet: Ich sitze auch im Lenkungskreis und erkläre dem Betriebsrat, was ein KI-Feld tut.</p>
-        <dl>
+        <dl class="facts">
           <dt>Standort</dt><dd>Stein bei Nürnberg; remote und vor Ort im gesamten DACH-Raum</dd>
           <dt>Verfügbarkeit</dt><dd>ab Januar 2027 mit 3 Tagen pro Woche für ein neues Mandat</dd>
           <dt>Zertifizierungen</dt><dd>PL-600 Microsoft Power Platform Solution Architect · MB-240 Dynamics 365 Field Service Functional Consultant</dd>
           <dt>Ausbildung</dt><dd>Dipl.-Inf. (FH), Telekommunikationsinformatik, 2002–2007</dd>
           <dt>Sprachen</dt><dd>Deutsch (Muttersprache), Englisch (verhandlungssicher)</dd>
         </dl>
+      </div>
+      <div>
+        <div class="head" style="margin-bottom:2.5rem">
+          <h2>Skills</h2>
+          <p>Niveau auf einer Skala von 1 bis 5 und Jahre praktischer Erfahrung je Technologie, Stand 2026.</p>
+        </div>
+        <div class="bars"><div class="sg"><h3>Architektur, ALM &amp; DevOps</h3><ul><li><span class="n">Solution Architecture D365 CE / Power Platform</span><span class="y">7 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">Azure DevOps</span><span class="y">12 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">Application Lifecycle Management</span><span class="y">10 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">Security Concept &amp; Role Design</span><span class="y">12 J.</span><span class="lvl" aria-label="Niveau 4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></li><li><span class="n">Scrum / Agile Delivery</span><span class="y">12 J.</span><span class="lvl" aria-label="Niveau 4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></li></ul></div><div class="sg"><h3>Dynamics 365 Module</h3><ul><li><span class="n">Dynamics 365 Sales</span><span class="y">14 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">Field Service</span><span class="y">6 J.</span><span class="lvl" aria-label="Niveau 4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></li><li><span class="n">Customer Service</span><span class="y">8 J.</span><span class="lvl" aria-label="Niveau 3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></li><li><span class="n">Marketing / Customer Insights</span><span class="y">3 J.</span><span class="lvl" aria-label="Niveau 2 von 5"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></li></ul></div><div class="sg"><h3>Power Platform</h3><ul><li><span class="n">Dataverse</span><span class="y">8 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">Power Automate</span><span class="y">8 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">Power Apps</span><span class="y">8 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">Power Fx</span><span class="y">4 J.</span><span class="lvl" aria-label="Niveau 3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></li><li><span class="n">Power Pages</span><span class="y">2 J.</span><span class="lvl" aria-label="Niveau 1 von 5"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></li><li><span class="n">Power BI</span><span class="y">2 J.</span><span class="lvl" aria-label="Niveau 1 von 5"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></li><li><span class="n">Dataflows</span><span class="y">4 J.</span><span class="lvl" aria-label="Niveau 1 von 5"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></li></ul></div><div class="sg"><h3>Pro-Code &amp; Azure</h3><ul><li><span class="n">Plugins &amp; Workflow Activities</span><span class="y">15 J.</span><span class="lvl" aria-label="Niveau 5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li><span class="n">.NET / C#</span><span class="y">16 J.</span><span class="lvl" aria-label="Niveau 4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></li><li><span class="n">JavaScript / TypeScript</span><span class="y">15 J.</span><span class="lvl" aria-label="Niveau 4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></li><li><span class="n">PCF / Code Apps (React)</span><span class="y">4 J.</span><span class="lvl" aria-label="Niveau 3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></li><li><span class="n">Azure Integration Services</span><span class="y">10 J.</span><span class="lvl" aria-label="Niveau 3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></li><li><span class="n">Application Insights</span><span class="y">3 J.</span><span class="lvl" aria-label="Niveau 2 von 5"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></li><li><span class="n">Azure Databases</span><span class="y">5 J.</span><span class="lvl" aria-label="Niveau 3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></li></ul></div></div>
       </div>
     </div>
   </div>
@@ -604,10 +575,8 @@
       <li><a href="#leistungen">Leistungen</a></li>
       <li><a href="health-check/">Health Check</a></li>
       <li><a href="#referenzen">Referenzen</a></li>
-      <li><a href="#signature">Werkzeuge</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#werdegang">Werdegang</a></li>
-      <li><a href="#ueber">Über mich</a></li>
+      <li><a href="#arbeitsweise">Arbeitsweise</a></li>
+      <li><a href="#werdegang">Skills und Werdegang</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
   </nav>

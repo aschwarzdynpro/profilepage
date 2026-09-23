@@ -4,24 +4,26 @@ Die Startseite ist `index.html` und dort vollständig gepflegt. Diese Datei häl
 die Blöcke fest, die zur Angebotsfamilie gehören, damit Text und Platzierung
 nachvollziehbar bleiben, wenn weitere Angebote dazukommen.
 
-## Teaser Health Check (Block direkt unter dem Hero)
+## Angebotskarte Health Check (erste Karte unter „Was ich übernehme")
 
-Position: zwischen Hero und Kennzahlenleiste `.band`. Bewusst oberhalb der
-Kennzahlen, weil das Angebot die erste Handlungsmöglichkeit nach dem Hero ist.
+Position: erste Karte im Leistungsraster, volle Breite, dunkel abgesetzt (`.service.offer`).
+Der frühere weiße Teaser-Streifen zwischen Hero und Kennzahlen ist weg: er hat den Einstieg
+Hero, Kennzahlen, Leistungen unterbrochen. Als Karte steht das Angebot dort, wo jemand
+gerade liest, was es zu kaufen gibt.
 
-Headline: Neu: Dynamics 365 Health Check zum Festpreis
+Kicker: Einstieg zum Festpreis
 
-Text: Scorecard, Risiken und Maßnahmenplan in 5 Tagen. Unabhängig und toolgestützt.
+Headline: Dynamics 365 Health Check
 
-Button: Mehr erfahren, Ziel `/health-check`
+Text: Scorecard, Risiken und Maßnahmenplan in 5 Tagen. Unabhängig und toolgestützt, mit
+festem Umfang und festem Preis.
 
-Gestaltung: weißer Streifen mit 3px Oberkante in `--sky`, damit er sich vom Hero
-darüber und der Kennzahlenleiste darunter absetzt. Unter 640px steht der Knopf auf
-voller Breite unter dem Text.
+Kacheln: Performance, Sicherheitsrollen, Solution-Schnitt, Kapazität & Lizenzen, Maßnahmenplan
 
-Sobald ein zweites Angebot live ist, wird aus dem Streifen ein Zweierraster oder der
-Teaser verweist auf eine Übersichtsseite. Ein Stapel einzelner Teaser unter dem Hero
-soll es nicht werden.
+Button: Health Check ansehen, Ziel `/health-check`
+
+Sobald ein zweites Angebot live ist, teilen sich die Angebote die Karte oder die Karte
+verweist auf eine Übersichtsseite. Ein Stapel dunkler Karten soll es nicht werden.
 
 ## Navigationseintrag
 

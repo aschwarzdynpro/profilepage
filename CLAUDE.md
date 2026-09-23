@@ -22,7 +22,7 @@ Einrichtung und DNS stehen in `README.md`.
 ## Design-Tokens (in `:root`)
 - Navy `--navy #0F1E33` (Hero, Nav, Kontakt), Akzent `--sky #6DB4FF`, Papier `--bg #F6F7F9`
 - Schrift: Manrope (Überschriften), IBM Plex Sans (Fließtext), selbst gehostet als Variable Fonts in `assets/fonts/`
-- Skills: Netzdiagramm `.radar` (SVG, Skala 1–5) + Balkengruppen `.sg` (5 Segmente = Niveau, Zahl = Jahre)
+- Skills: Balkengruppen `.sg` (5 Segmente = Niveau, Zahl = Jahre), neben dem Werdegang. Das frühere Netzdiagramm ist bewusst weg, eine Selbsteinschätzung auf 1 bis 5 überzeugt niemanden.
 
 ## Screenshots der Konsole
 `assets/screenshots/*.webp` sind **selbst aufgenommen**, nicht vom Kunden geliefert.
@@ -56,7 +56,8 @@ Breakpoint dasselbe Panel von unten. Klassennamen (`.toc-shell`, `.toc`, `.toc-f
 `.toc-backdrop`) und Verhalten sind absichtlich gleich, jede Datei trägt ihre eigene
 Kopie von CSS und Skript.
 
-- `index.html`: Kopfleiste mit den sechs Abschnitten, aktiver Eintrag weiss mit
+- `index.html`: Kopfleiste mit den fünf Einträgen Leistungen, Health Check, Referenzen,
+  Arbeitsweise, Skills und Werdegang plus Kontakt, aktiver Eintrag weiss mit
   Unterstrich in `--sky`. Unter 900px Panel über den Knopf „Menü" rechts unten.
 - `solution-admin-console.html`: mitlaufende Spalte links mit allen 27 Sprungzielen,
   offen ist immer genau eine Gruppe. Unter 1100px Panel über den Knopf „Inhalt",
@@ -123,6 +124,22 @@ gibt, und `npm run shot` würde abbrechen. Als Link fließen Daten erst nach ein
 **Kein CMS.** Es gibt keine Redaktionsoberfläche und keinen Sync in ein fremdes System.
 Seite, Blöcke, SEO-Felder, Navigationseintrag und Teaser sind Code in diesem Repo.
 
+## Aufbau der Startseite
+Problem-first, nicht Lebenslauf-first: Hero, Kennzahlen, Leistungen, Referenzen,
+Arbeitsweise, Skills und Werdegang, Kontakt. Die Seite verkauft direkt an Entscheider,
+die fragen „löst er mein Problem, hat er das schon gemacht". Skills und Werdegang stehen
+deshalb hinten als Nachweis, nicht vorn als Argument. Wer sie an den Anfang schieben will,
+baut die Seite für Recruiter um, und das ist nicht die Zielgruppe.
+
+- Der Health Check ist die erste Karte unter „Was ich übernehme" (`.service.offer`), kein
+  eigener Streifen unter dem Hero. Die Karte „Systemanalyse und Reviews" bleibt daneben der
+  Einstieg für den individuell geschnittenen Auftrag.
+- Die Mandatsliste unter den Referenzkarten ist eine Zeile je Einsatz. Die Geschichten
+  stehen in den Karten, die Details im Profil-Dokument. Nicht wieder zu Absätzen aufblasen.
+- „Wie ich arbeite" bündelt Foto, Kurzvorstellung, die vier Grundsätze und die Werkzeuge.
+  Es gibt keinen eigenen Abschnitt „Über mich" mehr, die Fakten (Standort, Verfügbarkeit,
+  Zertifizierungen) stehen unter dem Werdegang.
+
 ## Inhaltliche Quelle
 Massgeblich ist das **englische** Profil-Dokument `Profile_Andy_Schwarz_2026.docx`
 (in `OneDrive/Dokumente/Job/`). Zahlen auf der Site folgen ihm, mit einer bewussten Ausnahme:
@@ -140,11 +157,13 @@ zusammenpassen. Payment Services heisst überall `Dynamics 365 Specialist`.
 ## Offen
 - Jahreszahlen zwischen deutschem und englischem Profil abgleichen.
 - Pro Referenz eine belastbare Kennzahl ergänzen.
+- Link „Profil als PDF" im Hero für Recruiter und Vendor Management, sobald eine PDF-Fassung des
+  Profil-Dokuments in `assets/` liegt. Bis dahin kein Link, ein toter Link wäre schlimmer als keiner.
 
 ### Health Check, verbleibende manuelle Schritte
 Alles, was an anderer Stelle Redaktionsarbeit in einem CMS wäre, ist hier bereits Code und
 erledigt: Seite angelegt (`health-check/index.html`), Blöcke gesetzt, SEO-Felder im `<head>`,
-Navigationseintrag in Kopfleiste und Panel, Teaser unter dem Hero der Startseite,
+Navigationseintrag in Kopfleiste und Panel, Angebotskarte unter „Was ich übernehme",
 CTA verdrahtet, Verzeichnis im Deploy-Workflow, Eintrag in `sitemap.xml` und in `scripts/shot.mjs`.
 Offen bleibt:
 
