@@ -91,7 +91,7 @@
   .hero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
   .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:40px 40px;mask-image:linear-gradient(90deg,transparent 25%,#000 70%);-webkit-mask-image:linear-gradient(90deg,transparent 25%,#000 70%)}
   .hero .wrap>*{min-width:0}
-  .hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3.5rem;align-items:center;padding:5.5rem 0 5rem}
+  .hero .wrap{position:relative;padding:5.5rem 0 5rem}
   .hero .kicker{color:var(--sky)}
   .hero h1{font-size:clamp(2.2rem,4vw,3.3rem);max-width:16ch;hyphens:manual}
   .hero .lead{margin-top:1.6rem;font-size:1.2rem;line-height:1.55;color:#B9C7DA;max-width:46ch}
@@ -101,20 +101,8 @@
   .btn{display:inline-flex;align-items:center;padding:.9rem 1.5rem;font-weight:600;font-size:1rem;border-radius:4px;border:1px solid transparent;transition:background .15s,border-color .15s;font-family:var(--display)}
   .btn.primary{background:var(--sky);color:var(--navy)}.btn.primary:hover{background:#8CC6FF}
   .btn.outline{border-color:#4E678E;color:#fff}.btn.outline:hover{border-color:#fff}
-  @media (max-width:960px){.hero .wrap{grid-template-columns:1fr;gap:3rem;padding:4rem 0}}
+  @media (max-width:960px){.hero .wrap{padding:4rem 0}}
 
-  .blueprint{width:100%;height:auto;display:block}
-  .blueprint .box{fill:var(--navy-2);stroke:#7F98BC;stroke-width:1.2}
-  .blueprint .box.core{fill:#1A365B;stroke:var(--sky);stroke-width:1.8}
-  .blueprint .lbl{font-family:var(--display);font-size:11.5px;font-weight:600;fill:#fff}
-  .blueprint .sub{font-family:var(--body);font-size:10px;fill:#9DB2CE}
-  .blueprint .wire{fill:none;stroke:#557199;stroke-width:1.1;stroke-dasharray:4 3}
-  .blueprint .wire.solid{stroke-dasharray:none;stroke:#8AA6CC;stroke-width:1.3}
-  .blueprint .pulse{fill:var(--sky);filter:drop-shadow(0 0 4px rgba(109,180,255,.9))}
-  .blueprint .note{font-family:var(--body);font-size:10.5px;font-style:italic;fill:var(--sky)}
-  .blueprint .frame{fill:none;stroke:#2C4468;stroke-width:1}
-  .blueprint .title{font-family:var(--body);font-size:10px;fill:#7F98BC}
-  @media (prefers-reduced-motion:reduce){.blueprint .pulse{display:none}}
 
   .band{background:var(--white);border-bottom:1px solid var(--line)}
   .band .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
@@ -333,46 +321,6 @@
         <a class="btn outline" href="#referenzen">Referenzen lesen</a>
       </div>
     </div>
-
-    <figure aria-label="Schematische Systemlandschaft: Regelwerk aus Konfigurationstabellen, Aufbewahrungsklassen und Guard-Bedingungen steuern Dataverse; von dort führen Wege in ein unveränderliches Blob-Archiv und über Synapse Link in einen Data Lake Gen2. Drei geplante Jobs laufen als Kette: Bewertung, Archivierung, Löschung.">
-      <svg class="blueprint" viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg">
-        <rect class="frame" x="0.5" y="0.5" width="559" height="419" rx="4"/>
-        <line class="frame" x1="0" y1="28" x2="560" y2="28"/>
-        <text class="title" x="14" y="18">Referenzlandschaft · Aufbewahrung + Löschung</text>
-        <text class="title" x="546" y="18" text-anchor="end">Blatt 1 / 1</text>
-        <path id="w1" class="wire" d="M190 78 L220 78 L220 126 L250 126"/>
-        <path id="w2" class="wire solid" d="M190 146 L250 146"/>
-        <path id="w3" class="wire" d="M190 214 L220 214 L220 170 L250 170"/>
-        <path id="w4" class="wire solid" d="M370 126 L430 126"/>
-        <path id="w5" class="wire" d="M370 170 L400 170 L400 194 L430 194"/>
-        <path id="w6" class="wire" d="M310 192 L310 250"/>
-        <path id="w7" class="wire" d="M110 250 L450 250"/>
-        <path id="w8" class="wire" d="M110 250 L110 286"/>
-        <path id="w9" class="wire" d="M280 250 L280 286"/>
-        <path id="w10" class="wire" d="M450 250 L450 286"/>
-        <path id="w11" class="wire solid" d="M180 308 L210 308"/>
-        <path id="w12" class="wire solid" d="M350 308 L380 308"/>
-        <g><rect class="box" x="40" y="56" width="150" height="44" rx="3"/><text class="lbl" x="115" y="76" text-anchor="middle">Regelwerk</text><text class="sub" x="115" y="90" text-anchor="middle">9 Konfigurationstabellen</text></g>
-        <g><rect class="box" x="40" y="124" width="150" height="44" rx="3"/><text class="lbl" x="115" y="144" text-anchor="middle">Aufbewahrungsklassen</text><text class="sub" x="115" y="158" text-anchor="middle">GoBD · DSGVO</text></g>
-        <g><rect class="box" x="40" y="192" width="150" height="44" rx="3"/><text class="lbl" x="115" y="212" text-anchor="middle">Guard-Bedingungen</text><text class="sub" x="115" y="226" text-anchor="middle">Feldausschlüsse</text></g>
-        <g><rect class="box core" x="250" y="104" width="120" height="88" rx="3"/><text class="lbl" x="310" y="146" text-anchor="middle">Dataverse</text><text class="sub" x="310" y="160" text-anchor="middle">CE · Plugins (.NET 8)</text></g>
-        <g><rect class="box" x="430" y="104" width="120" height="44" rx="3"/><text class="lbl" x="490" y="124" text-anchor="middle">Blob-Archiv</text><text class="sub" x="490" y="138" text-anchor="middle">unveränderlich</text></g>
-        <g><rect class="box" x="430" y="172" width="120" height="44" rx="3"/><text class="lbl" x="490" y="192" text-anchor="middle">Data Lake Gen2</text><text class="sub" x="490" y="206" text-anchor="middle">Synapse Link</text></g>
-        <g><rect class="box" x="40" y="286" width="140" height="44" rx="3"/><text class="lbl" x="110" y="306" text-anchor="middle">Bewertung</text><text class="sub" x="110" y="320" text-anchor="middle">geplanter Job</text></g>
-        <g><rect class="box" x="210" y="286" width="140" height="44" rx="3"/><text class="lbl" x="280" y="306" text-anchor="middle">Archivierung</text><text class="sub" x="280" y="320" text-anchor="middle">Blob je Datensatz</text></g>
-        <g><rect class="box" x="380" y="286" width="140" height="44" rx="3"/><text class="lbl" x="450" y="306" text-anchor="middle">Löschung</text><text class="sub" x="450" y="320" text-anchor="middle">nach Prüffenster</text></g>
-        <text class="note" x="430" y="96">Archiv je Datensatz</text>
-        <text class="note" x="376" y="188">Export</text>
-        <text class="note" x="318" y="244">geplante Jobs</text>
-        <circle class="pulse" r="3.2"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#w2"/></animateMotion></circle>
-        <circle class="pulse" r="3.2"><animateMotion dur="2.6s" repeatCount="indefinite" begin="1.2s"><mpath href="#w4"/></animateMotion></circle>
-        <circle class="pulse" r="3.2"><animateMotion dur="5s" repeatCount="indefinite" begin="0.6s"><mpath href="#w1"/></animateMotion></circle>
-        <circle class="pulse" r="3.2"><animateMotion dur="4.5s" repeatCount="indefinite" begin="2s"><mpath href="#w6"/></animateMotion></circle>
-        <circle class="pulse" r="3.2"><animateMotion dur="3.4s" repeatCount="indefinite" begin="2.6s"><mpath href="#w11"/></animateMotion></circle>
-        <circle class="pulse" r="3.2"><animateMotion dur="3.4s" repeatCount="indefinite" begin="3.8s"><mpath href="#w12"/></animateMotion></circle>
-        <text class="title" x="546" y="405" text-anchor="end">gez. A. Schwarz · Nürnberg</text>
-      </svg>
-    </figure>
   </div>
 </section>
 
