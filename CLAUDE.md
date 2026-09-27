@@ -136,6 +136,9 @@ baut die Seite für Recruiter um, und das ist nicht die Zielgruppe.
   Einstieg für den individuell geschnittenen Auftrag.
 - Die Mandatsliste unter den Referenzkarten ist eine Zeile je Einsatz. Die Geschichten
   stehen in den Karten, die Details im Profil-Dokument. Nicht wieder zu Absätzen aufblasen.
+  Hat ein Mandat eine Karte, wiederholt die Zeile deren Lösung nicht: Stichwort plus Link
+  „Fallbeispiel oben“ auf die `id` der Karte, und nur, was die Karte nicht schon sagt.
+  Zeitraum steht in der Karte, Branche heisst in Karte und Zeile gleich.
 - „Wie ich arbeite" bündelt Foto, Kurzvorstellung, die vier Grundsätze und die Werkzeuge.
   Es gibt keinen eigenen Abschnitt „Über mich" mehr, die Fakten (Standort, Verfügbarkeit,
   Zertifizierungen) stehen unter dem Werdegang.

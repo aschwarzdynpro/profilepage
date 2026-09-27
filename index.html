@@ -47,7 +47,7 @@
   a:focus-visible,button:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
   h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.1;letter-spacing:-0.02em}
   .wrap{width:min(1200px,100% - 3rem);margin-inline:auto}
-  section[id]{scroll-margin-top:88px}
+  section[id],.case[id]{scroll-margin-top:88px}
   .kicker{font-size:.95rem;font-weight:600;color:var(--ink-3);margin-bottom:.9rem}
 
   .nav{position:sticky;top:0;z-index:30;background:var(--navy);border-bottom:1px solid var(--navy-line);color:#E6EDF7}
@@ -164,6 +164,7 @@
   .mandate .who{font-family:var(--display);font-weight:700;font-size:1.02rem}
   .mandate .who span{display:block;font-weight:500;color:var(--ink-3);font-size:.9rem}
   .mandate p{color:var(--ink-2);font-size:.95rem}
+  .mandate p a.more{font-size:.92rem}
   @media (max-width:900px){.mandate{grid-template-columns:150px 1fr}.mandate p{grid-column:2}}
   @media (max-width:560px){.mandate{grid-template-columns:1fr;gap:.25rem}.mandate p{grid-column:1}}
 
@@ -406,10 +407,11 @@
       <p>Drei Vorhaben aus Mandaten und ein eigenes Produkt, die zeigen, wie ich arbeite. Darunter alle Mandate seit 2022 im Überblick. Kundennamen anonymisiert, Referenzen auf Anfrage.</p>
     </div>
 
-    <article class="case">
+    <article class="case" id="ref-payment">
       <div class="meta">
         <div class="industry">Payment Services</div>
         <dl>
+          <dt>Zeitraum</dt><dd>09/2022 – 10/2026</dd>
           <dt>Rolle</dt><dd>Dynamics 365 Specialist</dd>
           <dt>Thema</dt><dd>Datenlebenszyklus, GoBD, DSGVO</dd>
           <dt>Stack</dt><dd>Dataverse, .NET 8, Data Lake Gen2, Synapse Link, Azure DevOps</dd>
@@ -425,10 +427,11 @@
       </div>
     </article>
 
-    <article class="case">
+    <article class="case" id="ref-lighting">
       <div class="meta">
-        <div class="industry">Industrial Lighting</div>
+        <div class="industry">Industrial Lighting Manufacturer</div>
         <dl>
+          <dt>Zeitraum</dt><dd>02/2024 – heute</dd>
           <dt>Rolle</dt><dd>Solution Architect</dd>
           <dt>Thema</dt><dd>Sales, Customer Service, Field Service, ALM</dd>
           <dt>Stack</dt><dd>D365 CE, PAC CLI, PCF, C# Plugins, Code Apps, Azure DevOps</dd>
@@ -444,10 +447,11 @@
       </div>
     </article>
 
-    <article class="case">
+    <article class="case" id="ref-travel">
       <div class="meta">
         <div class="industry">Travel Industry</div>
         <dl>
+          <dt>Zeitraum</dt><dd>02/2026 – heute</dd>
           <dt>Rolle</dt><dd>Solution Architect</dd>
           <dt>Thema</dt><dd>Contact Center, Omnichannel, ALM</dd>
           <dt>Stack</dt><dd>D365 Contact Center, Omnichannel (WhatsApp, E-Mail), Azure Communication Services, Azure DevOps</dd>
@@ -485,10 +489,10 @@
     <div class="mandates">
       <h3>Mandate seit 2022</h3>
       <p>Alle Einsätze freiberuflich unter DynamicsPro, teils parallel. Dazu Lead-Architect-Rollen, ALM-Einführungen, System-Health-Checks sowie Diagnose- und Analysearbeit in über zehn weiteren Projekten.</p>
-      <div class="mandate"><div class="when">02/2026 – heute</div><div class="who">Travel Industry<span>Solution Architect</span></div><p>Analyse und Design einer Contact-Center-Lösung, ALM auf Azure DevOps, Leitung der Umsetzung von WhatsApp- und E-Mail-Kanal.</p></div>
-      <div class="mandate"><div class="when">02/2024 – heute</div><div class="who">Industrial Lighting Manufacturer<span>Solution Architect</span></div><p>Architectural Lead einer Multi-Stream-Einführung von Sales, Customer Service und Field Service, ALM-Strategie, Code Apps für den Außendienst.</p></div>
+      <div class="mandate"><div class="when">02/2026 – heute</div><div class="who">Travel Industry<span>Solution Architect</span></div><p>Contact Center mit WhatsApp und E-Mail. <a class="more" href="#ref-travel">Fallbeispiel oben</a></p></div>
+      <div class="mandate"><div class="when">02/2024 – heute</div><div class="who">Industrial Lighting Manufacturer<span>Solution Architect</span></div><p>Architectural Lead der Dynamics-365-Einführung. <a class="more" href="#ref-lighting">Fallbeispiel oben</a></p></div>
       <div class="mandate"><div class="when">02/2024 – heute</div><div class="who">Engineering<span>Architecture Advisor</span></div><p>Architektur-Workshops zu Multi-Company-Setup, Integrationsszenarien und Multi-Workload-Ansätzen für eine Branchenlösung auf Dynamics 365.</p></div>
-      <div class="mandate"><div class="when">09/2022 – 10/2026</div><div class="who">Payment Services<span>Dynamics 365 Specialist</span></div><p>Architekturstandards, Monitoring und Center-of-Excellence-Praktiken, revisionssichere Archivierungs- und Löschpipeline für Dataverse.</p></div>
+      <div class="mandate"><div class="when">09/2022 – 10/2026</div><div class="who">Payment Services<span>Dynamics 365 Specialist</span></div><p>Architekturstandards, Monitoring und Center-of-Excellence-Praktiken für die Dynamics-Plattform. <a class="more" href="#ref-payment">Fallbeispiel oben</a></p></div>
       <div class="mandate"><div class="when">08/2022 – heute</div><div class="who">Automation Engineering<span>Solution Architect</span></div><p>Einführung von Sales, Field Service und Project Operations mit Dual Write zu Finance &amp; Operations, Integration Workday ↔ Field Service, Release-Automation.</p></div>
     </div>
   </div>
