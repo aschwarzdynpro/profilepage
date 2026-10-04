@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="alternate" hreflang="de" href="https://dynamicspro.de/blog/translation-studio/">
+<link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/blog/translation-studio/">
+<link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/blog/translation-studio/">
+<title>Three languages, one zip file, and nobody sees what is missing · DynamicsPro</title>
+<meta name="description" content="How Translation Studio came about: making missing translations of Dataverse labels visible per solution and language, filling them inline or via CSV, and bringing them back through the standard import.">
+<link rel="canonical" href="https://dynamicspro.de/en/blog/translation-studio/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#fbfaf7">
+<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../../assets/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="DynamicsPro Blog" href="https://dynamicspro.de/en/blog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="DynamicsPro">
+<meta property="og:url" content="https://dynamicspro.de/en/blog/translation-studio/">
+<meta property="og:title" content="Three languages, one zip file, and nobody sees what is missing">
+<meta property="og:description" content="How Translation Studio came about: making missing translations of Dataverse labels visible per solution and language, filling them inline or via CSV, and bringing them back through the standard import.">
+<meta property="og:image" content="https://dynamicspro.de/assets/og-en-blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-10-03">
+<meta property="article:author" content="Andy Schwarz">
+<link rel="preload" href="../../../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../../assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../../assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../../assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../../assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../../../assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../../../assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+  :root{
+    --paper:#fbfaf7;--paper-2:#f1efe9;--rule:#d8d4cc;--rule-2:#bdb7ac;
+    --ink:#1a1a1a;--ink-2:#444;--ink-3:#7a766f;--red:#b5342b;--red-soft:rgba(181,52,43,.08);
+    --display:"Manrope",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:var(--body);font-size:18px;line-height:1.7;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing:-0.025em}
+  em{font-style:normal;font-weight:600;color:var(--ink)}
+  .wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+  .kicker{font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+
+  /* Impressum-Leiste */
+  .nav{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--ink)}
+  .nav .wrap{display:flex;align-items:center;gap:1.4rem;height:60px}
+  .mark{font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:-0.02em;display:inline-flex;align-items:center;gap:.5rem;margin-right:auto}
+  .mark svg{width:20px;height:20px}
+  .mark small{font-family:var(--body);font-weight:400;font-size:.8rem;color:var(--ink-3);margin-left:.6rem;letter-spacing:.08em;text-transform:uppercase}
+  .nav .back,.nav .cta{font-family:var(--display);font-weight:700;font-size:.85rem}
+  .nav .back{color:var(--ink-2)}
+  .nav .back:hover{color:var(--ink)}
+  .nav .cta{color:var(--paper);background:var(--ink);padding:.45rem .95rem}
+  .nav .cta:hover{background:var(--red)}
+  @media (max-width:640px){.nav .back,.mark small{display:none}}
+
+  /* Beitragskopf */
+  .head{padding:3.2rem 0 2.4rem;border-bottom:3px double var(--ink)}
+  .head h1{font-size:clamp(2.3rem,6vw,4.4rem);max-width:18ch;margin-top:1rem}
+  .head .deck{margin-top:1.4rem;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.45;color:var(--ink-2);max-width:48ch;font-weight:300}
+  .byline{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin-top:2rem;padding-top:.9rem;border-top:1px solid var(--ink);font-size:.9rem;color:var(--ink-2)}
+  .byline b{font-family:var(--display);font-weight:700;color:var(--ink)}
+
+  /* Text */
+  main{padding:3rem 0 4rem}
+  .post{width:min(68ch,100%);margin-inline:auto}
+  .post>p{margin-top:1.2rem;color:var(--ink-2)}
+  .post>p:first-child{margin-top:0}
+  .post>p:first-child::first-letter{font-family:var(--display);font-weight:800;font-size:3.9em;line-height:.8;float:left;padding:.08em .14em 0 0;color:var(--ink)}
+  .post h2{counter-increment:sec;margin-top:3.4rem;font-size:1.65rem;max-width:24ch}
+  .post h2::before{content:counter(sec,decimal-leading-zero);display:block;font-size:.85rem;letter-spacing:.14em;color:var(--red);margin-bottom:.6rem;font-weight:700}
+  .post h2.rev::before{content:"Addendum"}
+  .post h2.rev{padding-top:1.4rem;border-top:1px solid var(--ink)}
+  .post h2+p{margin-top:1rem}
+  .post{counter-reset:sec}
+  .post ul{margin:1rem 0 0 1.2rem;color:var(--ink-2)}
+  .post code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.86em;background:var(--paper-2);padding:.05em .4em;border-radius:2px;color:var(--ink)}
+  .post a{box-shadow:inset 0 -1px 0 var(--red);font-weight:500}
+  .post a:hover{background:var(--red-soft)}
+  .post .aside{margin:1.8rem 0 0;padding:.2rem 0 .2rem 1.3rem;border-left:3px solid var(--red);color:var(--ink-2);font-size:1rem}
+  .post .aside p+p{margin-top:.7rem}
+  .pull{margin:2.8rem 0 2.4rem;padding:1.6rem 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;letter-spacing:-0.02em;color:var(--ink);max-width:28ch}
+  .pull::before{content:"\201C";color:var(--red)}
+  .pull::after{content:"\201D";color:var(--red)}
+  /* Abbildungen breiter als der Text */
+  .shot{margin:2.2rem 0 0;width:min(100vw - 2.5rem,900px);margin-left:calc(50% - min(100vw - 2.5rem,900px)/2)}
+  .shot img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+  .shot figcaption{margin-top:.7rem;font-size:.86rem;color:var(--ink-3);line-height:1.5;border-left:2px solid var(--red);padding-left:.8rem;max-width:68ch}
+
+  /* Serie */
+  .series{width:min(68ch,100%);margin:3.6rem auto 0;border-top:3px double var(--ink);padding-top:1.2rem}
+  .series ol{list-style:none;margin-top:.8rem}
+  .series li{border-bottom:1px solid var(--rule);padding:.7rem 0}
+  .series li a{display:grid;grid-template-columns:2.8rem 1fr;gap:.6rem;align-items:baseline}
+  .series li a i{font-style:normal;font-family:var(--display);font-weight:800;color:var(--red);font-size:.9rem;letter-spacing:.1em}
+  .series li a b{font-family:var(--display);font-weight:700}
+  .series li a:hover b{box-shadow:inset 0 -2px 0 var(--red)}
+  .series li.now a b{color:var(--ink-3)}
+  .series li.now a b::after{content:" · you are reading this one";font-family:var(--body);font-weight:400;font-size:.85rem}
+
+  /* Übersicht */
+  .mast{padding:3.2rem 0 1.6rem;border-bottom:3px double var(--ink)}
+  .mast h1{font-size:clamp(3rem,9vw,6.5rem);letter-spacing:-0.04em;line-height:.95}
+  .mast .deck{margin-top:1.2rem;font-size:1.2rem;color:var(--ink-2);max-width:60ch;font-weight:300}
+  .lead{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;padding:2.4rem 0;border-bottom:1px solid var(--ink);align-items:center}
+  .lead h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-top:.6rem;max-width:20ch}
+  .lead h2 a:hover{box-shadow:inset 0 -3px 0 var(--red)}
+  .lead p{margin-top:1rem;color:var(--ink-2)}
+  .lead img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+  .lead .meta{margin-top:1rem;font-size:.88rem;color:var(--ink-3)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem}
+  .story{padding:1.6rem 0;border-bottom:1px solid var(--rule)}
+  .story h2{font-size:1.45rem;margin-top:.5rem;max-width:22ch}
+  .story h2 a:hover{box-shadow:inset 0 -2px 0 var(--red)}
+  .story p{margin-top:.7rem;color:var(--ink-2);font-size:.98rem}
+  .story .meta{margin-top:.8rem;font-size:.86rem;color:var(--ink-3)}
+  .note{padding:1.6rem 0 0;font-size:.95rem;color:var(--ink-2);max-width:68ch}
+  .note a{box-shadow:inset 0 -1px 0 var(--red)}
+  @media (max-width:820px){.lead{grid-template-columns:1fr;gap:1.4rem}.grid{grid-template-columns:1fr}}
+
+  .contact{border-top:3px double var(--ink);margin-top:1rem}
+  .contact .wrap{padding:3rem 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:3rem;align-items:start}
+  .contact h2{font-size:1.9rem;max-width:20ch;margin-top:.6rem}
+  .contact p{margin-top:.9rem;color:var(--ink-2);max-width:46ch}
+  .contact .card a{display:block;padding:.75rem 0;border-bottom:1px solid var(--rule);font-family:var(--display);font-weight:700}
+  .contact .card a:hover{color:var(--red)}
+  .contact .card small{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;color:var(--ink-3)}
+  @media (max-width:820px){.contact .wrap{grid-template-columns:1fr;gap:1.6rem}}
+  footer{padding:1.6rem 0 2.6rem;font-size:.85rem;color:var(--ink-3)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a:hover{color:var(--ink)}
+
+  /* Sprachumschalter in der Kopfleiste */
+  .nav .wrap{gap:1rem}
+  .nav .mark{margin-right:auto}
+  .nav a.lang,.nav li.lang a{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.12em;line-height:1;color:var(--ink);border:1px solid var(--ink);padding:.38rem .5rem;white-space:nowrap}
+  .nav a.lang:hover,.nav li.lang a:hover{background:var(--ink);color:var(--bg,#fbfaf7)}
+  @media (max-width:900px){.nav .main li.lang{display:list-item}}
+</style>
+</head>
+
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="/en/" aria-label="DynamicsPro, to the home page">
+      <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#b5342b"/><rect x="15" y="3" width="8" height="8" stroke="#1a1a1a" stroke-width="1.6"/><rect x="3" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.6"/><rect x="15" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.6"/></svg>
+      DynamicsPro<small>Workshop notes</small>
+    </a>
+    <a class="back" href="../">All posts</a>
+    <a class="lang" href="/blog/translation-studio/?lang=de" hreflang="de" lang="de" aria-label="Deutsche Fassung">DE</a>
+    <a class="cta" href="#kontakt">Contact</a>
+  </div>
+</header>
+
+<section class="head">
+  <div class="wrap">
+    <span class="kicker">Translation Studio</span>
+    <h1>Three languages, one zip file, and nobody sees what is missing</h1>
+    <p class="deck">Dataverse keeps every label per installed language. If a translation is missing, French users see English field names. Nobody sees what is missing, and nobody keeps it up to date.</p>
+    <div class="byline"><span>By <b>Andy Schwarz</b></span><span>October 3, 2026</span><span>5 min read</span></div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+    <article class="post">
+
+<p>At a customer in the lighting industry, Dynamics 365 runs in three languages: English as the base, German and French for the national subsidiaries. Every table, every column, every choice value, every form and every view carries its display name per language. Every release adds new columns, and the translation comes when someone remembers. Usually someone remembers when the French subsidiary calls.</p>
+<figure class="shot loop">
+  <img src="../../../assets/blog/translation-globe.jpg" width="1024" height="572" loading="lazy" decoding="async" alt="Graphic: A globe with characters from many languages, source texts in English on the left, the same texts in French, Chinese and Japanese on the right.">
+  <figcaption>On the left the text in the base language, on the right what users should see in their own language. In Dataverse, what sits in between is a zip file.</figcaption>
+</figure>
+
+<h2>The standard way</h2>
+<p>The route Microsoft provides for this has been the same for many versions. Export translations in the maker portal. You get a zip file with an Excel 2003 XML file inside, one sheet with all labels, one column per language, several thousand rows. You open it in Excel, find the empty cells in the French column, fill them, save without breaking the format, zip it back up, import, publish. XrmToolBox has tools that make the trip to Excel more comfortable. The basic problem remains. The file shows everything, not the gaps. And the business department that actually knows the translations has neither access to the maker portal nor any desire to work in an XML file with forty columns.</p>
+<p>I also wanted to see the second kind of gap, the one the export does not even list as a gap: a German cell that contains the English text. Someone copied the base text into all languages when the column was created, so that nothing would be empty, and ever since, the column has been called “Status Reason” in German.</p>
+
+<blockquote class="pull">The file shows everything, not the gaps.</blockquote>
+<h2>The same export, read differently</h2>
+<p>The decision that shaped everything else was made before the first line of code. A Code App reaches Dataverse through the connector, and the connector can read tables and call actions, but cannot write metadata. I know that from the Admin Console. So no metadata updates, but exactly the export and import that Microsoft provides. One action per direction, and both cover all component types in one format. The studio changes nothing outside that route. The file that goes back is the exported file plus the changed cells: no row removed, nothing re-sorted, formatting and unknown columns stay, and without changes the result is byte-identical to the export. There is a test for that, and it was the first one I wrote.</p>
+<p>The matrix sits on top of that. One row per label with type, component and column, the base text read-only, and per target language one cell in one of four states: missing, probably untranslated, changed, ok. “Probably” is meant honestly. “Status” is also German, which is why the cell can be marked as correct instead of the app deciding. Metrics per language sit above, and a click on a number sets the filter.</p>
+<figure class="shot">
+  <img src="../../../assets/screenshots/ts-matrix.webp" width="1600" height="928" loading="lazy" decoding="async" alt="Screenshot: The gap matrix of a solution with two target languages, metrics per language, filter bar, and for each cell its state and glossary suggestion.">
+  <figcaption>The matrix with two target languages. Sample data, a fictional fleet scenario, no customer data.</figcaption>
+</figure>
+<p>Two things turned out to be more useful during the build than I expected. The glossary: if the same base text is already translated elsewhere, the cell suggests it, and a button applies it to all identical base texts. In the sample data that takes care of a fifth of the gaps, in a real environment with years of customizing probably more. And the consistency report, which finds the same word with two different translations, “Notizen” here and “Anmerkungen” there. That is not a flaw in the export, that is the history of the environment.</p>
+<p>For the business department there is the CSV route. The filtered rows go out, only the gaps, with a stable key per row, and come back filled in. Reading them in shows in advance what changes and what will not be applied. Empty cells mean unchanged. Nobody has to go into the maker portal for this.</p>
+<figure class="shot">
+  <img src="../../../assets/screenshots/ts-anwenden.webp" width="1600" height="928" loading="lazy" decoding="async" alt="Screenshot: The preview before the import, only the changed cells, per row component, column, language, before and after.">
+  <figcaption>Before the import: only the changed cells, before and after. Then the import job runs, and the matrix is locked until it finishes.</figcaption>
+</figure>
+
+<h2>What I didn't know</h2>
+<p>The guardrails are in the code, not in the manual. The base language is never written. An unchanged file is never imported. An existing translation is never cleared, because it is not documented whether an empty cell means “delete” or “unchanged” on import. Texts over 500 characters are rejected, because the import fails on them. One import runs at a time, and while it runs, the matrix is locked.</p>
+<p>The last guardrail came out of the code review the same day: for the export, the app tries the next route after an error, native, connector, connector with bound path. For import and publish it only does that if the first route demonstrably does not exist, and never after a timeout. A timeout can mean that the import has long been running on the server. A second route would have started it twice.</p>
+<div class="aside">
+  <p>What I don't know from the documentation and will only see in the real environment: which of the three routes the export actually takes, whether the default solution can be exported, whether the import job table is readable for a normal user, and how large the file gets for an environment with Sales and Field Service. The app's setup page checks exactly that, and “Test export” shows route, size and languages before you change anything.</p>
+</div>
+
+<h2>Where it stands</h2>
+<p>The concept and the first version were written today, with tests for scanner, file round trip, gaps, glossary, CSV and import log, and a mock mode in which an import is simulated. The first run against the environment with three languages is up next. After that I will know whether the assumptions above hold, and then there will be a number here: how many gaps an environment that has grown over years actually has. I won't guess one. All features are on the <a href="../../translation-studio.html">product page</a>.</p>
+
+    </article>
+
+  </div>
+</main>
+
+<section id="kontakt" class="contact">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Contact</span>
+      <h2>More than one language in your environment?</h2>
+      <p>If nobody can say how many of your labels are actually translated, send me a short message. A first export of your environment shows where you stand.</p>
+    </div>
+    <div class="card">
+      <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de<small>Email, most reliable</small></a>
+      <a href="tel:+491735274172">+49 173 5274172<small>Phone</small></a>
+      <a href="../../">Back to the profile<small>Case studies, skills, career</small></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein near Nuremberg</span>
+    <span><a href="../../impressum.html">Legal notice</a> &nbsp;&middot;&nbsp; <a href="../../datenschutz.html">Privacy policy</a></span>
+  </div>
+</footer>
+</body>
+</html>

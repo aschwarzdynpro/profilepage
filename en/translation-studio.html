@@ -1,52 +1,40 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>
-/* Sprache vorbelegen: siehe CLAUDE.md, Abschnitt Zweisprachigkeit. Speichert nichts. */
-(function(){try{
-  var q=new URLSearchParams(location.search);
-  if(q.get('lang')==='de'){q.delete('lang');var s=q.toString();history.replaceState(null,'',location.pathname+(s?'?'+s:'')+location.hash);return}
-  if(navigator.webdriver||/bot|crawl|spider|slurp|preview|facebookexternalhit|lighthouse|headless/i.test(navigator.userAgent))return;
-  var r=document.referrer;if(r&&r.indexOf(location.origin+'/')===0)return;
-  var l=(navigator.languages&&navigator.languages[0])||navigator.language||'';
-  if(/^de(-|$)/i.test(l))return;
-  location.replace('/en'+location.pathname+location.search+location.hash);
-}catch(e){}})();
-</script>
 <link rel="alternate" hreflang="de" href="https://dynamicspro.de/translation-studio.html">
 <link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/translation-studio.html">
 <link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/translation-studio.html">
 <title>Translation Studio · DynamicsPro</title>
-<meta name="description" content="Power Apps Code App für mehrsprachige Dataverse-Umgebungen: fehlende Übersetzungen von Tabellen, Spalten, Auswahlwerten, Formularen und Ansichten je Solution und Sprache sehen, inline oder per CSV füllen, importieren und veröffentlichen.">
-<link rel="canonical" href="https://dynamicspro.de/translation-studio.html">
+<meta name="description" content="Power Apps code app for multilingual Dataverse environments: see missing translations of tables, columns, choice values, forms and views per solution and language, fill them inline or via CSV, import and publish.">
+<link rel="canonical" href="https://dynamicspro.de/en/translation-studio.html">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#fbfaf7">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/favicon.svg">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/favicon.svg">
 
 <meta property="og:type" content="website">
-<meta property="og:locale" content="de_DE">
+<meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="DynamicsPro">
-<meta property="og:url" content="https://dynamicspro.de/translation-studio.html">
+<meta property="og:url" content="https://dynamicspro.de/en/translation-studio.html">
 <meta property="og:title" content="Translation Studio">
-<meta property="og:description" content="Power Apps Code App für mehrsprachige Dataverse-Umgebungen: zeigt, welche Beschriftungen je Solution und Sprache fehlen, lässt sie in einer Matrix oder per CSV füllen und spielt sie über den Standard-Import zurück.">
-<meta property="og:image" content="https://dynamicspro.de/assets/og-studio.png">
+<meta property="og:description" content="Power Apps code app for multilingual Dataverse environments: shows which labels are missing per solution and language, lets you fill them in a matrix or via CSV and plays them back through the standard import.">
+<meta property="og:image" content="https://dynamicspro.de/assets/og-en-studio.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
-  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  /* Self-hosted (SIL Open Font License 1.1), no third-party request */
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 
   :root{
     --navy:#1a1a1a;--navy-2:#2a2a2a;--navy-line:#d8d4cc;
@@ -136,7 +124,7 @@
   footer{padding:2rem 0;font-size:.88rem;color:var(--ink-2)}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
   footer a:hover{color:var(--ink)}
-  /* Schwebendes Inhaltsverzeichnis: Desktop als mitlaufende Spalte, mobil als Panel */
+  /* Floating table of contents: sticky column on desktop, panel on mobile */
   section[id],article[id]{scroll-margin-top:96px}
   main .wrap{position:relative;padding-left:18rem}
   .toc-shell{position:absolute;left:0;top:0;bottom:0;width:15rem}
@@ -164,7 +152,7 @@
     .toc-close svg{width:16px;height:16px}
     .toc{position:static;flex:1 1 auto;max-height:none;overflow:auto;overscroll-behavior:contain;padding:1rem 1.4rem calc(1.4rem + env(safe-area-inset-bottom))}
     .toc-title{display:none}
-    /* Im Panel stehen alle Gruppen offen, sonst wäre nur die aktive erreichbar */
+    /* In the panel all groups are open, otherwise only the active one would be reachable */
     .toc.js .toc-group:not(.open)>.toc-sub{display:block}
     .toc-backdrop:not([hidden]){display:block;position:fixed;inset:0;z-index:55;background:rgba(15,30,51,.4)}
     .toc-fab{display:inline-flex;align-items:center;gap:.5rem;position:fixed;right:1.1rem;bottom:calc(1.1rem + env(safe-area-inset-bottom));z-index:65;border:0;cursor:pointer;font-family:var(--display);font-weight:600;font-size:.95rem;color:#fff;background:var(--navy);border-radius:999px;padding:.75rem 1.15rem;box-shadow:0 10px 24px rgba(15,30,51,.28)}
@@ -173,9 +161,9 @@
   }
   @media (prefers-reduced-motion:reduce){.toc-shell{transition:none}}
 
-  /* Magazin-Theme, gleiches Bild wie der Blog: helles Papier, Schwarz, Rot als einziger Akzent,
-     Doppellinien statt dunkler Flaechen. Ueberschreibt die Regeln darueber; wer eine Komponente
-     neu baut, baut sie gleich in diesem Bild. */
+  /* Magazine theme, same look as the blog: light paper, black, red as the only accent,
+     double rules instead of dark areas. Overrides the rules above; anyone building a new
+     component builds it in this look right away. */
   h1,h2,h3,h4{font-weight:800;letter-spacing:-0.025em}
   a:focus-visible,button:focus-visible{outline-color:var(--red)}
   .kicker{font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
@@ -241,26 +229,26 @@
 
 <header class="nav">
   <div class="wrap">
-    <a class="mark" href="/" aria-label="DynamicsPro, zur Startseite">
+    <a class="mark" href="/en/" aria-label="DynamicsPro, to the home page">
       <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#b5342b"/><rect x="15" y="3" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><rect x="3" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><rect x="15" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><path d="M11 7h4M7 11v4M19 11v4M11 19h4" stroke="#1a1a1a" stroke-width="1.5"/></svg>
       DynamicsPro
     </a>
-    <a class="back" href="/">Zurück zur Startseite</a>
-    <a class="lang" data-i18n href="/en/translation-studio.html" hreflang="en" lang="en" aria-label="English version">EN</a>
-    <a class="cta" href="#kontakt">Kontakt</a>
+    <a class="back" href="/en/">Back to home</a>
+    <a class="lang" data-i18n href="/translation-studio.html?lang=de" hreflang="de" lang="de" aria-label="Deutsche Fassung">DE</a>
+    <a class="cta" href="#kontakt">Contact</a>
   </div>
 </header>
 
 <section class="head">
   <div class="wrap">
-    <div class="kicker">Eigenes Produkt, vor dem ersten Kundeneinsatz</div>
+    <div class="kicker">Own product, before its first customer deployment</div>
     <h1>Translation Studio</h1>
-    <p class="lead">Eine Power Apps Code App für Dataverse-Umgebungen mit mehr als einer Sprache. Sie zeigt je Solution und Sprache, welche Beschriftungen fehlen oder vermutlich nie übersetzt wurden, lässt die Lücken direkt in einer Matrix oder per CSV durch die Fachabteilung füllen und spielt das Ergebnis über den Standard-Import von Dataverse zurück, mit Fortschritt, Protokoll und Veröffentlichung.</p>
+    <p class="lead">A Power Apps code app for Dataverse environments with more than one language. For each solution and language, it shows which labels are missing or were probably never translated, lets the business team fill the gaps directly in a matrix or via CSV, and plays the result back through the standard Dataverse import, with progress, log and publishing.</p>
     <dl class="facts">
-      <div><dt>Typ</dt><dd>Power Apps Code App, läuft im Tenant des Kunden</dd></div>
-      <div><dt>Technik</dt><dd>React, TypeScript, Vite, Fluent UI v9</dd></div>
-      <div><dt>Daten</dt><dd>Übersetzungs-Export und -Import von Dataverse, nur Metadaten</dd></div>
-      <div><dt>Umfang</dt><dd>Tabellen, Spalten, Auswahlwerte, Formulare, Ansichten</dd></div>
+      <div><dt>Type</dt><dd>Power Apps code app, runs in the customer's tenant</dd></div>
+      <div><dt>Stack</dt><dd>React, TypeScript, Vite, Fluent UI v9</dd></div>
+      <div><dt>Data</dt><dd>Dataverse translation export and import, metadata only</dd></div>
+      <div><dt>Scope</dt><dd>Tables, columns, choice values, forms, views</dd></div>
     </dl>
   </div>
 </section>
@@ -270,110 +258,110 @@
 
     <div class="toc-shell" id="toc-shell">
       <div class="toc-bar">
-        <span>Auf dieser Seite</span>
-        <button class="toc-close" id="toc-close" type="button" aria-label="Inhaltsverzeichnis schließen">
+        <span>On this page</span>
+        <button class="toc-close" id="toc-close" type="button" aria-label="Close contents">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>
         </button>
       </div>
       <nav class="toc" id="toc" aria-labelledby="toc-title">
-        <p class="toc-title" id="toc-title">Auf dieser Seite</p>
+        <p class="toc-title" id="toc-title">On this page</p>
         <ul>
-          <li class="toc-group"><a class="toc-head" href="#wofuer">Wofür</a></li>
+          <li class="toc-group"><a class="toc-head" href="#wofuer">What it's for</a></li>
           <li class="toc-group">
             <a class="toc-head" href="#studio">Studio</a>
             <ul class="toc-sub">
-              <li><a href="#scope">Solution und Sprachen</a></li>
-              <li><a href="#matrix">Lückenmatrix</a></li>
-              <li><a href="#filter">Filter und Kennzahlen</a></li>
-              <li><a href="#glossar">Glossar und Konsistenz</a></li>
-              <li><a href="#csv">CSV-Roundtrip</a></li>
-              <li><a href="#anwenden">Anwenden</a></li>
+              <li><a href="#scope">Solution and languages</a></li>
+              <li><a href="#matrix">Gap matrix</a></li>
+              <li><a href="#filter">Filters and metrics</a></li>
+              <li><a href="#glossar">Glossary and consistency</a></li>
+              <li><a href="#csv">CSV round trip</a></li>
+              <li><a href="#anwenden">Apply</a></li>
             </ul>
           </li>
           <li class="toc-group">
-            <a class="toc-head" href="#weitere">Weitere Bereiche</a>
+            <a class="toc-head" href="#weitere">Other areas</a>
             <ul class="toc-sub">
-              <li><a href="#verlauf">Verlauf</a></li>
-              <li><a href="#einrichtung">Einrichtung</a></li>
-              <li><a href="#hilfe">Hilfe</a></li>
+              <li><a href="#verlauf">History</a></li>
+              <li><a href="#einrichtung">Setup</a></li>
+              <li><a href="#hilfe">Help</a></li>
             </ul>
           </li>
           <li class="toc-group">
-            <a class="toc-head" href="#uebergreifend">Quer durch die App</a>
+            <a class="toc-head" href="#uebergreifend">Across the app</a>
             <ul class="toc-sub">
-              <li><a href="#leitplanken">Leitplanken</a></li>
-              <li><a href="#rechte">Rechte und Grenzen</a></li>
-              <li><a href="#datenweg">Datenweg</a></li>
-              <li><a href="#bauweise">Bauweise</a></li>
+              <li><a href="#leitplanken">Guardrails</a></li>
+              <li><a href="#rechte">Permissions and limits</a></li>
+              <li><a href="#datenweg">Data path</a></li>
+              <li><a href="#bauweise">How it is built</a></li>
             </ul>
           </li>
-          <li class="toc-group"><a class="toc-head" href="#kontakt">Kontakt</a></li>
+          <li class="toc-group"><a class="toc-head" href="#kontakt">Contact</a></li>
         </ul>
       </nav>
     </div>
 
     <section class="intro" id="wofuer">
-      <h2>Wofür</h2>
-      <p>Dataverse pflegt jede Beschriftung je installierter Sprache: den Anzeigenamen einer Tabelle, jede Spalte, jeden Auswahlwert, jeden Formular- und Ansichtsnamen. Fehlt eine Übersetzung, sehen französische Anwender englische Feldnamen. Der Standardweg, das zu beheben, ist seit Jahren derselbe: Übersetzungen exportieren, eine Zip-Datei mit einer Excel-2003-XML-Datei von tausenden Zeilen bekommen, darin ohne Filter nach dem suchen, was fehlt, importieren, veröffentlichen.</p>
-      <p>In der Praxis heißt das: Niemand sieht, was fehlt, und niemand pflegt es laufend. Mit jedem Release kommen neue Spalten dazu, die Lücke wächst. Das Translation Studio dreht den Weg um. Es liest denselben Export, zeigt nur die Lücken, lässt sie an Ort und Stelle füllen und schreibt dieselbe Datei mit den Änderungen zurück. An diesem Weg vorbei ändert es nichts an den Metadaten.</p>
-      <p>Im Spiel sind ausschließlich Metadaten, keine Geschäftsdaten. Die Abbildungen auf dieser Seite zeigen die App mit den eingebauten Beispieldaten, einem fiktiven Fuhrpark-Szenario in Englisch, Deutsch und Französisch, nicht mit Kundendaten.</p>
-      <p>Die App ist fertig gebaut und läuft vollständig mit Beispieldaten, einschließlich eines simulierten Imports. Der erste Einsatz in einer Kundenumgebung mit drei Sprachen steht an.</p>
+      <h2>What it's for</h2>
+      <p>Dataverse keeps every label once per installed language: the display name of a table, every column, every choice value, every form and view name. If a translation is missing, French users see English field names. The standard way to fix that has been the same for years: export the translations, get a zip file containing an Excel 2003 XML file with thousands of rows, search it without any filter for whatever is missing, import, publish.</p>
+      <p>In practice, that means nobody sees what is missing and nobody keeps it up to date. Every release adds new columns, and the gap grows. Translation Studio turns the process around. It reads the same export, shows only the gaps, lets you fill them in place and writes the same file back with your changes. It changes nothing in the metadata by any other route.</p>
+      <p>Only metadata is involved, no business data. The screenshots on this page show the app with its built-in sample data, a fictional fleet management scenario in English, German and French, not customer data.</p>
+      <p>The app is fully built and runs end to end with sample data, including a simulated import. The first deployment in a customer environment with three languages is coming up.</p>
     </section>
 
     <section class="group" id="studio">
       <header>
         <h2>Studio</h2>
-        <p>Der Arbeitsbereich: Solution laden, Lücken sehen, füllen, zurückspielen.</p>
+        <p>The workspace: load a solution, see the gaps, fill them, play them back.</p>
       </header>
       <div class="feats">
 
         <article class="feat" id="scope">
-          <h3>Solution und Sprachen</h3>
-          <p>Den Umfang bestimmt eine Solution aus der Umgebung. Unmanaged Solutions lassen sich bearbeiten, managed nur ansehen. Die Default-Solution steht ebenfalls zur Wahl, mit dem Hinweis, dass ihr Export sehr groß wird. Weil der Export immer die ganze Solution enthält, wirken die Komponententypen als Filter und nicht als Teil des Umfangs. Zielsprachen lassen sich an- und abwählen, die Basissprache ist immer dabei und nie editierbar.</p>
-          <ul><li>Managed nur lesen</li><li>Default mit Größenwarnung</li><li>Hinweis statt leerer Matrix bei nur einer Sprache</li></ul>
+          <h3>Solution and languages</h3>
+          <p>A solution from the environment defines the scope. Unmanaged solutions can be edited, managed ones can only be viewed. The default solution is available too, with a note that its export gets very large. Because the export always contains the whole solution, the component types act as a filter, not as part of the scope. Target languages can be selected and deselected; the base language is always included and never editable.</p>
+          <ul><li>Managed is read-only</li><li>Default with a size warning</li><li>A notice instead of an empty matrix when there is only one language</li></ul>
         </article>
 
         <article class="feat" id="filter">
-          <h3>Filter und Kennzahlen</h3>
-          <p>Gefiltert wird nach Zustand, Typ, Tabelle und Volltext. Der Standard ist <em>Lücken und Bearbeitetes</em>, damit eine gerade gefüllte Zeile sichtbar bleibt, statt aus der Liste zu verschwinden. Die Typ-Knöpfe tragen ihre Zähler, die Tabellenliste kommt aus den Metadaten der Umgebung, der Volltext sucht in allen Texten, Schlüsseln und Komponentennamen. Eine Leiste je Sprache zeigt die Abdeckung in Prozent sowie die Zahl der fehlenden, vermutlich unübersetzten und geänderten Zellen. Ein Klick auf eine Zahl setzt den Filter.</p>
-          <ul><li>CSV-Export und Bulk-Aktionen wirken auf die gefilterten Zeilen</li></ul>
+          <h3>Filters and metrics</h3>
+          <p>You filter by state, type, table and full text. The default is <em>Gaps and edits</em>, so a row you just filled stays visible instead of disappearing from the list. The type buttons show their counts, the table list comes from the environment's metadata, and the full-text search covers all texts, keys and component names. A bar per language shows coverage in percent along with the number of missing, probably untranslated and changed cells. Clicking a number sets the filter.</p>
+          <ul><li>CSV export and bulk actions apply to the filtered rows</li></ul>
         </article>
 
         <article class="feat wide" id="matrix">
-          <h3>Lückenmatrix</h3>
-          <p>Jede Zeile ist eine Beschriftung: Typ, Komponente mit Tabelle und Name, soweit aus den Metadaten auflösbar, die betroffene Spalte wie Anzeigename, Beschreibung oder Mehrzahl, der Text der Basissprache nur lesend und je Zielsprache eine editierbare Zelle. Vier Zustände je Zelle: <em>fehlt</em>, wenn die Zielsprache leer ist. <em>Vermutlich unübersetzt</em>, wenn der Text mit der Basissprache identisch ist. Das ist eine Vermutung, „Status“ ist auch Deutsch, deshalb lässt sich die Zelle als korrekt markieren, und die Markierung bleibt je Solution erhalten. <em>Geändert</em>, solange eine Bearbeitung noch nicht importiert ist, mit Rücknahme. Und <em>ok</em>.</p>
-          <p>Die Matrix rendert nur die sichtbaren Zeilen und kommt so auch mit zehntausenden Beschriftungen zurecht. Enter übernimmt, Esc verwirft. Texte über 500 Zeichen lehnt sie ab, weil der Import daran scheitern würde, und eine vorhandene Übersetzung lässt sich nicht leeren, weil nicht dokumentiert ist, ob eine leere Zelle beim Import „löschen“ oder „unverändert“ bedeutet.</p>
-          <ul><li>Vier Zustände mit Farbe</li><li>Korrekt-so-Markierung je Solution</li><li>Eigene Fensterung ohne Grid-Bibliothek</li></ul>
+          <h3>Gap matrix</h3>
+          <p>Each row is one label: the type, the component with table and name where the metadata can resolve them, the affected column such as display name, description or plural name, the base language text as read-only, and one editable cell per target language. Each cell has one of four states. <em>Missing</em> when the target language is empty. <em>Probably untranslated</em> when the text is identical to the base language. That is a guess, since “Status” is German too, so you can mark the cell as correct, and the mark is kept per solution. <em>Changed</em> as long as an edit has not been imported yet, with undo. And <em>ok</em>.</p>
+          <p>The matrix renders only the visible rows, so it copes with tens of thousands of labels. Enter commits, Esc discards. It rejects texts over 500 characters because the import would fail on them, and an existing translation cannot be cleared, because it is not documented whether an empty cell means “delete” or “unchanged” on import.</p>
+          <ul><li>Four color-coded states</li><li>“Correct as is” mark per solution</li><li>Custom windowing, no grid library</li></ul>
           <figure class="shot">
-            <img src="assets/screenshots/ts-matrix.webp" width="1600" height="928" loading="lazy" decoding="async" alt="Bildschirmfoto: Die Lückenmatrix einer Solution mit zwei Zielsprachen: Kennzahlen je Sprache, Filterleiste und je Zelle Zustand und Glossar-Vorschlag.">
-            <figcaption>Die Matrix einer Solution mit zwei Zielsprachen: Kennzahlen je Sprache, Filterleiste und je Zelle Zustand und Glossar-Vorschlag.</figcaption>
+            <img src="../assets/screenshots/ts-matrix.webp" width="1600" height="928" loading="lazy" decoding="async" alt="Screenshot: The gap matrix of a solution with two target languages: metrics per language, the filter bar, and each cell with its state and glossary suggestion.">
+            <figcaption>The matrix of a solution with two target languages: metrics per language, the filter bar, and each cell with its state and glossary suggestion.</figcaption>
           </figure>
         </article>
 
         <article class="feat" id="glossar">
-          <h3>Glossar und Konsistenz</h3>
-          <p>Ist derselbe Basistext an anderer Stelle schon übersetzt, zeigt die Zelle einen Vorschlag. Ein Klick übernimmt ihn, ein zweiter Knopf übernimmt ihn für alle Lücken mit demselben Basistext in dieser Sprache, und <em>Vorschläge übernehmen</em> in der Werkzeugleiste tut das für alle gefilterten Zeilen auf einmal. Gibt es mehrere Übersetzungen, gewinnt die häufigste. Der Konsistenz-Report listet Basistexte, die in einer Sprache verschieden übersetzt sind, etwa „Notes“ als „Notizen“ und „Anmerkungen“, und vereinheitlicht sie auf Wunsch.</p>
-          <ul><li>Vorschläge schreiben nie selbst</li><li>Übernommenes bleibt als Änderung sichtbar</li></ul>
+          <h3>Glossary and consistency</h3>
+          <p>If the same base text is already translated elsewhere, the cell shows a suggestion. One click applies it, a second button applies it to all gaps with the same base text in that language, and <em>Apply suggestions</em> in the toolbar does the same for all filtered rows at once. If there are several translations, the most frequent one wins. The consistency report lists base texts that are translated differently within one language, such as “Notes” as both “Notizen” and “Anmerkungen”, and unifies them on request.</p>
+          <ul><li>Suggestions never write on their own</li><li>Applied suggestions stay visible as changes</li></ul>
         </article>
 
         <article class="feat" id="csv">
-          <h3>CSV-Roundtrip mit der Fachabteilung</h3>
-          <p>Die gefilterten Zeilen gehen als CSV hinaus, mit Semikolon und UTF-8, sodass Excel sie direkt öffnet. Jede Zeile trägt einen stabilen Schlüssel, Texte, die wie Formeln aussehen, sind geschützt. Wer keine Dataverse-Rechte hat, füllt die Sprachspalten aus und schickt die Datei zurück. Das Einlesen zeigt vorab, was sich ändert und was nicht übernommen wird: unbekannte Schlüssel, die Basissprache, Texte über 500 Zeichen. Leere Zellen bedeuten unverändert.</p>
-          <ul><li>Nur die Lücken, nicht die ganze Datei</li><li>Diff-Vorschau vor der Übernahme</li></ul>
+          <h3>CSV round trip with the business team</h3>
+          <p>The filtered rows go out as CSV, semicolon-separated and UTF-8, so Excel opens them directly. Every row carries a stable key, and texts that look like formulas are protected. Someone without Dataverse permissions fills in the language columns and sends the file back. When the file is read back in, a preview shows what will change and what will not be taken over: unknown keys, the base language, texts over 500 characters. Empty cells mean unchanged.</p>
+          <ul><li>Only the gaps, not the whole file</li><li>Diff preview before anything is applied</li></ul>
         </article>
 
         <article class="feat wide" id="anwenden">
-          <h3>Anwenden: Import, Fortschritt, Veröffentlichen</h3>
-          <p>Die Vorschau zeigt ausschließlich die geänderten Zellen, gezählt je Sprache, mit vorher und nachher. Der Import läuft dann in fünf Schritten: prüfen, ob in der Umgebung schon ein Import läuft. Die Datei bauen, und zwar den Export plus die Änderungen, ohne eine Zeile zu entfernen oder umzusortieren. Den Import starten. Den Importjob alle zwei Sekunden lesen, pausiert, sobald der Browser-Tab im Hintergrund ist, und solange gesperrt für weitere Bearbeitung. Zuletzt veröffentlichen, standardmäßig eingeschaltet, abschaltbar und nachholbar.</p>
-          <p>Das Ergebnis nennt die Meldungen des Importjobs, Fehler und Warnungen je Zeile, und bietet das Protokoll zum Herunterladen an. <em>Schließen und neu laden</em> exportiert danach neu, die Matrix zeigt dann den Stand aus Dataverse und nicht den lokalen.</p>
-          <ul><li>Ein Import zur Zeit</li><li>Fortschritt aus dem Importjob</li><li>Protokoll zum Herunterladen</li></ul>
+          <h3>Apply: import, progress, publish</h3>
+          <p>The preview shows only the changed cells, counted per language, with before and after. The import then runs in five steps. Check whether an import is already running in the environment. Build the file, meaning the export plus the changes, without removing or reordering a single row. Start the import. Read the import job every two seconds, paused while the browser tab is in the background, with further editing locked in the meantime. Finally, publish: on by default, can be switched off and run later.</p>
+          <p>The result lists the import job's messages, errors and warnings per row, and offers the log for download. <em>Close and reload</em> then exports again, so the matrix shows the state in Dataverse rather than the local one.</p>
+          <ul><li>One import at a time</li><li>Progress from the import job</li><li>Log for download</li></ul>
           <figure class="shot">
-            <img src="assets/screenshots/ts-anwenden.webp" width="1600" height="928" loading="lazy" decoding="async" alt="Bildschirmfoto: Die Vorschau vor dem Import: zwanzig geänderte Zellen in zwei Sprachen, je Zeile Komponente, Spalte, Sprache, vorher und nachher.">
-            <figcaption>Die Vorschau vor dem Import: nur die geänderten Zellen, je Zeile Komponente, Spalte, Sprache, vorher und nachher.</figcaption>
+            <img src="../assets/screenshots/ts-anwenden.webp" width="1600" height="928" loading="lazy" decoding="async" alt="Screenshot: The preview before the import: twenty changed cells in two languages, each row with component, column, language, before and after.">
+            <figcaption>The preview before the import: only the changed cells, each row with component, column, language, before and after.</figcaption>
           </figure>
           <figure class="shot">
-            <img src="assets/screenshots/ts-ergebnis.webp" width="1600" height="928" loading="lazy" decoding="async" alt="Bildschirmfoto: Der Ablauf nach dem Import: fünf abgehakte Schritte, Importjob bei 100 Prozent, Ergebnis mit Importjob-ID und Protokoll zum Herunterladen.">
-            <figcaption>Nach dem Import: fünf abgehakte Schritte, der Importjob mit seiner Kennung und das Protokoll zum Herunterladen.</figcaption>
+            <img src="../assets/screenshots/ts-ergebnis.webp" width="1600" height="928" loading="lazy" decoding="async" alt="Screenshot: The process after the import: five completed steps, the import job at 100 percent, the result with the import job ID and the log for download.">
+            <figcaption>After the import: five completed steps, the import job with its ID and the log for download.</figcaption>
           </figure>
         </article>
 
@@ -382,27 +370,27 @@
 
     <section class="group" id="weitere">
       <header>
-        <h2>Weitere Bereiche</h2>
-        <p>Was neben dem Studio noch da ist.</p>
+        <h2>Other areas</h2>
+        <p>What else is there besides the studio.</p>
       </header>
       <div class="feats">
 
         <article class="feat" id="verlauf">
-          <h3>Verlauf</h3>
-          <p>Jeder Import landet mit Zeitpunkt, Solution, Änderungen je Sprache, Ergebnis, Importjob-Kennung und dem Vermerk, ob veröffentlicht wurde, im Verlauf. In der ersten Fassung liegt er lokal im Browser, die letzten 25 Läufe. Eine eigene Tabelle in Dataverse, damit auch andere ihn sehen, steht auf der Roadmap und braucht ein Schema in der Kundenumgebung.</p>
-          <ul><li>Lokal, ohne Schema im Kundentenant</li></ul>
+          <h3>History</h3>
+          <p>Every import is recorded in the history with timestamp, solution, changes per language, result, import job ID and whether it was published. In the first version the history is stored locally in the browser, covering the last 25 runs. A dedicated Dataverse table, so that others can see it too, is on the roadmap and needs a schema in the customer environment.</p>
+          <ul><li>Local, no schema in the customer tenant</li></ul>
         </article>
 
         <article class="feat" id="einrichtung">
-          <h3>Einrichtung</h3>
-          <p>Die erste Anlaufstelle nach dem Deployment in eine neue Umgebung. Geprüft werden die Adresse der Umgebung, der Dataverse-Konnektor, die nativen Aktionen für Export, Import und Veröffentlichen, die Lesbarkeit der Solutions, die Basissprache und die Importjobs. <em>Export testen</em> exportiert eine kleine Solution und zeigt, über welchen Weg das lief, wie groß die Datei ist, welche Sprachen installiert sind und wie viele Beschriftungen sie enthält.</p>
-          <ul><li>Sagt, wenn nur eine Sprache installiert ist</li></ul>
+          <h3>Setup</h3>
+          <p>The first stop after deploying to a new environment. It checks the environment URL, the Dataverse connector, the native actions for export, import and publish, whether the solutions can be read, the base language and the import jobs. <em>Test export</em> exports a small solution and shows which route it took, how large the file is, which languages are installed and how many labels it contains.</p>
+          <ul><li>Tells you when only one language is installed</li></ul>
         </article>
 
         <article class="feat" id="hilfe">
-          <h3>Hilfe</h3>
-          <p>Ein Seitenpanel mit Suche und elf Abschnitten, vom Überblick bis zu den häufigen Fragen. Es öffnet sich aus dem jeweiligen Bereich heraus an der passenden Stelle. Der Inhalt lebt als Daten neben dem Code und wird mit jeder sichtbaren Änderung nachgezogen, damit die Anleitung nicht hinter der App zurückbleibt.</p>
-          <ul><li>Durchsuchbar</li><li>Kontextbezogen</li></ul>
+          <h3>Help</h3>
+          <p>A side panel with search and eleven sections, from the overview to the FAQ. It opens from whichever area you are in, at the matching section. The content lives as data next to the code and is updated with every visible change, so the guide does not fall behind the app.</p>
+          <ul><li>Searchable</li><li>Context-sensitive</li></ul>
         </article>
 
       </div>
@@ -410,33 +398,33 @@
 
     <section class="group" id="uebergreifend">
       <header>
-        <h2>Quer durch die App</h2>
-        <p>Was überall gilt, unabhängig vom Bereich.</p>
+        <h2>Across the app</h2>
+        <p>What applies everywhere, regardless of the area.</p>
       </header>
       <div class="split">
 
         <article class="panel" id="leitplanken">
-          <h3>Leitplanken</h3>
-          <p>Die Basissprache wird nie geschrieben, eine unveränderte Datei nie importiert. Die Datei, die zurückgeht, ist der Export plus die geänderten Zellen: keine Zeile entfernt, nichts umsortiert, Formatierung und unbekannte Spalten bleiben erhalten, XML korrekt maskiert. Ohne Änderungen ist die Serialisierung byte-identisch mit dem Export, und ein Test stellt das sicher.</p>
-          <p>Eine vorhandene Übersetzung wird nie geleert, Texte über 500 Zeichen werden abgelehnt, es läuft nur ein Import zur Zeit, managed Solutions sind nur lesbar. Heuristik und Glossar schreiben nie selbst, sie markieren und schlagen vor. Alles davon ist im Code durchgesetzt, nicht nur in der Anleitung.</p>
+          <h3>Guardrails</h3>
+          <p>The base language is never written, an unchanged file is never imported. The file that goes back is the export plus the changed cells: no row removed, nothing reordered, formatting and unknown columns preserved, XML correctly escaped. Without changes, the serialized file is byte-identical to the export, and a test makes sure of that.</p>
+          <p>An existing translation is never cleared, texts over 500 characters are rejected, only one import runs at a time, managed solutions are read-only. The heuristic and the glossary never write on their own; they flag and suggest. All of this is enforced in code, not just in the guide.</p>
         </article>
 
         <article class="panel" id="rechte">
-          <h3>Rechte und Grenzen</h3>
-          <p>Alles läuft mit dem Konto des angemeldeten Benutzers, nicht mit einem Dienstkonto. Export und Import brauchen das Recht, Anpassungen zu exportieren und zu importieren, in der Regel die Rolle System Customizer. Fehlt das Importrecht, bleibt die App im Lesemodus und sagt das im Klartext; die Lücken lassen sich dann als CSV an jemanden mit Rechten weitergeben.</p>
-          <p>Bewusst nicht enthalten: maschinelle Übersetzung, weil sie eine Datenschutzentscheidung des Kunden braucht, das Bearbeiten der Basissprache sowie Texte in Canvas Apps, Flows und Sitemap, die der Export von Dataverse nicht abdeckt.</p>
+          <h3>Permissions and limits</h3>
+          <p>Everything runs under the signed-in user's account, not a service account. Export and import require the privilege to export and import customizations, usually through the System Customizer role. If the import privilege is missing, the app stays in read-only mode and says so in plain words; the gaps can then be handed as CSV to someone who has the permissions.</p>
+          <p>Deliberately not included: machine translation, because it requires a data protection decision by the customer, editing the base language, and texts in canvas apps, flows and the sitemap, which the Dataverse export does not cover.</p>
         </article>
 
         <article class="panel" id="datenweg">
-          <h3>Datenweg</h3>
-          <p>Der Dataverse-Konnektor einer Code App kann Tabellen lesen und Aktionen aufrufen, aber keine Metadaten schreiben. Deshalb geht alles über den nativen Übersetzungs-Export und -Import, eine Aktion je Richtung, plus Veröffentlichen. Der Fortschritt kommt aus der Importjob-Tabelle. Für jede Aktion kennt die App mehrere Wege und merkt sich den ersten, der funktioniert.</p>
-          <p>Bei Import und Veröffentlichen probiert sie einen zweiten Weg nur, wenn der erste nachweislich nicht existiert, und nie nach einem Timeout, bei dem der Import auf dem Server schon laufen könnte. Nichts wird doppelt importiert. Die Datei selbst ist Excel-2003-XML in einer Zip-Datei; ein eigener Scanner versteht dünn besetzte Zeilen, verbundene Zellen und formatierten Text.</p>
+          <h3>Data path</h3>
+          <p>The Dataverse connector of a code app can read tables and call actions, but it cannot write metadata. That is why everything goes through the native translation export and import, one action per direction, plus publish. Progress comes from the import job table. For each action the app knows several routes and remembers the first one that works.</p>
+          <p>For import and publish it tries a second route only if the first one demonstrably does not exist, and never after a timeout, when the import might already be running on the server. Nothing gets imported twice. The file itself is Excel 2003 XML inside a zip file; a custom scanner handles sparse rows, merged cells and formatted text.</p>
         </article>
 
         <article class="panel" id="bauweise">
-          <h3>Bauweise</h3>
-          <p>Die Oberfläche hängt an einer Service-Schnittstelle, nicht direkt an Dataverse. Ohne Verbindung läuft die App mit Beispieldaten, einschließlich eines simulierten Importjobs, was Demos und Entwicklung ohne Tenant möglich macht. Ein Hinweis in der Kopfleiste zeigt, in welchem Modus sie läuft.</p>
-          <p>Scanner, Datei-Roundtrip, Lückenanalyse, Glossar, CSV und Importprotokoll sind reine Funktionen mit Tests, getrennt vom Datenzugriff. Alle Texte der Oberfläche stehen an einer Stelle, damit die App selbst einmal mehrsprachig werden kann.</p>
+          <h3>How it is built</h3>
+          <p>The UI depends on a service interface, not directly on Dataverse. Without a connection the app runs with sample data, including a simulated import job, which makes demos and development possible without a tenant. A badge in the header shows which mode it is running in.</p>
+          <p>Scanner, file round trip, gap analysis, glossary, CSV and import log are pure functions with tests, kept separate from data access. All UI strings live in one place, so the app itself can become multilingual one day.</p>
         </article>
 
       </div>
@@ -447,34 +435,34 @@
 
 <button class="toc-fab" id="toc-fab" type="button" aria-expanded="false" aria-controls="toc-shell">
   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h8"/></svg>
-  Inhalt
+  Contents
 </button>
 <div class="toc-backdrop" id="toc-backdrop" hidden></div>
 
 <section id="kontakt" class="contact">
   <div class="wrap">
     <div>
-      <h2>Mehr als eine Sprache in Ihrer Umgebung?</h2>
-      <p>Die App steht vor dem ersten Kundeneinsatz. Wenn niemand sagen kann, wie viel Ihrer Beschriftungen tatsächlich übersetzt ist, schreiben Sie mir kurz. Ein erster Export Ihrer Umgebung zeigt den Stand.</p>
+      <h2>More than one language in your environment?</h2>
+      <p>The app is about to go into its first customer deployment. If nobody can tell you how many of your labels are actually translated, send me a short note. A first export of your environment shows where you stand.</p>
     </div>
     <div class="card">
-      <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de<small>E-Mail, am zuverlässigsten</small></a>
-      <a href="tel:+491735274172">+49 173 5274172<small>Telefon</small></a>
-      <a href="/">Zurück zum Profil<small>Referenzen, Skills, Werdegang</small></a>
+      <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de<small>Email, most reliable</small></a>
+      <a href="tel:+491735274172">+49 173 5274172<small>Phone</small></a>
+      <a href="/en/">Back to the profile<small>References, skills, career</small></a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein bei Nürnberg</span>
-    <span><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></span>
+    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein near Nuremberg</span>
+    <span><a href="impressum.html">Legal notice</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Privacy policy</a></span>
   </div>
 </footer>
 
 <script>
-// Inhaltsverzeichnis: aktiver Eintrag folgt der Scrollposition, offen ist immer
-// genau eine Gruppe. Ohne JavaScript stehen alle Eintraege ausgeklappt da.
+// Table of contents: the active entry follows the scroll position, exactly one
+// group is open at a time. Without JavaScript all entries are expanded.
 (function () {
   var shell = document.getElementById('toc-shell');
   var toc = document.getElementById('toc');
@@ -524,7 +512,7 @@
 
   var pending = false;
   function onScroll() {
-    // Die Seite scrollt nur, wenn ein Sprung stattgefunden hat: Panel zu.
+    // The page only scrolls when a jump has happened: close the panel.
     if (shell.hasAttribute('data-open') && Math.abs(window.scrollY - openedAt) > 120) setOpen(false, false);
     if (pending) return;
     pending = true;
@@ -554,8 +542,8 @@
   close.addEventListener('click', function () { setOpen(false); });
   backdrop.addEventListener('click', function () { setOpen(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
-  // Drei Wege zu, damit das Panel nach einem Sprung nie offen stehen bleibt:
-  // der Klick selbst, der Hash-Wechsel und das Scrollen zum Ziel.
+  // Three ways to close, so the panel never stays open after a jump:
+  // the click itself, the hash change and the scroll to the target.
   shell.addEventListener('click', function (e) {
     var node = e.target;
     if (node && node.nodeType === 3) node = node.parentNode;

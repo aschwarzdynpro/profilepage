@@ -3,6 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+/* Sprache vorbelegen: siehe CLAUDE.md, Abschnitt Zweisprachigkeit. Speichert nichts. */
+(function(){try{
+  var q=new URLSearchParams(location.search);
+  if(q.get('lang')==='de'){q.delete('lang');var s=q.toString();history.replaceState(null,'',location.pathname+(s?'?'+s:'')+location.hash);return}
+  if(navigator.webdriver||/bot|crawl|spider|slurp|preview|facebookexternalhit|lighthouse|headless/i.test(navigator.userAgent))return;
+  var r=document.referrer;if(r&&r.indexOf(location.origin+'/')===0)return;
+  var l=(navigator.languages&&navigator.languages[0])||navigator.language||'';
+  if(/^de(-|$)/i.test(l))return;
+  location.replace('/en'+location.pathname+location.search+location.hash);
+}catch(e){}})();
+</script>
+<link rel="alternate" hreflang="de" href="https://dynamicspro.de/datenschutz.html">
+<link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/datenschutz.html">
+<link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/datenschutz.html">
 <title>Datenschutzerklärung · Andy Schwarz, DynamicsPro</title>
 <meta name="description" content="Datenschutzerklärung für dynamicspro.de. Keine Cookies, kein Tracking, keine Drittinhalte. Rechtsgrundlagen und Betroffenenrechte nach DSGVO.">
 <link rel="canonical" href="https://dynamicspro.de/datenschutz.html">
@@ -113,6 +128,13 @@
   .toc-shell{border-radius:0}
   footer{border-top:1px solid var(--line)}
   .feat,.panel,.dim,.outcome,address,.service li,.feat ul li,.contact .card,.shot img,.portrait{border-radius:0}
+
+  /* Sprachumschalter in der Kopfleiste */
+  .nav .wrap{gap:1rem}
+  .nav .mark{margin-right:auto}
+  .nav a.lang,.nav li.lang a{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.12em;line-height:1;color:var(--ink);border:1px solid var(--ink);padding:.38rem .5rem;white-space:nowrap}
+  .nav a.lang:hover,.nav li.lang a:hover{background:var(--ink);color:var(--bg,#fbfaf7)}
+  @media (max-width:900px){.nav .main li.lang{display:list-item}}
 </style>
 </head>
 
@@ -125,6 +147,7 @@
       DynamicsPro
     </a>
     <a class="back" href="/">Zurück zur Startseite</a>
+    <a class="lang" data-i18n href="/en/datenschutz.html" hreflang="en" lang="en" aria-label="English version">EN</a>
   </div>
 </header>
 

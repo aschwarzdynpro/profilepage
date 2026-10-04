@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>DynamicsPro Blog</title>
+  <link>https://dynamicspro.de/en/blog/</link>
+  <atom:link href="https://dynamicspro.de/en/blog/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Workshop notes by Andy Schwarz on Dynamics 365 and the Power Platform.</description>
+  <language>en-US</language>
+  <item>
+    <title>Three languages, one zip file, and nobody sees what is missing</title>
+    <link>https://dynamicspro.de/en/blog/translation-studio/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/en/blog/translation-studio/</guid>
+    <pubDate>Sat, 03 Oct 2026 08:00:00 +0200</pubDate>
+    <description>Dataverse keeps every label per language. If a translation is missing, French users see English field names. The standard way to fix that is an export to Excel with thousands of rows and no filter for “missing”. Translation Studio reads the same export, shows only the gaps and writes it back filled in.</description>
+  </item>
+  <item>
+    <title>Moving configuration data, and turning the tool into a product</title>
+    <link>https://dynamicspro.de/en/blog/admin-console-4-datentransfer/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/en/blog/admin-console-4-datentransfer/</guid>
+    <pubDate>Mon, 21 Sep 2026 08:00:00 +0200</pubDate>
+    <description>I used the Configuration Migration Tool on every project and liked it on none. The fourth part is about the Data Transfer Hub, which was built in one day with 37 commits, about the OData Browser, and about what it took for the console to go to other customers.</description>
+  </item>
+  <item>
+    <title>Who can do what, and what the system is doing right now</title>
+    <link>https://dynamicspro.de/en/blog/admin-console-3-betrieb/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/en/blog/admin-console-3-betrieb/</guid>
+    <pubDate>Mon, 10 Aug 2026 08:00:00 +0200</pubDate>
+    <description>In July the questions from operations arrived. Plugin errors nobody sees. Security roles whose effect nobody can state with certainty. Flows that are off in PROD, and nobody knows since when. Plus a dual-write version that had been displayed wrong since November 2023.</description>
+  </item>
+  <item>
+    <title>Why imports fail, and how to see it coming</title>
+    <link>https://dynamicspro.de/en/blog/admin-console-2-vor-dem-import/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/en/blog/admin-console-2-vor-dem-import/</guid>
+    <pubDate>Mon, 20 Jul 2026 08:00:00 +0200</pubDate>
+    <description>A failed import into PROD costs you an evening. Almost always for a reason you could have known an hour earlier. The second part covers the checks before and after the import, the things the Dataverse connector cannot do, and a green that wasn&#x27;t one.</description>
+  </item>
+  <item>
+    <title>One solution per work item, and then the merge</title>
+    <link>https://dynamicspro.de/en/blog/admin-console-1-working-solutions/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/en/blog/admin-console-1-working-solutions/</guid>
+    <pubDate>Thu, 25 Jun 2026 08:00:00 +0200</pubDate>
+    <description>Dataverse has no feature branches. What it has is unmanaged solutions, and if you create one per work item, you have forty of them after three months. The first version of the console was a tool to merge them back together.</description>
+  </item>
+</channel>
+</rss>

@@ -7,7 +7,7 @@ Statische Single-File-Site (`index.html`), kein Build, kein Framework. Ausgelief
 - Ausnahme: `solution-admin-console.html`, `translation-studio.html`, `impressum.html`, `datenschutz.html`,
   die Angebotsseiten unter `<slug>/index.html` und der Blog unter `blog/` sind eigene Seiten mit eigenem `<style>`. Anschrift, USt-IdNr. und Aufsichtsbehörde nur nach Rücksprache ändern.
 - Keine Frameworks, kein Tailwind, kein Build-Schritt einführen.
-- Deutsch, Sie-Ansprache, kein Marketing-Sprech. Keine Emojis, keine Bindestrich-Gedankenstriche.
+- Deutsch, Sie-Ansprache, kein Marketing-Sprech (die englische Fassung unter `en/` siehe Zweisprachigkeit). Keine Emojis, keine Bindestrich-Gedankenstriche.
 - Kundennamen bleiben anonymisiert (Branche statt Firma). Keine Tagessätze, keine Partner-Methodik.
 - Nach jeder Änderung Desktop (1400px) und Mobil (390px) prüfen: `npm run shot` (Playwright) oder Browser.
 - Keine Requests an Dritte. Schriften liegen selbst gehostet in `assets/fonts/`, kein Google-Fonts-Link. `npm run shot` bricht ab, sobald ein Fremd-Host angefragt wird.
@@ -17,7 +17,34 @@ Push auf `main` löst `.github/workflows/pages.yml` aus. Der Workflow kopiert ei
 **explizite Dateiliste** nach `_site`. Neue Top-Level-Dateien (z. B. `impressum.html`)
 und neue Verzeichnisse (z. B. `health-check/`) müssen dort eingetragen werden, sonst gehen
 sie stillschweigend nicht live.
+Die englische Fassung geht als ganzes Verzeichnis mit (`cp -r en _site/en`).
 Einrichtung und DNS stehen in `README.md`.
+
+## Zweisprachigkeit (seit Oktober 2026)
+Deutsch ist die Hauptsprache, Englisch liegt unter `en/` mit **identischen Pfaden**:
+`/` ↔ `/en/`, `/impressum.html` ↔ `/en/impressum.html`, `/blog/<slug>/` ↔ `/en/blog/<slug>/`
+(die Slugs bleiben deutsch, damit die Zuordnung ohne Tabelle geht). Wer eine Seite ändert,
+ändert beide Fassungen. Englische Seiten verweisen mit `../` bzw. `../../` auf `assets/`.
+
+- **SEO:** jede Seite hat `hreflang` de, en und `x-default` (= deutsch), eigenes `canonical`,
+  `og:locale` `de_DE` bzw. `en_US`. `sitemap.xml` führt beide Fassungen (24 URLs).
+- **Vorbelegung ohne Speichern:** Nur die deutschen Seiten tragen im `<head>` ein kleines Skript
+  („Sprache vorbelegen"). Kommt ein Besucher **von außen** (Referrer leer oder fremd) und ist seine
+  erste Browsersprache nicht Deutsch, ersetzt es die URL durch die englische Fassung derselben
+  Seite. Nie bei Navigation innerhalb der Site, nie für Crawler oder `navigator.webdriver`, nie mit
+  `?lang=de`; diesen Parameter entfernt es per `history.replaceState`. Englische Seiten leiten nie
+  um, dort gilt die URL. Kein Cookie, kein `localStorage`: die Datenschutzerklärung sagt „keine
+  Cookies", und das bleibt so.
+- **Umschalter:** Kasten `EN` bzw. `DE` in der Kopfleiste vor dem Kontakt-Knopf. `EN` zeigt auf
+  `/en/<pfad>`, `DE` auf `/<pfad>?lang=de`, damit ein englischer Browser die deutsche Seite nicht
+  sofort wieder verlässt.
+- **Werkzeug:** `python3 scripts/i18n.py de|en` setzt hreflang, Umschalter, dessen CSS und (nur
+  deutsch) das Skript in die sechs statischen Seiten und ist wiederholbar. Die Blogseiten tragen
+  dieselben Bausteine; ein neuer Beitrag übernimmt sie aus einem vorhandenen.
+- **Englische Texte:** dieselben Regeln wie deutsch (kein Marketing-Sprech, keine Gedankenstriche,
+  Kunden nach Branche), Anrede „you". Impressum und Datenschutz sind Lesefassungen mit dem Hinweis,
+  dass nur die deutsche Fassung verbindlich ist; Anschrift, USt-IdNr. und Behördenname stehen dort
+  unverändert.
 
 ## Erscheinungsbild: Magazin (seit Oktober 2026)
 Die ganze Site sieht aus wie eine gedruckte Fachzeitschrift: helles Papier `--bg #fbfaf7`,
@@ -35,9 +62,10 @@ Komponente baut, baut sie gleich in diesem Bild und hängt nichts Dunkles mehr a
 
 - Tokens: `--bg`, `--bg-2 #f1efe9`, `--line #d8d4cc`, `--ink`, `--ink-2 #444`, `--ink-3 #7a766f`, `--red`
 - Schrift: Manrope (Überschriften), IBM Plex Sans (Fließtext), selbst gehostet als Variable Fonts in `assets/fonts/`
-- OG-Vorschaukarten: `node scripts/og.mjs` rendert aus `scripts/og-card.html` fünf Karten nach
+- OG-Vorschaukarten: `node scripts/og.mjs` rendert aus `scripts/og-card.html` zehn Karten nach
   `assets/`: `og.png` (Startseite, Impressum, Datenschutz), `og-health-check.png`, `og-blog.png`
-  (Übersicht und alle Beiträge), `og-konsole.png`, `og-studio.png`. Die Texte je Karte stehen in
+  (Übersicht und alle Beiträge), `og-konsole.png`, `og-studio.png`, dazu dieselben fünf englisch als
+  `og-en.png`, `og-en-health-check.png`, `og-en-blog.png`, `og-en-konsole.png`, `og-en-studio.png`. Die Texte je Karte stehen in
   `og.mjs`; die Karte liest sie als Query-Parameter. Wer Claim oder Titel einer Seite ändert, zieht
   die Karte nach und rendert neu.
 - Skills: Balkengruppen `.sg` (5 Segmente = Niveau, Zahl = Jahre), neben dem Werdegang. Das frühere Netzdiagramm ist bewusst weg, eine Selbsteinschätzung auf 1 bis 5 überzeugt niemanden.
@@ -84,7 +112,8 @@ aufgenommen, mit den eingebauten Mock-Daten (fiktives Fuhrpark-Szenario in en/de
 `blog/index.html` ist die Übersicht, jeder Beitrag liegt unter `blog/<slug>/index.html`, dazu
 `blog/feed.xml` (RSS, neuester zuerst: neuer Beitrag = neues `<item>`). Der Workflow kopiert
 das ganze Verzeichnis, neue Beiträge brauchen dort keinen Eintrag, wohl aber in `sitemap.xml`
-und in `scripts/shot.mjs`. Jede Datei trägt ihre eigene Kopie von CSS.
+und in `scripts/shot.mjs`. Jede Datei trägt ihre eigene Kopie von CSS. Die englischen Beiträge
+liegen unter `en/blog/` mit eigenem Feed `en/blog/feed.xml`; ein neuer Beitrag kommt in beide.
 
 **Layout (Magazin):** Kopfleiste mit „Werkstattnotizen" als Nebenzeile, Beitragskopf mit
 Kicker, breiter Titelzeile bis 4.4rem, Vorspann in leichter Schrift und Autorenzeile über
@@ -194,9 +223,9 @@ das, was live geht: wer Text ändert, ändert beides.
 **Sprache.** Die Angebotsseiten sind deutsch mit Sie-Ansprache, wie die ganze Site. Das ist
 hier zusätzlich eine Vertriebsentscheidung und keine Formalie: die Käufer sind
 Mittelstandsunternehmen im DACH-Raum, die auf Deutsch suchen. Die Seiten und ihre
-SEO-Felder werden nicht ins Englische übersetzt, auch nicht teilweise. Sollte die Site
-später englische Fassungen bekommen, kommen sie als eigene Seiten dazu und ersetzen die
-deutschen nicht.
+SEO-Felder bleiben deutsch und werden nicht teilweise übersetzt. Die englische Fassung
+(`en/health-check/`) ist eine eigene Seite daneben und ersetzt die deutsche nicht; `x-default`
+zeigt auf die deutsche.
 
 **Buchung nur als Link.** Die CTA-Knöpfe verweisen auf Microsoft Bookings, sie betten nichts
 ein. Ein eingebettetes Buchungsfenster lädt beim Seitenaufruf von `outlook.office365.com` und

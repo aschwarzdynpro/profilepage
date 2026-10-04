@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="alternate" hreflang="de" href="https://dynamicspro.de/blog/admin-console-3-betrieb/">
+<link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/blog/admin-console-3-betrieb/">
+<link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/blog/admin-console-3-betrieb/">
+<title>Who can do what, and what the system is doing right now · DynamicsPro</title>
+<meta name="description" content="Part 3 of the series on the Solution Administration Console: Plugin Trace Explorer, Security Role Analyzer and Role Comparer with baseline, Process and Plugin Comparer, Audit Config, Dual-Write Maps and User Settings.">
+<link rel="canonical" href="https://dynamicspro.de/en/blog/admin-console-3-betrieb/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#fbfaf7">
+<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../../assets/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="DynamicsPro Blog" href="https://dynamicspro.de/en/blog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="DynamicsPro">
+<meta property="og:url" content="https://dynamicspro.de/en/blog/admin-console-3-betrieb/">
+<meta property="og:title" content="Who can do what, and what the system is doing right now">
+<meta property="og:description" content="Part 3 of the series on the Solution Administration Console: Plugin Trace Explorer, Security Role Analyzer and Role Comparer with baseline, Process and Plugin Comparer, Audit Config, Dual-Write Maps and User Settings.">
+<meta property="og:image" content="https://dynamicspro.de/assets/og-en-blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-08-10">
+<meta property="article:author" content="Andy Schwarz">
+<link rel="preload" href="../../../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../../assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../../assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../../assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../../assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../../../assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../../../assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+  :root{
+    --paper:#fbfaf7;--paper-2:#f1efe9;--rule:#d8d4cc;--rule-2:#bdb7ac;
+    --ink:#1a1a1a;--ink-2:#444;--ink-3:#7a766f;--red:#b5342b;--red-soft:rgba(181,52,43,.08);
+    --display:"Manrope",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:var(--body);font-size:18px;line-height:1.7;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing:-0.025em}
+  em{font-style:normal;font-weight:600;color:var(--ink)}
+  .wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+  .kicker{font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+
+  /* Impressum-Leiste */
+  .nav{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--ink)}
+  .nav .wrap{display:flex;align-items:center;gap:1.4rem;height:60px}
+  .mark{font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:-0.02em;display:inline-flex;align-items:center;gap:.5rem;margin-right:auto}
+  .mark svg{width:20px;height:20px}
+  .mark small{font-family:var(--body);font-weight:400;font-size:.8rem;color:var(--ink-3);margin-left:.6rem;letter-spacing:.08em;text-transform:uppercase}
+  .nav .back,.nav .cta{font-family:var(--display);font-weight:700;font-size:.85rem}
+  .nav .back{color:var(--ink-2)}
+  .nav .back:hover{color:var(--ink)}
+  .nav .cta{color:var(--paper);background:var(--ink);padding:.45rem .95rem}
+  .nav .cta:hover{background:var(--red)}
+  @media (max-width:640px){.nav .back,.mark small{display:none}}
+
+  /* Beitragskopf */
+  .head{padding:3.2rem 0 2.4rem;border-bottom:3px double var(--ink)}
+  .head h1{font-size:clamp(2.3rem,6vw,4.4rem);max-width:18ch;margin-top:1rem}
+  .head .deck{margin-top:1.4rem;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.45;color:var(--ink-2);max-width:48ch;font-weight:300}
+  .byline{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin-top:2rem;padding-top:.9rem;border-top:1px solid var(--ink);font-size:.9rem;color:var(--ink-2)}
+  .byline b{font-family:var(--display);font-weight:700;color:var(--ink)}
+
+  /* Text */
+  main{padding:3rem 0 4rem}
+  .post{width:min(68ch,100%);margin-inline:auto}
+  .post>p{margin-top:1.2rem;color:var(--ink-2)}
+  .post>p:first-child{margin-top:0}
+  .post>p:first-child::first-letter{font-family:var(--display);font-weight:800;font-size:3.9em;line-height:.8;float:left;padding:.08em .14em 0 0;color:var(--ink)}
+  .post h2{counter-increment:sec;margin-top:3.4rem;font-size:1.65rem;max-width:24ch}
+  .post h2::before{content:counter(sec,decimal-leading-zero);display:block;font-size:.85rem;letter-spacing:.14em;color:var(--red);margin-bottom:.6rem;font-weight:700}
+  .post h2.rev::before{content:"Addendum"}
+  .post h2.rev{padding-top:1.4rem;border-top:1px solid var(--ink)}
+  .post h2+p{margin-top:1rem}
+  .post{counter-reset:sec}
+  .post ul{margin:1rem 0 0 1.2rem;color:var(--ink-2)}
+  .post code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.86em;background:var(--paper-2);padding:.05em .4em;border-radius:2px;color:var(--ink)}
+  .post a{box-shadow:inset 0 -1px 0 var(--red);font-weight:500}
+  .post a:hover{background:var(--red-soft)}
+  .post .aside{margin:1.8rem 0 0;padding:.2rem 0 .2rem 1.3rem;border-left:3px solid var(--red);color:var(--ink-2);font-size:1rem}
+  .post .aside p+p{margin-top:.7rem}
+  .pull{margin:2.8rem 0 2.4rem;padding:1.6rem 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;letter-spacing:-0.02em;color:var(--ink);max-width:28ch}
+  .pull::before{content:"\201C";color:var(--red)}
+  .pull::after{content:"\201D";color:var(--red)}
+  /* Abbildungen breiter als der Text */
+  .shot{margin:2.2rem 0 0;width:min(100vw - 2.5rem,900px);margin-left:calc(50% - min(100vw - 2.5rem,900px)/2)}
+  .shot img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+  .shot figcaption{margin-top:.7rem;font-size:.86rem;color:var(--ink-3);line-height:1.5;border-left:2px solid var(--red);padding-left:.8rem;max-width:68ch}
+
+  /* Serie */
+  .series{width:min(68ch,100%);margin:3.6rem auto 0;border-top:3px double var(--ink);padding-top:1.2rem}
+  .series ol{list-style:none;margin-top:.8rem}
+  .series li{border-bottom:1px solid var(--rule);padding:.7rem 0}
+  .series li a{display:grid;grid-template-columns:2.8rem 1fr;gap:.6rem;align-items:baseline}
+  .series li a i{font-style:normal;font-family:var(--display);font-weight:800;color:var(--red);font-size:.9rem;letter-spacing:.1em}
+  .series li a b{font-family:var(--display);font-weight:700}
+  .series li a:hover b{box-shadow:inset 0 -2px 0 var(--red)}
+  .series li.now a b{color:var(--ink-3)}
+  .series li.now a b::after{content:" · you are reading this one";font-family:var(--body);font-weight:400;font-size:.85rem}
+
+  /* Übersicht */
+  .mast{padding:3.2rem 0 1.6rem;border-bottom:3px double var(--ink)}
+  .mast h1{font-size:clamp(3rem,9vw,6.5rem);letter-spacing:-0.04em;line-height:.95}
+  .mast .deck{margin-top:1.2rem;font-size:1.2rem;color:var(--ink-2);max-width:60ch;font-weight:300}
+  .lead{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;padding:2.4rem 0;border-bottom:1px solid var(--ink);align-items:center}
+  .lead h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-top:.6rem;max-width:20ch}
+  .lead h2 a:hover{box-shadow:inset 0 -3px 0 var(--red)}
+  .lead p{margin-top:1rem;color:var(--ink-2)}
+  .lead img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+  .lead .meta{margin-top:1rem;font-size:.88rem;color:var(--ink-3)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem}
+  .story{padding:1.6rem 0;border-bottom:1px solid var(--rule)}
+  .story h2{font-size:1.45rem;margin-top:.5rem;max-width:22ch}
+  .story h2 a:hover{box-shadow:inset 0 -2px 0 var(--red)}
+  .story p{margin-top:.7rem;color:var(--ink-2);font-size:.98rem}
+  .story .meta{margin-top:.8rem;font-size:.86rem;color:var(--ink-3)}
+  .note{padding:1.6rem 0 0;font-size:.95rem;color:var(--ink-2);max-width:68ch}
+  .note a{box-shadow:inset 0 -1px 0 var(--red)}
+  @media (max-width:820px){.lead{grid-template-columns:1fr;gap:1.4rem}.grid{grid-template-columns:1fr}}
+
+  .contact{border-top:3px double var(--ink);margin-top:1rem}
+  .contact .wrap{padding:3rem 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:3rem;align-items:start}
+  .contact h2{font-size:1.9rem;max-width:20ch;margin-top:.6rem}
+  .contact p{margin-top:.9rem;color:var(--ink-2);max-width:46ch}
+  .contact .card a{display:block;padding:.75rem 0;border-bottom:1px solid var(--rule);font-family:var(--display);font-weight:700}
+  .contact .card a:hover{color:var(--red)}
+  .contact .card small{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;color:var(--ink-3)}
+  @media (max-width:820px){.contact .wrap{grid-template-columns:1fr;gap:1.6rem}}
+  footer{padding:1.6rem 0 2.6rem;font-size:.85rem;color:var(--ink-3)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a:hover{color:var(--ink)}
+
+  /* Sprachumschalter in der Kopfleiste */
+  .nav .wrap{gap:1rem}
+  .nav .mark{margin-right:auto}
+  .nav a.lang,.nav li.lang a{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.12em;line-height:1;color:var(--ink);border:1px solid var(--ink);padding:.38rem .5rem;white-space:nowrap}
+  .nav a.lang:hover,.nav li.lang a:hover{background:var(--ink);color:var(--bg,#fbfaf7)}
+  @media (max-width:900px){.nav .main li.lang{display:list-item}}
+</style>
+</head>
+
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="/en/" aria-label="DynamicsPro, to the home page">
+      <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#b5342b"/><rect x="15" y="3" width="8" height="8" stroke="#1a1a1a" stroke-width="1.6"/><rect x="3" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.6"/><rect x="15" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.6"/></svg>
+      DynamicsPro<small>Workshop notes</small>
+    </a>
+    <a class="back" href="../">All posts</a>
+    <a class="lang" href="/blog/admin-console-3-betrieb/?lang=de" hreflang="de" lang="de" aria-label="Deutsche Fassung">DE</a>
+    <a class="cta" href="#kontakt">Contact</a>
+  </div>
+</header>
+
+<section class="head">
+  <div class="wrap">
+    <span class="kicker">Solution Administration Console · Part 3 of 4</span>
+    <h1>Who can do what, and what the system is doing right now</h1>
+    <p class="deck">In July the questions from operations arrived. Plugin errors nobody sees. Security roles whose effect nobody can state with certainty. Flows that are off in PROD, and nobody knows since when.</p>
+    <div class="byline"><span>By <b>Andy Schwarz</b></span><span>August 10, 2026</span><span>7 min read</span></div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+    <article class="post">
+
+<p>After the release train and the checks before the import, the console was a development tool. The questions I got in July came from operations, and they had one thing in common: the maker portal and the admin center answer them either painfully or not at all.</p>
+<figure class="shot loop">
+  <img src="../../../assets/blog/devops-loop.jpg" width="1024" height="559" loading="lazy" decoding="async" alt="Graphic: The DevOps cycle as a figure eight on its side, with the eight stages Plan, Code, Build, Test, Release, Deploy, Operate and Monitor.">
+  <figcaption>The right half of the eight: Operate and Monitor. This is no longer about the next import, but about what is running now.</figcaption>
+</figure>
+
+<h2>Plugin errors are invisible</h2>
+<p>Dataverse writes plugin traces to a table that is practically unusable in the maker portal. If you want to know whether a plugin is throwing exceptions right now, you use the Plugin Trace Viewer from XrmToolBox. It is good. It just runs only on a desktop, needs a sign-in per environment, and none of the people in operations who ask the question have installed it.</p>
+<p>Since July 3 the console has a stream over the trace logs that reloads every fifteen seconds and pauses as soon as the browser tab goes into the background. Filtering happens on the server by time window, type, message, table, sync or async, optionally exceptions only. The heavy message block only loads when you expand a row, never in the stream. On top of that, a timeline per correlation ID that shows which plugin triggered which, and runtime aggregates per plugin and message. The question “is it the plugin” now takes a minute to answer instead of an hour.</p>
+
+<blockquote class="pull">Nobody uses a tool they have to wait for.</blockquote>
+<h2>Roles, and what they really do</h2>
+<p>For permissions there used to be an Excel matrix that someone had once copied from the roles, and the Security Role Explorer in XrmToolBox, which lets you look at a single role. But the question asked on the project is a different one: what can this user actually do, across all of their roles, directly and inherited through teams? And the other way round: who can actually delete this table?</p>
+<p>The Role Analyzer answers both. It works on a cached snapshot of the security model, because a mid-sized tenant has close to three hundred roles, about two hundred fifty of them out of the box. It shows the matrix of role, table and privilege with depth, a user's effective rights with the path they come from, the reverse lookup, and hygiene findings such as unassigned roles. Team inheritance was the hard part: the query across teams needs nested conditions the service does not always like, so direct and inherited assignment run as two separate queries. If the second one fails, the inheritance is missing, but the direct check stays correct.</p>
+<figure class="shot">
+  <img src="../../../assets/screenshots/role-analyzer.webp" width="1600" height="1047" loading="lazy" decoding="async" alt="Screenshot: Effective rights of a user, per privilege with depth and origin from direct roles and roles inherited through teams.">
+  <figcaption>Effective rights of a user, per privilege with depth and origin from direct roles and roles inherited through teams. The filter bar above it came later, see the addendum.</figcaption>
+</figure>
+<p>At the end of July the Role Analyzer was out of the app for a week, because it added 120 kilobytes to the bundle and the first start suffered. On August 4 it came back, this time loaded when you open it. My assumption that the Code App player does not serve lazy-loaded chunks was wrong, and only on that day did I check it instead of believing it.</p>
+
+<h2>Did the roles arrive intact?</h2>
+<p>The Role Comparer was built the same day, and it answers the question that occupied me most on the project. A security role that is transported by solution keeps its ID. A role that someone rebuilt by hand in the target, because the transport was not working at the time, has the same name and a different ID. Today it looks right. From tomorrow on it drifts, and no import will ever update this role, because to Dataverse it is a different one.</p>
+<p>So the Comparer matches by name, not by ID, and marks identical names with differing IDs as <em>rebuilt</em>. Each cell shows the number of privileges and how many of them this environment grants differently from the reference. An environment that could not be read shows a question mark and never counts as clean. The area is read-only on purpose. A drifting role should be transported, not edited in the target, because that creates exactly the unmanaged layer the Layer Inspector reports afterwards.</p>
+<p>That same day it grew: the current state can be frozen as a baseline, and then the question changes from “do the environments match” to “what has changed since the freeze”. A snapshot produces a security concept as a document, with an environment overview and a privilege matrix, and with a second, earlier snapshot a chapter on changes. The document you normally write at the start of a project and never update is now generated. I built an extended baseline with business units, teams and field security the same day and took it out again. Freezing took too long. Nobody uses a tool they have to wait for.</p>
+
+<h2>Processes and plugins per environment</h2>
+<p>“Why isn't the flow running in PROD?” Because it is off. Since when, nobody knows. The Process Comparer shows all process types of a release solution as a status matrix across environments, differing cells highlighted, with on and off per cell and bulk actions on a row selection. It started on July 9 as the Flow Comparer and since July 22 also covers classic workflows, business rules, actions and business process flows. The Plugin Comparer does the same for plugin steps and also shows the assembly version per environment. A step can exist and still run against an older assembly.</p>
+<p>On this comparer I learned two things about the connector in one day. A two-option field comes back as a Boolean, not a number, and my code read it as “always off”. And a choice field comes back as a bare number without a label, so since then I get the label from the table of option values. That the second one had an entirely different cause is in the addendum.</p>
+
+<h2>Small things that aren't small</h2>
+<p><em>Audit Config</em> shows an environment's audit settings down to the column level. A table is only audited if both the organization switch and the table switch are on, so “configured but off” is a finding of its own. <em>User Settings</em> is an inventory of the personal settings of all users per environment, time zone, currency, language, formats, with the option to roll out one user's values to several others, with a stricter confirmation in PROD.</p>
+<p>And <em>Dual-Write Maps</em>, since July 6. An environment's table maps with their versions. The first iteration showed the highest version number as the current one. Today it turned out that for three of ninety-one maps the highest number was a parked 9.9.9.9 “Version for Data Migration” that had been displayed since November 2023 and never ran. The running version lives in a different table, and only for half of the maps. Now the row shows the version that is actually running, otherwise the last one saved, and says openly which of the two it is.</p>
+<p>The <a href="../admin-console-4-datentransfer/">fourth part</a> is about configuration data between environments, a database browser without a toolbox, and how the tool became a product. The Operate group in detail is on the <a href="../../solution-admin-console.html#operate">product page</a>.</p>
+
+<h2 class="rev">Addendum, August 17: a forgotten parameter</h2>
+<p>The bare number in the choice field, an empty owner in the Dual-Write Maps, an empty lookup in the Transfer Hub preview: I had noted these as three quirks of the connector and worked around them three times. It was one. The connector only returns display texts on request, through a third parameter that my call had been passing empty since June. The workarounds stay in place, they work. But the list of quirks is three entries shorter.</p>
+
+<h2 class="rev">Addendum, September 10: filters for effective rights</h2>
+<p>A user with a handful of roles ends up with several hundred rows of table times action, and nobody reads those from top to bottom. Now you can filter by table, privilege and granting role. The granting roles appear as chips above, each with the number of privileges it contributes. That is the real gain: you see which assignment does the work. A zero stays, just dimmed. A role that grants the user nothing is a finding, not noise.</p>
+
+    </article>
+
+<section class="series" aria-label="All parts of the series">
+  <span class="kicker">Solution Administration Console, all parts</span>
+  <ol><li><a href="../admin-console-1-working-solutions/"><i>01</i><b>One solution per work item, and then the merge</b></a></li><li><a href="../admin-console-2-vor-dem-import/"><i>02</i><b>Why imports fail, and how to see it coming</b></a></li><li class="now"><a href="../admin-console-3-betrieb/"><i>03</i><b>Who can do what, and what the system is doing right now</b></a></li><li><a href="../admin-console-4-datentransfer/"><i>04</i><b>Moving configuration data, and turning the tool into a product</b></a></li></ol>
+</section>
+
+  </div>
+</main>
+
+<section id="kontakt" class="contact">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Contact</span>
+      <h2>Who can actually do what in your environment?</h2>
+      <p>If nobody can say for sure, that is not a criticism, it is the normal state after a few years in production. I will look at it with you, read-only, without changing anything.</p>
+    </div>
+    <div class="card">
+      <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de<small>Email, most reliable</small></a>
+      <a href="tel:+491735274172">+49 173 5274172<small>Phone</small></a>
+      <a href="../../">Back to the profile<small>Case studies, skills, career</small></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein near Nuremberg</span>
+    <span><a href="../../impressum.html">Legal notice</a> &nbsp;&middot;&nbsp; <a href="../../datenschutz.html">Privacy policy</a></span>
+  </div>
+</footer>
+</body>
+</html>

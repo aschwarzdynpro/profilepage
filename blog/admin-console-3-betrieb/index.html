@@ -3,6 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+/* Sprache vorbelegen: siehe CLAUDE.md, Abschnitt Zweisprachigkeit. Speichert nichts. */
+(function(){try{
+  var q=new URLSearchParams(location.search);
+  if(q.get('lang')==='de'){q.delete('lang');var s=q.toString();history.replaceState(null,'',location.pathname+(s?'?'+s:'')+location.hash);return}
+  if(navigator.webdriver||/bot|crawl|spider|slurp|preview|facebookexternalhit|lighthouse|headless/i.test(navigator.userAgent))return;
+  var r=document.referrer;if(r&&r.indexOf(location.origin+'/')===0)return;
+  var l=(navigator.languages&&navigator.languages[0])||navigator.language||'';
+  if(/^de(-|$)/i.test(l))return;
+  location.replace('/en'+location.pathname+location.search+location.hash);
+}catch(e){}})();
+</script>
+<link rel="alternate" hreflang="de" href="https://dynamicspro.de/blog/admin-console-3-betrieb/">
+<link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/blog/admin-console-3-betrieb/">
+<link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/blog/admin-console-3-betrieb/">
 <title>Wer darf was, und was tut das System gerade · DynamicsPro</title>
 <meta name="description" content="Teil 3 der Serie zur Solution Administration Console: Plugin Trace Explorer, Security Role Analyzer und Role Comparer mit Baseline, Process und Plugin Comparer, Audit Config, Dual-Write Maps und User Settings.">
 <link rel="canonical" href="https://dynamicspro.de/blog/admin-console-3-betrieb/">
@@ -138,6 +153,13 @@
   footer{padding:1.6rem 0 2.6rem;font-size:.85rem;color:var(--ink-3)}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
   footer a:hover{color:var(--ink)}
+
+  /* Sprachumschalter in der Kopfleiste */
+  .nav .wrap{gap:1rem}
+  .nav .mark{margin-right:auto}
+  .nav a.lang,.nav li.lang a{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.12em;line-height:1;color:var(--ink);border:1px solid var(--ink);padding:.38rem .5rem;white-space:nowrap}
+  .nav a.lang:hover,.nav li.lang a:hover{background:var(--ink);color:var(--bg,#fbfaf7)}
+  @media (max-width:900px){.nav .main li.lang{display:list-item}}
 </style>
 </head>
 
@@ -149,6 +171,7 @@
       DynamicsPro<small>Werkstattnotizen</small>
     </a>
     <a class="back" href="../">Alle Beiträge</a>
+    <a class="lang" href="/en/blog/admin-console-3-betrieb/" hreflang="en" lang="en" aria-label="English version">EN</a>
     <a class="cta" href="#kontakt">Kontakt</a>
   </div>
 </header>

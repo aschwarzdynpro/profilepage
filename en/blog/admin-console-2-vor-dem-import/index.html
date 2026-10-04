@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="alternate" hreflang="de" href="https://dynamicspro.de/blog/admin-console-2-vor-dem-import/">
+<link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/blog/admin-console-2-vor-dem-import/">
+<link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/blog/admin-console-2-vor-dem-import/">
+<title>Why imports fail, and how to see it coming · DynamicsPro</title>
+<meta name="description" content="Part 2 of the series on the Solution Administration Console: Deployment Readiness, Analyze with Compare, Layer Inspector and App Sharing, Import History with a parsed log, and what the Dataverse connector cannot do.">
+<link rel="canonical" href="https://dynamicspro.de/en/blog/admin-console-2-vor-dem-import/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#fbfaf7">
+<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../../assets/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="DynamicsPro Blog" href="https://dynamicspro.de/en/blog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="DynamicsPro">
+<meta property="og:url" content="https://dynamicspro.de/en/blog/admin-console-2-vor-dem-import/">
+<meta property="og:title" content="Why imports fail, and how to see it coming">
+<meta property="og:description" content="Part 2 of the series on the Solution Administration Console: Deployment Readiness, Analyze with Compare, Layer Inspector and App Sharing, Import History with a parsed log, and what the Dataverse connector cannot do.">
+<meta property="og:image" content="https://dynamicspro.de/assets/og-en-blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-07-20">
+<meta property="article:author" content="Andy Schwarz">
+<link rel="preload" href="../../../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../../assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../../assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../../assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../../assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../../../assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../../../assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+  :root{
+    --paper:#fbfaf7;--paper-2:#f1efe9;--rule:#d8d4cc;--rule-2:#bdb7ac;
+    --ink:#1a1a1a;--ink-2:#444;--ink-3:#7a766f;--red:#b5342b;--red-soft:rgba(181,52,43,.08);
+    --display:"Manrope",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:var(--body);font-size:18px;line-height:1.7;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing:-0.025em}
+  em{font-style:normal;font-weight:600;color:var(--ink)}
+  .wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+  .kicker{font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+
+  /* Impressum-Leiste */
+  .nav{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--ink)}
+  .nav .wrap{display:flex;align-items:center;gap:1.4rem;height:60px}
+  .mark{font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:-0.02em;display:inline-flex;align-items:center;gap:.5rem;margin-right:auto}
+  .mark svg{width:20px;height:20px}
+  .mark small{font-family:var(--body);font-weight:400;font-size:.8rem;color:var(--ink-3);margin-left:.6rem;letter-spacing:.08em;text-transform:uppercase}
+  .nav .back,.nav .cta{font-family:var(--display);font-weight:700;font-size:.85rem}
+  .nav .back{color:var(--ink-2)}
+  .nav .back:hover{color:var(--ink)}
+  .nav .cta{color:var(--paper);background:var(--ink);padding:.45rem .95rem}
+  .nav .cta:hover{background:var(--red)}
+  @media (max-width:640px){.nav .back,.mark small{display:none}}
+
+  /* Beitragskopf */
+  .head{padding:3.2rem 0 2.4rem;border-bottom:3px double var(--ink)}
+  .head h1{font-size:clamp(2.3rem,6vw,4.4rem);max-width:18ch;margin-top:1rem}
+  .head .deck{margin-top:1.4rem;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.45;color:var(--ink-2);max-width:48ch;font-weight:300}
+  .byline{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin-top:2rem;padding-top:.9rem;border-top:1px solid var(--ink);font-size:.9rem;color:var(--ink-2)}
+  .byline b{font-family:var(--display);font-weight:700;color:var(--ink)}
+
+  /* Text */
+  main{padding:3rem 0 4rem}
+  .post{width:min(68ch,100%);margin-inline:auto}
+  .post>p{margin-top:1.2rem;color:var(--ink-2)}
+  .post>p:first-child{margin-top:0}
+  .post>p:first-child::first-letter{font-family:var(--display);font-weight:800;font-size:3.9em;line-height:.8;float:left;padding:.08em .14em 0 0;color:var(--ink)}
+  .post h2{counter-increment:sec;margin-top:3.4rem;font-size:1.65rem;max-width:24ch}
+  .post h2::before{content:counter(sec,decimal-leading-zero);display:block;font-size:.85rem;letter-spacing:.14em;color:var(--red);margin-bottom:.6rem;font-weight:700}
+  .post h2.rev::before{content:"Addendum"}
+  .post h2.rev{padding-top:1.4rem;border-top:1px solid var(--ink)}
+  .post h2+p{margin-top:1rem}
+  .post{counter-reset:sec}
+  .post ul{margin:1rem 0 0 1.2rem;color:var(--ink-2)}
+  .post code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.86em;background:var(--paper-2);padding:.05em .4em;border-radius:2px;color:var(--ink)}
+  .post a{box-shadow:inset 0 -1px 0 var(--red);font-weight:500}
+  .post a:hover{background:var(--red-soft)}
+  .post .aside{margin:1.8rem 0 0;padding:.2rem 0 .2rem 1.3rem;border-left:3px solid var(--red);color:var(--ink-2);font-size:1rem}
+  .post .aside p+p{margin-top:.7rem}
+  .pull{margin:2.8rem 0 2.4rem;padding:1.6rem 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;letter-spacing:-0.02em;color:var(--ink);max-width:28ch}
+  .pull::before{content:"\201C";color:var(--red)}
+  .pull::after{content:"\201D";color:var(--red)}
+  /* Abbildungen breiter als der Text */
+  .shot{margin:2.2rem 0 0;width:min(100vw - 2.5rem,900px);margin-left:calc(50% - min(100vw - 2.5rem,900px)/2)}
+  .shot img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+  .shot figcaption{margin-top:.7rem;font-size:.86rem;color:var(--ink-3);line-height:1.5;border-left:2px solid var(--red);padding-left:.8rem;max-width:68ch}
+
+  /* Serie */
+  .series{width:min(68ch,100%);margin:3.6rem auto 0;border-top:3px double var(--ink);padding-top:1.2rem}
+  .series ol{list-style:none;margin-top:.8rem}
+  .series li{border-bottom:1px solid var(--rule);padding:.7rem 0}
+  .series li a{display:grid;grid-template-columns:2.8rem 1fr;gap:.6rem;align-items:baseline}
+  .series li a i{font-style:normal;font-family:var(--display);font-weight:800;color:var(--red);font-size:.9rem;letter-spacing:.1em}
+  .series li a b{font-family:var(--display);font-weight:700}
+  .series li a:hover b{box-shadow:inset 0 -2px 0 var(--red)}
+  .series li.now a b{color:var(--ink-3)}
+  .series li.now a b::after{content:" · you are reading this one";font-family:var(--body);font-weight:400;font-size:.85rem}
+
+  /* Übersicht */
+  .mast{padding:3.2rem 0 1.6rem;border-bottom:3px double var(--ink)}
+  .mast h1{font-size:clamp(3rem,9vw,6.5rem);letter-spacing:-0.04em;line-height:.95}
+  .mast .deck{margin-top:1.2rem;font-size:1.2rem;color:var(--ink-2);max-width:60ch;font-weight:300}
+  .lead{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;padding:2.4rem 0;border-bottom:1px solid var(--ink);align-items:center}
+  .lead h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-top:.6rem;max-width:20ch}
+  .lead h2 a:hover{box-shadow:inset 0 -3px 0 var(--red)}
+  .lead p{margin-top:1rem;color:var(--ink-2)}
+  .lead img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+  .lead .meta{margin-top:1rem;font-size:.88rem;color:var(--ink-3)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem}
+  .story{padding:1.6rem 0;border-bottom:1px solid var(--rule)}
+  .story h2{font-size:1.45rem;margin-top:.5rem;max-width:22ch}
+  .story h2 a:hover{box-shadow:inset 0 -2px 0 var(--red)}
+  .story p{margin-top:.7rem;color:var(--ink-2);font-size:.98rem}
+  .story .meta{margin-top:.8rem;font-size:.86rem;color:var(--ink-3)}
+  .note{padding:1.6rem 0 0;font-size:.95rem;color:var(--ink-2);max-width:68ch}
+  .note a{box-shadow:inset 0 -1px 0 var(--red)}
+  @media (max-width:820px){.lead{grid-template-columns:1fr;gap:1.4rem}.grid{grid-template-columns:1fr}}
+
+  .contact{border-top:3px double var(--ink);margin-top:1rem}
+  .contact .wrap{padding:3rem 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:3rem;align-items:start}
+  .contact h2{font-size:1.9rem;max-width:20ch;margin-top:.6rem}
+  .contact p{margin-top:.9rem;color:var(--ink-2);max-width:46ch}
+  .contact .card a{display:block;padding:.75rem 0;border-bottom:1px solid var(--rule);font-family:var(--display);font-weight:700}
+  .contact .card a:hover{color:var(--red)}
+  .contact .card small{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;color:var(--ink-3)}
+  @media (max-width:820px){.contact .wrap{grid-template-columns:1fr;gap:1.6rem}}
+  footer{padding:1.6rem 0 2.6rem;font-size:.85rem;color:var(--ink-3)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a:hover{color:var(--ink)}
+
+  /* Sprachumschalter in der Kopfleiste */
+  .nav .wrap{gap:1rem}
+  .nav .mark{margin-right:auto}
+  .nav a.lang,.nav li.lang a{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.12em;line-height:1;color:var(--ink);border:1px solid var(--ink);padding:.38rem .5rem;white-space:nowrap}
+  .nav a.lang:hover,.nav li.lang a:hover{background:var(--ink);color:var(--bg,#fbfaf7)}
+  @media (max-width:900px){.nav .main li.lang{display:list-item}}
+</style>
+</head>
+
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="/en/" aria-label="DynamicsPro, to the home page">
+      <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#b5342b"/><rect x="15" y="3" width="8" height="8" stroke="#1a1a1a" stroke-width="1.6"/><rect x="3" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.6"/><rect x="15" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.6"/></svg>
+      DynamicsPro<small>Workshop notes</small>
+    </a>
+    <a class="back" href="../">All posts</a>
+    <a class="lang" href="/blog/admin-console-2-vor-dem-import/?lang=de" hreflang="de" lang="de" aria-label="Deutsche Fassung">DE</a>
+    <a class="cta" href="#kontakt">Contact</a>
+  </div>
+</header>
+
+<section class="head">
+  <div class="wrap">
+    <span class="kicker">Solution Administration Console · Part 2 of 4</span>
+    <h1>Why imports fail, and how to see it coming</h1>
+    <p class="deck">A failed import into PROD costs you an evening. Almost always for a reason you could have known an hour earlier.</p>
+    <div class="byline"><span>By <b>Andy Schwarz</b></span><span>July 20, 2026</span><span>5 min read</span></div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+    <article class="post">
+
+<p>The reasons an import fails have been the same for years. A dependency that is missing in the target because it lives in another solution that has not been moved yet. An environment variable with no value and no default. A connection reference that is not bound anywhere, so the flow stays off after the import. An unmanaged layer on top of a managed component that silently masks every future deployment. A canvas app that arrives and reaches nobody, because sharing does not travel with it.</p>
+<p>Each of these questions can be answered on its own. You just need time and the right queries, and you have neither on the evening before the PROD import.</p>
+<figure class="shot loop">
+  <img src="../../../assets/blog/devops-loop.jpg" width="1024" height="559" loading="lazy" decoding="async" alt="Graphic: The DevOps cycle as a figure eight on its side, with the eight stages Plan, Code, Build, Test, Release, Deploy, Operate and Monitor.">
+  <figcaption>This part sits at Test and Release: checking before the import, and looking afterwards at what actually arrived in the target.</figcaption>
+</figure>
+
+<h2>How we used to find out</h2>
+<p>Honestly: by importing. First to UAT, then see what blows up. The import log is XML, with the actual information buried in an error text that you copy into Excel and filter for “Missing”. For layers there is the Solution Layer Explorer in XrmToolBox, which lets you check component by component. For environment variables, a checklist that someone ticks off before the import, if they remember. Nobody has a list of app sharing, and you find out when the first users get in touch.</p>
+<p>The pattern in all of this: the knowledge was there, spread across four tools and two heads, and never in one place before the import.</p>
+
+<blockquote class="pull">You can argue about the number. Not about the table.</blockquote>
+<h2>Dependencies first, then the rest</h2>
+<p>On June 12 the Dependency Check went into the console, and today it is called <em>Deployment Readiness</em>. It checks a release solution against the target environment with the same action Dataverse itself uses during an import, and lists what is needed there but neither comes along nor already exists. Every finding has “Add to Solution” to pull the missing component in directly. That is the ten-second counterpart to the evening.</p>
+<figure class="shot">
+  <img src="../../../assets/screenshots/readiness.webp" width="1600" height="844" loading="lazy" decoding="async" alt="Screenshot: Deployment Readiness, showing separately what is missing in the target and what cannot be checked from here.">
+  <figcaption>Shown separately: what is missing in the target and makes the import fail, and what cannot be checked from here. Neither is green.</figcaption>
+</figure>
+<p>The same week brought the comparison of processes across all environments, the Layer Inspector and App Sharing, first as separate tabs, and since June 20 bundled under <em>Analyze</em>: one click, one run against the target, and the result condensed into a risk score from 0 to 100 with a table of findings underneath. You can argue about the number. Not about the table.</p>
+<figure class="shot">
+  <img src="../../../assets/screenshots/analyze.webp" width="1600" height="1214" loading="lazy" decoding="async" alt="Screenshot: Analyze, one run condensed into a risk score, findings by severity, recommendations and a readiness matrix.">
+  <figcaption>Analyze after a run. The individual checks sit next to it as tabs and share the release solution selected at the top.</figcaption>
+</figure>
+<p>After the import comes <em>Import History</em>, since July 5. It shows the imports of an environment and parses the log when you expand one. The error text becomes a table: on the left the component missing in the target, with its parent object and source solution, on the right the imported component that needs it. That is exactly the table I used to build by hand in Excel, except that now it is there in two seconds.</p>
+<figure class="shot">
+  <img src="../../../assets/screenshots/import-history.webp" width="1600" height="888" loading="lazy" decoding="async" alt="Screenshot: A failed import, expanded, on the left the component missing in the target, on the right the one that needs it.">
+  <figcaption>A failed import, expanded. The heavy log only loads when you expand it.</figcaption>
+</figure>
+<p><em>Env Config</em> came the same day: environment variables and connection references across all environments side by side, matched by name, with the three typical gaps flagged. For each connection reference it shows how many flows use it, split into active and inactive. A reference with zero flows is orphaned and can go.</p>
+
+<h2>Three things the connector cannot do</h2>
+<p>The console reads other environments through the Microsoft Dataverse connector, because a Code App on its own only reaches its own environment. The connector can read tables and call actions. What it cannot do, I learned in these weeks. Two things so far, the third is in the addendum.</p>
+<p>First, it cannot call functions, only actions. Dataverse returns the sharing of a canvas app through a function, and the connector answers that with “No HTTP resource was found”. So since June 13 App Sharing reads the sharing as a table, straight from the access rights, and builds the answer itself.</p>
+<p>Second, GUIDs are only stable across environments if the component was transported cleanly by solution. An environment variable someone created by hand in UAT has a different ID there than in DEV. It happened. So the console matches everything that is imported by name by its name. And the modified date does not count as a drift signal, because every import overwrites it.</p>
+<h2>The false green</h2>
+<p>The most unpleasant lesson came at the end of June. Deployment Readiness showed green, and the import failed anyway: a missing column, a missing PCF control and a connection reference. The check had counted component types it could not verify as present. Since June 25, green only means zero missing and zero unknown components. Unknown is not green. That sounds trivial, and it cost an evening.</p>
+<p>Part of this is a detail I did not know before: the component type of a connection reference has no fixed number. In one environment it is 10064, in another 10093, and there 10064 is a completely different table. As of today the console resolves the number per environment from the metadata. Before that, seventy-one connection references landed in the “could not be checked” bucket.</p>
+<p>The <a href="../admin-console-3-betrieb/">third part</a> continues with what goes on in operations: plugin errors, roles and settings that drift apart between environments. The Validate group in detail is on the <a href="../../solution-admin-console.html#validate">product page</a>.</p>
+
+<h2 class="rev">Addendum, August 4: the third thing</h2>
+<p>A JavaScript web resource showed up in the comparison as changed on every line. In DEV it had Unix line endings, in PROD Windows line endings, otherwise it was byte-identical. Nobody had touched it. Since then drift is decided on the normalized text. Only line endings and the byte order mark are normalized, in other words what saving a file changes on its own. A trailing space is still an edit.</p>
+
+
+    </article>
+
+<section class="series" aria-label="All parts of the series">
+  <span class="kicker">Solution Administration Console, all parts</span>
+  <ol><li><a href="../admin-console-1-working-solutions/"><i>01</i><b>One solution per work item, and then the merge</b></a></li><li class="now"><a href="../admin-console-2-vor-dem-import/"><i>02</i><b>Why imports fail, and how to see it coming</b></a></li><li><a href="../admin-console-3-betrieb/"><i>03</i><b>Who can do what, and what the system is doing right now</b></a></li><li><a href="../admin-console-4-datentransfer/"><i>04</i><b>Moving configuration data, and turning the tool into a product</b></a></li></ol>
+</section>
+
+  </div>
+</main>
+
+<section id="kontakt" class="contact">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Contact</span>
+      <h2>Next import coming up?</h2>
+      <p>If you want to know whether it will go through and what it will do in the target before you start it: the console answers that in your environment. Send me a short message.</p>
+    </div>
+    <div class="card">
+      <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de<small>Email, most reliable</small></a>
+      <a href="tel:+491735274172">+49 173 5274172<small>Phone</small></a>
+      <a href="../../">Back to the profile<small>Case studies, skills, career</small></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein near Nuremberg</span>
+    <span><a href="../../impressum.html">Legal notice</a> &nbsp;&middot;&nbsp; <a href="../../datenschutz.html">Privacy policy</a></span>
+  </div>
+</footer>
+</body>
+</html>

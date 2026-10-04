@@ -33,6 +33,7 @@ jobs:
           cp -r assets _site/assets
           mkdir -p _site/health-check && cp health-check/index.html _site/health-check/
           cp -r blog _site/blog
+          cp -r en _site/en
           find _site -type f | sort
 
       - uses: actions/configure-pages@v5

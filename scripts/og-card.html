@@ -33,13 +33,13 @@
     <p id="sub">Architektur, ALM und Code. 16 Jahre Dynamics-Stack.</p>
   </div>
   <div class="foot">
-    <span><b>Andy Schwarz</b> · Freelancer, Nürnberg</span>
+    <span><b>Andy Schwarz</b> · <span id="who">Freelancer, Nürnberg</span></span>
     <span>dynamicspro.de</span>
   </div>
   <script>
-    // Varianten je Seite: scripts/og.mjs ruft die Karte mit ?kicker=…&title=…&sub=…&tag=… auf.
+    // Varianten je Seite: scripts/og.mjs ruft die Karte mit ?kicker=…&title=…&sub=…&tag=…&who=… auf.
     var q = new URLSearchParams(location.search);
-    ['kicker', 'title', 'sub', 'tag'].forEach(function (k) {
+    ['kicker', 'title', 'sub', 'tag', 'who'].forEach(function (k) {
       if (q.has(k)) document.getElementById(k).textContent = q.get(k);
     });
   </script>

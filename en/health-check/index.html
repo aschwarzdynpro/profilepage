@@ -1,51 +1,39 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>
-/* Sprache vorbelegen: siehe CLAUDE.md, Abschnitt Zweisprachigkeit. Speichert nichts. */
-(function(){try{
-  var q=new URLSearchParams(location.search);
-  if(q.get('lang')==='de'){q.delete('lang');var s=q.toString();history.replaceState(null,'',location.pathname+(s?'?'+s:'')+location.hash);return}
-  if(navigator.webdriver||/bot|crawl|spider|slurp|preview|facebookexternalhit|lighthouse|headless/i.test(navigator.userAgent))return;
-  var r=document.referrer;if(r&&r.indexOf(location.origin+'/')===0)return;
-  var l=(navigator.languages&&navigator.languages[0])||navigator.language||'';
-  if(/^de(-|$)/i.test(l))return;
-  location.replace('/en'+location.pathname+location.search+location.hash);
-}catch(e){}})();
-</script>
 <link rel="alternate" hreflang="de" href="https://dynamicspro.de/health-check/">
 <link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/health-check/">
 <link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/health-check/">
-<title>Dynamics 365 Health Check zum Festpreis | DynamicsPro</title>
-<meta name="description" content="Unabhängiger Health Check für Dynamics 365 CE und Power Platform: Scorecard, Risiken und Maßnahmenplan in 5 Tagen. Festpreis 5.000 €.">
-<link rel="canonical" href="https://dynamicspro.de/health-check/">
+<title>Dynamics 365 Health Check at a Fixed Price | DynamicsPro</title>
+<meta name="description" content="Independent health check for Dynamics 365 CE and Power Platform: scorecard, risks and action plan in 5 days. Fixed price €5,000.">
+<link rel="canonical" href="https://dynamicspro.de/en/health-check/">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#fbfaf7">
-<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="../assets/favicon.svg">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/favicon.svg">
 
 <meta property="og:type" content="website">
-<meta property="og:locale" content="de_DE">
+<meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="DynamicsPro">
-<meta property="og:url" content="https://dynamicspro.de/health-check/">
-<meta property="og:title" content="Dynamics 365 Health Check zum Festpreis">
-<meta property="og:description" content="In 5 Tagen zu Scorecard, Top-10-Risiken und priorisiertem Maßnahmenplan für Dynamics 365 CE und Power Platform. Unabhängig, toolgestützt, ohne Eingriff in Ihre Umgebungen.">
-<meta property="og:image" content="https://dynamicspro.de/assets/og-health-check.png">
+<meta property="og:url" content="https://dynamicspro.de/en/health-check/">
+<meta property="og:title" content="Dynamics 365 Health Check at a Fixed Price">
+<meta property="og:description" content="In 5 days: a scorecard, the top 10 risks and a prioritized action plan for Dynamics 365 CE and Power Platform. Independent, tool-supported, with no changes to your environments.">
+<meta property="og:image" content="https://dynamicspro.de/assets/og-en-health-check.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Wie gesund ist Ihr Dynamics 365? Unabhängiger Health Check zum Festpreis, 5 Tage. DynamicsPro, Andy Schwarz.">
+<meta property="og:image:alt" content="How healthy is your Dynamics 365? Independent health check at a fixed price, 5 days. DynamicsPro, Andy Schwarz.">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="preload" href="../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
-  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  /* Self-hosted (SIL Open Font License 1.1), no third-party request */
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 
   :root{
     --navy:#1a1a1a;--navy-2:#2a2a2a;--navy-line:#d8d4cc;
@@ -74,7 +62,7 @@
   .nav .cta{color:var(--navy);background:var(--sky);padding:.55rem 1.05rem;border-radius:4px;font-weight:600;font-size:.95rem;font-family:var(--display);white-space:nowrap}
   .nav .cta:hover{background:#8CC6FF}
   @media (max-width:640px){.nav .back{display:none}}
-  /* Unter 440px passt der volle Knopftext nicht neben die Marke, dann die Kurzform. */
+  /* Below 440px the full button text does not fit next to the brand, so the short form is used. */
   .nav .cta .short{display:none}
   @media (max-width:440px){.nav .cta .long{display:none}.nav .cta .short{display:inline}}
 
@@ -105,7 +93,7 @@
   section>.wrap>header h2{font-size:1.7rem}
   section>.wrap>header p{margin-top:.5rem;color:var(--ink-2);font-size:.98rem;max-width:62ch}
 
-  /* Acht Prüfdimensionen. Zwei Spalten, damit Titel und Leitfrage nebeneinander lesbar bleiben. */
+  /* Eight check dimensions. Two columns so title and guiding question stay readable side by side. */
   .dims{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
   @media (max-width:900px){.dims{grid-template-columns:1fr}}
   .dim{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:1.5rem 1.6rem}
@@ -114,7 +102,7 @@
   .dim p{margin-top:.75rem;color:var(--ink-2);font-size:.97rem}
   .note{margin-top:1.6rem;border-left:2px solid var(--sky);padding:.15rem 0 .15rem 1.1rem;color:var(--ink-2);font-size:.95rem;max-width:72ch}
 
-  /* Ablauf: vier Schritte, Nummer in der Randspalte. */
+  /* Process: four steps, number in the margin column. */
   .steps{list-style:none;counter-reset:step;border-top:1px solid var(--line)}
   .steps li{counter-increment:step;display:grid;grid-template-columns:3.2rem 1fr;gap:1.2rem;align-items:baseline;padding:1.3rem 0;border-bottom:1px solid var(--line)}
   .steps li::before{content:counter(step);font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--sky);line-height:1}
@@ -123,7 +111,7 @@
   .steps li.optional::before{color:var(--ink-3)}
   .steps .opt{font-family:var(--body);font-size:.7rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:3px;padding:.15rem .45rem;margin-left:.6rem;white-space:nowrap}
 
-  /* Ergebnis: drei Lieferobjekte nebeneinander. */
+  /* Outcome: three deliverables side by side. */
   .outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
   @media (max-width:900px){.outcomes{grid-template-columns:1fr}}
   .outcome{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:1.5rem 1.6rem}
@@ -158,15 +146,15 @@
   footer{padding:2rem 0;font-size:.88rem;color:var(--ink-2)}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
   footer a:hover{color:var(--ink)}
-  /* Voraussetzungen und Abgrenzung stehen bewusst hinter dem Abschluss-CTA:
-     drei Absagen unmittelbar vor dem Knopf bremsen den Abschluss. Der Einwand
-     ist unter den Kacheln bereits benannt. */
+  /* Prerequisites and out of scope deliberately sit after the closing CTA:
+     three refusals right before the button slow down the decision. The objection
+     is already named below the tiles. */
   .after-cta{margin-top:0;padding:3.5rem 0 1rem}
   section[id]{scroll-margin-top:96px}
 
-  /* Magazin-Theme, gleiches Bild wie der Blog: helles Papier, Schwarz, Rot als einziger Akzent,
-     Doppellinien statt dunkler Flaechen. Ueberschreibt die Regeln darueber; wer eine Komponente
-     neu baut, baut sie gleich in diesem Bild. */
+  /* Magazine theme, same look as the blog: light paper, black, red as the only accent,
+     double rules instead of dark areas. Overrides the rules above; anyone building a new
+     component builds it in this look right away. */
   h1,h2,h3,h4{font-weight:800;letter-spacing:-0.025em}
   a:focus-visible,button:focus-visible{outline-color:var(--red)}
   .kicker{font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
@@ -231,9 +219,9 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Dynamics 365 Health Check",
-  "serviceType": "Systemanalyse Dynamics 365 CE und Power Platform",
-  "url": "https://dynamicspro.de/health-check/",
-  "description": "Unabhängiger Health Check für Dynamics 365 CE und Power Platform: Scorecard, Risikoliste und Maßnahmenplan in 5 Tagen.",
+  "serviceType": "System review of Dynamics 365 CE and Power Platform",
+  "url": "https://dynamicspro.de/en/health-check/",
+  "description": "Independent health check for Dynamics 365 CE and Power Platform: scorecard, risk list and action plan in 5 days.",
   "provider": { "@id": "https://dynamicspro.de/#business" },
   "areaServed": ["DE", "AT", "CH"],
   "offers": {
@@ -242,7 +230,7 @@
     "priceCurrency": "EUR",
     "priceSpecification": { "@type": "UnitPriceSpecification", "price": "5000", "priceCurrency": "EUR", "valueAddedTaxIncluded": false },
     "availability": "https://schema.org/InStock",
-    "url": "https://dynamicspro.de/health-check/"
+    "url": "https://dynamicspro.de/en/health-check/"
   }
 }
 </script>
@@ -251,30 +239,30 @@
 
 <header class="nav">
   <div class="wrap">
-    <a class="mark" href="/" aria-label="DynamicsPro, zur Startseite">
+    <a class="mark" href="/en/" aria-label="DynamicsPro, to the home page">
       <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#b5342b"/><rect x="15" y="3" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><rect x="3" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><rect x="15" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><path d="M11 7h4M7 11v4M19 11v4M11 19h4" stroke="#1a1a1a" stroke-width="1.5"/></svg>
       DynamicsPro
     </a>
-    <a class="back" href="/">Zurück zur Startseite</a>
-    <a class="lang" data-i18n href="/en/health-check/" hreflang="en" lang="en" aria-label="English version">EN</a>
-    <a class="cta" href="https://bookings.cloud.microsoft/book/DynamicsPro@dynamicspro.de/" target="_blank" rel="noopener"><span class="long">Erstgespräch vereinbaren</span><span class="short">Erstgespräch</span></a>
+    <a class="back" href="/en/">Back to home</a>
+    <a class="lang" data-i18n href="/health-check/?lang=de" hreflang="de" lang="de" aria-label="Deutsche Fassung">DE</a>
+    <a class="cta" href="https://bookings.cloud.microsoft/book/DynamicsPro@dynamicspro.de/" target="_blank" rel="noopener"><span class="long">Book an intro call</span><span class="short">Intro call</span></a>
   </div>
 </header>
 
 <section class="head">
   <div class="wrap">
-    <div class="kicker">Festpreis-Angebot · Remote · 5 Tage</div>
-    <h1>Wie gesund ist Ihr Dynamics 365?</h1>
-    <p class="lead">Unabhängiger Health Check für Dynamics 365 CE und Power Platform. In 5 Tagen zu Scorecard, Risikoliste und konkretem Maßnahmenplan. Festpreis 5.000 €.</p>
+    <div class="kicker">Fixed-price offer · Remote · 5 days</div>
+    <h1>How healthy is your Dynamics 365?</h1>
+    <p class="lead">An independent health check for Dynamics 365 CE and Power Platform. In 5 days you get a scorecard, a risk list and a concrete action plan. Fixed price €5,000.</p>
     <div class="actions">
-      <a class="btn primary" href="https://bookings.cloud.microsoft/book/DynamicsPro@dynamicspro.de/" target="_blank" rel="noopener">Erstgespräch vereinbaren</a>
-      <a class="btn outline" href="#dimensionen">Was geprüft wird</a>
+      <a class="btn primary" href="https://bookings.cloud.microsoft/book/DynamicsPro@dynamicspro.de/" target="_blank" rel="noopener">Book an intro call</a>
+      <a class="btn outline" href="#dimensionen">What gets checked</a>
     </div>
     <dl class="facts">
-      <div><dt>Dauer</dt><dd>5 Tage, Start in der Regel zwei bis drei Wochen nach Beauftragung</dd></div>
-      <div><dt>Preis</dt><dd>5.000 € zzgl. USt., fester Umfang</dd></div>
-      <div><dt>Ihr Aufwand</dt><dd>Rund 4 bis 5 Stunden im Team, verteilt auf Kickoff, Interviews und Präsentation</dd></div>
-      <div><dt>Eingriff</dt><dd>Keiner. Lesezugriff, an Ihren Umgebungen wird nichts verändert</dd></div>
+      <div><dt>Duration</dt><dd>5 days, usually starting two to three weeks after you place the order</dd></div>
+      <div><dt>Price</dt><dd>€5,000 plus VAT, fixed scope</dd></div>
+      <div><dt>Your effort</dt><dd>About 4 to 5 hours for your team, spread across kickoff, interviews and presentation</dd></div>
+      <div><dt>Changes to your system</dt><dd>None. Read access, nothing in your environments is changed</dd></div>
     </dl>
   </div>
 </section>
@@ -284,8 +272,8 @@
 <section id="problem">
   <div class="wrap">
     <div class="intro">
-      <h2>Über Jahre gewachsen, selten geprüft</h2>
-      <p>Customizing-Altlasten, langsame Formulare, fehlerhafte Flows, unklare Berechtigungen. Die meisten Systeme laufen, aber niemand weiß genau, wie stabil. Der Health Check schafft Klarheit, bevor aus Risiken Ausfälle werden.</p>
+      <h2>Grown over years, rarely checked</h2>
+      <p>Legacy customizations, slow forms, failing flows, unclear permissions. Most systems run, but nobody knows exactly how stable they are. The health check brings clarity before risks turn into outages.</p>
     </div>
   </div>
 </section>
@@ -293,138 +281,138 @@
 <section id="dimensionen">
   <div class="wrap">
     <header>
-      <h2>Was geprüft wird</h2>
-      <p>Acht Dimensionen, jede mit einer Leitfrage, die am Ende beantwortet ist.</p>
+      <h2>What gets checked</h2>
+      <p>Eight dimensions, each with a guiding question that has an answer by the end.</p>
     </header>
     <div class="dims">
       <article class="dim">
         <div class="no">01</div>
-        <h3>Solution-Architektur und Layering</h3>
-        <p>Sind Solutions sinnvoll geschnitten, Publisher konsistent, Layer beherrscht?</p>
+        <h3>Solution architecture and layering</h3>
+        <p>Are solutions split sensibly, publishers consistent, layers under control?</p>
       </article>
       <article class="dim">
         <div class="no">02</div>
-        <h3>Customizing-Qualität</h3>
-        <p>Wie viel Altlast, Ungenutztes und Überladenes steckt in Tabellen, Formularen und Ansichten?</p>
+        <h3>Customization quality</h3>
+        <p>How much legacy, unused and overloaded configuration sits in tables, forms and views?</p>
       </article>
       <article class="dim">
         <div class="no">03</div>
-        <h3>Code-Qualität</h3>
-        <p>Sind Plugins, JavaScript und PCF wartbar, aktuell und frei von Solution-Checker-Befunden?</p>
+        <h3>Code quality</h3>
+        <p>Are plugins, JavaScript and PCF maintainable, up to date and free of Solution Checker findings?</p>
       </article>
       <article class="dim">
         <div class="no">04</div>
-        <h3>Automatisierung</h3>
-        <p>Laufen Flows und Workflows stabil, mit klaren Eigentümern und ohne veraltete Technik?</p>
+        <h3>Automation</h3>
+        <p>Do flows and workflows run reliably, with clear owners and without outdated technology?</p>
       </article>
       <article class="dim">
         <div class="no">05</div>
         <h3>Performance</h3>
-        <p>Wo bremsen Abfragen, synchrone Logik oder API-Limits die Anwender?</p>
+        <p>Where do queries, synchronous logic or API limits slow your users down?</p>
       </article>
       <article class="dim">
         <div class="no">06</div>
-        <h3>Daten und Kapazität</h3>
-        <p>Wie entwickeln sich Speicher, Datenqualität und Wachstum?</p>
+        <h3>Data and capacity</h3>
+        <p>How are storage, data quality and growth developing?</p>
       </article>
       <article class="dim">
         <div class="no">07</div>
-        <h3>Sicherheit und Berechtigungen (Überblick)</h3>
-        <p>Gibt es offensichtliche Risiken bei Rollen, Admin-Rechten und Zugriffen?</p>
+        <h3>Security and permissions (overview)</h3>
+        <p>Are there obvious risks in roles, admin rights and access?</p>
       </article>
       <article class="dim">
         <div class="no">08</div>
-        <h3>ALM und Betrieb (Überblick)</h3>
-        <p>Sind Transporte, Umgebungen, Rollback und Dokumentation tragfähig?</p>
+        <h3>ALM and operations (overview)</h3>
+        <p>Are deployments, environments, rollback and documentation fit for purpose?</p>
       </article>
     </div>
-    <p class="note">Sicherheit, ALM sowie Lizenzen und Kapazität werden im Überblick bewertet. Für eine Tiefenanalyse gibt es jeweils eigene Reports. Die Umsetzung der Maßnahmen ist nicht enthalten. Voraussetzungen und Abgrenzung stehen am Seitenende.</p>
+    <p class="note">Security, ALM, and licensing and capacity are assessed at overview level. Each of them has its own report for an in-depth analysis. Implementing the actions is not included. Prerequisites and what is out of scope are listed at the end of the page.</p>
   </div>
 </section>
 
 <section id="ablauf">
   <div class="wrap">
     <header>
-      <h2>Ablauf</h2>
-      <p>Vier Termine über fünf Tage, dazwischen die toolgestützte Analyse. Der Workshop danach ist optional.</p>
+      <h2>How it runs</h2>
+      <p>Four sessions over five days, with the tool-supported analysis in between. The workshop afterwards is optional.</p>
     </header>
     <ol class="steps">
       <li>
         <div>
-          <h3>Kickoff (90 Minuten)</h3>
-          <p>Ist-Situation, Schmerzpunkte, Ziele, Zugriffe klären</p>
+          <h3>Kickoff (90 minutes)</h3>
+          <p>Clarify the current situation, pain points, goals and access</p>
         </div>
       </li>
       <li>
         <div>
-          <h3>Toolgestützte Analyse mit Lesezugriff</h3>
-          <p>Auswertung der Umgebungen mit eigenem Analyse-Toolset</p>
+          <h3>Tool-supported analysis with read access</h3>
+          <p>Review of your environments with my own analysis toolset</p>
         </div>
       </li>
       <li>
         <div>
-          <h3>Zwei bis drei Kurzinterviews</h3>
-          <p>Mit Entwicklung, Makern und Betrieb, je 45 Minuten</p>
+          <h3>Two to three short interviews</h3>
+          <p>With development, makers and operations, 45 minutes each</p>
         </div>
       </li>
       <li>
         <div>
-          <h3>Ergebnispräsentation (1 Stunde)</h3>
-          <p>Scorecard, Risiken und Maßnahmenplan im Gespräch durchgehen</p>
+          <h3>Results presentation (1 hour)</h3>
+          <p>We walk through the scorecard, risks and action plan together</p>
         </div>
       </li>
       <li class="optional">
         <div>
-          <h3>Workshop nach Bedarf<span class="opt">optional</span></h3>
-          <p>Die Handlungsempfehlungen konzeptionell durchsprechen: Zuschnitt der Maßnahmen, Reihenfolge und wer was übernimmt. Umfang und Aufwand stimmen wir vorher ab, nicht im Festpreis enthalten.</p>
+          <h3>Workshop as needed<span class="opt">optional</span></h3>
+          <p>We talk through the recommendations at a conceptual level: how to slice the actions, in what order, and who takes on what. We agree on scope and effort beforehand; it is not included in the fixed price.</p>
         </div>
       </li>
     </ol>
-    <p class="note">Ihr Team ist für den Health Check insgesamt rund 4 bis 5 Stunden eingebunden. An Ihren Umgebungen wird nichts verändert.</p>
+    <p class="note">In total, your team spends about 4 to 5 hours on the health check. Nothing in your environments is changed.</p>
   </div>
 </section>
 
 <section id="ergebnis">
   <div class="wrap">
     <header>
-      <h2>Ihr Ergebnis</h2>
-      <p>Drei Dokumente, die Sie ohne mich weiterverwenden können.</p>
+      <h2>What you get</h2>
+      <p>Three documents you can keep using without me.</p>
     </header>
     <div class="outcomes">
       <article class="outcome">
-        <h3>Health-Scorecard</h3>
-        <p>Über acht Dimensionen mit Ampel und Begründung.</p>
+        <h3>Health scorecard</h3>
+        <p>Across eight dimensions, with a traffic-light rating and the reasoning behind it.</p>
       </article>
       <article class="outcome">
-        <h3>Top-10-Risiken</h3>
-        <p>Mit Auswirkung und betroffenen Umgebungen.</p>
+        <h3>Top 10 risks</h3>
+        <p>With impact and affected environments.</p>
       </article>
       <article class="outcome">
-        <h3>Priorisierter Maßnahmenkatalog</h3>
-        <p>In drei Stufen: Quick Wins, 90 Tage, Zielarchitektur.</p>
+        <h3>Prioritized action catalog</h3>
+        <p>In three tiers: quick wins, 90 days, target architecture.</p>
       </article>
     </div>
-    <p class="note">Der Maßnahmenkatalog gehört Ihnen. Sie setzen ihn intern, mit Ihrem Partner oder mit mir um.</p>
+    <p class="note">The action catalog belongs to you. You implement it in-house, with your partner or with me.</p>
   </div>
 </section>
 
 <section id="warum">
   <div class="wrap">
     <header>
-      <h2>Warum DynamicsPro</h2>
+      <h2>Why DynamicsPro</h2>
     </header>
     <div class="why">
       <div>
-        <h3>Über 16 Jahre Dynamics 365 und Power Platform</h3>
-        <p>Vom Entwickler zum Solution Architect, ohne den Code aus der Hand zu geben.</p>
+        <h3>More than 16 years of Dynamics 365 and Power Platform</h3>
+        <p>From developer to solution architect, without ever letting go of the code.</p>
       </div>
       <div>
-        <h3>Unabhängig</h3>
-        <p>Kein Lizenzvertrieb, keine Bindung an einen Implementierungspartner.</p>
+        <h3>Independent</h3>
+        <p>No license sales, no ties to an implementation partner.</p>
       </div>
       <div>
-        <h3>Eigenes Analyse-Toolset statt Bauchgefühl</h3>
-        <p>Befunde sind gemessen und belegt, nicht geschätzt.</p>
+        <h3>My own analysis toolset, not gut feeling</h3>
+        <p>Findings are measured and documented, not estimated.</p>
       </div>
     </div>
   </div>
@@ -435,17 +423,17 @@
 <section id="kontakt" class="contact">
   <div class="wrap">
     <div>
-      <h2>5.000 € Festpreis. 5 Tage. Klare Antworten.</h2>
-      <p>Durchführung remote, Start in der Regel innerhalb von zwei bis drei Wochen nach Beauftragung.</p>
+      <h2>Fixed price €5,000. 5 days. Clear answers.</h2>
+      <p>Delivered remotely, usually starting within two to three weeks of your order.</p>
       <div class="actions">
-        <a class="btn primary" href="https://bookings.cloud.microsoft/book/DynamicsPro@dynamicspro.de/" target="_blank" rel="noopener">Erstgespräch vereinbaren</a>
+        <a class="btn primary" href="https://bookings.cloud.microsoft/book/DynamicsPro@dynamicspro.de/" target="_blank" rel="noopener">Book an intro call</a>
       </div>
-      <p class="fine">Preis zzgl. USt. Das Erstgespräch dauert rund 30 Minuten und ist kostenfrei.</p>
+      <p class="fine">Price plus VAT. The intro call takes about 30 minutes and is free of charge.</p>
     </div>
     <div class="card">
-      <a href="mailto:aschwarz@dynamicspro.de?subject=Health%20Check%20Dynamics%20365">aschwarz@dynamicspro.de<small>E-Mail, am zuverlässigsten</small></a>
-      <a href="tel:+491735274172">+49 173 5274172<small>Telefon</small></a>
-      <a href="/">Zum Profil<small>Referenzen, Skills, Werdegang</small></a>
+      <a href="mailto:aschwarz@dynamicspro.de?subject=Health%20Check%20Dynamics%20365">aschwarz@dynamicspro.de<small>Email, most reliable</small></a>
+      <a href="tel:+491735274172">+49 173 5274172<small>Phone</small></a>
+      <a href="/en/">To the profile<small>References, skills, career</small></a>
     </div>
   </div>
 </section>
@@ -453,24 +441,24 @@
 <section id="rahmen" class="after-cta">
   <div class="wrap">
     <header>
-      <h2>Voraussetzungen und Abgrenzung</h2>
-      <p>Damit vor der Beauftragung klar ist, was Sie beistellen und was der Health Check nicht leistet.</p>
+      <h2>Prerequisites and out of scope</h2>
+      <p>So that before you place the order it is clear what you provide and what the health check does not cover.</p>
     </header>
     <div class="split">
       <div class="panel">
-        <h3>Voraussetzungen</h3>
+        <h3>Prerequisites</h3>
         <ul>
-          <li>Lesezugriff auf die produktive und eine vorgelagerte Dataverse-Umgebung sowie das Power Platform Admin Center</li>
-          <li>Lesezugriff auf Azure DevOps oder GitHub, sofern vorhanden</li>
-          <li>Ein fester Ansprechpartner und zwei bis drei Interviewpartner</li>
+          <li>Read access to the production Dataverse environment and one upstream environment, plus the Power Platform admin center</li>
+          <li>Read access to Azure DevOps or GitHub, if you use them</li>
+          <li>One fixed contact person and two to three interviewees</li>
         </ul>
       </div>
       <div class="panel out">
-        <h3>Nicht enthalten</h3>
+        <h3>Not included</h3>
         <ul>
-          <li>Umsetzung von Maßnahmen</li>
-          <li>Fachliche Prozessberatung und Lizenzberatung</li>
-          <li>Finance &amp; Operations sowie Integrationen außerhalb der Power Platform</li>
+          <li>Implementing the actions</li>
+          <li>Business process consulting and licensing advice</li>
+          <li>Finance &amp; Operations, and integrations outside the Power Platform</li>
         </ul>
       </div>
     </div>
@@ -479,8 +467,8 @@
 
 <footer>
   <div class="wrap">
-    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein bei Nürnberg</span>
-    <span><a href="/impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="/datenschutz.html">Datenschutz</a></span>
+    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein near Nuremberg</span>
+    <span><a href="/en/impressum.html">Legal notice</a> &nbsp;&middot;&nbsp; <a href="/en/datenschutz.html">Privacy policy</a></span>
   </div>
 </footer>
 

@@ -1,39 +1,27 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>
-/* Sprache vorbelegen: siehe CLAUDE.md, Abschnitt Zweisprachigkeit. Speichert nichts. */
-(function(){try{
-  var q=new URLSearchParams(location.search);
-  if(q.get('lang')==='de'){q.delete('lang');var s=q.toString();history.replaceState(null,'',location.pathname+(s?'?'+s:'')+location.hash);return}
-  if(navigator.webdriver||/bot|crawl|spider|slurp|preview|facebookexternalhit|lighthouse|headless/i.test(navigator.userAgent))return;
-  var r=document.referrer;if(r&&r.indexOf(location.origin+'/')===0)return;
-  var l=(navigator.languages&&navigator.languages[0])||navigator.language||'';
-  if(/^de(-|$)/i.test(l))return;
-  location.replace('/en'+location.pathname+location.search+location.hash);
-}catch(e){}})();
-</script>
 <link rel="alternate" hreflang="de" href="https://dynamicspro.de/impressum.html">
 <link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/impressum.html">
 <link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/impressum.html">
-<title>Impressum · Andy Schwarz, DynamicsPro</title>
-<meta name="description" content="Impressum nach § 5 DDG: Andy Schwarz, DynamicsPro, Stein bei Nürnberg. Anbieterkennzeichnung, Kontakt und Umsatzsteuer-Identifikationsnummer.">
-<link rel="canonical" href="https://dynamicspro.de/impressum.html">
+<title>Legal notice · Andy Schwarz, DynamicsPro</title>
+<meta name="description" content="Legal notice pursuant to Section 5 DDG: Andy Schwarz, DynamicsPro, Stein near Nuremberg. Provider identification, contact details and VAT identification number.">
+<link rel="canonical" href="https://dynamicspro.de/en/impressum.html">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#fbfaf7">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
   /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
-  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
   :root{
     --navy:#1a1a1a;--navy-2:#2a2a2a;--navy-line:#d8d4cc;
     --sky:#b5342b;--sky-soft:rgba(181,52,43,.08);--red:#b5342b;--red-soft:rgba(181,52,43,.08);
@@ -142,64 +130,65 @@
 
 <header class="nav">
   <div class="wrap">
-    <a class="mark" href="/" aria-label="DynamicsPro, zur Startseite">
+    <a class="mark" href="/en/" aria-label="DynamicsPro, to home page">
       <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#b5342b"/><rect x="15" y="3" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><rect x="3" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><rect x="15" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><path d="M11 7h4M7 11v4M19 11v4M11 19h4" stroke="#1a1a1a" stroke-width="1.5"/></svg>
       DynamicsPro
     </a>
-    <a class="back" href="/">Zurück zur Startseite</a>
-    <a class="lang" data-i18n href="/en/impressum.html" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <a class="back" href="/en/">Back to home</a>
+    <a class="lang" data-i18n href="/impressum.html?lang=de" hreflang="de" lang="de" aria-label="Deutsche Fassung">DE</a>
   </div>
 </header>
 
 <main>
   <div class="wrap">
     <div class="col">
-      <h1>Impressum</h1>
-      <p class="lead">Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG).</p>
+      <h1>Legal notice</h1>
+      <p class="lead">Information pursuant to Section 5 of the German Digital Services Act (§ 5 DDG).</p>
+      <p class="lead">This English version is provided for convenience. Only the <a href="/impressum.html?lang=de" hreflang="de" lang="de">German version</a> is legally binding.</p>
 
-      <h2>Anbieter</h2>
+      <h2>Provider</h2>
       <address>
         Andy Schwarz<br>
         Jagdweg 48A<br>
         90547 Stein
       </address>
-      <p>Freiberufliche Tätigkeit als Solution Architect für Microsoft Dynamics 365 und Power Platform.</p>
+      <p>Freelance work as a Solution Architect for Microsoft Dynamics 365 and Power Platform.</p>
 
-      <h2>Kontakt</h2>
+      <h2>Contact</h2>
       <p>
-        Telefon: <a href="tel:+491735274172">+49 173 5274172</a><br>
-        E-Mail: <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de</a>
+        Phone: <a href="tel:+491735274172">+49 173 5274172</a><br>
+        Email: <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de</a>
       </p>
 
-      <h2>Umsatzsteuer-Identifikationsnummer</h2>
-      <p>Gemäß § 27a Umsatzsteuergesetz: DE354991728</p>
+      <h2>VAT identification number</h2>
+      <p>Pursuant to Section 27a of the German Value Added Tax Act (§ 27a UStG): DE354991728</p>
 
-      <h2>Verantwortlich für den Inhalt</h2>
-      <p>Nach § 18 Abs. 2 Medienstaatsvertrag: Andy Schwarz, Anschrift wie oben.</p>
+      <h2>Responsible for content</h2>
+      <p>Pursuant to Section 18(2) of the German State Media Treaty (§ 18 Abs. 2 MStV): Andy Schwarz, address as above.</p>
 
-      <h2>Verbraucherstreitbeilegung</h2>
-      <p>Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+      <h2>Consumer dispute resolution</h2>
+      <p>I am neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
 
-      <h2>Haftung für Inhalte</h2>
-      <p>Die Inhalte dieser Seiten wurden mit Sorgfalt erstellt. Für ihre Richtigkeit, Vollständigkeit und Aktualität kann ich jedoch keine Gewähr übernehmen. Als Diensteanbieter bin ich nach § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich, nach den §§ 8 bis 10 DDG jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben davon unberührt. Eine diesbezügliche Haftung ist erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden entsprechender Rechtsverletzungen entferne ich diese Inhalte umgehend.</p>
+      <h2>Liability for content</h2>
+      <p>The content of these pages was created with care. However, I can give no guarantee for its accuracy, completeness or timeliness. As a service provider, I am responsible for my own content on these pages under the general laws pursuant to Section 7(1) DDG. Pursuant to Sections 8 to 10 DDG, however, I am not obliged to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information under the general laws remain unaffected. Liability in this respect is only possible from the point in time at which a specific legal infringement becomes known. Upon becoming aware of such legal infringements, I will remove this content immediately.</p>
 
-      <h2>Haftung für Links</h2>
-      <p>Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe. Für diese fremden Inhalte kann ich keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft, rechtswidrige Inhalte waren nicht erkennbar. Eine dauerhafte inhaltliche Kontrolle der verlinkten Seiten ist ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen entferne ich derartige Links umgehend.</p>
+      <h2>Liability for links</h2>
+      <p>This website contains links to external third-party websites whose content I have no influence over. I can give no guarantee for this third-party content. The respective provider or operator of the linked pages is always responsible for their content. The linked pages were checked for possible legal violations at the time of linking; no illegal content was recognizable. Permanent monitoring of the content of the linked pages is not reasonable without concrete indications of a legal infringement. Upon becoming aware of legal infringements, I will remove such links immediately.</p>
 
-      <h2>Urheberrecht</h2>
-      <p>Die durch mich erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen meiner schriftlichen Zustimmung. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht von mir erstellt wurden, werden die Urheberrechte Dritter beachtet und als solche gekennzeichnet.</p>
+      <h2>Copyright</h2>
+      <p>The content and works created by me on these pages are subject to German copyright law. Reproduction, editing, distribution and any kind of exploitation beyond the limits of copyright law require my written consent. Downloads and copies of this site are permitted only for private, non-commercial use. Insofar as the content on this site was not created by me, the copyrights of third parties are respected and identified as such.</p>
 
-      <p>Genannte Produkt- und Firmennamen, insbesondere Microsoft, Dynamics 365, Power Platform und Azure, sind Marken der jeweiligen Rechteinhaber. Ihre Nennung dient allein der Beschreibung der eingesetzten Technologien.</p>
+      <p>Product and company names mentioned, in particular Microsoft, Dynamics 365, Power Platform and Azure, are trademarks of their respective owners. They are mentioned solely to describe the technologies used.</p>
 
-      <p class="meta">Stand: September 2026</p>
+      <p class="meta">Last updated: September 2026</p>
     </div>
   </div>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein bei Nürnberg</span>
-    <span><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></span>
+    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein near Nuremberg</span>
+    <span><a href="impressum.html">Legal notice</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Privacy policy</a></span>
   </div>
 </footer>
 
