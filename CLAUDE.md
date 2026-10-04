@@ -90,6 +90,15 @@ für den Leser, konkrete Daten, eigene Fehler mit Datum. Keine Fazit-Listen, kei
 Dreierreihen, kein Produktton. Die Produktseiten bleiben als Funktionskatalog bestehen und
 werden aus den Beiträgen verlinkt.
 
+### Blog, zweite Fassung im Pop-up-Stil
+`blog/v2/` ist dieselbe Serie als Pop-up-Buch: Holztisch als Hintergrund, Papierstapel mit
+Zierrahmen, Banner, gedrehte Etiketten und Fotos, Sprechblase, Haftnotiz als Kontakt. Die
+Kopfbilder sind `assets/blog/popup-console.jpg` und `assets/blog/popup-translation.jpg`,
+die Neon-Grafiken aus der Hauptfassung entfallen dort. **Bewusst unverlinkt**: kein Eintrag in
+Navigation, Sitemap oder Feed, jede Seite trägt `noindex, nofollow`. Erreichbar nur über den
+Deeplink `https://dynamicspro.de/blog/v2/`. Texte sind identisch mit der Hauptfassung; wer
+einen Beitrag ändert, ändert beide oder entscheidet, welche Fassung bleibt.
+
 ## Produktseite Solution Administration Console
 `solution-admin-console.html` beschreibt alle 21 Arbeitsbereiche der Code App. Quelle ist
 `CodeApps/apps/solution-forge/README.md` im Repo `aschwarzdynpro/CodeApps`; bei Änderungen

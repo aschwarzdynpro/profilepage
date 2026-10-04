@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eine Solution je Work Item, und dann der Merge · DynamicsPro</title>
+<meta name="description" content="Teil 1 der Serie zur Solution Administration Console: Working Solutions je Work Item, der Merge in die Release-Solution, Excel und XrmToolBox davor. Mit zwei Nachträgen zum Merge aus August und September.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#5c3516">
+<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../../assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../../assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../../assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../../assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../../../assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../../../assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+  :root{
+    --wood:#7a4a22;--wood-2:#5c3516;--wood-3:#9a6632;
+    --paper:#f7eedb;--paper-2:#efe0c2;--paper-edge:#e6d2a8;--frame:#d9a24a;
+    --ink:#2b2118;--ink-2:#5a4a3a;--ink-3:#8a7a68;
+    --orange:#f08a24;--red:#e0552b;--teal:#1f9bb0;--green:#5fae4a;--magenta:#d63f8c;--yellow:#f5c640;--blue:#2d6db5;--purple:#7b4bb3;--white:#fff;
+    --display:"Manrope",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:var(--body);font-size:17px;line-height:1.65;color:var(--ink);background:var(--wood);background-image:linear-gradient(180deg,rgba(255,255,255,.08),rgba(0,0,0,.18)),repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 3px,transparent 3px 11px),repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 2px,transparent 2px 23px);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.1;letter-spacing:-0.02em}
+  em{font-style:normal;font-weight:600;color:var(--ink);background:linear-gradient(transparent 55%,rgba(245,198,64,.55) 55%)}
+  .wrap{width:min(1120px,100% - 2rem);margin-inline:auto}
+
+  /* Kopfleiste: Holz mit Papier-Etiketten */
+  .nav{position:sticky;top:0;z-index:30;background:var(--wood-2);box-shadow:0 4px 0 rgba(0,0,0,.25)}
+  .nav .wrap{display:flex;align-items:center;gap:.8rem;height:64px}
+  .mark{font-family:var(--display);font-weight:800;font-size:1.05rem;display:inline-flex;align-items:center;gap:.5rem;background:var(--paper);color:var(--ink);padding:.4rem .8rem;border-radius:3px;box-shadow:3px 3px 0 rgba(0,0,0,.3);transform:rotate(-1.5deg);margin-right:auto}
+  .mark svg{width:22px;height:22px}
+  .nav .back{font-family:var(--display);font-weight:700;font-size:.9rem;color:var(--ink);background:var(--yellow);padding:.4rem .8rem;border-radius:3px;box-shadow:3px 3px 0 rgba(0,0,0,.3);transform:rotate(1deg)}
+  .nav .cta{font-family:var(--display);font-weight:700;font-size:.9rem;color:#fff;background:var(--red);padding:.4rem .9rem;border-radius:3px;box-shadow:3px 3px 0 rgba(0,0,0,.3);transform:rotate(-1deg)}
+  .nav .back:hover,.nav .cta:hover,.mark:hover{transform:none}
+  @media (max-width:640px){.nav .back{display:none}}
+
+  /* Das aufgeschlagene Buch: Papierstapel, Rahmen, Rücken */
+  .book{position:relative;width:min(1120px,100% - 2rem);margin:2.2rem auto 3rem}
+  .book::before,.book::after{content:"";position:absolute;inset:0;background:var(--paper-2);border-radius:4px;z-index:-1}
+  .book::before{transform:translate(7px,7px);background:var(--paper-edge)}
+  .book::after{transform:translate(14px,14px);background:#d9c399}
+  .page{position:relative;background:var(--paper);border-radius:4px;padding:1.6rem;box-shadow:0 22px 40px rgba(0,0,0,.35);background-image:linear-gradient(90deg,rgba(0,0,0,.08),transparent 6%)}
+  .frame{border:5px solid var(--frame);box-shadow:inset 0 0 0 6px var(--paper),inset 0 0 0 8px var(--teal);padding:1.6rem clamp(1rem,4vw,3rem) 2.4rem}
+  @media (max-width:640px){.page{padding:.8rem}.frame{padding:1.2rem .9rem 1.8rem;box-shadow:inset 0 0 0 4px var(--paper),inset 0 0 0 6px var(--teal)}}
+  @media (max-width:760px){.post h2::after{display:none}.post h2{transform:none}.banner{transform:rotate(-.6deg);font-size:1.45rem}}
+
+  /* Kopf: Pop-up-Bild mit Banner */
+  .hero{position:relative;margin:0 0 2.2rem}
+  .hero img{width:100%;height:auto;display:block;border:8px solid #fff;box-shadow:8px 8px 0 rgba(0,0,0,.18);transform:rotate(-.8deg)}
+  .banner{position:relative;display:inline-block;max-width:min(92%,30ch);margin:-2.2rem 0 0 clamp(.5rem,4vw,2.5rem);background:var(--paper);color:var(--ink);padding:.7rem 1.4rem;font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3.4vw,2.4rem);line-height:1.08;letter-spacing:-0.02em;box-shadow:5px 5px 0 rgba(0,0,0,.22);border:3px solid var(--ink);transform:rotate(-1.2deg)}
+  .banner::before,.banner::after{content:"";position:absolute;top:10px;bottom:10px;width:16px;background:var(--red);z-index:-1}
+  .banner::before{left:-16px;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,40% 50%)}
+  .banner::after{right:-16px;clip-path:polygon(0 0,100% 0,60% 50%,100% 100%,0 100%)}
+  .tag{display:inline-block;font-family:var(--display);font-weight:800;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--teal);padding:.3rem .7rem;border-radius:3px;box-shadow:3px 3px 0 rgba(0,0,0,.2);transform:rotate(1.5deg);margin-bottom:.9rem}
+  .lead{margin-top:1.4rem;font-size:1.12rem;line-height:1.55;color:var(--ink-2);max-width:62ch}
+  .meta{margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap}
+  .meta span{font-family:var(--display);font-weight:700;font-size:.8rem;background:#fff;border:2px solid var(--ink);padding:.15rem .6rem;border-radius:999px;transform:rotate(-1deg)}
+  .meta span:nth-child(2n){transform:rotate(1deg);background:var(--yellow)}
+
+  /* Text */
+  .post{width:min(70ch,100%)}
+  .post>p{margin-top:1.1rem;color:var(--ink-2)}
+  .post>p:first-child{margin-top:0}
+  .post h2{display:inline-block;margin-top:2.6rem;font-size:1.25rem;color:#fff;background:var(--orange);padding:.45rem 1rem .5rem;border-radius:3px;box-shadow:5px 5px 0 rgba(0,0,0,.2);transform:rotate(-1.5deg);position:relative}
+  .post h2:nth-of-type(2n){background:var(--teal);transform:rotate(1.2deg)}
+  .post h2:nth-of-type(3n){background:var(--magenta)}
+  .post h2:nth-of-type(4n){background:var(--green)}
+  .post h2:nth-of-type(5n){background:var(--purple)}
+  .post h2+p{margin-top:1rem}
+  .post h2::after{content:"";position:absolute;left:100%;top:50%;width:90px;height:10px;margin-left:10px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10' viewBox='0 0 24 10'%3E%3Cpath d='M0 8 L6 2 L12 8 L18 2 L24 8' fill='none' stroke='%23e0552b' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E") repeat-x;opacity:.9}
+  .post ul{margin:1rem 0 0 1.2rem;color:var(--ink-2)}
+  .post code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;background:#fff;border:1px solid var(--paper-edge);border-radius:3px;padding:.05em .35em;color:var(--ink)}
+  .post a{box-shadow:inset 0 -2px 0 var(--teal);font-weight:600}
+  .post a:hover{background:rgba(31,155,176,.15)}
+  /* Sprechblase */
+  .post .aside{position:relative;margin:1.8rem 0 0 .8rem;background:#fff;border:3px solid var(--ink);border-radius:14px;padding:1rem 1.2rem;color:var(--ink-2);font-size:.97rem;box-shadow:5px 5px 0 rgba(0,0,0,.18);transform:rotate(.6deg)}
+  .post .aside::before{content:"";position:absolute;left:34px;bottom:-18px;width:0;height:0;border-left:14px solid transparent;border-right:6px solid transparent;border-top:18px solid var(--ink)}
+  .post .aside::after{content:"";position:absolute;left:37px;bottom:-12px;width:0;height:0;border-left:11px solid transparent;border-right:4px solid transparent;border-top:14px solid #fff}
+  .post .aside p+p{margin-top:.7rem}
+  /* Screenshots als aufgeklebte Fotos */
+  .shot{margin:1.8rem 0 .4rem;position:relative}
+  .shot img{width:100%;height:auto;display:block;border:8px solid #fff;box-shadow:7px 7px 0 rgba(0,0,0,.18);transform:rotate(-1deg)}
+  .shot:nth-of-type(2n) img{transform:rotate(1deg)}
+  .shot::before{content:"";position:absolute;top:-10px;left:50%;width:90px;height:26px;margin-left:-45px;background:rgba(245,198,64,.75);transform:rotate(-2deg);z-index:2;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+  .shot figcaption{margin-top:1rem;font-size:.86rem;color:var(--ink-3);line-height:1.5;padding-left:.2rem}
+
+  /* Serie: Lesezeichen am Buchrand */
+  .series{margin-top:3rem;border-top:3px dashed var(--teal);padding-top:1.4rem}
+  .series .kicker{font-family:var(--display);font-weight:800;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin-bottom:.8rem}
+  .series ol{list-style:none;display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .series li a{display:block;height:100%;color:#fff;padding:.8rem .9rem;font-size:.9rem;border-radius:3px;box-shadow:4px 4px 0 rgba(0,0,0,.2);transform:rotate(-1deg);background:var(--teal)}
+  .series li:nth-child(2) a{background:var(--orange);transform:rotate(1deg)}
+  .series li:nth-child(3) a{background:var(--magenta)}
+  .series li:nth-child(4) a{background:var(--green);transform:rotate(1.2deg)}
+  .series li a b{display:block;font-family:var(--display);font-weight:800;margin-bottom:.2rem}
+  .series li a:hover{transform:none}
+  .series li.now a{outline:3px solid var(--ink);outline-offset:2px}
+  .series li.now a::after{content:"Sie lesen gerade";display:block;font-size:.78rem;opacity:.9;margin-top:.3rem}
+
+  /* Übersicht */
+  .spread{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin:1.2rem 0 2rem}
+  .spread a{display:block;position:relative}
+  .spread img{width:100%;height:auto;display:block;border:8px solid #fff;box-shadow:8px 8px 0 rgba(0,0,0,.18);transform:rotate(-1.2deg)}
+  .spread a:nth-child(2) img{transform:rotate(1.2deg)}
+  .spread .label{position:absolute;left:1rem;bottom:1rem;background:var(--paper);border:3px solid var(--ink);padding:.4rem .8rem;font-family:var(--display);font-weight:800;font-size:1rem;box-shadow:4px 4px 0 rgba(0,0,0,.22);transform:rotate(-2deg)}
+  @media (max-width:760px){.spread{grid-template-columns:1fr}}
+  .intro{color:var(--ink-2);max-width:70ch;margin-bottom:1.6rem}
+  .list{display:grid;gap:1.3rem}
+  .card{position:relative;background:#fff;border:3px solid var(--ink);border-radius:4px;padding:1.3rem 1.5rem 1.3rem 1.7rem;box-shadow:6px 6px 0 rgba(0,0,0,.18);transform:rotate(-.6deg)}
+  .card:nth-child(2n){transform:rotate(.6deg)}
+  .card::before{content:"";position:absolute;left:-3px;top:-3px;bottom:-3px;width:14px;background:var(--orange)}
+  .card:nth-child(2)::before{background:var(--teal)}.card:nth-child(3)::before{background:var(--magenta)}.card:nth-child(4)::before{background:var(--green)}.card:nth-child(5)::before{background:var(--purple)}
+  .card .tag{margin-bottom:.5rem}
+  .card h2{font-size:1.3rem;margin-top:.3rem}
+  .card h2 a:hover{box-shadow:inset 0 -3px 0 var(--yellow)}
+  .card p{margin-top:.6rem;color:var(--ink-2);font-size:.97rem}
+  .card .meta{margin-top:.8rem}
+
+  /* Kontakt als Haftnotiz */
+  .contact{width:min(1120px,100% - 2rem);margin:0 auto 3rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:2rem;align-items:center}
+  .contact .note{background:var(--yellow);color:var(--ink);padding:1.6rem 1.8rem;box-shadow:8px 8px 0 rgba(0,0,0,.25);transform:rotate(-1.5deg)}
+  .contact h2{font-size:1.5rem;max-width:22ch}
+  .contact p{margin-top:.8rem;color:var(--ink-2);max-width:48ch}
+  .contact .card2{background:var(--paper);border:3px solid var(--ink);box-shadow:6px 6px 0 rgba(0,0,0,.25);transform:rotate(1.2deg);padding:.4rem}
+  .contact .card2 a{display:block;padding:.8rem 1rem;font-family:var(--display);font-weight:800}
+  .contact .card2 a:hover{background:#fff}
+  .contact .card2 small{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;color:var(--ink-3)}
+  @media (max-width:900px){.contact{grid-template-columns:1fr}}
+
+  footer{padding:1.5rem 0 2.5rem;font-size:.88rem;color:var(--paper)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a:hover{text-decoration:underline}
+</style>
+</head>
+
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="DynamicsPro, zur Startseite">
+      <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#1f9bb0"/><rect x="15" y="3" width="8" height="8" stroke="#e0552b" stroke-width="2"/><rect x="3" y="15" width="8" height="8" stroke="#5fae4a" stroke-width="2"/><rect x="15" y="15" width="8" height="8" stroke="#f08a24" stroke-width="2"/></svg>
+      DynamicsPro
+    </a>
+    <a class="back" href="../">Alle Beiträge</a>
+    <a class="cta" href="#kontakt">Kontakt</a>
+  </div>
+</header>
+
+<main class="book">
+  <div class="page"><div class="frame">
+    <div class="hero">
+      <img src="../../../assets/blog/popup-console.jpg" width="1024" height="572" alt="" decoding="async">
+      <h1 class="banner">Eine Solution je Work Item, und dann der Merge</h1>
+    </div>
+    <div class="tag">Solution Administration Console · Teil 1 von 4 · Stand 25. Juni 2026</div>
+    <p class="lead">Feature-Branches gibt es in Dataverse nicht. Was es gibt, sind unmanaged Solutions, und wer je Work Item eine anlegt, hat nach drei Monaten vierzig davon. Die erste Fassung der Konsole war ein Werkzeug, um die wieder zusammenzuführen.</p>
+    <div class="meta"><span>Andy Schwarz</span><span>25. Juni 2026</span><span>5 Minuten Lesezeit</span></div>
+
+    <article class="post" style="margin-top:2.4rem">
+
+<p>Bei meinen Mandaten läuft die Entwicklung seit Jahren nach demselben Muster. Je Work Item in Azure DevOps gibt es eine eigene unmanaged Solution, Unique Name <code>feature_4711</code> oder <code>bug_4712</code>. Darin landet alles, was zu dem Thema gehört. Ist das Thema fertig, wandert der Inhalt in die Release-Solution, und die geht als managed Paket durch die Umgebungskette. Das ist das Nächste an Feature-Branches, was Dataverse hergibt, und es funktioniert.</p>
+<p>Was nicht funktioniert, ist alles drumherum.</p>
+
+<h2>Vierzig Solutions und eine Excel-Liste</h2>
+<p>Nach drei Monaten stehen im Maker-Portal vierzig Solutions mit Namen wie <code>feature_4711</code>, und niemand weiß mehr ohne DevOps, was 4711 war, ob es schon im Release ist und wem es gehört. Zwei Kollegen ändern dasselbe Formular in zwei Solutions, und wer zuletzt deployt, überschreibt den anderen. Davon merkt man erst etwas, wenn in UAT ein Feld fehlt.</p>
+<p>Und der Merge selbst. Im Maker-Portal in der Release-Solution auf „Add existing", dann Typ für Typ, Komponente für Komponente, bei jeder Tabelle die Frage, ob alle Unterkomponenten mit sollen. Bei dreißig Komponenten eine halbe Stunde, bei dreihundert ein Nachmittag. Danach kann niemand sagen, was genau hinzugekommen ist, und die Release Notes schreibt man aus dem Gedächtnis.</p>
+<p>Ich habe das jahrelang mit einer Excel-Liste gelöst, in der die Solutions den Work Items zugeordnet waren, und mit der XrmToolBox. Der Solution Components Mover dort verschiebt Komponenten zwischen Solutions, ganz brauchbar. Aber er weiß nichts von Work Items, Zuständen oder davon, was schon gemerged ist. Und die Liste pflegte sich nicht selbst. Nach zwei Releases stimmte sie nicht mehr, und ab dann war sie schlimmer als keine, weil man ihr noch glaubte.</p>
+
+<h2>Eine Working Solution ist zwei Dinge</h2>
+<p>Am 10. Juni 2026 habe ich den ersten Commit gemacht. Die App hieß damals Solution Forge, der Name hielt einen Tag. Die Kernidee hat sich seitdem nicht geändert: Eine <em>Working Solution</em> besteht aus einem Datensatz mit Titel, Typ, DevOps-ID, Owner und Deployment-Status, und aus der echten unmanaged Solution, die die Komponenten trägt. Beim Anlegen entsteht beides in einem Schritt, der Unique Name folgt weiter der Konvention. Solutions, die jemand am Werkzeug vorbei angelegt hat, bleiben sichtbar und werden über den Namen eingeordnet.</p>
+<p>Damit war die Excel-Liste weg. Die Workbench zeigt die Liste mit Filter nach Feature, Bug und Release, mit Suche über Titel, Unique Name und DevOps-ID. Ein Schalter durchsucht zusätzlich die Komponenten aller offenen Solutions, und damit ist die Frage beantwortet, die mir im Projekt am häufigsten gestellt wurde: In welcher Solution steckt diese Tabelle? Das Kollisions-Radar kam am zweiten Tag dazu. Es lädt die Komponenten aller offenen Solutions und markiert jede, die in mehr als einer steckt. Genau dort überschreibt später jemand jemanden.</p>
+<figure class="shot">
+  <img src="../../../assets/screenshots/workbench.webp" width="1600" height="992" loading="lazy" decoding="async" alt="Bildschirmfoto: Workbench mit aufgeklappter Zeile, Komponenten nach Typ und dem Abgleich mit dem DevOps-Work-Item.">
+  <figcaption>Die Workbench mit aufgeklappter Zeile. Was früher in der Excel-Liste stand, hängt jetzt am Datensatz. Beispieldaten, keine Kundendaten.</figcaption>
+</figure>
+<p>Der Merge wählt eine Release-Solution als Ziel, dann die Feature- und Bug-Solutions, zeigt den Komponentenplan mit Konflikten und Duplikaten, und führt zusammen. Jeder Lauf schreibt eine Historienzeile mit den hinzugefügten Komponenten. Aus dieser Historie entstehen seit dem 22. Juni die Release Notes, ab dem zweiten Mal inkrementell. Das war kein geplantes Feature. Die Daten lagen einfach da.</p>
+<figure class="shot">
+  <img src="../../../assets/screenshots/merge.webp" width="1600" height="787" loading="lazy" decoding="async" alt="Bildschirmfoto: Merge in drei Schritten, Quell-Solutions wählen, Ziel-Release wählen, Komponentenplan prüfen.">
+  <figcaption>Merge in drei Schritten. Der Plan steht vor dem Lauf, die Historie nach dem Lauf.</figcaption>
+</figure>
+<p>Dazu kam ein Cloud Flow, der den Status der Work Items zurück in die Working Solutions schreibt. Steht ein Work Item auf Done, die Solution ist aber noch offen, markiert die Liste das. Mehr Integration mit DevOps hatte ich geplant, ein Panel war schon gebaut. Es scheiterte am Tenant: Das OAuth-Token kam aus dem Heimat-Tenant meines Kontos, die DevOps-Organisation hing an einem anderen, Fehler TF400813, eine Gastmitgliedschaft hilft da nicht. Das Panel ist seit dem 11. Juni abgeschaltet und wartet auf einen Service Principal.</p>
+
+<h2>Was es gebracht hat</h2>
+<p>Der Merge dauert Minuten statt einen Nachmittag, und danach steht fest, was hinzugekommen ist. Die Release Notes fallen ab. Kollisionen sieht man, bevor jemand deployt. Die Konsole läuft seit zwei Wochen bei einem Kunden aus der Automatisierungstechnik im Alltag, mit drei Umgebungen und einem Team, das vorher die Excel-Liste geführt hat.</p>
+<p>Was die Workbench nicht beantwortet: ob der Import im Ziel durchgeht. Darum geht es im <a href="../admin-console-2-vor-dem-import/">zweiten Teil</a>. Alle Funktionen der Workbench stehen auf der <a href="../../../solution-admin-console.html#manage">Produktseite</a>.</p>
+
+<h2>Nachtrag vom 2. August: der Fehler, den man nicht sieht</h2>
+<p>Der Merge lief zwei Monate im Alltag, und er hatte einen Fehler, den man nicht sieht. Die Komponentenliste kam aus derselben Tabelle, die auch das Maker-Portal für seine Objektliste nutzt. Diese Tabelle klappt Unterkomponenten unter ihrer Tabelle zusammen. Ein Merge darüber kopierte bei einer Tabelle also nur die Hülle und ließ die Spalten, Formulare und Ansichten zurück, die in der Quelle explizit drin waren. Keine Fehlermeldung. Die Komponente war ja im Ziel.</p>
+<p>Noch schlimmer war die Dublettenprüfung. Führte das Ziel die Tabelle bereits als Hülle und die Quelle sie mit allen Unterkomponenten, dann übersprang der Merge sie als Duplikat. Am 1. August habe ich das live an einer Tabelle gesehen, deren Spalten im Release fehlten. Seit dem 2. August entscheidet eine reine Funktion mit Tests, was mit jeder Komponente passiert: hinzufügen, aufweiten, überspringen oder ausgeschlossen. Aufweiten heißt, die vorhandene Zeile wird an Ort und Stelle auf „alle Unterkomponenten" hochgestuft. Dataverse stuft dabei nie zurück, ein wiederholter Aufruf ist also risikofrei.</p>
+<div class="aside">
+  <p>Eine Nebenwirkung, die mich kurz hat zweifeln lassen: Nach dem Aufweiten sinkt die Zeilenzahl der Ziel-Solution. Aus drei Zeilen, Hülle plus zwei explizite Spalten, wird eine Zeile mit allem. Weniger Zeilen, mehr Inhalt. Wer Komponentenzahlen als Erfolgsmaß nimmt, liest daraus einen Verlust.</p>
+</div>
+<h2>Nachtrag vom 16. September: null Prozent</h2>
+<p>Der Merge stand bei großen Releases minutenlang auf null Prozent, weil er vor dem ersten Schritt die Release-Solution komplett auflöste, mit Namen für jede Spalte, jedes Formular, jede Ansicht. Davon wurde nichts angezeigt. Die Entscheidung braucht nur die ID und das Verhalten der Zeile. Jetzt liest er das Ziel roh, nimmt die Quellen aus dem Plan der Workbench mit, und der Fortschritt läuft ab der ersten Sekunde. Die Aufrufe selbst laufen weiter nacheinander. Parallel ginge vermutlich, aber nicht ohne vorher zu prüfen, wie Dataverse die Ziel-Solution sperrt.</p>
+
+
+    </article>
+
+<section class="series" aria-label="Alle Teile der Serie">
+  <div class="kicker">Solution Administration Console, alle Teile</div>
+  <ol><li class="now"><a href="../admin-console-1-working-solutions/"><b>Teil 1</b>Eine Solution je Work Item, und der Merge</a></li><li><a href="../admin-console-2-vor-dem-import/"><b>Teil 2</b>Warum Importe scheitern, und wie man es vorher sieht</a></li><li><a href="../admin-console-3-betrieb/"><b>Teil 3</b>Wer darf was, und was tut das System gerade</a></li><li><a href="../admin-console-4-datentransfer/"><b>Teil 4</b>Konfigurationsdaten bewegen, und ein Produkt daraus machen</a></li></ol>
+</section>
+
+  </div></div>
+</main>
+
+<section id="kontakt" class="contact">
+  <div class="note">
+    <h2>Sie fahren das gleiche Muster?</h2>
+    <p>Eine Solution je Work Item, eine Release-Solution je Umgebungskette, und dazwischen viel Handarbeit. Wenn Sie wissen wollen, wie die Konsole in Ihrer Umgebung aussieht, schreiben Sie mir kurz.</p>
+  </div>
+  <div class="card2">
+    <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de<small>E-Mail, am zuverlässigsten</small></a>
+    <a href="tel:+491735274172">+49 173 5274172<small>Telefon</small></a>
+    <a href="../../../">Zurück zum Profil<small>Referenzen, Skills, Werdegang</small></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein bei Nürnberg</span>
+    <span><a href="../../../impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="../../../datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+</body>
+</html>
