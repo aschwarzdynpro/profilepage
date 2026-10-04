@@ -115,6 +115,11 @@ das ganze Verzeichnis, neue Beiträge brauchen dort keinen Eintrag, wohl aber in
 und in `scripts/shot.mjs`. Jede Datei trägt ihre eigene Kopie von CSS. Die englischen Beiträge
 liegen unter `en/blog/` mit eigenem Feed `en/blog/feed.xml`; ein neuer Beitrag kommt in beide.
 
+**Wöchentliche Routine „Blog-Woche":** montags früh schlägt eine eigene Sitzung drei Beiträge aus
+den Erkenntnissen der Vorwoche vor (Quellen: Git-Log und Doku-Diffs in CodeApps, dieses Repo,
+eigene Sitzungen) und veröffentlicht erst nach Andys Freigabe, deutsch und englisch. Ablauf in
+`.claude/skills/blog-woche/SKILL.md`, Themenprotokoll in `content/blog-themen.md`.
+
 **Layout (Magazin):** Kopfleiste mit „Werkstattnotizen" als Nebenzeile, Beitragskopf mit
 Kicker, breiter Titelzeile bis 4.4rem, Vorspann in leichter Schrift und Autorenzeile über
 einer Linie, darunter Doppellinie. Text in 68ch mit Initial im ersten Absatz, Kapitelnummern
