@@ -75,7 +75,9 @@ schiefging. Quelle für die Konsole sind `apps/solution-forge/releases/CHANGELOG
 Gotchas in `apps/solution-forge/CLAUDE.md` und der Git-Log im Repo `aschwarzdynpro/CodeApps`;
 Daten und Zahlen in den Beiträgen stammen von dort, nichts ist geschätzt. **Kundennamen,
 Tenants, Präfixe und Tabellennamen von Kunden bleiben draußen**, Kunden heißen wie in den
-Referenzkarten nach Branche. Die Screenshots sind dieselben wie auf den Produktseiten.
+Referenzkarten nach Branche. Die Screenshots sind dieselben wie auf den Produktseiten. Die vier Konsolen-Beiträge
+tragen zusätzlich `assets/blog/devops-loop.jpg` (DevOps-Zyklus als liegende Acht, 1024px),
+jeweils nach dem Einstieg mit einer Bildunterschrift, die den Teil im Zyklus verortet.
 
 Serie zur Konsole in vier Teilen, je eine Bauphase, **datiert auf das Ende der Phase im
 Git-Log** (25.06. Workbench und Merge, 20.07. Validate, 10.08. Betrieb, 21.09. Transfer Hub

@@ -87,6 +87,7 @@
   .shot{margin-top:1.8rem}
   .shot img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:5px;background:var(--bg-2)}
   .shot figcaption{margin-top:.6rem;font-size:.86rem;color:var(--ink-3);line-height:1.5}
+  .shot.loop img{border-color:var(--navy);background:var(--navy)}
   .post a.more{color:var(--ink);font-weight:600;box-shadow:inset 0 -1px 0 var(--sky);white-space:nowrap}
   .post a.more:hover{background:var(--sky-soft)}
   .post p a:not(.more){box-shadow:inset 0 -1px 0 var(--sky)}
@@ -153,6 +154,10 @@
     <article class="post">
 
 <p>Preislisten, Gebietszuordnungen, Vorlagen, Einstellungstabellen: Konfigurationsdaten sind Daten, aber sie gehören zur Lösung und müssen mit ihr durch die Umgebungskette. Solutions transportieren sie nicht. Dafür gibt es das Configuration Migration Tool aus dem SDK, mit Schema-Datei, Export als Zip, Import auf dem Desktop. Es funktioniert. Es ist nur jedes Mal Handarbeit, niemand außer dem einen Kollegen kennt die Schema-Datei, es gibt keinen Zeitplan, keinen Probelauf und kein Delta. Die Alternative sind Excel-Importe, und über die reden wir nicht.</p>
+<figure class="shot loop">
+  <img src="../../assets/blog/devops-loop.jpg" width="1024" height="559" loading="lazy" decoding="async" alt="Grafik: Der DevOps-Zyklus als liegende Acht mit den acht Stationen Plan, Code, Build, Test, Release, Deploy, Operate und Monitor.">
+  <figcaption>Deploy, und einmal um den ganzen Zyklus: Konfigurationsdaten wandern mit dem Release, und am Ende wird aus dem Werkzeug selbst ein Paket, das durch denselben Zyklus geht.</figcaption>
+</figure>
 
 <h2>Ein Paket, nicht ein Lauf</h2>
 <p>Der 23. Juli war der dichteste Tag im ganzen Projekt, 37 Commits. Am Morgen war ein Transfer als externe Pipeline geplant, am Abend lief er als Cloud Flow, der mit der App installiert wird. Die Idee: Die Konsole beschreibt ein Transfer-Paket, Zielumgebungen und Reihenfolge, und darin Einträge aus Quellumgebung, Tabelle, Filter und Spalten, wahlweise über eine System-Ansicht oder direkt als FetchXML mit Vorschau und Zeilenzähler. Dazu das Record-Matching über die GUID oder bis zu fünf fachliche Spalten, und die Frage, was mit Zielzeilen passiert, die die Quelle nicht mehr liefert. Ausgeführt wird nie in der Sitzung der App. Ein Klick auf Run legt eine Zeile in eine Warteschlange, der Flow greift sie ab.</p>

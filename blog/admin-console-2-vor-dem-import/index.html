@@ -87,6 +87,7 @@
   .shot{margin-top:1.8rem}
   .shot img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:5px;background:var(--bg-2)}
   .shot figcaption{margin-top:.6rem;font-size:.86rem;color:var(--ink-3);line-height:1.5}
+  .shot.loop img{border-color:var(--navy);background:var(--navy)}
   .post a.more{color:var(--ink);font-weight:600;box-shadow:inset 0 -1px 0 var(--sky);white-space:nowrap}
   .post a.more:hover{background:var(--sky-soft)}
   .post p a:not(.more){box-shadow:inset 0 -1px 0 var(--sky)}
@@ -154,6 +155,10 @@
 
 <p>Die Gründe, aus denen ein Import scheitert, sind seit Jahren dieselben. Eine Abhängigkeit, die im Ziel fehlt, weil sie in einer anderen Solution liegt, die noch nicht drüben ist. Eine Environment Variable ohne Wert und ohne Default. Eine Connection Reference, die nirgends gebunden ist, weshalb der Flow nach dem Import aus bleibt. Ein unmanaged Layer über einer managed Komponente, der jedes künftige Deployment stillschweigend maskiert. Eine Canvas App, die ankommt und niemanden erreicht, weil Freigaben nicht mittransportiert werden.</p>
 <p>Jede dieser Fragen ist einzeln beantwortbar. Man braucht nur Zeit und die richtigen Abfragen, und beides hat man am Abend vor dem PROD-Import nicht.</p>
+<figure class="shot loop">
+  <img src="../../assets/blog/devops-loop.jpg" width="1024" height="559" loading="lazy" decoding="async" alt="Grafik: Der DevOps-Zyklus als liegende Acht mit den acht Stationen Plan, Code, Build, Test, Release, Deploy, Operate und Monitor.">
+  <figcaption>Dieser Teil sitzt bei Test und Release: prüfen, bevor importiert wird, und nach dem Import nachsehen, was im Ziel angekommen ist.</figcaption>
+</figure>
 
 <h2>Wie man das vorher herausgefunden hat</h2>
 <p>Ehrlich gesagt: durch Importieren. Erst nach UAT, dann schauen, was knallt. Das Import-Log ist XML, in dem die eigentliche Information in einem Fehlertext steckt, den man in Excel kopiert und nach „Missing" filtert. Für die Layer gibt es in der XrmToolBox den Solution Layer Explorer, mit dem man Komponente für Komponente nachsieht. Für die Environment Variables eine Checkliste, die vor dem Import jemand abhakt, wenn er daran denkt. Für die Freigaben der Apps hat niemand eine Liste, man merkt es, wenn sich die ersten Anwender melden.</p>

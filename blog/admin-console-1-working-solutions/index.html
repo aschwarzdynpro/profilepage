@@ -87,6 +87,7 @@
   .shot{margin-top:1.8rem}
   .shot img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:5px;background:var(--bg-2)}
   .shot figcaption{margin-top:.6rem;font-size:.86rem;color:var(--ink-3);line-height:1.5}
+  .shot.loop img{border-color:var(--navy);background:var(--navy)}
   .post a.more{color:var(--ink);font-weight:600;box-shadow:inset 0 -1px 0 var(--sky);white-space:nowrap}
   .post a.more:hover{background:var(--sky-soft)}
   .post p a:not(.more){box-shadow:inset 0 -1px 0 var(--sky)}
@@ -154,6 +155,10 @@
 
 <p>Bei meinen Mandaten läuft die Entwicklung seit Jahren nach demselben Muster. Je Work Item in Azure DevOps gibt es eine eigene unmanaged Solution, Unique Name <code>feature_4711</code> oder <code>bug_4712</code>. Darin landet alles, was zu dem Thema gehört. Ist das Thema fertig, wandert der Inhalt in die Release-Solution, und die geht als managed Paket durch die Umgebungskette. Das ist das Nächste an Feature-Branches, was Dataverse hergibt, und es funktioniert.</p>
 <p>Was nicht funktioniert, ist alles drumherum.</p>
+<figure class="shot loop">
+  <img src="../../assets/blog/devops-loop.jpg" width="1024" height="559" loading="lazy" decoding="async" alt="Grafik: Der DevOps-Zyklus als liegende Acht mit den acht Stationen Plan, Code, Build, Test, Release, Deploy, Operate und Monitor.">
+  <figcaption>Der Zyklus, in dem die Konsole zu Hause ist. Dieser Teil spielt zwischen Code und Build: Working Solutions anlegen und zu einem Release zusammenführen.</figcaption>
+</figure>
 
 <h2>Vierzig Solutions und eine Excel-Liste</h2>
 <p>Nach drei Monaten stehen im Maker-Portal vierzig Solutions mit Namen wie <code>feature_4711</code>, und niemand weiß mehr ohne DevOps, was 4711 war, ob es schon im Release ist und wem es gehört. Zwei Kollegen ändern dasselbe Formular in zwei Solutions, und wer zuletzt deployt, überschreibt den anderen. Davon merkt man erst etwas, wenn in UAT ein Feld fehlt.</p>

@@ -87,6 +87,7 @@
   .shot{margin-top:1.8rem}
   .shot img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:5px;background:var(--bg-2)}
   .shot figcaption{margin-top:.6rem;font-size:.86rem;color:var(--ink-3);line-height:1.5}
+  .shot.loop img{border-color:var(--navy);background:var(--navy)}
   .post a.more{color:var(--ink);font-weight:600;box-shadow:inset 0 -1px 0 var(--sky);white-space:nowrap}
   .post a.more:hover{background:var(--sky-soft)}
   .post p a:not(.more){box-shadow:inset 0 -1px 0 var(--sky)}
@@ -153,6 +154,10 @@
     <article class="post">
 
 <p>Nach dem Release-Zug und den Prüfungen vor dem Import war die Konsole ein Werkzeug für die Entwicklung. Die Fragen, die mir im Juli gestellt wurden, kamen aus dem Betrieb, und sie hatten eine Gemeinsamkeit: Das Maker-Portal und das Admin Center beantworten sie entweder mühsam oder gar nicht.</p>
+<figure class="shot loop">
+  <img src="../../assets/blog/devops-loop.jpg" width="1024" height="559" loading="lazy" decoding="async" alt="Grafik: Der DevOps-Zyklus als liegende Acht mit den acht Stationen Plan, Code, Build, Test, Release, Deploy, Operate und Monitor.">
+  <figcaption>Die rechte Hälfte der Acht: Operate und Monitor. Hier geht es nicht mehr um den nächsten Import, sondern um das, was jetzt läuft.</figcaption>
+</figure>
 
 <h2>Plugin-Fehler sieht man nicht</h2>
 <p>Dataverse schreibt Plugin-Traces in eine Tabelle, die im Maker-Portal praktisch unbenutzbar ist. Wer wissen will, ob ein Plugin gerade Ausnahmen wirft, nimmt den Plugin Trace Viewer aus der XrmToolBox. Der ist gut. Er läuft nur auf einem Desktop, braucht je Umgebung eine Anmeldung, und von den Leuten, die im Betrieb die Frage stellen, hat ihn niemand installiert.</p>
