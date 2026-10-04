@@ -171,7 +171,7 @@
   .tools{margin-top:4.5rem}
   .tools h3.sub{font-size:1.4rem;margin-bottom:.5rem}
   .tools>p{color:var(--ink-2);margin-bottom:1.5rem;max-width:62ch}
-  .signature{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  .signature{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
   .sig{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--navy);padding:2rem;display:flex;flex-direction:column}
   .sig.lead{background:var(--navy);color:#fff;border-color:var(--navy);border-top-color:var(--sky)}
   .sig h3{font-size:1.35rem;margin-bottom:.8rem}
@@ -239,7 +239,7 @@
 
   a.more{color:var(--ink);font-weight:600;box-shadow:inset 0 -1px 0 var(--sky);white-space:nowrap}
   a.more:hover{background:var(--sky-soft)}
-  .sig a.more{color:#fff}
+  .sig.lead a.more{color:#fff}
   .more-line{margin-top:.9rem}
   footer{padding:2rem 0;font-size:.88rem;color:var(--ink-2)}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
@@ -322,6 +322,7 @@
         <li><a href="#referenzen">Referenzen</a></li>
         <li><a href="#arbeitsweise">Arbeitsweise</a></li>
         <li><a href="#werdegang">Skills und Werdegang</a></li>
+        <li><a href="blog/">Blog</a></li>
         <li class="cta"><a href="#kontakt">Kontakt</a></li>
       </ul>
     </nav>
@@ -480,8 +481,8 @@
         <h3>Solution Admin Console: Dataverse-Administration als Code App</h3>
         <div class="story">
           <div><h4>Ausgangslage</h4><p>Gewachsene Tenants mit Dutzenden Solutions, undurchsichtigen Abhängigkeiten und Sicherheitsrollen, deren tatsächliche Wirkung niemand sicher benennen konnte. Das Admin Center beantwortet diese Fragen nur mühsam oder gar nicht.</p></div>
-          <div><h4>Lösung</h4><p>Eine Code App direkt auf Dataverse, die Solution- und Umgebungsadministration an einem Ort zusammenführt, inklusive Kapazitätsdashboard über einen delegierten Entra-Connector statt eines eigenen Service Principals. Drumherum ein Security Role Analyzer bis auf Schnittstellentabellen und ein Plugin Trace Explorer.</p></div>
-          <div class="result"><h4>Ergebnis</h4><p>Aufräumen und Auditieren dauert Stunden statt Tage. Sichtbarkeit ist per Berechtigung gesteuert, sodass die Werkzeuge im Kundentenant bleiben können. Die Suite wird derzeit zum Produkt für den DACH-Markt ausgebaut. <a class="more" href="solution-admin-console.html">Alle Funktionen im Detail</a></p></div>
+          <div><h4>Lösung</h4><p>Eine Code App direkt auf Dataverse, die Solution- und Umgebungsadministration an einem Ort zusammenführt. Drumherum ein Security Role Analyzer bis auf Schnittstellentabellen und ein Plugin Trace Explorer.</p></div>
+          <div class="result"><h4>Ergebnis</h4><p>Aufräumen und Auditieren dauert Stunden statt Tage. Sichtbarkeit ist per Berechtigung gesteuert, sodass die Werkzeuge im Kundentenant bleiben können. Die Suite wird derzeit zum Produkt für den DACH-Markt ausgebaut. <a class="more" href="blog/admin-console-1-working-solutions/">Die Geschichte im Blog</a></p></div>
         </div>
       </div>
     </article>
@@ -517,13 +518,19 @@
 
     <div class="tools">
       <h3 class="sub">Werkzeuge, die ich mitbringe</h3>
-      <p>Außerhalb einzelner Mandate entwickelt und projektübergreifend im Einsatz, statt es in jedem Projekt neu zu erfinden.</p>
+      <p>Außerhalb einzelner Mandate entwickelt, projektübergreifend im Einsatz oder kurz davor, statt es in jedem Projekt neu zu erfinden.</p>
       <div class="signature">
         <article class="sig lead">
           <h3>Solution Admin Console und Code-App-Tooling</h3>
-          <p>Das Schweizer Taschenmesser für alle, die Dataverse administrieren: Solution- und Umgebungsverwaltung an einem Ort, mit Kapazitätsdashboard. Drumherum Security Role Analyzer, Plugin Trace Explorer und eine Bibliothek wiederverwendbarer PCF-Controls, darunter ein polymorpher Kunden-Lookup als Flyout.</p>
+          <p>Das Schweizer Taschenmesser für alle, die Dataverse administrieren: Solution- und Umgebungsverwaltung an einem Ort. Drumherum Security Role Analyzer, Plugin Trace Explorer und eine Bibliothek wiederverwendbarer PCF-Controls, darunter ein polymorpher Kunden-Lookup als Flyout.</p>
           <div class="stack">Power Platform Code Apps, React, TypeScript, Vite, Fluent UI v9, PCF, Dataverse Web API</div>
-          <p class="more-line"><a class="more" href="solution-admin-console.html">Alle Funktionen im Detail</a></p>
+          <p class="more-line"><a class="more" href="blog/admin-console-1-working-solutions/">Die Geschichte im Blog</a> &nbsp;·&nbsp; <a class="more" href="solution-admin-console.html">Alle Funktionen im Detail</a></p>
+        </article>
+        <article class="sig">
+          <h3>Translation Studio</h3>
+          <p>Für Dataverse-Umgebungen mit mehr als einer Sprache. Zeigt je Solution und Sprache, welche Beschriftungen von Tabellen, Spalten, Auswahlwerten, Formularen und Ansichten fehlen oder vermutlich nie übersetzt wurden, lässt sie in einer Matrix oder per CSV durch die Fachabteilung füllen und spielt sie über den Standard-Import von Dataverse zurück. Fertig gebaut, der erste Kundeneinsatz steht an.</p>
+          <div class="stack">Power Platform Code Apps, React, TypeScript, Vite, Fluent UI v9, Dataverse-Übersetzungsexport und -import</div>
+          <p class="more-line"><a class="more" href="blog/translation-studio/">Die Geschichte im Blog</a> &nbsp;·&nbsp; <a class="more" href="translation-studio.html">Alle Funktionen im Detail</a></p>
         </article>
         <article class="sig">
           <h3>ALM-Pipeline-Toolset</h3>
@@ -613,6 +620,7 @@
       <li><a href="#referenzen">Referenzen</a></li>
       <li><a href="#arbeitsweise">Arbeitsweise</a></li>
       <li><a href="#werdegang">Skills und Werdegang</a></li>
+      <li><a href="blog/">Blog</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
   </nav>

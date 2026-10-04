@@ -14,7 +14,7 @@ const browser = await chromium.launch();
 const foreign = new Set();
 let failed = false;
 
-const PAGES = [['start', '/'], ['health-check', '/health-check/'], ['konsole', '/solution-admin-console.html'], ['impressum', '/impressum.html'], ['datenschutz', '/datenschutz.html']];
+const PAGES = [['start', '/'], ['health-check', '/health-check/'], ['konsole', '/solution-admin-console.html'], ['studio', '/translation-studio.html'], ['blog', '/blog/'], ['blog-1', '/blog/admin-console-1-working-solutions/'], ['blog-2', '/blog/admin-console-2-vor-dem-import/'], ['blog-3', '/blog/admin-console-3-betrieb/'], ['blog-4', '/blog/admin-console-4-datentransfer/'], ['blog-ts', '/blog/translation-studio/'], ['impressum', '/impressum.html'], ['datenschutz', '/datenschutz.html']];
 const VIEWPORTS = [['desktop', 1400, 900], ['mobile', 390, 844]];
 const written = [];
 
