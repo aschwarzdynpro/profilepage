@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog, Blaupause · DynamicsPro</title>
+<meta name="description" content="Dritte Fassung des Blogs von Andy Schwarz als Blaupause: die Entstehung der Solution Administration Console und des Translation Studio, Blatt für Blatt.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a2f5e">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../../assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../../assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+  :root{
+    --blue:#0d3b73;--blue-2:#0a2f5e;--blue-3:#124a8c;
+    --line:rgba(255,255,255,.85);--line-2:rgba(255,255,255,.45);--line-3:rgba(255,255,255,.18);
+    --ink:#ffffff;--ink-2:#d6e6f7;--ink-3:#9fbfe0;--cyan:#9fd8ff;--mark:#ffd166;
+    --display:"Manrope",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:var(--body);font-size:17px;line-height:1.65;color:var(--ink-2);background-color:var(--blue);
+    background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.14) 1px,transparent 1px);
+    background-size:10px 10px,10px 10px,50px 50px,50px 50px;background-position:-1px -1px;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible{outline:2px solid var(--mark);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.15;color:var(--ink)}
+  em{font-style:normal;font-weight:600;color:var(--ink);border-bottom:1px dotted var(--line-2)}
+  .wrap{width:min(1120px,100% - 2rem);margin-inline:auto}
+  .cap{font-family:var(--display);font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+
+  /* Kopfleiste als Planrand */
+  .nav{position:sticky;top:0;z-index:30;background:var(--blue-2);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;gap:1.2rem;height:60px}
+  .mark{font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);display:inline-flex;align-items:center;gap:.6rem;margin-right:auto}
+  .mark svg{width:22px;height:22px}
+  .nav .back,.nav .cta{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border:1px solid var(--line);padding:.45rem .9rem}
+  .nav .cta{background:var(--ink);color:var(--blue-2)}
+  .nav .back:hover{background:rgba(255,255,255,.1)}
+  .nav .cta:hover{background:var(--cyan)}
+  @media (max-width:640px){.nav .back{display:none}}
+
+  /* Planblatt */
+  .sheet{position:relative;width:min(1120px,100% - 2rem);margin:2.4rem auto 3rem;border:2px solid var(--line);outline:1px solid var(--line-2);outline-offset:6px;padding:clamp(1.2rem,4vw,3rem)}
+  .sheet::before,.sheet::after{content:"";position:absolute;width:14px;height:14px;border:1px solid var(--line-2)}
+  .sheet::before{left:-8px;top:-8px;border-right:0;border-bottom:0}
+  .sheet::after{right:-8px;bottom:-8px;border-left:0;border-top:0}
+  @media (max-width:640px){.sheet{outline-offset:4px;margin:1.6rem auto 2.4rem}}
+
+  /* Titelblock */
+  .tb{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);margin:1.6rem 0 2.2rem;font-size:.92rem}
+  .tb>div{padding:.55rem .8rem;border-right:1px solid var(--line-2);border-bottom:1px solid var(--line-2);min-width:0}
+  .tb>div:nth-child(4n){border-right:0}
+  .tb>div:nth-last-child(-n+4){border-bottom:0}
+  .tb .cap{display:block;margin-bottom:.15rem}
+  .tb b{font-weight:600;color:var(--ink)}
+  .tb .wide{grid-column:span 2}
+  @media (max-width:760px){.tb{grid-template-columns:1fr 1fr}.tb>div:nth-child(4n){border-right:1px solid var(--line-2)}.tb>div:nth-child(2n){border-right:0}.tb>div:nth-last-child(-n+4){border-bottom:1px solid var(--line-2)}.tb>div:nth-last-child(-n+2){border-bottom:0}.tb .wide{grid-column:span 2}}
+
+  h1.title{font-size:clamp(1.7rem,3.6vw,2.6rem);letter-spacing:-0.01em;max-width:26ch;margin-top:.5rem}
+  .lead{margin-top:1.1rem;font-size:1.1rem;line-height:1.55;color:var(--ink-2);max-width:64ch}
+
+  /* Text mit nummerierten Abschnitten und Abbildungen */
+  .post{width:min(72ch,100%);counter-reset:sec fig}
+  .post>p{margin-top:1.1rem}
+  .post>p:first-child{margin-top:0}
+  .post h2{counter-increment:sec;margin-top:2.8rem;font-size:1.2rem;letter-spacing:.04em;text-transform:uppercase;display:flex;gap:.9rem;align-items:baseline;border-bottom:1px solid var(--line-2);padding-bottom:.5rem}
+  .post h2::before{content:counter(sec,decimal-leading-zero);font-size:.85rem;letter-spacing:.1em;color:var(--ink-3);flex:none}
+  .post h2.rev::before{content:"REV " attr(data-rev);color:var(--mark)}
+  .post h2.rev{border-bottom-color:var(--mark)}
+  .post h2+p{margin-top:1rem}
+  .post ul{margin:1rem 0 0 1.2rem}
+  .post code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;color:var(--ink);border:1px solid var(--line-3);padding:.02em .35em}
+  .post a{color:var(--cyan);box-shadow:inset 0 -1px 0 var(--cyan)}
+  .post a:hover{background:rgba(159,216,255,.12)}
+  .post .aside{margin-top:1.6rem;border:1px dashed var(--line-2);padding:1rem 1.2rem 1rem 1.2rem;position:relative;font-size:.96rem}
+  .post .aside::before{content:"Hinweis";position:absolute;top:-.6rem;left:.9rem;background:var(--blue);padding:0 .4rem;font-family:var(--display);font-weight:700;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+  .post .aside p+p{margin-top:.7rem}
+  .shot{margin-top:1.8rem;counter-increment:fig;position:relative;padding:14px 0 0 14px}
+  .shot::before{content:"";position:absolute;left:0;top:0;width:60px;height:60px;border-left:1px solid var(--line-2);border-top:1px solid var(--line-2)}
+  .shot img{width:100%;height:auto;display:block;border:1px solid var(--line);background:#fff}
+  .shot figcaption{margin-top:.7rem;font-size:.86rem;color:var(--ink-3);line-height:1.5;display:flex;gap:.8rem}
+  .shot figcaption::before{content:"Abb. " counter(fig);font-family:var(--display);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.72rem;color:var(--ink);flex:none;padding-top:.15rem}
+
+  /* Blattverzeichnis */
+  .list{border:1px solid var(--line);margin-top:1.4rem}
+  .row{display:grid;grid-template-columns:5rem 1fr 8.5rem 8rem;gap:1rem;padding:.9rem 1rem;border-top:1px solid var(--line-2);align-items:baseline}
+  .row:first-child{border-top:0}
+  .row.head{background:rgba(255,255,255,.06)}
+  .row .no{font-family:var(--display);font-weight:700;letter-spacing:.08em;color:var(--ink)}
+  .row h2{font-size:1.05rem}
+  .row h2 a:hover{color:var(--cyan)}
+  .row p{margin-top:.3rem;font-size:.92rem;color:var(--ink-3)}
+  .row .d{font-size:.9rem;color:var(--ink-2);white-space:nowrap}
+  .row .r{font-size:.9rem;color:var(--mark);white-space:nowrap}
+  @media (max-width:760px){.row{grid-template-columns:4rem 1fr}.row .d,.row .r{grid-column:2;white-space:normal}.row.head .d,.row.head .r{display:none}}
+  .intro{max-width:70ch;margin-top:1.2rem}
+  .intro a{color:var(--cyan);box-shadow:inset 0 -1px 0 var(--cyan)}
+
+  .series{margin-top:3rem}
+  .series .cap{display:block;margin-bottom:.6rem}
+  .series ol{list-style:none;border:1px solid var(--line)}
+  .series li{border-top:1px solid var(--line-2)}
+  .series li:first-child{border-top:0}
+  .series li a{display:grid;grid-template-columns:5rem 1fr;gap:1rem;padding:.7rem 1rem;font-size:.92rem}
+  .series li a:hover{background:rgba(255,255,255,.06)}
+  .series li a b{font-family:var(--display);letter-spacing:.08em;color:var(--ink)}
+  .series li.now a{background:rgba(255,255,255,.1)}
+  .series li.now a::after{content:"dieses Blatt";grid-column:2;font-size:.78rem;color:var(--ink-3)}
+
+  .contact{width:min(1120px,100% - 2rem);margin:0 auto 3rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:0;border:1px solid var(--line)}
+  .contact>div{padding:1.6rem 1.8rem}
+  .contact .card{border-left:1px solid var(--line)}
+  .contact h2{font-size:1.4rem;max-width:22ch}
+  .contact p{margin-top:.8rem;max-width:48ch}
+  .contact .card a{display:block;padding:.6rem 0;font-family:var(--display);font-weight:700;color:var(--ink);border-bottom:1px solid var(--line-3)}
+  .contact .card a:last-child{border-bottom:0}
+  .contact .card a:hover{color:var(--cyan)}
+  .contact .card small{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;color:var(--ink-3)}
+  @media (max-width:900px){.contact{grid-template-columns:1fr}.contact .card{border-left:0;border-top:1px solid var(--line)}}
+
+  footer{padding:1.5rem 0 2.5rem;font-size:.85rem;color:var(--ink-3)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a:hover{color:var(--ink)}
+</style>
+</head>
+
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="DynamicsPro, zur Startseite">
+      <svg viewBox="0 0 26 26" fill="none" stroke="#fff" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#fff"/><rect x="15" y="3" width="8" height="8"/><rect x="3" y="15" width="8" height="8"/><rect x="15" y="15" width="8" height="8"/><path d="M11 7h4M7 11v4M19 11v4M11 19h4"/></svg>
+      DynamicsPro
+    </a>
+    <a class="back" href="../../">Zurück zur Startseite</a>
+    <a class="cta" href="#kontakt">Kontakt</a>
+  </div>
+</header>
+
+<main class="sheet">
+  <span class="cap">Blattverzeichnis</span>
+  <h1 class="title">Blog</h1>
+  <p class="lead">Wie meine Werkzeuge für Dynamics 365 und die Power Platform entstanden sind: welches Problem dahinter stand, wie ich es vorher umgangen habe, was ich gebaut habe und was dabei schiefging. Keine Produktprosa, dafür Daten und Fehler mit Datum.</p>
+  <p class="intro">Jeder Beitrag ist ein Planblatt mit Stand und Revisionen. SAC-01 bis SAC-04 sind die Serie zur Solution Administration Console, ein Blatt je Bauphase, datiert auf das Ende der Phase; wer sie lesen will, fängt bei SAC-01 an. TS-01 ist das Translation Studio. Revisionen sind Nachträge, die nach dem Stand des Blatts dazukamen. Die Funktionskataloge beider Apps: <a href="../../solution-admin-console.html">Konsole</a> und <a href="../../translation-studio.html">Translation Studio</a>.</p>
+  <div class="list">
+      <div class="row head"><span class="cap">Blatt</span><span class="cap">Titel</span><span class="cap d">Stand</span><span class="cap r">Revisionen</span></div>
+      <div class="row">
+        <span class="no">TS-01</span>
+        <div><h2><a href="translation-studio/">Drei Sprachen, eine Zip-Datei, und niemand sieht, was fehlt</a></h2><p>Dataverse pflegt jede Beschriftung je Sprache. Fehlt eine Übersetzung, sehen französische Anwender englische Feldnamen. Der Standardweg, das zu beheben, ist ein Export nach Excel mit tausenden Zeilen und ohne Filter auf „fehlt&quot;. Das Translation Studio liest denselben Export, zeigt nur die Lücken und schreibt ihn gefüllt zurück.</p></div>
+        <span class="d">03.10.2026</span>
+        <span class="r">&nbsp;</span>
+      </div>
+      <div class="row">
+        <span class="no">SAC-04</span>
+        <div><h2><a href="admin-console-4-datentransfer/">Konfigurationsdaten bewegen, und aus dem Werkzeug ein Produkt machen</a></h2><p>Das Configuration Migration Tool habe ich in jedem Projekt benutzt und in keinem gemocht. Der vierte Teil handelt vom Data Transfer Hub, der an einem Tag mit 37 Commits entstand, vom OData Browser, und von dem, was nötig war, damit die Konsole zu fremden Kunden gehen kann.</p></div>
+        <span class="d">21.09.2026</span>
+        <span class="r">&nbsp;</span>
+      </div>
+      <div class="row">
+        <span class="no">SAC-03</span>
+        <div><h2><a href="admin-console-3-betrieb/">Wer darf was, und was tut das System gerade</a></h2><p>Im Juli kamen die Fragen aus dem Betrieb dazu. Plugin-Fehler, die niemand sieht. Sicherheitsrollen, deren Wirkung niemand sicher benennen kann. Flows, die in PROD aus sind, und niemand weiß, seit wann. Dazu eine Dual-Write-Version, die seit November 2023 falsch angezeigt wurde.</p></div>
+        <span class="d">10.08.2026</span>
+        <span class="r">A 17.08.2026, B 10.09.2026</span>
+      </div>
+      <div class="row">
+        <span class="no">SAC-02</span>
+        <div><h2><a href="admin-console-2-vor-dem-import/">Warum Importe scheitern, und wie man es vorher sieht</a></h2><p>Ein fehlgeschlagener Import nach PROD kostet einen Abend. Fast immer aus einem Grund, den man eine Stunde vorher hätte wissen können. Der zweite Teil handelt von den Prüfungen vor und nach dem Import, von Dingen, die der Dataverse-Konnektor nicht kann, und von einem Grün, das keines war.</p></div>
+        <span class="d">20.07.2026</span>
+        <span class="r">A 04.08.2026</span>
+      </div>
+      <div class="row">
+        <span class="no">SAC-01</span>
+        <div><h2><a href="admin-console-1-working-solutions/">Eine Solution je Work Item, und dann der Merge</a></h2><p>Feature-Branches gibt es in Dataverse nicht. Was es gibt, sind unmanaged Solutions, und wer je Work Item eine anlegt, hat nach drei Monaten vierzig davon. Die erste Fassung der Konsole war ein Werkzeug, um die wieder zusammenzuführen.</p></div>
+        <span class="d">25.06.2026</span>
+        <span class="r">A 02.08.2026, B 16.09.2026</span>
+      </div>
+  </div>
+</main>
+
+<section id="kontakt" class="contact">
+  <div>
+    <span class="cap">Kontakt</span>
+    <h2>Ein ähnliches Problem im Haus?</h2>
+    <p>Die meisten dieser Werkzeuge sind aus einer Frage entstanden, die im Projekt niemand schnell beantworten konnte. Wenn Sie so eine Frage haben, schreiben Sie mir kurz.</p>
+  </div>
+  <div class="card">
+    <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de<small>E-Mail, am zuverlässigsten</small></a>
+    <a href="tel:+491735274172">+49 173 5274172<small>Telefon</small></a>
+    <a href="../../">Zurück zum Profil<small>Referenzen, Skills, Werdegang</small></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein bei Nürnberg</span>
+    <span><a href="../../impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="../../datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+</body>
+</html>

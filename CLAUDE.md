@@ -100,6 +100,16 @@ Navigation, Sitemap oder Feed, jede Seite trägt `noindex, nofollow`. Erreichbar
 Deeplink `https://dynamicspro.de/blog/v2/`. Texte sind identisch mit der Hauptfassung; wer
 einen Beitrag ändert, ändert beide oder entscheidet, welche Fassung bleibt.
 
+### Blog, dritte Fassung als Blaupause
+`blog/v3/` ist dieselbe Serie als technische Zeichnung: blaues Zeichenpapier mit feinem
+weißem Raster, jeder Beitrag ein Planblatt mit Rahmen und Titelblock (Projekt, Blatt, Stand,
+Gezeichnet, Umfang, Revisionen), Abschnitte nummeriert, Abbildungen als „Abb. n", die
+Nachträge als Revisionen A, B mit gelbem Vermerk. Die Übersicht ist ein Blattverzeichnis
+(SAC-01 bis SAC-04, TS-01). Keine Kopfbilder, die Grafiken im Text sind dieselben wie in der
+Hauptfassung. Wie `v2/` **unverlinkt**, `noindex`, nicht in Sitemap oder Feed; Deeplink
+`https://dynamicspro.de/blog/v3/`. Der Generator liest die Nachträge an der Überschrift
+„Nachtrag vom <Datum>: …" ab; wer die Form ändert, ändert ihn mit.
+
 ## Produktseite Solution Administration Console
 `solution-admin-console.html` beschreibt alle 21 Arbeitsbereiche der Code App. Quelle ist
 `CodeApps/apps/solution-forge/README.md` im Repo `aschwarzdynpro/CodeApps`; bei Änderungen
