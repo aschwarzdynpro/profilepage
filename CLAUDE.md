@@ -35,7 +35,11 @@ Komponente baut, baut sie gleich in diesem Bild und hängt nichts Dunkles mehr a
 
 - Tokens: `--bg`, `--bg-2 #f1efe9`, `--line #d8d4cc`, `--ink`, `--ink-2 #444`, `--ink-3 #7a766f`, `--red`
 - Schrift: Manrope (Überschriften), IBM Plex Sans (Fließtext), selbst gehostet als Variable Fonts in `assets/fonts/`
-- Offen: `assets/og.png` ist noch die Navy-Karte, `scripts/og-card.html` müsste nachgezogen werden
+- OG-Vorschaukarten: `node scripts/og.mjs` rendert aus `scripts/og-card.html` fünf Karten nach
+  `assets/`: `og.png` (Startseite, Impressum, Datenschutz), `og-health-check.png`, `og-blog.png`
+  (Übersicht und alle Beiträge), `og-konsole.png`, `og-studio.png`. Die Texte je Karte stehen in
+  `og.mjs`; die Karte liest sie als Query-Parameter. Wer Claim oder Titel einer Seite ändert, zieht
+  die Karte nach und rendert neu.
 - Skills: Balkengruppen `.sg` (5 Segmente = Niveau, Zahl = Jahre), neben dem Werdegang. Das frühere Netzdiagramm ist bewusst weg, eine Selbsteinschätzung auf 1 bis 5 überzeugt niemanden.
 
 ## Screenshots der Konsole
@@ -258,8 +262,7 @@ liefert 200 und entspricht dem Stand auf `main`. Offen bleibt:
       ein Entwurf, kein geprüfter Rechtstext. Prüfen Sie Anbieterangabe, Auftragsverarbeitung
       und Aufbewahrungsfristen, bevor die Seite live geht. Das ist der letzte Punkt vor dem
       Merge, die Buchungsseite selbst ist fertig und geprüft (`content/bookings.md`).
-- [ ] Eigene OG-Karte für die Seite erwägen. Derzeit liegt `assets/og.png` der Startseite darunter,
-      Quelle wäre `scripts/og-card.html`.
+- [x] Eigene OG-Karte: `assets/og-health-check.png`, siehe Erscheinungsbild.
 - [ ] Einen belegbaren Satz zum Analyse-Toolset ergänzen, sobald einer ohne Kundenbezug formulierbar ist.
 - [ ] Nach den ersten zwei, drei Durchläufen eine belastbare Kennzahl in den Hero nehmen, etwa die
       Zahl der Befunde je Umgebung und wie viele davon ein Ausfallrisiko tragen. Bis dahin steht
