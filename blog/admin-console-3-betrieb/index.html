@@ -22,7 +22,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="article:published_time" content="2026-10-04">
+<meta property="article:published_time" content="2026-08-10">
 <meta property="article:author" content="Andy Schwarz">
 <link rel="preload" href="../../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -141,10 +141,10 @@
 
 <section class="head">
   <div class="wrap">
-    <div class="kicker">Solution Administration Console · Teil 3 von 4 · Juli und August 2026</div>
+    <div class="kicker">Solution Administration Console · Teil 3 von 4 · Stand 10. August 2026</div>
     <h1>Wer darf was, und was tut das System gerade</h1>
     <p class="lead">Im Juli kamen die Fragen aus dem Betrieb dazu. Plugin-Fehler, die niemand sieht. Sicherheitsrollen, deren Wirkung niemand sicher benennen kann. Flows, die in PROD aus sind, und niemand weiß, seit wann.</p>
-    <div class="meta"><span><b>Andy Schwarz</b></span><span>4. Oktober 2026</span><span>6 Minuten Lesezeit</span></div>
+    <div class="meta"><span><b>Andy Schwarz</b></span><span>10. August 2026</span><span>6 Minuten Lesezeit</span></div>
   </div>
 </section>
 
@@ -163,7 +163,7 @@
 <p>Der Role Analyzer beantwortet beides. Er arbeitet auf einem zwischengespeicherten Abbild des Sicherheitsmodells, weil es bei einem mittelgroßen Tenant knapp dreihundert Rollen sind, davon rund zweihundertfünfzig mitgeliefert. Er zeigt die Matrix aus Rolle, Tabelle und Privileg mit Tiefe, die effektiven Rechte eines Benutzers mit Herkunftspfad, die umgekehrte Suche und Hygiene-Befunde wie nicht zugewiesene Rollen. Die Team-Vererbung war der schwierige Teil: Die Abfrage über Teams braucht verschachtelte Bedingungen, die der Dienst nicht immer mag, deshalb laufen direkte und vererbte Zuweisung als zwei getrennte Abfragen. Scheitert die zweite, fehlt die Vererbung, aber die direkte Prüfung bleibt richtig.</p>
 <figure class="shot">
   <img src="../../assets/screenshots/role-analyzer.webp" width="1600" height="1047" loading="lazy" decoding="async" alt="Bildschirmfoto: Effektive Rechte eines Benutzers, je Privileg mit Tiefe und Herkunft aus direkten und über Teams vererbten Rollen.">
-  <figcaption>Effektive Rechte eines Benutzers. Seit September mit Filter nach Tabelle, Privileg und gewährender Rolle; ein Chip je Rolle trägt die Zahl der Privilegien, die sie beisteuert. Eine Null bleibt stehen, denn eine Rolle, die nichts gewährt, ist ein Befund.</figcaption>
+  <figcaption>Effektive Rechte eines Benutzers, je Privileg mit Tiefe und Herkunft aus direkten und über Teams vererbten Rollen. Die Filterleiste darüber kam später, siehe Nachtrag.</figcaption>
 </figure>
 <p>Der Role Analyzer war Ende Juli für eine Woche aus der App, weil er das Bundle um 120 Kilobyte vergrößerte und der Erststart darunter litt. Am 4. August kam er zurück, diesmal nachgeladen, wenn man ihn öffnet. Meine Annahme, dass der Code-App-Player nachgeladene Chunks nicht ausliefert, war falsch, und das habe ich erst an diesem Tag geprüft statt geglaubt.</p>
 
@@ -174,18 +174,24 @@
 
 <h2>Prozesse und Plugins je Umgebung</h2>
 <p>„Warum läuft der Flow in PROD nicht?" Weil er aus ist. Seit wann, weiß niemand. Der Process Comparer zeigt alle Prozessarten einer Release-Solution als Statusmatrix über die Umgebungen, abweichende Zellen hervorgehoben, mit Ein- und Ausschalten je Zelle und Sammelaktionen über eine Zeilenauswahl. Er begann am 9. Juli als Flow Comparer und deckt seit dem 22. Juli auch klassische Workflows, Business Rules, Actions und Business Process Flows ab. Der Plugin Comparer macht dasselbe für Plugin-Steps und zeigt dazu die Assembly-Version je Umgebung. Ein Step kann existieren und trotzdem gegen eine ältere Assembly laufen.</p>
-<p>An diesem Comparer habe ich an einem Tag zwei Dinge über den Konnektor gelernt. Ein Zwei-Optionen-Feld kommt als Boolean zurück, nicht als Zahl, und mein Code las es als „immer aus". Und ein Auswahlfeld kommt als nackte Zahl ohne Beschriftung. Das zweite hatte eine gemeinsame Ursache mit mehreren anderen Befunden, die ich erst am 17. August gefunden habe: Der Konnektor liefert Anzeigetexte nur auf Anfrage, über einen dritten Parameter, den mein Aufruf seit Juni leer übergab. Mehrere einzeln notierte „Eigenheiten des Konnektors" waren in Wahrheit ein vergessener Parameter.</p>
+<p>An diesem Comparer habe ich an einem Tag zwei Dinge über den Konnektor gelernt. Ein Zwei-Optionen-Feld kommt als Boolean zurück, nicht als Zahl, und mein Code las es als „immer aus". Und ein Auswahlfeld kommt als nackte Zahl ohne Beschriftung, die Beschriftung hole ich mir seitdem aus der Tabelle der Optionswerte. Dass das zweite eine ganz andere Ursache hatte, steht im Nachtrag.</p>
 
 <h2>Kleinkram, der keiner ist</h2>
 <p><em>Audit Config</em> zeigt die Audit-Einstellung einer Umgebung bis auf Spaltenebene. Eine Tabelle auditiert nur, wenn der Schalter der Organisation und der der Tabelle an sind, deshalb ist „konfiguriert, aber aus" ein eigener Befund. <em>User Settings</em> ist ein Inventar der persönlichen Einstellungen aller Benutzer je Umgebung, Zeitzone, Währung, Sprache, Formate, mit der Möglichkeit, die Werte eines Benutzers auf mehrere auszurollen, mit strengerer Rückfrage in PROD.</p>
-<p>Und <em>Dual-Write Maps</em>, seit dem 6. Juli. Die Table Maps einer Umgebung mit ihren Versionen. Die erste Fassung zeigte die höchste Versionsnummer als die aktuelle. Am 10. August stellte sich heraus, dass bei drei von einundneunzig Maps die höchste Nummer eine geparkte 9.9.9.9 „Version for Data Migration" war, die seit November 2023 angezeigt wurde und nie lief. Die laufende Version steht in einer anderen Tabelle, und auch nur für die Hälfte der Maps. Jetzt zeigt die Zeile die tatsächlich laufende Version, sonst die zuletzt gespeicherte, und sagt offen, welche von beiden es ist.</p>
+<p>Und <em>Dual-Write Maps</em>, seit dem 6. Juli. Die Table Maps einer Umgebung mit ihren Versionen. Die erste Fassung zeigte die höchste Versionsnummer als die aktuelle. Heute stellte sich heraus, dass bei drei von einundneunzig Maps die höchste Nummer eine geparkte 9.9.9.9 „Version for Data Migration" war, die seit November 2023 angezeigt wurde und nie lief. Die laufende Version steht in einer anderen Tabelle, und auch nur für die Hälfte der Maps. Jetzt zeigt die Zeile die tatsächlich laufende Version, sonst die zuletzt gespeicherte, und sagt offen, welche von beiden es ist.</p>
 <p>Im <a href="../admin-console-4-datentransfer/">vierten Teil</a> geht es um Konfigurationsdaten zwischen Umgebungen, um einen Datenbank-Browser ohne Toolbox, und darum, wie aus dem Werkzeug ein Produkt wurde. Die Operate-Gruppe im Detail steht auf der <a href="../../solution-admin-console.html#operate">Produktseite</a>.</p>
+
+<h2>Nachtrag vom 17. August: ein vergessener Parameter</h2>
+<p>Die nackte Zahl im Auswahlfeld, ein leerer Besitzer in den Dual-Write Maps, ein leerer Lookup in der Vorschau des Transfer Hubs: Ich hatte das als drei Eigenheiten des Konnektors notiert und drei Mal umgangen. Es war eine. Der Konnektor liefert Anzeigetexte nur auf Anfrage, über einen dritten Parameter, den mein Aufruf seit Juni leer übergab. Die Umgehungen bleiben stehen, sie funktionieren. Aber die Liste der Eigenheiten ist um drei Einträge kürzer.</p>
+
+<h2>Nachtrag vom 10. September: Filter für die effektiven Rechte</h2>
+<p>Ein Benutzer mit einer Handvoll Rollen kommt auf mehrere hundert Zeilen Tabelle mal Aktion, und die liest niemand von oben nach unten. Jetzt lässt sich nach Tabelle, Privileg und gewährender Rolle filtern. Die gewährenden Rollen stehen als Chips darüber, jeder mit der Zahl der Privilegien, die er beisteuert. Das ist der eigentliche Gewinn: Man sieht, welche Zuweisung die Arbeit macht. Eine Null bleibt stehen, nur abgedunkelt. Eine Rolle, die dem Benutzer nichts gewährt, ist ein Befund, kein Rauschen.</p>
 
     </article>
 
 <section class="series" aria-label="Alle Teile der Serie">
   <div class="kicker">Solution Administration Console, alle Teile</div>
-  <ol><li><a href="../admin-console-1-working-solutions/"><b>Teil 1: Eine Solution je Work Item, und der Merge</b>Warum die Konsole mit der Workbench anfing und was beim Zusammenführen stillschweigend verloren ging.</a></li><li><a href="../admin-console-2-vor-dem-import/"><b>Teil 2: Warum Importe scheitern, und wie man es vorher sieht</b>Deployment Readiness, Analyze, Import History: die Prüfungen vor und nach dem Import, und ein falsches Grün.</a></li><li class="now"><a href="../admin-console-3-betrieb/"><b>Teil 3: Wer darf was, und was tut das System gerade</b>Plugin Traces, Role Analyzer, Role Comparer und die Vergleiche von Prozessen und Plugins über Umgebungen.</a></li><li><a href="../admin-console-4-datentransfer/"><b>Teil 4: Konfigurationsdaten bewegen, und ein Produkt daraus machen</b>Der Data Transfer Hub, der OData Browser, und die Schritte vom Kundenwerkzeug zum managed Paket.</a></li></ol>
+  <ol><li><a href="../admin-console-1-working-solutions/"><b>Teil 1: Eine Solution je Work Item, und der Merge</b>Warum die Konsole mit der Workbench anfing, und zwei Nachträge zum Merge.</a></li><li><a href="../admin-console-2-vor-dem-import/"><b>Teil 2: Warum Importe scheitern, und wie man es vorher sieht</b>Deployment Readiness, Analyze, Import History: die Prüfungen vor und nach dem Import, und ein falsches Grün.</a></li><li class="now"><a href="../admin-console-3-betrieb/"><b>Teil 3: Wer darf was, und was tut das System gerade</b>Plugin Traces, Role Analyzer, Role Comparer und die Vergleiche von Prozessen und Plugins über Umgebungen.</a></li><li><a href="../admin-console-4-datentransfer/"><b>Teil 4: Konfigurationsdaten bewegen, und ein Produkt daraus machen</b>Der Data Transfer Hub, der OData Browser, und die Schritte vom Kundenwerkzeug zum managed Paket.</a></li></ol>
 </section>
 
   </div>

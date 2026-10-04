@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Eine Solution je Work Item, und dann der Merge · DynamicsPro</title>
-<meta name="description" content="Teil 1 der Serie zur Solution Administration Console: Working Solutions je Work Item, der Merge in die Release-Solution, Excel und XrmToolBox davor, und ein stiller Datenverlust, der zwei Monate unentdeckt blieb.">
+<meta name="description" content="Teil 1 der Serie zur Solution Administration Console: Working Solutions je Work Item, der Merge in die Release-Solution, Excel und XrmToolBox davor. Mit zwei Nachträgen zum Merge aus August und September.">
 <link rel="canonical" href="https://dynamicspro.de/blog/admin-console-1-working-solutions/">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0F1E33">
@@ -17,12 +17,12 @@
 <meta property="og:site_name" content="DynamicsPro">
 <meta property="og:url" content="https://dynamicspro.de/blog/admin-console-1-working-solutions/">
 <meta property="og:title" content="Eine Solution je Work Item, und dann der Merge">
-<meta property="og:description" content="Teil 1 der Serie zur Solution Administration Console: Working Solutions je Work Item, der Merge in die Release-Solution, Excel und XrmToolBox davor, und ein stiller Datenverlust, der zwei Monate unentdeckt blieb.">
+<meta property="og:description" content="Teil 1 der Serie zur Solution Administration Console: Working Solutions je Work Item, der Merge in die Release-Solution, Excel und XrmToolBox davor. Mit zwei Nachträgen zum Merge aus August und September.">
 <meta property="og:image" content="https://dynamicspro.de/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="article:published_time" content="2026-10-04">
+<meta property="article:published_time" content="2026-06-25">
 <meta property="article:author" content="Andy Schwarz">
 <link rel="preload" href="../../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -141,10 +141,10 @@
 
 <section class="head">
   <div class="wrap">
-    <div class="kicker">Solution Administration Console · Teil 1 von 4 · Juni 2026</div>
+    <div class="kicker">Solution Administration Console · Teil 1 von 4 · Stand 25. Juni 2026</div>
     <h1>Eine Solution je Work Item, und dann der Merge</h1>
     <p class="lead">Feature-Branches gibt es in Dataverse nicht. Was es gibt, sind unmanaged Solutions, und wer je Work Item eine anlegt, hat nach drei Monaten vierzig davon. Die erste Fassung der Konsole war ein Werkzeug, um die wieder zusammenzuführen.</p>
-    <div class="meta"><span><b>Andy Schwarz</b></span><span>4. Oktober 2026</span><span>5 Minuten Lesezeit</span></div>
+    <div class="meta"><span><b>Andy Schwarz</b></span><span>25. Juni 2026</span><span>5 Minuten Lesezeit</span></div>
   </div>
 </section>
 
@@ -174,23 +174,25 @@
 </figure>
 <p>Dazu kam ein Cloud Flow, der den Status der Work Items zurück in die Working Solutions schreibt. Steht ein Work Item auf Done, die Solution ist aber noch offen, markiert die Liste das. Mehr Integration mit DevOps hatte ich geplant, ein Panel war schon gebaut. Es scheiterte am Tenant: Das OAuth-Token kam aus dem Heimat-Tenant meines Kontos, die DevOps-Organisation hing an einem anderen, Fehler TF400813, eine Gastmitgliedschaft hilft da nicht. Das Panel ist seit dem 11. Juni abgeschaltet und wartet auf einen Service Principal.</p>
 
-<h2>Der Fehler, den ich erst im August gefunden habe</h2>
+<h2>Was es gebracht hat</h2>
+<p>Der Merge dauert Minuten statt einen Nachmittag, und danach steht fest, was hinzugekommen ist. Die Release Notes fallen ab. Kollisionen sieht man, bevor jemand deployt. Die Konsole läuft seit zwei Wochen bei einem Kunden aus der Automatisierungstechnik im Alltag, mit drei Umgebungen und einem Team, das vorher die Excel-Liste geführt hat.</p>
+<p>Was die Workbench nicht beantwortet: ob der Import im Ziel durchgeht. Darum geht es im <a href="../admin-console-2-vor-dem-import/">zweiten Teil</a>. Alle Funktionen der Workbench stehen auf der <a href="../../solution-admin-console.html#manage">Produktseite</a>.</p>
+
+<h2>Nachtrag vom 2. August: der Fehler, den man nicht sieht</h2>
 <p>Der Merge lief zwei Monate im Alltag, und er hatte einen Fehler, den man nicht sieht. Die Komponentenliste kam aus derselben Tabelle, die auch das Maker-Portal für seine Objektliste nutzt. Diese Tabelle klappt Unterkomponenten unter ihrer Tabelle zusammen. Ein Merge darüber kopierte bei einer Tabelle also nur die Hülle und ließ die Spalten, Formulare und Ansichten zurück, die in der Quelle explizit drin waren. Keine Fehlermeldung. Die Komponente war ja im Ziel.</p>
 <p>Noch schlimmer war die Dublettenprüfung. Führte das Ziel die Tabelle bereits als Hülle und die Quelle sie mit allen Unterkomponenten, dann übersprang der Merge sie als Duplikat. Am 1. August habe ich das live an einer Tabelle gesehen, deren Spalten im Release fehlten. Seit dem 2. August entscheidet eine reine Funktion mit Tests, was mit jeder Komponente passiert: hinzufügen, aufweiten, überspringen oder ausgeschlossen. Aufweiten heißt, die vorhandene Zeile wird an Ort und Stelle auf „alle Unterkomponenten" hochgestuft. Dataverse stuft dabei nie zurück, ein wiederholter Aufruf ist also risikofrei.</p>
 <div class="aside">
   <p>Eine Nebenwirkung, die mich kurz hat zweifeln lassen: Nach dem Aufweiten sinkt die Zeilenzahl der Ziel-Solution. Aus drei Zeilen, Hülle plus zwei explizite Spalten, wird eine Zeile mit allem. Weniger Zeilen, mehr Inhalt. Wer Komponentenzahlen als Erfolgsmaß nimmt, liest daraus einen Verlust.</p>
 </div>
-<p>Die zweite Korrektur kam am 16. September. Der Merge stand bei großen Releases minutenlang auf null Prozent, weil er vor dem ersten Schritt die Release-Solution komplett auflöste, mit Namen für jede Spalte, jedes Formular, jede Ansicht. Davon wurde nichts angezeigt. Die Entscheidung braucht nur die ID und das Verhalten der Zeile. Jetzt liest er das Ziel roh, nimmt die Quellen aus dem Plan der Workbench mit, und der Fortschritt läuft ab der ersten Sekunde. Die Aufrufe selbst laufen weiter nacheinander. Parallel ginge vermutlich, aber nicht ohne vorher zu prüfen, wie Dataverse die Ziel-Solution sperrt.</p>
+<h2>Nachtrag vom 16. September: null Prozent</h2>
+<p>Der Merge stand bei großen Releases minutenlang auf null Prozent, weil er vor dem ersten Schritt die Release-Solution komplett auflöste, mit Namen für jede Spalte, jedes Formular, jede Ansicht. Davon wurde nichts angezeigt. Die Entscheidung braucht nur die ID und das Verhalten der Zeile. Jetzt liest er das Ziel roh, nimmt die Quellen aus dem Plan der Workbench mit, und der Fortschritt läuft ab der ersten Sekunde. Die Aufrufe selbst laufen weiter nacheinander. Parallel ginge vermutlich, aber nicht ohne vorher zu prüfen, wie Dataverse die Ziel-Solution sperrt.</p>
 
-<h2>Was es gebracht hat</h2>
-<p>Der Merge dauert Minuten statt einen Nachmittag, und danach steht fest, was hinzugekommen ist. Die Release Notes fallen ab. Kollisionen sieht man, bevor jemand deployt. Die Konsole läuft seit Juni bei einem Kunden aus der Automatisierungstechnik im Alltag, mit drei Umgebungen und einem Team, das vorher die Excel-Liste geführt hat.</p>
-<p>Was die Workbench nicht beantwortet: ob der Import im Ziel durchgeht. Darum geht es im <a href="../admin-console-2-vor-dem-import/">zweiten Teil</a>. Alle Funktionen der Workbench stehen auf der <a href="../../solution-admin-console.html#manage">Produktseite</a>.</p>
 
     </article>
 
 <section class="series" aria-label="Alle Teile der Serie">
   <div class="kicker">Solution Administration Console, alle Teile</div>
-  <ol><li class="now"><a href="../admin-console-1-working-solutions/"><b>Teil 1: Eine Solution je Work Item, und der Merge</b>Warum die Konsole mit der Workbench anfing und was beim Zusammenführen stillschweigend verloren ging.</a></li><li><a href="../admin-console-2-vor-dem-import/"><b>Teil 2: Warum Importe scheitern, und wie man es vorher sieht</b>Deployment Readiness, Analyze, Import History: die Prüfungen vor und nach dem Import, und ein falsches Grün.</a></li><li><a href="../admin-console-3-betrieb/"><b>Teil 3: Wer darf was, und was tut das System gerade</b>Plugin Traces, Role Analyzer, Role Comparer und die Vergleiche von Prozessen und Plugins über Umgebungen.</a></li><li><a href="../admin-console-4-datentransfer/"><b>Teil 4: Konfigurationsdaten bewegen, und ein Produkt daraus machen</b>Der Data Transfer Hub, der OData Browser, und die Schritte vom Kundenwerkzeug zum managed Paket.</a></li></ol>
+  <ol><li class="now"><a href="../admin-console-1-working-solutions/"><b>Teil 1: Eine Solution je Work Item, und der Merge</b>Warum die Konsole mit der Workbench anfing, und zwei Nachträge zum Merge.</a></li><li><a href="../admin-console-2-vor-dem-import/"><b>Teil 2: Warum Importe scheitern, und wie man es vorher sieht</b>Deployment Readiness, Analyze, Import History: die Prüfungen vor und nach dem Import, und ein falsches Grün.</a></li><li><a href="../admin-console-3-betrieb/"><b>Teil 3: Wer darf was, und was tut das System gerade</b>Plugin Traces, Role Analyzer, Role Comparer und die Vergleiche von Prozessen und Plugins über Umgebungen.</a></li><li><a href="../admin-console-4-datentransfer/"><b>Teil 4: Konfigurationsdaten bewegen, und ein Produkt daraus machen</b>Der Data Transfer Hub, der OData Browser, und die Schritte vom Kundenwerkzeug zum managed Paket.</a></li></ol>
 </section>
 
   </div>

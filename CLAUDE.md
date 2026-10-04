@@ -77,9 +77,11 @@ Daten und Zahlen in den Beiträgen stammen von dort, nichts ist geschätzt. **Ku
 Tenants, Präfixe und Tabellennamen von Kunden bleiben draußen**, Kunden heißen wie in den
 Referenzkarten nach Branche. Die Screenshots sind dieselben wie auf den Produktseiten.
 
-Serie zur Konsole in vier Teilen (je eine Bauphase: Juni Workbench und Merge, Juni/Juli
-Validate, Juli/August Betrieb, Juli bis September Transfer Hub und Produkt), dazu ein
-Beitrag zum Translation Studio. Der Kasten „alle Teile" am Ende jedes Teils listet die Serie;
+Serie zur Konsole in vier Teilen, je eine Bauphase, **datiert auf das Ende der Phase im
+Git-Log** (25.06. Workbench und Merge, 20.07. Validate, 10.08. Betrieb, 21.09. Transfer Hub
+und Produkt), dazu der Beitrag zum Translation Studio vom 03.10. Ein Beitrag weiß nur, was
+an seinem Datum bekannt war; spätere Ereignisse stehen als „Nachtrag vom <Datum>" am Ende.
+Die Übersicht und der Feed sortieren neueste zuerst, die Serie liest man von Teil 1 aus. Der Kasten „alle Teile" am Ende jedes Teils listet die Serie;
 ein neuer Teil muss in jeden anderen Teil eingetragen werden. Ton: erste Person, Sie-Ansprache
 für den Leser, konkrete Daten, eigene Fehler mit Datum. Keine Fazit-Listen, keine
 Dreierreihen, kein Produktton. Die Produktseiten bleiben als Funktionskatalog bestehen und
