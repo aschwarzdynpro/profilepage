@@ -4,7 +4,7 @@ Statische Single-File-Site (`index.html`), kein Build, kein Framework. Ausgelief
 
 ## Regeln
 - Alles bleibt in `index.html` (CSS im `<style>`, keine externen JS-Bundles). Bilder nach `assets/`.
-- Ausnahme: `solution-admin-console.html`, `impressum.html`, `datenschutz.html` und die
+- Ausnahme: `solution-admin-console.html`, `translation-studio.html`, `impressum.html`, `datenschutz.html` und die
   Angebotsseiten unter `<slug>/index.html` sind eigene Seiten mit eigenem `<style>`. Anschrift, USt-IdNr. und Aufsichtsbehörde nur nach Rücksprache ändern.
 - Keine Frameworks, kein Tailwind, kein Build-Schritt einführen.
 - Deutsch, Sie-Ansprache, kein Marketing-Sprech. Keine Emojis, keine Bindestrich-Gedankenstriche.
@@ -39,6 +39,29 @@ Verfahren, falls sie erneuert werden müssen:
 
 Karten mit Screenshot müssen `feat wide` sein, in der halben Spalte ist das Bild unlesbar.
 
+## Produktseite Translation Studio
+`translation-studio.html` beschreibt die zweite Code App nach demselben Muster wie die
+Konsolenseite (Hero mit Faktenleiste, Inhaltsverzeichnis, Gruppen aus `feat`-Karten, Panels
+„Quer durch die App", Kontakt). Quelle ist `CodeApps/apps/translation-studio/README.md`
+und die In-App-Hilfe `src/help/helpContent.ts` im Repo `aschwarzdynpro/CodeApps`; bei
+Änderungen an der App dort abgleichen. Verlinkt ist die Seite aus der Werkzeuge-Karte
+der Startseite. **Keine Referenzkarte und keine Mandatszeile**, solange die App nicht
+beim Kunden läuft: Die Seite sagt ehrlich „vor dem ersten Kundeneinsatz" (Kicker, letzter
+Absatz unter „Wofür", Kontaktblock, Werkzeuge-Karte). Sobald die App deployt ist und ein
+Kunde sie nutzt, diese vier Stellen nachziehen.
+
+Die Screenshots `assets/screenshots/ts-*.webp` sind wie die der Konsole selbst
+aufgenommen, mit den eingebauten Mock-Daten (fiktives Fuhrpark-Szenario in en/de/fr):
+
+1. `apps/translation-studio` aus dem CodeApps-Repo lokal starten (`npx vite`). Ohne
+   Power-Host läuft die App automatisch mit Mock-Daten, Badge oben rechts sagt „Mock-Daten".
+   Kein Setup-Assistent. Solution „Fuhrpark" wählen, „Übersetzungen laden".
+2. Matrix: Element-Screenshot von `main.studio`. Dialoge (Vorschau, Import-Ergebnis) als
+   Viewport-Ausschnitt unterhalb der Kopfleiste, damit das Overlay über dem abgedunkelten
+   Studio liegt und das Bild 1600px breit bleibt; einen Dialog allein zu clippen ergibt
+   600px und ist in der `feat wide`-Karte unscharf. Vor dem Foto den Toast abwarten (5 s).
+3. Aufnahme bei 1600 Breite, `deviceScaleFactor: 2`, auf 1600px herunterrechnen, WebP 0,92.
+
 ## Produktseite Solution Administration Console
 `solution-admin-console.html` beschreibt alle 21 Arbeitsbereiche der Code App. Quelle ist
 `CodeApps/apps/solution-forge/README.md` im Repo `aschwarzdynpro/CodeApps`; bei Änderungen
@@ -51,8 +74,8 @@ Inhaltsverzeichnis, sonst fehlt er in der Navigation. Wie das aussieht, steht un
 Navigation.
 
 ## Navigation
-Beide Seiten markieren den Abschnitt, in dem man gerade steht, und haben unter ihrem
-Breakpoint dasselbe Panel von unten. Klassennamen (`.toc-shell`, `.toc`, `.toc-fab`,
+Startseite und Produktseiten markieren den Abschnitt, in dem man gerade steht, und haben
+unter ihrem Breakpoint dasselbe Panel von unten. Klassennamen (`.toc-shell`, `.toc`, `.toc-fab`,
 `.toc-backdrop`) und Verhalten sind absichtlich gleich, jede Datei trägt ihre eigene
 Kopie von CSS und Skript.
 
@@ -62,6 +85,9 @@ Kopie von CSS und Skript.
 - `solution-admin-console.html`: mitlaufende Spalte links mit allen 27 Sprungzielen,
   offen ist immer genau eine Gruppe. Unter 1100px Panel über den Knopf „Inhalt",
   dort stehen alle Gruppen offen.
+- `translation-studio.html`: dieselbe Spalte mit 18 Sprungzielen in fünf Gruppen
+  (Wofür, Studio, Weitere Bereiche, Quer durch die App, Kontakt), CSS und Skript sind
+  eine Kopie der Konsolenseite.
 - Angebotsseiten (`health-check/index.html` und was nach dem Muster folgt): **kein Panel
   und kein Inhaltsverzeichnis.** Nur Kopfleiste mit Marke, Rückweg zur Startseite und
   dem CTA-Knopf, der auch mobil stehen bleibt. Das ist Absicht: eine Angebotsseite hat
