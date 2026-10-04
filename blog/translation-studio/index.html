@@ -154,6 +154,10 @@
     <article class="post">
 
 <p>Bei einem Kunden aus der Lichtindustrie läuft Dynamics 365 in drei Sprachen: Englisch als Basis, Deutsch und Französisch für die Ländergesellschaften. Jede Tabelle, jede Spalte, jeder Auswahlwert, jedes Formular und jede Ansicht trägt den Anzeigenamen je Sprache. Mit jedem Release kommen neue Spalten dazu, und die Übersetzung kommt, wenn jemand daran denkt. Meistens denkt jemand daran, wenn sich die französische Niederlassung meldet.</p>
+<figure class="shot loop">
+  <img src="../../assets/blog/translation-globe.jpg" width="1024" height="572" loading="lazy" decoding="async" alt="Grafik: Ein Globus mit Schriftzeichen vieler Sprachen, links Quelltexte in Englisch, rechts dieselben Texte in Französisch, Chinesisch und Japanisch.">
+  <figcaption>Links der Text in der Basissprache, rechts das, was Anwender in ihrer Sprache sehen sollen. Dazwischen liegt bei Dataverse eine Zip-Datei.</figcaption>
+</figure>
 
 <h2>Der Standardweg</h2>
 <p>Der Weg, den Microsoft dafür vorsieht, ist seit vielen Versionen derselbe. Im Maker-Portal Übersetzungen exportieren. Man bekommt eine Zip-Datei mit einer Excel-2003-XML-Datei darin, ein Blatt mit allen Beschriftungen, eine Spalte je Sprache, mehrere tausend Zeilen. Die öffnet man in Excel, sucht die leeren Zellen in der französischen Spalte, füllt sie, speichert ohne das Format zu zerstören, packt die Zip-Datei wieder zusammen, importiert, veröffentlicht. Es gibt in der XrmToolBox Werkzeuge, die den Weg nach Excel bequemer machen. Das Grundproblem bleibt: Die Datei zeigt alles, nicht die Lücken. Und die Fachabteilung, die die Übersetzung eigentlich kennt, hat weder Zugriff auf das Maker-Portal noch Lust auf eine XML-Datei mit vierzig Spalten.</p>
