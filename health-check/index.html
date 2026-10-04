@@ -7,7 +7,7 @@
 <meta name="description" content="Unabhängiger Health Check für Dynamics 365 CE und Power Platform: Scorecard, Risiken und Maßnahmenplan in 5 Tagen. Festpreis 5.000 €.">
 <link rel="canonical" href="https://dynamicspro.de/health-check/">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0F1E33">
+<meta name="theme-color" content="#fbfaf7">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/favicon.svg">
 
@@ -33,9 +33,10 @@
   @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 
   :root{
-    --navy:#0F1E33;--navy-2:#162A46;--navy-line:#2C4468;
-    --sky:#6DB4FF;--bg:#F6F7F9;--bg-2:#ECEFF3;--line:#D5DBE3;--white:#FFFFFF;
-    --ink:#14213A;--ink-2:#4A5A72;--ink-3:#7E8CA0;
+    --navy:#1a1a1a;--navy-2:#2a2a2a;--navy-line:#d8d4cc;
+    --sky:#b5342b;--sky-soft:rgba(181,52,43,.08);--red:#b5342b;--red-soft:rgba(181,52,43,.08);
+    --bg:#fbfaf7;--bg-2:#f1efe9;--line:#d8d4cc;--white:#ffffff;
+    --ink:#1a1a1a;--ink-2:#444444;--ink-3:#7a766f;
     --display:"Manrope",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -147,6 +148,61 @@
      ist unter den Kacheln bereits benannt. */
   .after-cta{margin-top:0;padding:3.5rem 0 1rem}
   section[id]{scroll-margin-top:96px}
+
+  /* Magazin-Theme, gleiches Bild wie der Blog: helles Papier, Schwarz, Rot als einziger Akzent,
+     Doppellinien statt dunkler Flaechen. Ueberschreibt die Regeln darueber; wer eine Komponente
+     neu baut, baut sie gleich in diesem Bild. */
+  h1,h2,h3,h4{font-weight:800;letter-spacing:-0.025em}
+  a:focus-visible,button:focus-visible{outline-color:var(--red)}
+  .kicker{font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+  .nav{background:var(--bg);border-bottom:1px solid var(--ink);color:var(--ink)}
+  .nav li a,.nav .back{color:var(--ink-2)}
+  .nav li a:hover,.nav .back:hover{color:var(--ink)}
+  .nav li.cta a,.nav .cta{background:var(--ink);color:var(--bg);border-radius:0}
+  .nav li.cta a:hover,.nav .cta:hover{background:var(--red)}
+  .nav .main li:not(.cta) a.on{color:var(--ink)}
+  .nav .main li:not(.cta) a.on::after{background:var(--red)}
+  .hero,section.head{background:var(--bg);color:var(--ink);border-bottom:3px double var(--ink)}
+  .hero::before,section.head::before{display:none}
+  .hero .kicker,section.head .kicker{color:var(--red)}
+  .hero .lead,section.head .lead{color:var(--ink-2);font-weight:300}
+  .hero h1,section.head h1{font-size:clamp(2.3rem,5.2vw,4rem)}
+  .avail{border-color:var(--line);color:var(--ink-2);background:none}
+  .btn{border-radius:0}
+  .btn.primary,.service.offer .btn{background:var(--ink);color:var(--bg)}
+  .btn.primary:hover,.service.offer .btn:hover{background:var(--red)}
+  .btn.outline{border-color:var(--ink);color:var(--ink)}
+  .btn.outline:hover{border-color:var(--red);color:var(--red)}
+  .facts{border-top-color:var(--ink)}
+  .facts dt{color:var(--ink-3)}
+  .facts dd{color:var(--ink)}
+  .band{background:var(--bg);border-bottom:1px solid var(--ink)}
+  .service.offer{background:var(--bg);color:var(--ink);border:1px solid var(--ink);border-top:3px double var(--ink)}
+  .service.offer p{color:var(--ink-2)}
+  .service.offer li{background:var(--bg-2);color:var(--ink)}
+  .sig.lead{background:var(--bg);color:var(--ink);border-color:var(--line);border-top:3px solid var(--red)}
+  .sig.lead p{color:var(--ink-2)}
+  .sig.lead .stack{color:var(--ink-3)}
+  .sig a.more,.sig.lead a.more{color:var(--ink)}
+  .case .story .result{border-left-color:var(--red)}
+  a.more{box-shadow:inset 0 -1px 0 var(--red)}
+  a.more:hover{background:var(--red-soft)}
+  .steps li::before{color:var(--red)}
+  .note{border-left-color:var(--red)}
+  .tl:first-child::before{background:var(--red);border-color:var(--red)}
+  .contact{background:var(--bg);color:var(--ink);border-top:3px double var(--ink)}
+  .contact p{color:var(--ink-2)}
+  .contact .fine{color:var(--ink-3)}
+  .contact .card{background:none;border:0;padding:0;border-radius:0}
+  .contact .card a{border-bottom:1px solid var(--line);border-radius:0;padding:.8rem 0}
+  .contact .card a:last-child{border-bottom:0}
+  .contact .card a:hover{background:none;color:var(--red)}
+  .contact .card small,.contact .card a small{color:var(--ink-3)}
+  .toc a.on{color:var(--ink);border-left-color:var(--red)}
+  .toc-fab{background:var(--ink);border-radius:0;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+  .toc-shell{border-radius:0}
+  footer{border-top:1px solid var(--line)}
+  .feat,.panel,.dim,.outcome,address,.service li,.feat ul li,.contact .card,.shot img,.portrait{border-radius:0}
 </style>
 <script type="application/ld+json">
 {
@@ -174,7 +230,7 @@
 <header class="nav">
   <div class="wrap">
     <a class="mark" href="/" aria-label="DynamicsPro, zur Startseite">
-      <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#6DB4FF"/><rect x="15" y="3" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><rect x="3" y="15" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><rect x="15" y="15" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><path d="M11 7h4M7 11v4M19 11v4M11 19h4" stroke="#6DB4FF" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#b5342b"/><rect x="15" y="3" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><rect x="3" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><rect x="15" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><path d="M11 7h4M7 11v4M19 11v4M11 19h4" stroke="#1a1a1a" stroke-width="1.5"/></svg>
       DynamicsPro
     </a>
     <a class="back" href="/">Zurück zur Startseite</a>

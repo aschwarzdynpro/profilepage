@@ -19,9 +19,23 @@ und neue Verzeichnisse (z. B. `health-check/`) müssen dort eingetragen werden, 
 sie stillschweigend nicht live.
 Einrichtung und DNS stehen in `README.md`.
 
-## Design-Tokens (in `:root`)
-- Navy `--navy #0F1E33` (Hero, Nav, Kontakt), Akzent `--sky #6DB4FF`, Papier `--bg #F6F7F9`
+## Erscheinungsbild: Magazin (seit Oktober 2026)
+Die ganze Site sieht aus wie eine gedruckte Fachzeitschrift: helles Papier `--bg #fbfaf7`,
+Schwarz `--ink #1a1a1a`, **Rot `--red #b5342b` als einzige Akzentfarbe**, Doppellinien
+(`3px double`) statt dunkler Flächen, Kopfleiste auf Papier mit schwarzer Linie, Kontakt-Knopf
+schwarz. Keine abgerundeten Ecken, keine Schatten. Überschriften Manrope 800 mit engem
+Zeichenabstand, Kicker rot in Versalien mit Sperrung. Die frühere Navy-Fassung (`#0F1E33` mit
+Hellblau `#6DB4FF`) ist weg; `--navy` und `--sky` existieren in den Tokens nur noch als Alias auf
+Schwarz und Rot, damit alte Regeln nicht brechen.
+
+Der Blog wurde zuerst in diesem Bild gebaut (Generator `build_main.py` im Scratchpad der
+Session, Quelle ist das HTML). Die übrigen Seiten tragen am Ende ihres `<style>` einen Block
+„Magazin-Theme", der Kopfleiste, Hero, Kontakt und Karten überschreibt. Wer dort eine neue
+Komponente baut, baut sie gleich in diesem Bild und hängt nichts Dunkles mehr an.
+
+- Tokens: `--bg`, `--bg-2 #f1efe9`, `--line #d8d4cc`, `--ink`, `--ink-2 #444`, `--ink-3 #7a766f`, `--red`
 - Schrift: Manrope (Überschriften), IBM Plex Sans (Fließtext), selbst gehostet als Variable Fonts in `assets/fonts/`
+- Offen: `assets/og.png` ist noch die Navy-Karte, `scripts/og-card.html` müsste nachgezogen werden
 - Skills: Balkengruppen `.sg` (5 Segmente = Niveau, Zahl = Jahre), neben dem Werdegang. Das frühere Netzdiagramm ist bewusst weg, eine Selbsteinschätzung auf 1 bis 5 überzeugt niemanden.
 
 ## Screenshots der Konsole
@@ -64,10 +78,19 @@ aufgenommen, mit den eingebauten Mock-Daten (fiktives Fuhrpark-Szenario in en/de
 
 ## Blog
 `blog/index.html` ist die Übersicht, jeder Beitrag liegt unter `blog/<slug>/index.html`, dazu
-`blog/feed.xml` (RSS, von Hand gepflegt: neuer Beitrag = neues `<item>`). Der Workflow kopiert
+`blog/feed.xml` (RSS, neuester zuerst: neuer Beitrag = neues `<item>`). Der Workflow kopiert
 das ganze Verzeichnis, neue Beiträge brauchen dort keinen Eintrag, wohl aber in `sitemap.xml`
-und in `scripts/shot.mjs`. Jede Datei trägt ihre eigene Kopie von CSS; Nav, Kontaktblock und
-Footer sind die der Produktseiten, der Text läuft in einer Spalte von 72ch.
+und in `scripts/shot.mjs`. Jede Datei trägt ihre eigene Kopie von CSS.
+
+**Layout (Magazin):** Kopfleiste mit „Werkstattnotizen" als Nebenzeile, Beitragskopf mit
+Kicker, breiter Titelzeile bis 4.4rem, Vorspann in leichter Schrift und Autorenzeile über
+einer Linie, darunter Doppellinie. Text in 68ch mit Initial im ersten Absatz, Kapitelnummern
+01, 02 in Rot über den Zwischenüberschriften, je Beitrag **ein Satz aus dem Text als Zitat**
+zwischen Doppellinien vor der zweiten Zwischenüberschrift (der Satz bleibt im Text), Abbildungen
+900px breit über die Spalte hinaus, Bildunterschrift mit rotem Strich, Nachträge mit Linie
+darüber und Etikett „Nachtrag" statt Nummer. Die Übersicht ist eine Titelseite: neuester
+Beitrag als Aufmacher mit Bild, die übrigen zweispaltig. Zwei frühere Fassungen (Pop-up-Buch,
+Blaupause) sind verworfen und gelöscht.
 
 Die Beiträge erzählen die Entstehung der eigenen Werkzeuge: Problem, bisherige Umgehung
 (XrmToolBox, Excel, Configuration Migration Tool, manuelle Prüfungen), was gebaut wurde, was
@@ -90,27 +113,6 @@ für den Leser, konkrete Daten, eigene Fehler mit Datum. Keine Fazit-Listen, kei
 Dreierreihen, kein Produktton. Die Produktseiten bleiben als Funktionskatalog bestehen und
 werden aus den Beiträgen verlinkt.
 
-### Blog, zweite Fassung im Pop-up-Stil
-`blog/v2/` ist dieselbe Serie als Pop-up-Buch: Holztisch als Hintergrund, Papierstapel mit
-Zierrahmen, Titelbanner, Etiketten, Fotos mit weißem Rand, Sprechblase, Kontakt als Papierkarte.
-Bewusst ruhig gehalten: nichts ist gedreht, Akzentfarben nur Türkis und Orange. Die
-Kopfbilder sind `assets/blog/popup-console.jpg` und `assets/blog/popup-translation.jpg`,
-die Neon-Grafiken aus der Hauptfassung entfallen dort. **Bewusst unverlinkt**: kein Eintrag in
-Navigation, Sitemap oder Feed, jede Seite trägt `noindex, nofollow`. Erreichbar nur über den
-Deeplink `https://dynamicspro.de/blog/v2/`. Texte sind identisch mit der Hauptfassung; wer
-einen Beitrag ändert, ändert beide oder entscheidet, welche Fassung bleibt.
-
-### Blog, dritte Fassung als Magazin
-`blog/v3/` ist dieselbe Serie als Editorial-Layout (eine Blaupausen-Fassung lag kurz dort und
-wurde verworfen): helles Papier, Impressum-Leiste mit Doppellinie, breite Titelzeile bis 4.4rem,
-Vorspann in leichter Schrift, Autorenzeile, Initial im ersten Absatz, Kapitelnummern 01, 02
-in Rot über den Zwischenüberschriften, je Beitrag ein Satz aus dem Text als Zitat zwischen
-Doppellinien (Liste `PULL` im Generator, der Satz bleibt im Text), Abbildungen breiter als
-die Spalte (900px), Nachträge mit Linie darüber und Etikett „Nachtrag". Die Übersicht hat
-den neuesten Beitrag als Aufmacher mit Bild, die übrigen zweispaltig. Eine Akzentfarbe
-(`--red #b5342b`), sonst Schwarz auf Papier. Wie `v2/` **unverlinkt**, `noindex`, nicht in
-Sitemap oder Feed; Deeplink `https://dynamicspro.de/blog/v3/`.
-
 ## Produktseite Solution Administration Console
 `solution-admin-console.html` beschreibt alle 21 Arbeitsbereiche der Code App. Quelle ist
 `CodeApps/apps/solution-forge/README.md` im Repo `aschwarzdynpro/CodeApps`; bei Änderungen
@@ -129,8 +131,8 @@ unter ihrem Breakpoint dasselbe Panel von unten. Klassennamen (`.toc-shell`, `.t
 Kopie von CSS und Skript.
 
 - `index.html`: Kopfleiste mit den sechs Einträgen Leistungen, Health Check, Referenzen,
-  Arbeitsweise, Skills und Werdegang, Blog plus Kontakt, aktiver Eintrag weiss mit
-  Unterstrich in `--sky`. Unter 900px Panel über den Knopf „Menü" rechts unten.
+  Arbeitsweise, Skills und Werdegang, Blog plus Kontakt, aktiver Eintrag schwarz mit
+  Unterstrich in `--red`. Unter 900px Panel über den Knopf „Menü" rechts unten.
 - Blog (`blog/index.html` und die Beiträge): wie die Angebotsseiten **kein Panel und kein
   Inhaltsverzeichnis**, nur Kopfleiste mit Marke, Rückweg („Alle Beiträge" bzw. „Zurück zur
   Startseite") und Kontakt-Knopf. Ein Beitrag ist eine Lesespalte, die man scrollt.
