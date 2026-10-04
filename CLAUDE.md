@@ -92,7 +92,8 @@ werden aus den Beiträgen verlinkt.
 
 ### Blog, zweite Fassung im Pop-up-Stil
 `blog/v2/` ist dieselbe Serie als Pop-up-Buch: Holztisch als Hintergrund, Papierstapel mit
-Zierrahmen, Banner, gedrehte Etiketten und Fotos, Sprechblase, Haftnotiz als Kontakt. Die
+Zierrahmen, Titelbanner, Etiketten, Fotos mit weißem Rand, Sprechblase, Kontakt als Papierkarte.
+Bewusst ruhig gehalten: nichts ist gedreht, Akzentfarben nur Türkis und Orange. Die
 Kopfbilder sind `assets/blog/popup-console.jpg` und `assets/blog/popup-translation.jpg`,
 die Neon-Grafiken aus der Hauptfassung entfallen dort. **Bewusst unverlinkt**: kein Eintrag in
 Navigation, Sitemap oder Feed, jede Seite trägt `noindex, nofollow`. Erreichbar nur über den
