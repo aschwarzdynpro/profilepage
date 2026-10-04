@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wer darf was, und was tut das System gerade · DynamicsPro</title>
+<meta name="description" content="Teil 3 der Serie zur Solution Administration Console: Plugin Trace Explorer, Security Role Analyzer und Role Comparer mit Baseline, Process und Plugin Comparer, Audit Config, Dual-Write Maps und User Settings.">
+<link rel="canonical" href="https://dynamicspro.de/blog/admin-console-3-betrieb/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0F1E33">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="DynamicsPro Blog" href="https://dynamicspro.de/blog/feed.xml">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="DynamicsPro">
+<meta property="og:url" content="https://dynamicspro.de/blog/admin-console-3-betrieb/">
+<meta property="og:title" content="Wer darf was, und was tut das System gerade">
+<meta property="og:description" content="Teil 3 der Serie zur Solution Administration Console: Plugin Trace Explorer, Security Role Analyzer und Role Comparer mit Baseline, Process und Plugin Comparer, Audit Config, Dual-Write Maps und User Settings.">
+<meta property="og:image" content="https://dynamicspro.de/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-10-04">
+<meta property="article:author" content="Andy Schwarz">
+<link rel="preload" href="../../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../../assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../../assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+  :root{
+    --navy:#0F1E33;--navy-2:#162A46;--navy-line:#2C4468;
+    --sky:#6DB4FF;--sky-soft:rgba(109,180,255,.16);--bg:#F6F7F9;--bg-2:#ECEFF3;--line:#D5DBE3;--white:#FFFFFF;
+    --ink:#14213A;--ink-2:#4A5A72;--ink-3:#7E8CA0;
+    --display:"Manrope",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:var(--body);font-size:17px;line-height:1.65;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.15;letter-spacing:-0.02em}
+  em{font-style:normal;color:var(--ink);font-weight:600}
+  .wrap{width:min(1200px,100% - 3rem);margin-inline:auto}
+  .kicker{font-size:.95rem;font-weight:600;color:var(--ink-3)}
+
+  .nav{position:sticky;top:0;z-index:30;background:var(--navy);border-bottom:1px solid var(--navy-line);color:#E6EDF7}
+  .nav .wrap{display:flex;align-items:center;gap:1rem;height:68px}
+  .mark{font-family:var(--display);font-weight:700;font-size:1.2rem;display:flex;align-items:center;gap:.6rem;letter-spacing:-0.02em;margin-right:auto}
+  .mark svg{width:26px;height:26px}
+  .nav .back{font-size:.95rem;color:#B9C7DA;font-weight:500}
+  .nav .back:hover{color:#fff}
+  .nav .cta{color:var(--navy);background:var(--sky);padding:.55rem 1.05rem;border-radius:4px;font-weight:600;font-size:.95rem;font-family:var(--display)}
+  .nav .cta:hover{background:#8CC6FF}
+  @media (max-width:640px){.nav .back{display:none}}
+
+  .head{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .head::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:40px 40px;mask-image:linear-gradient(90deg,transparent 35%,#000 100%);-webkit-mask-image:linear-gradient(90deg,transparent 35%,#000 100%)}
+  .head .wrap{position:relative;padding:4rem 0 3.2rem}
+  .head .kicker{color:var(--sky)}
+  .head h1{font-size:clamp(1.9rem,3.8vw,2.8rem);margin-top:.9rem;max-width:24ch}
+  .head .lead{margin-top:1.3rem;font-size:1.12rem;line-height:1.55;color:#B9C7DA;max-width:64ch}
+  .head .meta{margin-top:1.8rem;font-size:.9rem;color:#7F98BC;display:flex;gap:.5rem 1.2rem;flex-wrap:wrap}
+  .head .meta b{color:#E6EDF7;font-weight:600}
+  .head .meta a{color:#B9C7DA;box-shadow:inset 0 -1px 0 var(--sky)}
+  .head .meta a:hover{color:#fff}
+
+  main{padding:3.5rem 0 4.5rem}
+  .post{width:min(72ch,100%);margin-inline:auto}
+  .post>p{margin-top:1.1rem;color:var(--ink-2)}
+  .post>p:first-child{margin-top:0}
+  .post h2{font-size:1.45rem;margin-top:2.6rem;color:var(--ink)}
+  .post h2+p{margin-top:.8rem}
+  .post ul{margin:1rem 0 0 1.2rem;color:var(--ink-2)}
+  .post li+li{margin-top:.4rem}
+  .post code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;background:var(--bg-2);border-radius:3px;padding:.08em .35em;color:var(--ink)}
+  .post .aside{margin-top:1.6rem;border-left:3px solid var(--sky);background:var(--white);border-radius:0 6px 6px 0;padding:1rem 1.3rem;color:var(--ink-2);font-size:.97rem}
+  .post .aside p+p{margin-top:.7rem}
+  .shot{margin-top:1.8rem}
+  .shot img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:5px;background:var(--bg-2)}
+  .shot figcaption{margin-top:.6rem;font-size:.86rem;color:var(--ink-3);line-height:1.5}
+  .post a.more{color:var(--ink);font-weight:600;box-shadow:inset 0 -1px 0 var(--sky);white-space:nowrap}
+  .post a.more:hover{background:var(--sky-soft)}
+  .post p a:not(.more){box-shadow:inset 0 -1px 0 var(--sky)}
+  .post p a:not(.more):hover{background:var(--sky-soft)}
+
+  .series{width:min(72ch,100%);margin:3.5rem auto 0;border-top:2px solid var(--navy);padding-top:1.4rem}
+  .series .kicker{margin-bottom:.8rem}
+  .series ol{list-style:none;display:grid;gap:.5rem}
+  .series li a{display:block;background:var(--white);border:1px solid var(--line);border-radius:6px;padding:.8rem 1rem;font-size:.95rem;color:var(--ink-2)}
+  .series li a:hover{border-color:var(--ink-3)}
+  .series li a b{display:block;font-family:var(--display);color:var(--ink);font-weight:700}
+  .series li.now a{border-color:var(--navy);background:var(--bg-2)}
+  .series li.now a::after{content:"Sie lesen gerade";display:block;font-size:.8rem;color:var(--ink-3);margin-top:.2rem}
+
+  .list{width:min(72ch,100%);margin-inline:auto;display:grid;gap:1.2rem}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:1.5rem 1.7rem}
+  .card .kicker{font-size:.85rem}
+  .card h2{font-size:1.35rem;margin-top:.5rem}
+  .card h2 a:hover{color:var(--navy);box-shadow:inset 0 -2px 0 var(--sky)}
+  .card p{margin-top:.7rem;color:var(--ink-2);font-size:.97rem}
+  .card .meta{margin-top:.9rem;font-size:.86rem;color:var(--ink-3)}
+  .intro{width:min(72ch,100%);margin:0 auto 2.2rem;color:var(--ink-2)}
+
+  .contact{background:var(--navy);color:#fff}
+  .contact .wrap{padding:4rem 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:3rem;align-items:center}
+  .contact h2{font-size:clamp(1.6rem,3vw,2.1rem);max-width:22ch}
+  .contact p{margin-top:1rem;color:#B9C7DA;max-width:48ch}
+  .contact .card{background:var(--navy-2);border:1px solid var(--navy-line);border-radius:6px;padding:.6rem}
+  .contact .card a{display:block;padding:.9rem 1rem;border-radius:4px;font-family:var(--display);font-weight:600}
+  .contact .card a:hover{background:rgba(255,255,255,.06)}
+  .contact .card small{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;color:#8FA5C0;margin-top:.15rem}
+  @media (max-width:900px){.contact .wrap{grid-template-columns:1fr;gap:2rem}}
+
+  footer{padding:2rem 0;font-size:.88rem;color:var(--ink-2)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a:hover{color:var(--ink)}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="DynamicsPro, zur Startseite">
+      <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#6DB4FF"/><rect x="15" y="3" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><rect x="3" y="15" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><rect x="15" y="15" width="8" height="8" stroke="#6DB4FF" stroke-width="1.5"/><path d="M11 7h4M7 11v4M19 11v4M11 19h4" stroke="#6DB4FF" stroke-width="1.5"/></svg>
+      DynamicsPro
+    </a>
+    <a class="back" href="../">Alle Beiträge</a>
+    <a class="cta" href="#kontakt">Kontakt</a>
+  </div>
+</header>
+
+<section class="head">
+  <div class="wrap">
+    <div class="kicker">Solution Administration Console · Teil 3 von 4 · Juli und August 2026</div>
+    <h1>Wer darf was, und was tut das System gerade</h1>
+    <p class="lead">Im Juli kamen die Fragen aus dem Betrieb dazu. Plugin-Fehler, die niemand sieht. Sicherheitsrollen, deren Wirkung niemand sicher benennen kann. Flows, die in PROD aus sind, und niemand weiß, seit wann.</p>
+    <div class="meta"><span><b>Andy Schwarz</b></span><span>4. Oktober 2026</span><span>6 Minuten Lesezeit</span></div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+    <article class="post">
+
+<p>Nach dem Release-Zug und den Prüfungen vor dem Import war die Konsole ein Werkzeug für die Entwicklung. Die Fragen, die mir im Juli gestellt wurden, kamen aus dem Betrieb, und sie hatten eine Gemeinsamkeit: Das Maker-Portal und das Admin Center beantworten sie entweder mühsam oder gar nicht.</p>
+
+<h2>Plugin-Fehler sieht man nicht</h2>
+<p>Dataverse schreibt Plugin-Traces in eine Tabelle, die im Maker-Portal praktisch unbenutzbar ist. Wer wissen will, ob ein Plugin gerade Ausnahmen wirft, nimmt den Plugin Trace Viewer aus der XrmToolBox. Der ist gut. Er läuft nur auf einem Desktop, braucht je Umgebung eine Anmeldung, und von den Leuten, die im Betrieb die Frage stellen, hat ihn niemand installiert.</p>
+<p>Seit dem 3. Juli gibt es in der Konsole einen Stream über die Trace-Logs, der alle fünfzehn Sekunden nachlädt und pausiert, sobald der Browser-Tab in den Hintergrund geht. Gefiltert wird auf dem Server nach Zeitfenster, Typ, Message, Tabelle, synchron oder asynchron, wahlweise nur Ausnahmen. Der schwere Meldungsblock wird erst beim Aufklappen einer Zeile geladen, nie im Stream. Dazu eine Zeitleiste je Correlation-ID, die zeigt, welches Plugin welches ausgelöst hat, und Laufzeit-Aggregate je Plugin und Message. Die Frage „ist das Plugin schuld" ist damit in einer Minute beantwortet statt in einer Stunde.</p>
+
+<h2>Rollen, und was sie wirklich bewirken</h2>
+<p>Für Berechtigungen gab es vorher eine Excel-Matrix, die jemand einmal aus den Rollen abgeschrieben hatte, und den Security Role Explorer in der XrmToolBox, mit dem man eine Rolle ansieht. Die Frage, die im Projekt gestellt wird, ist aber eine andere: Was darf dieser Benutzer tatsächlich, über alle seine Rollen, direkt und über Teams vererbt? Und umgekehrt: Wer darf eigentlich diese Tabelle löschen?</p>
+<p>Der Role Analyzer beantwortet beides. Er arbeitet auf einem zwischengespeicherten Abbild des Sicherheitsmodells, weil es bei einem mittelgroßen Tenant knapp dreihundert Rollen sind, davon rund zweihundertfünfzig mitgeliefert. Er zeigt die Matrix aus Rolle, Tabelle und Privileg mit Tiefe, die effektiven Rechte eines Benutzers mit Herkunftspfad, die umgekehrte Suche und Hygiene-Befunde wie nicht zugewiesene Rollen. Die Team-Vererbung war der schwierige Teil: Die Abfrage über Teams braucht verschachtelte Bedingungen, die der Dienst nicht immer mag, deshalb laufen direkte und vererbte Zuweisung als zwei getrennte Abfragen. Scheitert die zweite, fehlt die Vererbung, aber die direkte Prüfung bleibt richtig.</p>
+<figure class="shot">
+  <img src="../../assets/screenshots/role-analyzer.webp" width="1600" height="1047" loading="lazy" decoding="async" alt="Bildschirmfoto: Effektive Rechte eines Benutzers, je Privileg mit Tiefe und Herkunft aus direkten und über Teams vererbten Rollen.">
+  <figcaption>Effektive Rechte eines Benutzers. Seit September mit Filter nach Tabelle, Privileg und gewährender Rolle; ein Chip je Rolle trägt die Zahl der Privilegien, die sie beisteuert. Eine Null bleibt stehen, denn eine Rolle, die nichts gewährt, ist ein Befund.</figcaption>
+</figure>
+<p>Der Role Analyzer war Ende Juli für eine Woche aus der App, weil er das Bundle um 120 Kilobyte vergrößerte und der Erststart darunter litt. Am 4. August kam er zurück, diesmal nachgeladen, wenn man ihn öffnet. Meine Annahme, dass der Code-App-Player nachgeladene Chunks nicht ausliefert, war falsch, und das habe ich erst an diesem Tag geprüft statt geglaubt.</p>
+
+<h2>Sind die Rollen heil angekommen?</h2>
+<p>Am selben Tag entstand der Role Comparer, und der beantwortet die Frage, die mich im Projekt am meisten beschäftigt hat. Eine Sicherheitsrolle, die per Solution transportiert wird, behält ihre ID. Eine Rolle, die jemand im Ziel von Hand nachgebaut hat, weil der Transport gerade nicht ging, trägt denselben Namen und eine andere ID. Heute sieht das richtig aus. Ab morgen driftet es, und kein Import wird diese Rolle je aktualisieren, weil sie für Dataverse eine andere ist.</p>
+<p>Der Comparer matcht deshalb über den Namen, nicht über die ID, und markiert gleiche Namen mit abweichender ID als <em>rebuilt</em>. Je Zelle steht die Zahl der Privilegien und wie viele davon diese Umgebung anders vergibt als die Referenz. Eine Umgebung, die nicht lesbar war, zeigt ein Fragezeichen und gilt nie als unauffällig. Der Bereich ist mit Absicht lesend. Eine driftende Rolle gehört transportiert, nicht im Ziel bearbeitet, denn das erzeugt genau den unmanaged Layer, den der Layer Inspector danach meldet.</p>
+<p>Daraus wurde noch am selben Tag mehr: Der aktuelle Stand lässt sich als Baseline einfrieren, und dann wechselt die Frage von „stimmen die Umgebungen überein" zu „was hat sich seit dem Einfrieren geändert". Aus einem Snapshot entsteht ein Security-Konzept als Dokument, mit Umgebungsübersicht und Privilegienmatrix, mit einem zweiten Snapshot davor ein Änderungskapitel. Das Dokument, das man sonst zu Projektbeginn schreibt und nie nachzieht, wird jetzt erzeugt. Eine erweiterte Baseline mit Business Units, Teams und Field Security habe ich am selben Tag gebaut und wieder ausgebaut: Das Einfrieren dauerte zu lange, und ein Werkzeug, auf das man wartet, benutzt niemand.</p>
+
+<h2>Prozesse und Plugins je Umgebung</h2>
+<p>„Warum läuft der Flow in PROD nicht?" Weil er aus ist. Seit wann, weiß niemand. Der Process Comparer zeigt alle Prozessarten einer Release-Solution als Statusmatrix über die Umgebungen, abweichende Zellen hervorgehoben, mit Ein- und Ausschalten je Zelle und Sammelaktionen über eine Zeilenauswahl. Er begann am 9. Juli als Flow Comparer und deckt seit dem 22. Juli auch klassische Workflows, Business Rules, Actions und Business Process Flows ab. Der Plugin Comparer macht dasselbe für Plugin-Steps und zeigt dazu die Assembly-Version je Umgebung. Ein Step kann existieren und trotzdem gegen eine ältere Assembly laufen.</p>
+<p>An diesem Comparer habe ich an einem Tag zwei Dinge über den Konnektor gelernt. Ein Zwei-Optionen-Feld kommt als Boolean zurück, nicht als Zahl, und mein Code las es als „immer aus". Und ein Auswahlfeld kommt als nackte Zahl ohne Beschriftung. Das zweite hatte eine gemeinsame Ursache mit mehreren anderen Befunden, die ich erst am 17. August gefunden habe: Der Konnektor liefert Anzeigetexte nur auf Anfrage, über einen dritten Parameter, den mein Aufruf seit Juni leer übergab. Mehrere einzeln notierte „Eigenheiten des Konnektors" waren in Wahrheit ein vergessener Parameter.</p>
+
+<h2>Kleinkram, der keiner ist</h2>
+<p><em>Audit Config</em> zeigt die Audit-Einstellung einer Umgebung bis auf Spaltenebene. Eine Tabelle auditiert nur, wenn der Schalter der Organisation und der der Tabelle an sind, deshalb ist „konfiguriert, aber aus" ein eigener Befund. <em>User Settings</em> ist ein Inventar der persönlichen Einstellungen aller Benutzer je Umgebung, Zeitzone, Währung, Sprache, Formate, mit der Möglichkeit, die Werte eines Benutzers auf mehrere auszurollen, mit strengerer Rückfrage in PROD.</p>
+<p>Und <em>Dual-Write Maps</em>, seit dem 6. Juli. Die Table Maps einer Umgebung mit ihren Versionen. Die erste Fassung zeigte die höchste Versionsnummer als die aktuelle. Am 10. August stellte sich heraus, dass bei drei von einundneunzig Maps die höchste Nummer eine geparkte 9.9.9.9 „Version for Data Migration" war, die seit November 2023 angezeigt wurde und nie lief. Die laufende Version steht in einer anderen Tabelle, und auch nur für die Hälfte der Maps. Jetzt zeigt die Zeile die tatsächlich laufende Version, sonst die zuletzt gespeicherte, und sagt offen, welche von beiden es ist.</p>
+<p>Im <a href="../admin-console-4-datentransfer/">vierten Teil</a> geht es um Konfigurationsdaten zwischen Umgebungen, um einen Datenbank-Browser ohne Toolbox, und darum, wie aus dem Werkzeug ein Produkt wurde. Die Operate-Gruppe im Detail steht auf der <a href="../../solution-admin-console.html#operate">Produktseite</a>.</p>
+
+    </article>
+
+<section class="series" aria-label="Alle Teile der Serie">
+  <div class="kicker">Solution Administration Console, alle Teile</div>
+  <ol><li><a href="../admin-console-1-working-solutions/"><b>Teil 1: Eine Solution je Work Item, und der Merge</b>Warum die Konsole mit der Workbench anfing und was beim Zusammenführen stillschweigend verloren ging.</a></li><li><a href="../admin-console-2-vor-dem-import/"><b>Teil 2: Warum Importe scheitern, und wie man es vorher sieht</b>Deployment Readiness, Analyze, Import History: die Prüfungen vor und nach dem Import, und ein falsches Grün.</a></li><li class="now"><a href="../admin-console-3-betrieb/"><b>Teil 3: Wer darf was, und was tut das System gerade</b>Plugin Traces, Role Analyzer, Role Comparer und die Vergleiche von Prozessen und Plugins über Umgebungen.</a></li><li><a href="../admin-console-4-datentransfer/"><b>Teil 4: Konfigurationsdaten bewegen, und ein Produkt daraus machen</b>Der Data Transfer Hub, der OData Browser, und die Schritte vom Kundenwerkzeug zum managed Paket.</a></li></ol>
+</section>
+
+  </div>
+</main>
+
+<section id="kontakt" class="contact">
+  <div class="wrap">
+    <div>
+      <h2>Wer darf in Ihrer Umgebung eigentlich was?</h2>
+      <p>Wenn das niemand sicher sagen kann, ist das kein Vorwurf, sondern der Normalfall nach ein paar Jahren Betrieb. Ich schaue es mir mit Ihnen an, lesend, ohne etwas zu verändern.</p>
+    </div>
+    <div class="card">
+      <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de<small>E-Mail, am zuverlässigsten</small></a>
+      <a href="tel:+491735274172">+49 173 5274172<small>Telefon</small></a>
+      <a href="../../">Zurück zum Profil<small>Referenzen, Skills, Werdegang</small></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein bei Nürnberg</span>
+    <span><a href="../../impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="../../datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+</body>
+</html>

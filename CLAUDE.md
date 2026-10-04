@@ -4,8 +4,8 @@ Statische Single-File-Site (`index.html`), kein Build, kein Framework. Ausgelief
 
 ## Regeln
 - Alles bleibt in `index.html` (CSS im `<style>`, keine externen JS-Bundles). Bilder nach `assets/`.
-- Ausnahme: `solution-admin-console.html`, `translation-studio.html`, `impressum.html`, `datenschutz.html` und die
-  Angebotsseiten unter `<slug>/index.html` sind eigene Seiten mit eigenem `<style>`. Anschrift, USt-IdNr. und Aufsichtsbehörde nur nach Rücksprache ändern.
+- Ausnahme: `solution-admin-console.html`, `translation-studio.html`, `impressum.html`, `datenschutz.html`,
+  die Angebotsseiten unter `<slug>/index.html` und der Blog unter `blog/` sind eigene Seiten mit eigenem `<style>`. Anschrift, USt-IdNr. und Aufsichtsbehörde nur nach Rücksprache ändern.
 - Keine Frameworks, kein Tailwind, kein Build-Schritt einführen.
 - Deutsch, Sie-Ansprache, kein Marketing-Sprech. Keine Emojis, keine Bindestrich-Gedankenstriche.
 - Kundennamen bleiben anonymisiert (Branche statt Firma). Keine Tagessätze, keine Partner-Methodik.
@@ -62,6 +62,29 @@ aufgenommen, mit den eingebauten Mock-Daten (fiktives Fuhrpark-Szenario in en/de
    600px und ist in der `feat wide`-Karte unscharf. Vor dem Foto den Toast abwarten (5 s).
 3. Aufnahme bei 1600 Breite, `deviceScaleFactor: 2`, auf 1600px herunterrechnen, WebP 0,92.
 
+## Blog
+`blog/index.html` ist die Übersicht, jeder Beitrag liegt unter `blog/<slug>/index.html`, dazu
+`blog/feed.xml` (RSS, von Hand gepflegt: neuer Beitrag = neues `<item>`). Der Workflow kopiert
+das ganze Verzeichnis, neue Beiträge brauchen dort keinen Eintrag, wohl aber in `sitemap.xml`
+und in `scripts/shot.mjs`. Jede Datei trägt ihre eigene Kopie von CSS; Nav, Kontaktblock und
+Footer sind die der Produktseiten, der Text läuft in einer Spalte von 72ch.
+
+Die Beiträge erzählen die Entstehung der eigenen Werkzeuge: Problem, bisherige Umgehung
+(XrmToolBox, Excel, Configuration Migration Tool, manuelle Prüfungen), was gebaut wurde, was
+schiefging. Quelle für die Konsole sind `apps/solution-forge/releases/CHANGELOG.md`, die
+Gotchas in `apps/solution-forge/CLAUDE.md` und der Git-Log im Repo `aschwarzdynpro/CodeApps`;
+Daten und Zahlen in den Beiträgen stammen von dort, nichts ist geschätzt. **Kundennamen,
+Tenants, Präfixe und Tabellennamen von Kunden bleiben draußen**, Kunden heißen wie in den
+Referenzkarten nach Branche. Die Screenshots sind dieselben wie auf den Produktseiten.
+
+Serie zur Konsole in vier Teilen (je eine Bauphase: Juni Workbench und Merge, Juni/Juli
+Validate, Juli/August Betrieb, Juli bis September Transfer Hub und Produkt), dazu ein
+Beitrag zum Translation Studio. Der Kasten „alle Teile" am Ende jedes Teils listet die Serie;
+ein neuer Teil muss in jeden anderen Teil eingetragen werden. Ton: erste Person, Sie-Ansprache
+für den Leser, konkrete Daten, eigene Fehler mit Datum. Keine Fazit-Listen, keine
+Dreierreihen, kein Produktton. Die Produktseiten bleiben als Funktionskatalog bestehen und
+werden aus den Beiträgen verlinkt.
+
 ## Produktseite Solution Administration Console
 `solution-admin-console.html` beschreibt alle 21 Arbeitsbereiche der Code App. Quelle ist
 `CodeApps/apps/solution-forge/README.md` im Repo `aschwarzdynpro/CodeApps`; bei Änderungen
@@ -79,9 +102,12 @@ unter ihrem Breakpoint dasselbe Panel von unten. Klassennamen (`.toc-shell`, `.t
 `.toc-backdrop`) und Verhalten sind absichtlich gleich, jede Datei trägt ihre eigene
 Kopie von CSS und Skript.
 
-- `index.html`: Kopfleiste mit den fünf Einträgen Leistungen, Health Check, Referenzen,
-  Arbeitsweise, Skills und Werdegang plus Kontakt, aktiver Eintrag weiss mit
+- `index.html`: Kopfleiste mit den sechs Einträgen Leistungen, Health Check, Referenzen,
+  Arbeitsweise, Skills und Werdegang, Blog plus Kontakt, aktiver Eintrag weiss mit
   Unterstrich in `--sky`. Unter 900px Panel über den Knopf „Menü" rechts unten.
+- Blog (`blog/index.html` und die Beiträge): wie die Angebotsseiten **kein Panel und kein
+  Inhaltsverzeichnis**, nur Kopfleiste mit Marke, Rückweg („Alle Beiträge" bzw. „Zurück zur
+  Startseite") und Kontakt-Knopf. Ein Beitrag ist eine Lesespalte, die man scrollt.
 - `solution-admin-console.html`: mitlaufende Spalte links mit allen 27 Sprungzielen,
   offen ist immer genau eine Gruppe. Unter 1100px Panel über den Knopf „Inhalt",
   dort stehen alle Gruppen offen.

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>DynamicsPro Blog</title>
+  <link>https://dynamicspro.de/blog/</link>
+  <atom:link href="https://dynamicspro.de/blog/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Werkstattnotizen von Andy Schwarz zu Dynamics 365 und der Power Platform.</description>
+  <language>de-DE</language>
+  <item>
+    <title>Eine Solution je Work Item, und dann der Merge</title>
+    <link>https://dynamicspro.de/blog/admin-console-1-working-solutions/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/blog/admin-console-1-working-solutions/</guid>
+    <pubDate>Sun, 04 Oct 2026 08:00:00 +0200</pubDate>
+    <description>Feature-Branches gibt es in Dataverse nicht. Was es gibt, sind unmanaged Solutions, und wer je Work Item eine anlegt, hat nach drei Monaten vierzig davon. Die erste Fassung der Konsole war ein Werkzeug, um die wieder zusammenzuführen. Und sie hatte einen Fehler, den ich erst im August gefunden habe.</description>
+  </item>
+  <item>
+    <title>Warum Importe scheitern, und wie man es vorher sieht</title>
+    <link>https://dynamicspro.de/blog/admin-console-2-vor-dem-import/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/blog/admin-console-2-vor-dem-import/</guid>
+    <pubDate>Sun, 04 Oct 2026 08:00:00 +0200</pubDate>
+    <description>Ein fehlgeschlagener Import nach PROD kostet einen Abend. Fast immer aus einem Grund, den man eine Stunde vorher hätte wissen können. Der zweite Teil handelt von den Prüfungen vor und nach dem Import, von drei Dingen, die der Dataverse-Konnektor nicht kann, und von einem Grün, das keines war.</description>
+  </item>
+  <item>
+    <title>Wer darf was, und was tut das System gerade</title>
+    <link>https://dynamicspro.de/blog/admin-console-3-betrieb/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/blog/admin-console-3-betrieb/</guid>
+    <pubDate>Sun, 04 Oct 2026 08:00:00 +0200</pubDate>
+    <description>Im Juli kamen die Fragen aus dem Betrieb dazu. Plugin-Fehler, die niemand sieht. Sicherheitsrollen, deren Wirkung niemand sicher benennen kann. Flows, die in PROD aus sind, und niemand weiß, seit wann. Dazu eine Dual-Write-Version, die seit November 2023 falsch angezeigt wurde.</description>
+  </item>
+  <item>
+    <title>Konfigurationsdaten bewegen, und aus dem Werkzeug ein Produkt machen</title>
+    <link>https://dynamicspro.de/blog/admin-console-4-datentransfer/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/blog/admin-console-4-datentransfer/</guid>
+    <pubDate>Sun, 04 Oct 2026 08:00:00 +0200</pubDate>
+    <description>Das Configuration Migration Tool habe ich in jedem Projekt benutzt und in keinem gemocht. Der vierte Teil handelt vom Data Transfer Hub, der an einem Tag mit 37 Commits entstand, vom OData Browser, und von dem, was nötig war, damit die Konsole zu fremden Kunden gehen kann.</description>
+  </item>
+  <item>
+    <title>Drei Sprachen, eine Zip-Datei, und niemand sieht, was fehlt</title>
+    <link>https://dynamicspro.de/blog/translation-studio/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/blog/translation-studio/</guid>
+    <pubDate>Sun, 04 Oct 2026 08:00:00 +0200</pubDate>
+    <description>Dataverse pflegt jede Beschriftung je Sprache. Fehlt eine Übersetzung, sehen französische Anwender englische Feldnamen. Der Standardweg, das zu beheben, ist ein Export nach Excel mit tausenden Zeilen und ohne Filter auf „fehlt&quot;. Das Translation Studio liest denselben Export, zeigt nur die Lücken und schreibt ihn gefüllt zurück.</description>
+  </item>
+</channel>
+</rss>
