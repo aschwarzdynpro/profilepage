@@ -243,15 +243,42 @@ gibt, und `npm run shot` würde abbrechen. Als Link fließen Daten erst nach ein
 Seite, Blöcke, SEO-Felder, Navigationseintrag und Teaser sind Code in diesem Repo.
 
 ## Aufbau der Startseite
-Problem-first, nicht Lebenslauf-first: Hero, Kennzahlen, Leistungen, Referenzen,
-Arbeitsweise, Skills und Werdegang, Kontakt. Die Seite verkauft direkt an Entscheider,
+Problem-first, nicht Lebenslauf-first: Hero, Kennzahlen, Positionierung, Leistungen,
+Referenzen, Health Check, KI-Bereitschaft, Arbeitsweise, Werkzeuge, Skills und Werdegang,
+Kontakt. Die Seite verkauft direkt an Entscheider,
 die fragen „löst er mein Problem, hat er das schon gemacht". Skills und Werdegang stehen
 deshalb hinten als Nachweis, nicht vorn als Argument. Wer sie an den Anfang schieben will,
 baut die Seite für Recruiter um, und das ist nicht die Zielgruppe.
 
-- Der Health Check ist die erste Karte unter „Was ich übernehme" (`.service.offer`), kein
-  eigener Streifen unter dem Hero. Die Karte „Systemanalyse und Reviews" bleibt daneben der
-  Einstieg für den individuell geschnittenen Auftrag.
+**Positionierung (seit Oktober 2026):** Dynamics 365 Solution Architect für komplexe CE- und
+Power-Platform-Landschaften, Kombination Architektur + Dataverse + ALM + Integration + Pro-Code.
+Kein klassischer Freelance-Developer, kein generischer KI-Berater. Sales, Customer Service und
+Field Service bleiben als Stützsatz im Hero und in den Karten, nicht mehr als Headline.
+
+- Hero: H1 mit der Positionierung, Lead mit der Kombination, Stützsatz (`.hero .sub`) mit der
+  früheren Aussage. Verfügbarkeit nur als „Ab Januar 2027 für neue Mandate verfügbar"; die
+  Rahmenbedingungen (3 Tage pro Woche, remote, DACH) stehen im Kontaktblock (`.contact .fine`)
+  und unter dem Werdegang. CTAs: „Projekt besprechen" (Kontakt) und „Dynamics 365 Health Check"
+  (Angebotsseite).
+- `#profil` (`.pitch`): „Architektur, die bis in den Code reicht", ein Absatz und die fünf
+  Bausteine als nummerierte Liste (`.chain`). Kompakt halten, kein Textblock.
+- Leistungskarten: erster Absatz das Problem des Kunden, zweiter Absatz (`p.detail`) die
+  bisherige Technik, dann die Stichworte. Nichts löschen, nur hierarchisieren.
+- Referenzen: Ausgangslage, Lösung, Ergebnis bleiben die erste Ebene und sind für Entscheider
+  geschrieben. Die technischen Details stehen je Karte in `<details class="tech">`
+  („Technische Umsetzung"), standardmäßig zu. Keine erfundenen Zahlen.
+- Der Health Check ist ein eigener Abschnitt `#health-check` (`.offer-section`) nach den
+  Referenzen mit sechs Eckdaten (`.offer-facts`), nicht mehr die erste Karte unter „Was ich
+  übernehme" und kein Streifen unter dem Hero. Die Eckdaten folgen der Angebotsseite (acht
+  Dimensionen, drei Ergebnisdokumente, Maßnahmenkatalog in drei Stufen); wer dort etwas ändert,
+  zieht sie nach. Die Karte „Systemanalyse und Reviews" bleibt der Einstieg für den individuell
+  geschnittenen Auftrag und verweist auf den Health Check.
+- `#ki` (`.pitch`): „AI-ready Dynamics Architecture" als Erweiterung der Architekturkompetenz,
+  vier Voraussetzungen als Liste. KI ist Differenzierung, nicht Hauptidentität.
+- `#werkzeuge` (`.tools-section`): eigener Abschnitt mit H2 und Claim „Ich bringe nicht nur
+  Erfahrung mit. Ich bringe Werkzeuge mit." Die vierte Karte heißt „AI-gestützte
+  Engineering-Workflows" und nennt den Nutzen zuerst, die Technik (Claude Code, Coding Agents)
+  in der Stack-Zeile.
 - Die Mandatsliste unter den Referenzkarten ist eine Zeile je Einsatz. Die Geschichten
   stehen in den Karten, die Details im Profil-Dokument. Nicht wieder zu Absätzen aufblasen.
   Hat ein Mandat eine Karte, wiederholt die Zeile deren Lösung nicht: Stichwort plus Link

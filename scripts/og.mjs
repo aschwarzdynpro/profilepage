@@ -32,8 +32,8 @@ const CARDS = [
   // Englische Fassung unter /en/
   ['og-en.png', {
     kicker: 'Freelance · Nuremberg and DACH region',
-    title: 'Solution Architect for Dynamics 365 Sales, Customer Service and Field Service.',
-    sub: 'Architecture, ALM and code. 16 years in the Dynamics stack.',
+    title: 'Dynamics 365 Solution Architect for complex CE and Power Platform landscapes.',
+    sub: 'Architecture, ALM, integration and pro-code. 16 years in the Dynamics stack.',
     tag: 'Profile', who: 'Freelancer, Nuremberg',
   }],
   ['og-en-health-check.png', {
