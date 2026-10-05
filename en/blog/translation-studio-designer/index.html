@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="alternate" hreflang="de" href="https://dynamicspro.de/blog/translation-studio/">
-<link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/blog/translation-studio/">
-<link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/blog/translation-studio/">
-<title>Three languages, one zip file, and nobody sees what is missing · DynamicsPro</title>
-<meta name="description" content="How Translation Studio came about: making missing translations of Dataverse labels visible per solution and language, filling them inline or via CSV, and bringing them back through the standard import.">
-<link rel="canonical" href="https://dynamicspro.de/en/blog/translation-studio/">
+<link rel="alternate" hreflang="de" href="https://dynamicspro.de/blog/translation-studio-designer/">
+<link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/blog/translation-studio-designer/">
+<link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/blog/translation-studio-designer/">
+<title>The customer wanted to see the form, not the table · DynamicsPro</title>
+<meta name="description" content="Two days after the first version, Translation Studio ran against a real environment. Three assumptions did not hold, and the customer asked for a way to translate that does not look like a table. That became the designer.">
+<link rel="canonical" href="https://dynamicspro.de/en/blog/translation-studio-designer/">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#fbfaf7">
 <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
@@ -17,14 +17,14 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="DynamicsPro">
-<meta property="og:url" content="https://dynamicspro.de/en/blog/translation-studio/">
-<meta property="og:title" content="Three languages, one zip file, and nobody sees what is missing">
-<meta property="og:description" content="How Translation Studio came about: making missing translations of Dataverse labels visible per solution and language, filling them inline or via CSV, and bringing them back through the standard import.">
+<meta property="og:url" content="https://dynamicspro.de/en/blog/translation-studio-designer/">
+<meta property="og:title" content="The customer wanted to see the form, not the table">
+<meta property="og:description" content="Two days after the first version, Translation Studio ran against a real environment. Three assumptions did not hold, and the customer asked for a way to translate that does not look like a table. That became the designer.">
 <meta property="og:image" content="https://dynamicspro.de/assets/og-en-blog.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="article:published_time" content="2026-10-03">
+<meta property="article:published_time" content="2026-10-05">
 <meta property="article:author" content="Andy Schwarz">
 <link rel="preload" href="../../../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -159,64 +159,52 @@
       DynamicsPro<small>Workshop notes</small>
     </a>
     <a class="back" href="../">All posts</a>
-    <a class="lang" href="/blog/translation-studio/?lang=de" hreflang="de" lang="de" aria-label="Deutsche Fassung">DE</a>
+    <a class="lang" href="/blog/translation-studio-designer/?lang=de" hreflang="de" lang="de" aria-label="Deutsche Fassung">DE</a>
     <a class="cta" href="#kontakt">Contact</a>
   </div>
 </header>
 
 <section class="head">
   <div class="wrap">
-    <span class="kicker">Translation Studio</span>
-    <h1>Three languages, one zip file, and nobody sees what is missing</h1>
-    <p class="deck">Dataverse keeps every label per installed language. If a translation is missing, French users see English field names. Nobody sees what is missing, and nobody keeps it up to date.</p>
-    <div class="byline"><span>By <b>Andy Schwarz</b></span><span>October 3, 2026</span><span>5 min read</span></div>
+    <span class="kicker">Translation Studio · Designer</span>
+    <h1>The customer wanted to see the form, not the table</h1>
+    <p class="deck">Two days after the first version, Translation Studio ran against a real environment. Three assumptions did not hold, and the customer asked for a way to translate that does not look like a table. That became the designer.</p>
+    <div class="byline"><span>By <b>Andy Schwarz</b></span><span>October 5, 2026</span><span>6 min read</span></div>
   </div>
 </section>
 
 <main>
   <div class="wrap">
     <article class="post">
-
-<p>At a customer in the lighting industry, Dynamics 365 runs in three languages: English as the base, German and French for the national subsidiaries. Every table, every column, every choice value, every form and every view carries its display name per language. Every release adds new columns, and the translation comes when someone remembers. Usually someone remembers when the French subsidiary calls.</p>
-<figure class="shot loop">
-  <img src="../../../assets/blog/translation-globe.jpg" width="1024" height="572" loading="lazy" decoding="async" alt="Graphic: A globe with characters from many languages, source texts in English on the left, the same texts in French, Chinese and Japanese on the right.">
-  <figcaption>On the left the text in the base language, on the right what users should see in their own language. In Dataverse, what sits in between is a zip file.</figcaption>
-</figure>
-
-<h2>The standard way</h2>
-<p>The route Microsoft provides for this has been the same for many versions. Export translations in the maker portal. You get a zip file with an Excel 2003 XML file inside, one sheet with all labels, one column per language, several thousand rows. You open it in Excel, find the empty cells in the French column, fill them, save without breaking the format, zip it back up, import, publish. XrmToolBox has tools that make the trip to Excel more comfortable. The basic problem remains. The file shows everything, not the gaps. And the business department that actually knows the translations has neither access to the maker portal nor any desire to work in an XML file with forty columns.</p>
-<p>I also wanted to see the second kind of gap, the one the export does not even list as a gap: a German cell that contains the English text. Someone copied the base text into all languages when the column was created, so that nothing would be empty, and ever since, the column has been called “Status Reason” in German.</p>
-
-<blockquote class="pull">The file shows everything, not the gaps.</blockquote>
-<h2>The same export, read differently</h2>
-<p>The decision that shaped everything else was made before the first line of code. A Code App reaches Dataverse through the connector, and the connector can read tables and call actions, but cannot write metadata. I know that from the Admin Console. So no metadata updates, but exactly the export and import that Microsoft provides. One action per direction, and both cover all component types in one format. The studio changes nothing outside that route. The file that goes back is the exported file plus the changed cells: no row removed, nothing re-sorted, formatting and unknown columns stay, and without changes the result is byte-identical to the export. There is a test for that, and it was the first one I wrote.</p>
-<p>The matrix sits on top of that. One row per label with type, component and column, the base text read-only, and per target language one cell in one of four states: missing, probably untranslated, changed, ok. “Probably” is meant honestly. “Status” is also German, which is why the cell can be marked as correct instead of the app deciding. Metrics per language sit above, and a click on a number sets the filter.</p>
+<p>On October 3 this blog said that the first run against the environment with three languages was up next. It happened the same evening, at the customer in the lighting industry, in the development environment. The gap matrix did what it was supposed to do, and still the first piece of feedback was not about the matrix. Whoever translates there knows the forms their users work in, and searches a list of type, component and column for the field they have in mind. Translators think in forms, not in rows. The matrix is a spreadsheet with better filters, and that is exactly what nobody wanted to operate any more.</p>
 <figure class="shot">
-  <img src="../../../assets/screenshots/ts-matrix.webp" width="1600" height="928" loading="lazy" decoding="async" alt="Screenshot: The gap matrix of a solution with two target languages, metrics per language, filter bar, and for each cell its state and glossary suggestion.">
-  <figcaption>The matrix with two target languages. Sample data, a fictional fleet scenario, no customer data.</figcaption>
+  <img src="../../../assets/screenshots/ts-designer-formular.webp" width="1600" height="947" loading="lazy" decoding="async" alt="Screenshot: The Translation Studio designer. On the left the components of the solution with progress rings, in the middle the main form of a table with tabs, sections and fields, one missing field opened for typing, on the right the details with the label in English, German and French and a glossary suggestion.">
+  <figcaption>The main form of a table in the designer: tabs with the number of open labels, a missing field opened for typing, on the right the same label in all languages with the suggestion from the glossary. Sample data, a fictional fleet scenario, no customer data.</figcaption>
 </figure>
-<p>Two things turned out to be more useful during the build than I expected. The glossary: if the same base text is already translated elsewhere, the cell suggests it, and a button applies it to all identical base texts. In the sample data that takes care of a fifth of the gaps, in a real environment with years of customizing probably more. And the consistency report, which finds the same word with two different translations, “Notizen” here and “Anmerkungen” there. That is not a flaw in the export, that is the history of the environment.</p>
-<p>For the business department there is the CSV route. The filtered rows go out, only the gaps, with a stable key per row, and come back filled in. Reading them in shows in advance what changes and what will not be applied. Empty cells mean unchanged. Nobody has to go into the maker portal for this.</p>
+
+<h2>What the environment showed first</h2>
+<p>Before the designer came the sobering part. Three assumptions from the first version did not survive first contact. The export action is bound to the solution collection, and the Power Apps command line cannot generate a client for such an action; through the connector the call ran into the timeout. Since then the app registers the native action in its own data sources, and the same route later serves the metadata reads for choice values. I had modelled the file format on the example in the documentation; in a real export, “Entity name” holds the table's logical name, and whether a row is a form, a view or a column follows from the “Object Column Name” column. Checked against two real exports, then classification, name resolution and test data were changed over. And the time: exporting the customer's core solution took between 2:16 and 2:52 minutes in the app, against a limit of three minutes per call. Since then, loading shows a progress card with steps, elapsed time and a bar measured against the last export duration of the same solution, plus a button that stops the waiting without leaving the app.</p>
+
+<blockquote class="pull">Translators think in forms, not in rows.</blockquote>
+<h2>The way users see it</h2>
+<p>Since October 3 the designer has been the default view after loading, the table is one switch away. On the left the components of the solution: apps, tables with their forms and views, dashboards, each entry with a ring for the share translated and a red number for what is open. In the middle the selected component, built from what the environment delivers live: a form from its <code>formxml</code> with header, tabs, sections and fields, a view from its <code>layoutxml</code> with the column headers, a model-driven app from its sitemap with areas and groups. The texts in them come from the export file, and that is exactly where the designer writes to: the same change list, the same import as from the table. Nothing changed about the route through export and import, only about what you see along the way.</p>
+<p>Translating then means: click, type, Enter. Tab applies and jumps to the next gap, across form tabs too. Ctrl+Enter says “correct as is” for the cases where the German word equals the English one. If the same base text is already translated elsewhere, a light bulb hangs on the field, and the head of the page offers to apply all suggestions on this page at once. On the right, the details show the selected label in all target languages side by side; whoever does not need them hides them and gets the width for the form. That was the first correction after the first look: with the details fixed open, a real form squeezed into three narrow columns, and the field names broke in the middle of a word.</p>
 <figure class="shot">
-  <img src="../../../assets/screenshots/ts-anwenden.webp" width="1600" height="928" loading="lazy" decoding="async" alt="Screenshot: The preview before the import, only the changed cells, per row component, column, language, before and after.">
-  <figcaption>Before the import: only the changed cells, before and after. Then the import job runs, and the matrix is locked until it finishes.</figcaption>
+  <img src="../../../assets/screenshots/ts-designer-app.webp" width="1600" height="947" loading="lazy" decoding="async" alt="Screenshot: A model-driven app in the designer, header with the app name, navigation with areas and groups from the sitemap. The app's subtitle is underlined in dashed red, above it the note that custom sitemap titles are not part of the translation export.">
+  <figcaption>A model-driven app with its navigation from the sitemap. The app's subtitle is dashed red: it is not part of the translation export, the designer only shows it.</figcaption>
 </figure>
+<p>The dashed red line is the limit I would rather not have. Titles of sitemap areas, and custom form texts that differ from the column name, are not part of the translation export. The designer shows them so that the picture is complete, and does not write them, because the import does not know them. That would take a second write path directly to the sitemap, and whether I want that is open. Until then, the head of the page says that these titles are maintained in the app designer.</p>
 
-<h2>What I didn't know</h2>
-<p>The guardrails are in the code, not in the manual. The base language is never written. An unchanged file is never imported. An existing translation is never cleared, because it is not documented whether an empty cell means “delete” or “unchanged” on import. Texts over 500 characters are rejected, because the import fails on them. One import runs at a time, and while it runs, the matrix is locked.</p>
-<p>The last guardrail came out of the code review the same day: for the export, the app tries the next route after an error, native, connector, connector with bound path. For import and publish it only does that if the first route demonstrably does not exist, and never after a timeout. A timeout can mean that the import has long been running on the server. A second route would have started it twice.</p>
-<div class="aside">
-  <p>What I don't know from the documentation and will only see in the real environment: which of the three routes the export actually takes, whether the default solution can be exported, whether the import job table is readable for a normal user, and how large the file gets for an environment with Sales and Field Service. The app's setup page checks exactly that, and “Test export” shows route, size and languages before you change anything.</p>
-</div>
+<h2>What the big numbers did to the designer</h2>
+<p>The first version recomputed states, counters and glossary suggestions over all rows after every keystroke, about 280 milliseconds at 60,000 rows, and then re-rendered every label. You do not notice that on a form with twenty fields, and you notice it a lot on a table with 260 columns. Since October 4 the app recomputes only the changed rows and their glossary group, with a test that holds the result against the full computation. The designer builds its structure once from the loaded file; texts and states flow through a store of their own, and an edit re-renders only the labels and counters it touches.</p>
+<p>Then the test with the customer's core solution: 228 tables, 701 forms, 1,726 views, 8 apps, 10 dashboards. Applying 29 suggestions at once and reverting them takes under a second. What else the real data showed was in no mock. Solution names that wrapped over three lines in the picker. A table with more than 80 forms and views whose tiles pushed the columns down; now the ones with open labels come first, the rest sits behind “show all”. A neighbour menu in the breadcrumb that was longer than the screen. And the Sales Hub showed “no sitemap”, because the app's unique name is not its sitemap's; the mapping has since gone through the app components, with the name match only as the fallback. The breadcrumb itself, by the way, was a consequence of hiding: whoever collapsed the component list and went from a table into a form had no way back.</p>
 
-<h2>Where it stands</h2>
-<p>The concept and the first version were written today, with tests for scanner, file round trip, gaps, glossary, CSV and import log, and a mock mode in which an import is simulated. The first run against the environment with three languages is up next. After that I will know whether the assumptions above hold, and then there will be a number here: how many gaps an environment that has grown over years actually has. I won't guess one. All features are on the <a href="../../translation-studio.html">product page</a>.</p>
-
-<h2 class="rev">Addendum, October 5: the first run</h2>
-<p>The first run took place the same evening. The export goes through the native action, because the command line cannot generate a client for the bound action and the connector runs into the timeout. I had assumed the file format wrong, “Entity name” is the table's logical name. And the first real import ran for five minutes, successfully, while the call was cut off after 180 seconds. What came of it, above all the designer, is in the <a href="../translation-studio-designer/">second post</a>.</p>
+<h2>The first import</h2>
+<p>On the evening of October 4 the first real import ran, in a copy of the development environment. The import job took five minutes, from 21:51 to 21:56, and succeeded. The dialog showed a red cross anyway. The call to <code>ImportTranslation</code> is synchronous, and the platform cuts it off after 180 seconds while Dataverse keeps the job running. The app had taken the call for the result. Since then the job decides: a call error with a successful job is a note in the result, a timeout while publishing means “probably still running”, and only when no job is visible one minute after the call does the import count as not started. The asynchronous variant of the action would be cleaner, and it is on the list.</p>
+<p>The number I promised in the first post, how many gaps an environment that has grown over years actually has, is still outstanding. The run so far was a test run in a copy, and I will not present a figure from a copy as a finding. It will come with the first pass in the environment where the business department translates. Matrix, CSV route and import are described on the <a href="../../translation-studio.html">product page</a>.</p>
 <section class="series" aria-label="All posts about Translation Studio">
   <span class="kicker">Translation Studio, all posts</span>
-  <ol><li class="now"><a href="../translation-studio/"><i>01</i><b>Three languages, one zip file, and nobody sees what is missing</b></a></li><li><a href="../translation-studio-designer/"><i>02</i><b>The customer wanted to see the form, not the table</b></a></li></ol>
+  <ol><li><a href="../translation-studio/"><i>01</i><b>Three languages, one zip file, and nobody sees what is missing</b></a></li><li class="now"><a href="../translation-studio-designer/"><i>02</i><b>The customer wanted to see the form, not the table</b></a></li></ol>
 </section>
     </article>
 

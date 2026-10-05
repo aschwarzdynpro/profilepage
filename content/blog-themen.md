@@ -10,3 +10,4 @@ nur mit neuen Fakten erneut vorgeschlagen.
 - 10.08.2026 Konsole Teil 3: Betrieb, Rollen, Flows (`admin-console-3-betrieb`)
 - 21.09.2026 Konsole Teil 4: Data Transfer Hub und Produkt (`admin-console-4-datentransfer`)
 - 03.10.2026 Translation Studio (`translation-studio`)
+- 05.10.2026 Translation Studio, Designer und erster Live-Lauf (`translation-studio-designer`), auf Zuruf statt aus der Routine

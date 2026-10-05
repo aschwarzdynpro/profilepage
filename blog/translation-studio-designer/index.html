@@ -15,12 +15,12 @@
   location.replace('/en'+location.pathname+location.search+location.hash);
 }catch(e){}})();
 </script>
-<link rel="alternate" hreflang="de" href="https://dynamicspro.de/blog/translation-studio/">
-<link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/blog/translation-studio/">
-<link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/blog/translation-studio/">
-<title>Drei Sprachen, eine Zip-Datei, und niemand sieht, was fehlt · DynamicsPro</title>
-<meta name="description" content="Wie das Translation Studio entstand: fehlende Übersetzungen von Dataverse-Beschriftungen je Solution und Sprache sichtbar machen, inline oder per CSV füllen und über den Standard-Import zurückspielen.">
-<link rel="canonical" href="https://dynamicspro.de/blog/translation-studio/">
+<link rel="alternate" hreflang="de" href="https://dynamicspro.de/blog/translation-studio-designer/">
+<link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/blog/translation-studio-designer/">
+<link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/blog/translation-studio-designer/">
+<title>Der Kunde wollte das Formular sehen, nicht die Tabelle · DynamicsPro</title>
+<meta name="description" content="Zwei Tage nach der ersten Fassung lief das Translation Studio gegen eine echte Umgebung. Drei Annahmen hielten nicht, und der Kunde wünschte sich einen Weg zum Übersetzen, der nicht wie eine Tabelle aussieht. Daraus wurde der Designer.">
+<link rel="canonical" href="https://dynamicspro.de/blog/translation-studio-designer/">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#fbfaf7">
 <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
@@ -29,14 +29,14 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="DynamicsPro">
-<meta property="og:url" content="https://dynamicspro.de/blog/translation-studio/">
-<meta property="og:title" content="Drei Sprachen, eine Zip-Datei, und niemand sieht, was fehlt">
-<meta property="og:description" content="Wie das Translation Studio entstand: fehlende Übersetzungen von Dataverse-Beschriftungen je Solution und Sprache sichtbar machen, inline oder per CSV füllen und über den Standard-Import zurückspielen.">
+<meta property="og:url" content="https://dynamicspro.de/blog/translation-studio-designer/">
+<meta property="og:title" content="Der Kunde wollte das Formular sehen, nicht die Tabelle">
+<meta property="og:description" content="Zwei Tage nach der ersten Fassung lief das Translation Studio gegen eine echte Umgebung. Drei Annahmen hielten nicht, und der Kunde wünschte sich einen Weg zum Übersetzen, der nicht wie eine Tabelle aussieht. Daraus wurde der Designer.">
 <meta property="og:image" content="https://dynamicspro.de/assets/og-blog.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="article:published_time" content="2026-10-03">
+<meta property="article:published_time" content="2026-10-05">
 <meta property="article:author" content="Andy Schwarz">
 <link rel="preload" href="../../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -171,64 +171,52 @@
       DynamicsPro<small>Werkstattnotizen</small>
     </a>
     <a class="back" href="../">Alle Beiträge</a>
-    <a class="lang" href="/en/blog/translation-studio/" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <a class="lang" href="/en/blog/translation-studio-designer/" hreflang="en" lang="en" aria-label="English version">EN</a>
     <a class="cta" href="#kontakt">Kontakt</a>
   </div>
 </header>
 
 <section class="head">
   <div class="wrap">
-    <span class="kicker">Translation Studio</span>
-    <h1>Drei Sprachen, eine Zip-Datei, und niemand sieht, was fehlt</h1>
-    <p class="deck">Dataverse pflegt jede Beschriftung je installierter Sprache. Fehlt eine Übersetzung, sehen französische Anwender englische Feldnamen. Niemand sieht, was fehlt, und niemand pflegt es laufend.</p>
-    <div class="byline"><span>Von <b>Andy Schwarz</b></span><span>3. Oktober 2026</span><span>4 Minuten Lesezeit</span></div>
+    <span class="kicker">Translation Studio · Designer</span>
+    <h1>Der Kunde wollte das Formular sehen, nicht die Tabelle</h1>
+    <p class="deck">Zwei Tage nach der ersten Fassung lief das Translation Studio gegen eine echte Umgebung. Drei Annahmen hielten nicht, und der Kunde wünschte sich einen Weg zum Übersetzen, der nicht wie eine Tabelle aussieht. Daraus wurde der Designer.</p>
+    <div class="byline"><span>Von <b>Andy Schwarz</b></span><span>5. Oktober 2026</span><span>6 Minuten Lesezeit</span></div>
   </div>
 </section>
 
 <main>
   <div class="wrap">
     <article class="post">
-
-<p>Bei einem Kunden aus der Lichtindustrie läuft Dynamics 365 in drei Sprachen: Englisch als Basis, Deutsch und Französisch für die Ländergesellschaften. Jede Tabelle, jede Spalte, jeder Auswahlwert, jedes Formular und jede Ansicht trägt den Anzeigenamen je Sprache. Mit jedem Release kommen neue Spalten dazu, und die Übersetzung kommt, wenn jemand daran denkt. Meistens denkt jemand daran, wenn sich die französische Niederlassung meldet.</p>
-<figure class="shot loop">
-  <img src="../../assets/blog/translation-globe.jpg" width="1024" height="572" loading="lazy" decoding="async" alt="Grafik: Ein Globus mit Schriftzeichen vieler Sprachen, links Quelltexte in Englisch, rechts dieselben Texte in Französisch, Chinesisch und Japanisch.">
-  <figcaption>Links der Text in der Basissprache, rechts das, was Anwender in ihrer Sprache sehen sollen. Dazwischen liegt bei Dataverse eine Zip-Datei.</figcaption>
-</figure>
-
-<h2>Der Standardweg</h2>
-<p>Der Weg, den Microsoft dafür vorsieht, ist seit vielen Versionen derselbe. Im Maker-Portal Übersetzungen exportieren. Man bekommt eine Zip-Datei mit einer Excel-2003-XML-Datei darin, ein Blatt mit allen Beschriftungen, eine Spalte je Sprache, mehrere tausend Zeilen. Die öffnet man in Excel, sucht die leeren Zellen in der französischen Spalte, füllt sie, speichert ohne das Format zu zerstören, packt die Zip-Datei wieder zusammen, importiert, veröffentlicht. Es gibt in der XrmToolBox Werkzeuge, die den Weg nach Excel bequemer machen. Das Grundproblem bleibt: Die Datei zeigt alles, nicht die Lücken. Und die Fachabteilung, die die Übersetzung eigentlich kennt, hat weder Zugriff auf das Maker-Portal noch Lust auf eine XML-Datei mit vierzig Spalten.</p>
-<p>Ich wollte außerdem die zweite Sorte Lücke sehen, die der Export gar nicht als Lücke führt: eine deutsche Zelle, in der der englische Text steht. Jemand hat beim Anlegen den Basistext in alle Sprachen kopiert, damit nichts leer ist, und seitdem heißt die Spalte auf Deutsch „Status Reason".</p>
-
-<blockquote class="pull">Die Datei zeigt alles, nicht die Lücken.</blockquote>
-<h2>Derselbe Export, anders gelesen</h2>
-<p>Die Entscheidung, die alles andere bestimmt hat, fiel vor dem ersten Code. Eine Code App kommt an Dataverse über den Konnektor, und der kann Tabellen lesen und Aktionen aufrufen, aber keine Metadaten schreiben. Das weiß ich aus der Admin Console. Also nicht über Metadaten-Updates gehen, sondern über genau den Export und Import, den Microsoft vorsieht. Eine Aktion je Richtung, und beide decken alle Komponententypen in einem Format ab. Das Studio ändert nichts an diesem Weg vorbei. Die Datei, die zurückgeht, ist die exportierte Datei plus die geänderten Zellen: keine Zeile entfernt, nichts umsortiert, Formatierung und unbekannte Spalten bleiben, und ohne Änderungen ist das Ergebnis byteidentisch mit dem Export. Dafür gibt es einen Test, und der war der erste, den ich geschrieben habe.</p>
-<p>Darauf sitzt die Matrix. Eine Zeile je Beschriftung mit Typ, Komponente und Spalte, der Basistext nur lesend, je Zielsprache eine Zelle in einem von vier Zuständen: fehlt, vermutlich unübersetzt, geändert, ok. „Vermutlich" ist ehrlich gemeint. „Status" ist auch Deutsch, und deshalb lässt sich die Zelle als korrekt markieren, statt dass die App entscheidet. Kennzahlen je Sprache stehen darüber, ein Klick auf die Zahl setzt den Filter.</p>
+<p>Am 3. Oktober stand hier, dass der erste Lauf gegen die Umgebung mit drei Sprachen ansteht. Er fand am selben Abend statt, beim Kunden aus der Lichtindustrie, in der Entwicklungsumgebung. Die Lückenmatrix tat, was sie sollte, und trotzdem war die erste Rückmeldung keine zur Matrix. Wer dort übersetzt, kennt die Formulare seiner Anwender und sucht in einer Liste mit Typ, Komponente und Spalte nach dem Feld, das er meint. Übersetzer denken in Formularen, nicht in Zeilen. Die Matrix ist eine Tabellenkalkulation mit besseren Filtern, und genau das wollte niemand mehr bedienen.</p>
 <figure class="shot">
-  <img src="../../assets/screenshots/ts-matrix.webp" width="1600" height="928" loading="lazy" decoding="async" alt="Bildschirmfoto: Die Lückenmatrix einer Solution mit zwei Zielsprachen, Kennzahlen je Sprache, Filterleiste und je Zelle Zustand und Glossar-Vorschlag.">
-  <figcaption>Die Matrix mit zwei Zielsprachen. Beispieldaten, ein fiktives Fuhrpark-Szenario, keine Kundendaten.</figcaption>
+  <img src="../../assets/screenshots/ts-designer-formular.webp" width="1600" height="947" loading="lazy" decoding="async" alt="Bildschirmfoto: Der Designer des Translation Studio. Links die Komponenten der Solution mit Fortschrittsringen, in der Mitte das Hauptformular einer Tabelle mit Registerkarten, Abschnitten und Feldern, ein fehlendes Feld ist zum Tippen geöffnet, rechts die Details mit der Beschriftung in Englisch, Deutsch und Französisch und einem Glossar-Vorschlag.">
+  <figcaption>Das Hauptformular einer Tabelle im Designer: Registerkarten mit der Zahl offener Beschriftungen, ein fehlendes Feld zum Tippen geöffnet, rechts dieselbe Beschriftung in allen Sprachen mit dem Vorschlag aus dem Glossar. Beispieldaten, ein fiktives Fuhrpark-Szenario, keine Kundendaten.</figcaption>
 </figure>
-<p>Zwei Dinge haben sich beim Bauen als nützlicher herausgestellt, als ich dachte. Das Glossar: Ist derselbe Basistext anderswo schon übersetzt, schlägt die Zelle das vor, und ein Knopf übernimmt es für alle gleichen Basistexte. In den Beispieldaten erledigt das ein Fünftel der Lücken, in einer echten Umgebung mit Jahren an Customizing vermutlich mehr. Und der Konsistenz-Report, der dasselbe Wort mit zwei verschiedenen Übersetzungen findet, „Notizen" hier und „Anmerkungen" dort. Das ist kein Fehler des Exports, das ist die Geschichte der Umgebung.</p>
-<p>Für die Fachabteilung gibt es den Weg über CSV. Die gefilterten Zeilen gehen hinaus, nur die Lücken, mit stabilem Schlüssel je Zeile, und kommen ausgefüllt zurück. Das Einlesen zeigt vorab, was sich ändert und was nicht übernommen wird. Leere Zellen bedeuten unverändert. Niemand muss dafür ins Maker-Portal.</p>
+
+<h2>Was die Umgebung zuerst zeigte</h2>
+<p>Vor dem Designer kam die Ernüchterung. Drei Annahmen aus der ersten Fassung hielten dem ersten Kontakt nicht stand. Die Export-Aktion ist an die Solution-Collection gebunden, und die Kommandozeile von Power Apps kann für so eine Aktion keinen Client erzeugen; über den Konnektor lief der Aufruf in den Timeout. Die App trägt die native Aktion seitdem selbst in ihre Datenquellen ein, und derselbe Weg dient später den Metadaten-Abfragen für die Auswahlwerte. Das Dateiformat hatte ich am Beispiel aus der Dokumentation nachgebaut; im echten Export steht unter „Entity name" der logische Tabellenname, und ob eine Zeile ein Formular, eine Ansicht oder eine Spalte ist, folgt aus der Spalte „Object Column Name". Geprüft an zwei echten Exporten, danach Zuordnung, Namensauflösung und Testdaten umgestellt. Und die Zeit: Der Export der Kern-Solution des Kunden dauerte in der App zwischen 2:16 und 2:52 Minuten, bei einer Grenze von drei Minuten je Aufruf. Seitdem zeigt das Laden eine Fortschrittskarte mit Schritten, Laufzeit und einem Balken gegen die letzte Exportdauer derselben Solution, dazu einen Knopf, mit dem man das Warten abbricht, ohne die App zu verlassen.</p>
+
+<blockquote class="pull">Übersetzer denken in Formularen, nicht in Zeilen.</blockquote>
+<h2>So, wie die Nutzer es sehen</h2>
+<p>Der Designer ist seit dem 3. Oktober die Standardansicht nach dem Laden, die Tabelle liegt einen Umschalter weiter. Links die Komponenten der Solution: Apps, Tabellen mit ihren Formularen und Ansichten, Dashboards, je Eintrag ein Ring für den Anteil übersetzt und eine rote Zahl für das, was offen ist. In der Mitte die gewählte Komponente, gebaut aus dem, was die Umgebung live hergibt: ein Formular aus seinem <code>formxml</code> mit Kopfzeile, Registerkarten, Abschnitten und Feldern, eine Ansicht aus ihrem <code>layoutxml</code> mit den Spaltenköpfen, eine Model-driven App aus ihrer Sitemap mit Bereichen und Gruppen. Die Texte darin kommen aus der Exportdatei, und genau dorthin schreibt der Designer auch: dieselbe Änderungsliste, derselbe Import wie aus der Tabelle. Am Weg über Export und Import hat sich nichts geändert, nur an dem, was man dabei sieht.</p>
+<p>Übersetzen heißt dann: anklicken, tippen, Enter. Tab übernimmt und springt zur nächsten Lücke, auch über Registerkarten hinweg. Strg+Enter sagt „korrekt so" für die Fälle, in denen das deutsche Wort dem englischen gleicht. Steht derselbe Basistext anderswo schon übersetzt, hängt eine Glühbirne am Feld, und der Kopf der Seite bietet an, alle Vorschläge dieser Seite auf einmal zu übernehmen. Rechts zeigen die Details die gewählte Beschriftung in allen Zielsprachen nebeneinander; wer sie nicht braucht, blendet sie aus und bekommt die Breite für das Formular. Das war die erste Korrektur nach dem ersten Blick: Mit fest eingeblendeten Details quetschte sich ein echtes Formular in drei schmale Spalten, und die Feldnamen brachen mitten im Wort.</p>
 <figure class="shot">
-  <img src="../../assets/screenshots/ts-anwenden.webp" width="1600" height="928" loading="lazy" decoding="async" alt="Bildschirmfoto: Die Vorschau vor dem Import, nur die geänderten Zellen, je Zeile Komponente, Spalte, Sprache, vorher und nachher.">
-  <figcaption>Vor dem Import: nur die geänderten Zellen, vorher und nachher. Danach läuft der Importjob, und die Matrix ist gesperrt, bis er fertig ist.</figcaption>
+  <img src="../../assets/screenshots/ts-designer-app.webp" width="1600" height="947" loading="lazy" decoding="async" alt="Bildschirmfoto: Eine Model-driven App im Designer, Kopfleiste mit App-Namen, Navigation mit Bereichen und Gruppen aus der Sitemap. Der Untertitel der App ist rot gestrichelt unterstrichen, darüber der Hinweis, dass eigene Sitemap-Titel nicht im Übersetzungsexport stehen.">
+  <figcaption>Eine Model-driven App mit ihrer Navigation aus der Sitemap. Der Untertitel der App ist rot gestrichelt: Er steht nicht im Übersetzungsexport, der Designer zeigt ihn nur.</figcaption>
 </figure>
+<p>Die rot gestrichelte Linie ist die Grenze, die ich am liebsten nicht hätte. Titel von Sitemap-Bereichen und eigene Formulartexte, die vom Spaltennamen abweichen, enthält der Übersetzungsexport nicht. Der Designer zeigt sie, damit das Bild vollständig ist, und schreibt sie nicht, weil der Import sie nicht kennt. Dafür bräuchte es einen zweiten Schreibweg direkt auf die Sitemap, und ob ich den will, ist offen. Bis dahin steht am Kopf der Seite, dass man diese Titel im App-Designer pflegt.</p>
 
-<h2>Was ich dabei nicht wusste</h2>
-<p>Die Leitplanken stehen im Code, nicht in der Anleitung. Die Basissprache wird nie geschrieben. Eine unveränderte Datei wird nie importiert. Eine vorhandene Übersetzung wird nie geleert, weil nicht dokumentiert ist, ob eine leere Zelle beim Import „löschen" oder „unverändert" bedeutet. Texte über 500 Zeichen werden abgelehnt, weil der Import daran scheitert. Es läuft ein Import zur Zeit, und solange er läuft, ist die Matrix gesperrt.</p>
-<p>Die letzte Leitplanke kam aus dem Code-Review am selben Tag: Für den Export probiert die App bei einem Fehler den nächsten Weg, nativ, Konnektor, Konnektor mit gebundenem Pfad. Für Import und Veröffentlichen tut sie das nur, wenn der erste Weg nachweislich nicht existiert, und nie nach einem Timeout. Ein Timeout kann heißen, dass der Import auf dem Server längst läuft. Ein zweiter Weg hätte ihn doppelt gestartet.</p>
-<div class="aside">
-  <p>Was ich nicht aus der Dokumentation weiß und erst in der echten Umgebung sehe: über welchen der drei Wege der Export tatsächlich läuft, ob die Default-Solution exportierbar ist, ob die Importjob-Tabelle für einen normalen Benutzer lesbar ist und wie groß die Datei einer Umgebung mit Sales und Field Service wird. Die Einrichtungsseite der App prüft genau das, und „Export testen" zeigt Weg, Größe und Sprachen, bevor man etwas ändert.</p>
-</div>
+<h2>Was die großen Zahlen mit dem Designer machten</h2>
+<p>Die erste Fassung rechnete nach jedem Tastendruck Zustände, Zähler und Glossar-Vorschläge über alle Zeilen neu, bei 60.000 Zeilen rund 280 Millisekunden, und zeichnete danach jede Beschriftung neu. Das merkt man an einem Formular mit zwanzig Feldern nicht und an einer Tabelle mit 260 Spalten sehr. Seit dem 4. Oktober rechnet die App nur noch die geänderten Zeilen und ihre Glossar-Gruppe nach, mit einem Test, der das Ergebnis gegen die volle Rechnung hält. Der Designer baut seine Struktur einmal aus der geladenen Datei; Texte und Zustände laufen über einen eigenen Speicher, und eine Änderung zeichnet nur die Beschriftungen und Zähler neu, die sie betrifft.</p>
+<p>Dann der Test mit der Kern-Solution des Kunden: 228 Tabellen, 701 Formulare, 1.726 Ansichten, 8 Apps, 10 Dashboards. 29 Vorschläge auf einmal übernehmen und wieder verwerfen dauert unter einer Sekunde. Was die echten Daten sonst zeigten, stand in keinem Mock. Solution-Namen, die in der Auswahl über drei Zeilen umbrachen. Eine Tabelle mit über 80 Formularen und Ansichten, deren Kacheln die Spalten nach unten schoben; jetzt stehen die mit offenen Beschriftungen zuerst, der Rest hinter „Alle anzeigen". Ein Nachbar-Menü im Navigationspfad, das länger war als der Bildschirm. Und die Sales Hub zeigte „keine Sitemap", weil der eindeutige Name der App nicht der ihrer Sitemap ist; die Zuordnung läuft seitdem über die App-Komponenten, die Namensgleichheit ist nur noch der Ersatzweg. Der Navigationspfad selbst war übrigens eine Folge des Ausblendens: Wer die Komponentenliste zuklappte und aus einer Tabelle in ein Formular ging, hatte keinen Weg zurück.</p>
 
-<h2>Stand</h2>
-<p>Konzept und erste Fassung sind heute entstanden, mit Tests für Scanner, Datei-Roundtrip, Lücken, Glossar, CSV und Importprotokoll, und einem Mock-Modus, in dem ein Import simuliert wird. Der erste Lauf gegen die Umgebung mit drei Sprachen steht an. Danach weiß ich, ob die Annahmen oben halten, und dann steht hier eine Zahl: wie viele Lücken eine gewachsene Umgebung tatsächlich hat. Geraten wird keine. Alle Funktionen stehen auf der <a href="../../translation-studio.html">Produktseite</a>.</p>
-
-<h2 class="rev">Nachtrag vom 5. Oktober: der erste Lauf</h2>
-<p>Der erste Lauf fand noch am selben Abend statt. Der Export geht über die native Aktion, weil die Kommandozeile für die gebundene Aktion keinen Client erzeugt und der Konnektor in den Timeout läuft. Das Dateiformat hatte ich falsch angenommen, „Entity name" ist der logische Tabellenname. Und der erste echte Import lief fünf Minuten, erfolgreich, während der Aufruf nach 180 Sekunden abgebrochen wurde. Was daraus wurde, vor allem der Designer, steht im <a href="../translation-studio-designer/">zweiten Beitrag</a>.</p>
+<h2>Der erste Import</h2>
+<p>Am Abend des 4. Oktober lief der erste echte Import, in einer Kopie der Entwicklungsumgebung. Der Importjob brauchte fünf Minuten, von 21:51 bis 21:56 Uhr, und war erfolgreich. Der Dialog zeigte trotzdem ein rotes Kreuz. Der Aufruf von <code>ImportTranslation</code> ist synchron, und die Plattform bricht ihn nach 180 Sekunden ab, während Dataverse den Job weiterlaufen lässt. Die App hatte den Aufruf für das Ergebnis genommen. Seitdem entscheidet der Job: Ein Fehler des Aufrufs bei erfolgreichem Job ist ein Hinweis im Ergebnis, ein Timeout beim Veröffentlichen heißt „läuft vermutlich weiter", und erst wenn eine Minute nach dem Aufruf kein Job sichtbar ist, gilt der Import als nicht gestartet. Sauberer wäre die asynchrone Variante der Aktion, die steht auf der Liste.</p>
+<p>Die Zahl, die ich im ersten Beitrag versprochen habe, wie viele Lücken eine gewachsene Umgebung hat, steht noch aus. Der Lauf bisher war ein Testlauf in einer Kopie, und eine Kennzahl aus einer Kopie gebe ich nicht als Befund aus. Sie kommt mit dem ersten Durchgang in der Umgebung, in der die Fachabteilung übersetzt. Matrix, CSV-Weg und Import beschreibt die <a href="../../translation-studio.html">Produktseite</a>.</p>
 <section class="series" aria-label="Alle Beiträge zum Translation Studio">
   <span class="kicker">Translation Studio, alle Beiträge</span>
-  <ol><li class="now"><a href="../translation-studio/"><i>01</i><b>Drei Sprachen, eine Zip-Datei, und niemand sieht, was fehlt</b></a></li><li><a href="../translation-studio-designer/"><i>02</i><b>Der Kunde wollte das Formular sehen, nicht die Tabelle</b></a></li></ol>
+  <ol><li><a href="../translation-studio/"><i>01</i><b>Drei Sprachen, eine Zip-Datei, und niemand sieht, was fehlt</b></a></li><li class="now"><a href="../translation-studio-designer/"><i>02</i><b>Der Kunde wollte das Formular sehen, nicht die Tabelle</b></a></li></ol>
 </section>
     </article>
 

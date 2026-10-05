@@ -7,6 +7,13 @@
   <description>Werkstattnotizen von Andy Schwarz zu Dynamics 365 und der Power Platform.</description>
   <language>de-DE</language>
   <item>
+    <title>Der Kunde wollte das Formular sehen, nicht die Tabelle</title>
+    <link>https://dynamicspro.de/blog/translation-studio-designer/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/blog/translation-studio-designer/</guid>
+    <pubDate>Mon, 05 Oct 2026 08:00:00 +0200</pubDate>
+    <description>Zwei Tage nach der ersten Fassung lief das Translation Studio gegen eine echte Umgebung. Drei Annahmen hielten nicht, und der Kunde wünschte sich einen Weg zum Übersetzen, der nicht wie eine Tabelle aussieht. Daraus wurde der Designer.</description>
+  </item>
+  <item>
     <title>Drei Sprachen, eine Zip-Datei, und niemand sieht, was fehlt</title>
     <link>https://dynamicspro.de/blog/translation-studio/</link>
     <guid isPermaLink="true">https://dynamicspro.de/blog/translation-studio/</guid>

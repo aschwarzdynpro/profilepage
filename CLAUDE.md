@@ -27,7 +27,7 @@ Deutsch ist die Hauptsprache, Englisch liegt unter `en/` mit **identischen Pfade
 ändert beide Fassungen. Englische Seiten verweisen mit `../` bzw. `../../` auf `assets/`.
 
 - **SEO:** jede Seite hat `hreflang` de, en und `x-default` (= deutsch), eigenes `canonical`,
-  `og:locale` `de_DE` bzw. `en_US`. `sitemap.xml` führt beide Fassungen (24 URLs).
+  `og:locale` `de_DE` bzw. `en_US`. `sitemap.xml` führt beide Fassungen (26 URLs).
 - **Vorbelegung ohne Speichern:** Nur die deutschen Seiten tragen im `<head>` ein kleines Skript
   („Sprache vorbelegen"). Kommt ein Besucher **von außen** (Referrer leer oder fremd) und ist seine
   erste Browsersprache nicht Deutsch, ersetzt es die URL durch die englische Fassung derselben
