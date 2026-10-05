@@ -19,7 +19,7 @@
 <link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/">
 <link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/">
 <title>Andy Schwarz · DynamicsPro · Dynamics 365 Solution Architect</title>
-<meta name="description" content="Andy Schwarz, Dynamics 365 Solution Architect und Freelancer. Architektur, ALM und Code für Sales, Customer Service und Field Service, dazu Health Checks. Nürnberg, remote und im DACH-Raum.">
+<meta name="description" content="Andy Schwarz, Dynamics 365 Solution Architect für komplexe CE- und Power-Platform-Landschaften. Architektur, ALM, Integration und Pro-Code für Sales, Customer Service und Field Service, dazu der Health Check zum Festpreis. Nürnberg, remote und im DACH-Raum.">
 <link rel="canonical" href="https://dynamicspro.de/">
 <meta name="theme-color" content="#fbfaf7">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -30,11 +30,11 @@
 <meta property="og:site_name" content="DynamicsPro">
 <meta property="og:url" content="https://dynamicspro.de/">
 <meta property="og:title" content="Andy Schwarz · Dynamics 365 Solution Architect">
-<meta property="og:description" content="Freiberuflicher Dynamics 365 Solution Architect. Power Platform, Azure und ALM/DevOps, dazu Systemanalysen zu Performance, Sicherheit und Governance. Über 16 Jahre im Dynamics-365-Stack, Nürnberg und DACH-weit.">
+<meta property="og:description" content="Dynamics 365 Solution Architect für komplexe CE- und Power-Platform-Landschaften. Architektur, ALM, Integration und Pro-Code aus einer Hand, dazu der Health Check zum Festpreis. Über 16 Jahre im Dynamics-365-Stack, Nürnberg und DACH-weit.">
 <meta property="og:image" content="https://dynamicspro.de/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Andy Schwarz, Solution Architect für Dynamics 365 Sales, Customer Service und Field Service. DynamicsPro, Nürnberg.">
+<meta property="og:image:alt" content="Andy Schwarz, Dynamics 365 Solution Architect für komplexe CE- und Power-Platform-Landschaften. DynamicsPro, Nürnberg.">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -142,16 +142,8 @@
   .service ul{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem}
   .service li{font-size:.86rem;font-weight:500;padding:.3rem .7rem;background:var(--bg-2);border-radius:3px}
   .service.wide{grid-column:1/-1}
-  /* Festpreis-Einstieg als erste Karte, dunkel abgesetzt. Die Karte "Systemanalyse und
-     Reviews" bleibt der Einstieg fuer den individuell geschnittenen Auftrag. */
-  .service.offer{grid-column:1/-1;background:var(--navy);color:#fff;border-top:3px solid var(--sky);display:grid;grid-template-columns:1fr auto;gap:2rem 3rem;align-items:center}
-  .service.offer .kicker{color:var(--sky);margin-bottom:.6rem}
-  .service.offer p{color:#B9C7DA;margin-bottom:0;max-width:62ch}
-  .service.offer ul{margin-top:1.25rem}
-  .service.offer li{background:rgba(255,255,255,.08);color:#E6EDF7}
-  .service.offer .btn{background:var(--sky);color:var(--navy);white-space:nowrap}
-  .service.offer .btn:hover{background:#8CC6FF}
-  @media (max-width:820px){.service.offer{grid-template-columns:1fr}.service.offer .btn{width:100%;justify-content:center}}
+  /* Erst das Problem des Kunden, dann die Technik als zweite Ebene. */
+  .service p.detail{font-size:.95rem;color:var(--ink-3);margin-top:-.6rem}
   @media (max-width:820px){.services{grid-template-columns:1fr}.service{padding:1.75rem}}
 
   .cases-section{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -183,9 +175,6 @@
   @media (max-width:900px){.mandate{grid-template-columns:150px 1fr}.mandate p{grid-column:2}}
   @media (max-width:560px){.mandate{grid-template-columns:1fr;gap:.25rem}.mandate p{grid-column:1}}
 
-  .tools{margin-top:4.5rem}
-  .tools h3.sub{font-size:1.4rem;margin-bottom:.5rem}
-  .tools>p{color:var(--ink-2);margin-bottom:1.5rem;max-width:62ch}
   .signature{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
   .sig{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--navy);padding:2rem;display:flex;flex-direction:column}
   .sig.lead{background:var(--navy);color:#fff;border-color:var(--navy);border-top-color:var(--sky)}
@@ -280,17 +269,14 @@
   .hero h1,section.head h1{font-size:clamp(2.3rem,5.2vw,4rem)}
   .avail{border-color:var(--line);color:var(--ink-2);background:none}
   .btn{border-radius:0}
-  .btn.primary,.service.offer .btn{background:var(--ink);color:var(--bg)}
-  .btn.primary:hover,.service.offer .btn:hover{background:var(--red)}
+  .btn.primary{background:var(--ink);color:var(--bg)}
+  .btn.primary:hover{background:var(--red)}
   .btn.outline{border-color:var(--ink);color:var(--ink)}
   .btn.outline:hover{border-color:var(--red);color:var(--red)}
   .facts{border-top-color:var(--ink)}
   .facts dt{color:var(--ink-3)}
   .facts dd{color:var(--ink)}
   .band{background:var(--bg);border-bottom:1px solid var(--ink)}
-  .service.offer{background:var(--bg);color:var(--ink);border:1px solid var(--ink);border-top:3px double var(--ink)}
-  .service.offer p{color:var(--ink-2)}
-  .service.offer li{background:var(--bg-2);color:var(--ink)}
   .sig.lead{background:var(--bg);color:var(--ink);border-color:var(--line);border-top:3px solid var(--red)}
   .sig.lead p{color:var(--ink-2)}
   .sig.lead .stack{color:var(--ink-3)}
@@ -314,6 +300,51 @@
   .toc-shell{border-radius:0}
   footer{border-top:1px solid var(--line)}
   .feat,.panel,.dim,.outcome,address,.service li,.feat ul li,.contact .card,.shot img,.portrait{border-radius:0}
+
+  /* Positionierung (Oktober 2026): Hero mit Stuetzsatz, kompakte Zweispalter fuer USP und
+     KI-Bereitschaft (.pitch), eigener Abschnitt fuer den Health Check (.offer-section),
+     Technik in den Referenzen als zweite Ebene (<details class="tech">), Werkzeuge als
+     eigener Abschnitt. Alles im Magazin-Bild, nichts Dunkles. */
+  .hero h1{max-width:24ch}
+  @media (max-width:560px){.hero h1{font-size:2.05rem}}
+  .hero .sub{margin-top:1rem;font-size:1.02rem;line-height:1.55;color:var(--ink-2);max-width:60ch}
+  .ask{font-family:var(--display);font-weight:700;font-size:1.25rem;line-height:1.3;letter-spacing:-0.015em;color:var(--ink);margin-bottom:1rem}
+  .pitch{padding:3.75rem 0;background:var(--white);border-bottom:1px solid var(--line)}
+  .pitch .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:2.5rem 4rem;align-items:center}
+  .pitch .wrap>*{min-width:0}
+  .pitch h2{font-size:clamp(1.75rem,2.9vw,2.4rem);margin-bottom:.9rem}
+  .pitch p{color:var(--ink-2);font-size:1.08rem;max-width:56ch}
+  .pitch p.ask{color:var(--ink);font-size:1.25rem}
+  .chain{list-style:none;border-top:3px double var(--ink)}
+  .chain li{display:grid;grid-template-columns:2.4rem 1fr;gap:.4rem;align-items:baseline;padding:.7rem 0;border-bottom:1px solid var(--line);font-family:var(--display);font-weight:700;font-size:1.02rem;letter-spacing:-0.01em;line-height:1.3}
+  .chain li i{font-style:normal;color:var(--red);font-size:.8rem;letter-spacing:.1em;font-variant-numeric:tabular-nums}
+  .chain li span{display:block;font-family:var(--body);font-weight:400;font-size:.9rem;color:var(--ink-3);margin-top:.15rem;letter-spacing:0}
+  @media (max-width:900px){.pitch{padding:3rem 0}.pitch .wrap{grid-template-columns:1fr;gap:2rem}}
+
+  .offer-section{background:var(--bg);border-top:3px double var(--ink);border-bottom:1px solid var(--ink)}
+  .offer-section .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:2.5rem 4rem;align-items:start}
+  .offer-section .wrap>*{min-width:0}
+  .offer-section h2{font-size:clamp(2rem,3.6vw,2.9rem);margin-bottom:1.1rem}
+  .offer-section p{color:var(--ink-2);max-width:60ch}
+  .offer-section .actions{margin-top:1.75rem}
+  .offer-facts{list-style:none;border-top:3px double var(--ink);margin-top:.4rem}
+  .offer-facts li{display:grid;grid-template-columns:10rem 1fr;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--line);font-size:.95rem;color:var(--ink-2);line-height:1.45}
+  .offer-facts li b{font-family:var(--display);font-weight:800;color:var(--ink);letter-spacing:-0.01em}
+  @media (max-width:900px){.offer-section .wrap{grid-template-columns:1fr;gap:2rem}.offer-section .btn{width:100%;justify-content:center}}
+  @media (max-width:560px){.offer-facts li{grid-template-columns:1fr;gap:.15rem}}
+
+  .case .tech{margin-top:1.75rem;border-top:1px solid var(--line);padding-top:.9rem}
+  .case .tech summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:.6rem;font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  .case .tech summary::-webkit-details-marker{display:none}
+  .case .tech summary::before{content:"+";color:var(--red);font-size:1.15rem;line-height:1;width:1rem;font-family:var(--body)}
+  .case .tech[open] summary::before{content:"\2212"}
+  .case .tech summary:hover{color:var(--ink)}
+  .case .tech p{margin-top:.9rem;font-size:.97rem;color:var(--ink-2);line-height:1.6;max-width:78ch}
+
+  .tools-section{border-top:1px solid var(--line)}
+  .tools-section .head p.claim{font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--ink);letter-spacing:-0.015em}
+  .tools-section .head p+p{margin-top:.75rem}
+  .contact .fine{margin-top:1.25rem;font-size:.95rem;max-width:44ch}
 
   /* Sprachumschalter in der Kopfleiste */
   .nav .wrap{gap:1rem}
@@ -342,13 +373,19 @@
   ],
   "knowsAbout": [
     "Microsoft Dynamics 365",
+    "Dynamics 365 Customer Engagement",
+    "Dynamics 365 Sales",
+    "Dynamics 365 Customer Service",
+    "Dynamics 365 Field Service",
     "Microsoft Power Platform",
     "Dataverse",
     "Microsoft Azure",
+    "Azure Integration Services",
     "ALM",
-    "Azure DevOps"
+    "Azure DevOps",
+    "Power Platform Governance"
   ],
-  "description": "Andy Schwarz, Dynamics 365 Solution Architect und Freelancer. Architektur, ALM und Code für Sales, Customer Service und Field Service. 16+ Jahre Dynamics 365 CE. Nürnberg, remote und vor Ort im DACH-Raum.",
+  "description": "Andy Schwarz, Dynamics 365 Solution Architect für komplexe CE- und Power-Platform-Landschaften. Architektur, ALM, Integration und Pro-Code für Sales, Customer Service und Field Service. 16+ Jahre Dynamics 365 CE. Nürnberg, remote und vor Ort im DACH-Raum.",
   "worksFor": { "@id": "https://dynamicspro.de/#business" }
 }
 </script>
@@ -370,7 +407,7 @@
     "addressCountry": "DE"
   },
   "areaServed": ["DE", "AT", "CH"],
-  "description": "Dynamics 365 Solution Architecture, ALM und Pro-Code für Sales, Customer Service und Field Service. Health Checks zum Festpreis.",
+  "description": "Dynamics 365 Solution Architecture, ALM, Integration und Pro-Code für komplexe CE- und Power-Platform-Landschaften. Health Checks zum Festpreis.",
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Leistungen",
@@ -378,6 +415,7 @@
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dynamics 365 Health Check", "url": "https://dynamicspro.de/health-check/" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Solution Architecture Dynamics 365" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ALM und DevOps auf Azure DevOps" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Integration mit Azure Integration Services" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Systemanalyse und Reviews" } }
     ]
   }
@@ -413,12 +451,13 @@
   <div class="wrap">
     <div>
       <div class="kicker">Andy Schwarz · DynamicsPro, Nürnberg</div>
-      <h1>Solution Architect für Dynamics 365 Sales, Customer Service und Field Service.</h1>
-      <p class="lead">Ich entwerfe die Architektur, baue das ALM auf und schreibe den Code, wo es nötig ist. Seit 2019 Solution Architect, seit 16 Jahren im Dynamics-Stack.</p>
-      <div class="avail"><i></i>Ab Januar 2027 frei · 3 Tage pro Woche · remote und im DACH-Raum</div>
+      <h1>Dynamics 365 Solution Architect für komplexe CE- und Power-Platform-Landschaften.</h1>
+      <p class="lead">Architektur, ALM, Integration und Pro-Code aus einer Hand. Für Unternehmen, bei denen Dynamics 365 über einzelne Apps hinausgewachsen ist.</p>
+      <p class="sub">Ich entwerfe die Architektur, baue das ALM auf und schreibe den Code, wo es nötig ist. Dynamics 365 Sales, Customer Service und Field Service, seit 2019 als Solution Architect, seit 16 Jahren im Dynamics-Stack.</p>
+      <div class="avail"><i></i>Ab Januar 2027 für neue Mandate verfügbar</div>
       <div class="actions">
         <a class="btn primary" href="#kontakt">Projekt besprechen</a>
-        <a class="btn outline" href="#referenzen">Referenzen lesen</a>
+        <a class="btn outline" href="health-check/">Dynamics 365 Health Check</a>
       </div>
     </div>
   </div>
@@ -433,6 +472,23 @@
   </div>
 </div>
 
+<section id="profil" class="pitch">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Positionierung</div>
+      <h2>Architektur, die bis in den Code reicht</h2>
+      <p>Ich verbinde Dynamics-365-Architektur mit Dataverse, Azure Integration Services, ALM und Pro-Code. Dadurch kann ich technische Entscheidungen nicht nur konzipieren, sondern bis in die Umsetzung begleiten und dort verantworten.</p>
+    </div>
+    <ol class="chain" aria-label="Fünf Bausteine">
+      <li><i>01</i><div>Solution Architecture<span>Zielbild, Datenmodell, Berechtigungen, führende Systeme</span></div></li>
+      <li><i>02</i><div>Dataverse<span>Eine Plattform für alle Workloads statt einzelner Apps</span></div></li>
+      <li><i>03</i><div>ALM und DevOps<span>Reproduzierbare Releases auf Azure DevOps</span></div></li>
+      <li><i>04</i><div>Integration<span>ERP, Azure und externe APIs, ohne unnötige Kopplung</span></div></li>
+      <li><i>05</i><div>Pro-Code<span>C#, TypeScript, React und PCF, wo Low-Code endet</span></div></li>
+    </ol>
+  </div>
+</section>
+
 <section id="leistungen">
   <div class="wrap">
     <div class="head">
@@ -440,33 +496,28 @@
       <p>Architekturverantwortung über das gesamte Spektrum von Low-Code bis Pro-Code, Steuerung von Umsetzungsteams, Discovery-Workshops mit Fachbereich und IT. Und wo es nötig ist, schreibe ich den Code selbst.</p>
     </div>
     <div class="services">
-      <article class="service offer">
-        <div>
-          <div class="kicker">Einstieg zum Festpreis</div>
-          <h3>Dynamics 365 Health Check</h3>
-          <p>Scorecard, Risiken und Maßnahmenplan in 5 Tagen. Unabhängig und toolgestützt, mit festem Umfang und festem Preis.</p>
-          <ul><li>Performance</li><li>Sicherheitsrollen</li><li>Solution-Schnitt</li><li>Kapazität &amp; Lizenzen</li><li>Maßnahmenplan</li></ul>
-        </div>
-        <a class="btn" href="health-check/">Health Check ansehen</a>
-      </article>
       <article class="service">
         <h3>Solution Architecture</h3>
-        <p>Zielarchitektur für Dynamics 365 Sales, Customer Service und Field Service: Dataverse-Datenmodell, Berechtigungskonzept, Multi-Company-Setups und die Frage, welches System welche Daten führt. Discovery- und Analyse-Workshops inklusive.</p>
+        <p>Von der Dynamics-365-Zielarchitektur bis zur konkreten Umsetzung: Dataverse, Security, Integrationen und Erweiterungen werden als zusammenhängende Plattform gedacht, nicht als Summe einzelner Apps.</p>
+        <p class="detail">Zielarchitektur für Dynamics 365 Sales, Customer Service und Field Service: Dataverse-Datenmodell, Berechtigungskonzept, Multi-Company-Setups und die Frage, welches System welche Daten führt. Discovery- und Analyse-Workshops inklusive.</p>
         <ul><li>D365 Sales</li><li>Customer Service</li><li>Field Service</li><li>Contact Center</li><li>Security &amp; Role Design</li><li>Multi-Company</li></ul>
       </article>
       <article class="service">
         <h3>ALM und DevOps</h3>
-        <p>Feature-Branch-Workflow, Unmanaged Solutions je Work Item, automatisierte Managed-Solution-Builds und Transport entlang der Umgebungskette. Ein erprobtes Pipeline-Toolset, das ich mitbringe, statt es jedes Mal neu zu bauen.</p>
+        <p>Reproduzierbare Deployments statt manueller Solution-Exporte. Ich bringe erprobte ALM-Strukturen und Pipeline-Patterns mit, statt sie in jedem Projekt neu zu bauen.</p>
+        <p class="detail">Feature-Branch-Workflow, Unmanaged Solutions je Work Item, automatisierte Managed-Solution-Builds und Transport entlang der Umgebungskette, alles auf Azure DevOps.</p>
         <ul><li>Azure DevOps</li><li>Power Platform CLI</li><li>Solution-Strategie</li><li>Environment-Strategie</li><li>Health Checks</li></ul>
       </article>
       <article class="service">
         <h3>Integration und Azure</h3>
-        <p>Dual Write zwischen CE und Finance &amp; Operations, Anbindung von HR- und Drittsystemen über Service Bus und Logic Apps, Monitoring mit Application Insights. Mit klar definierten führenden Systemen und Idempotenz, damit Wiederholungen keine Duplikate erzeugen.</p>
+        <p>Dynamics 365 sauber mit ERP, Azure, externen APIs und weiteren Unternehmenssystemen verbinden, ohne unnötige Kopplung und mit klar definierten führenden Systemen.</p>
+        <p class="detail">Dual Write zwischen CE und Finance &amp; Operations, Anbindung von HR- und Drittsystemen über Service Bus und Logic Apps, Monitoring mit Application Insights. Idempotent gebaut, damit Wiederholungen keine Duplikate erzeugen.</p>
         <ul><li>Dual Write</li><li>Logic Apps</li><li>Azure Functions</li><li>Service Bus</li><li>Event Grid</li><li>Application Insights</li></ul>
       </article>
       <article class="service">
         <h3>Pro-Code auf der Power Platform</h3>
-        <p>Plugins und Custom Workflow Activities in C#, PCF-Controls in TypeScript und React, Code Apps für alles, was ein Formular nicht abbildet. Sicher angebunden über Managed Identity und Custom APIs.</p>
+        <p>C#, Plugins, JavaScript/TypeScript, React und PCF dort einsetzen, wo Low-Code an Grenzen stößt, und so, dass es im Lifecycle der Plattform bleibt.</p>
+        <p class="detail">Plugins und Custom Workflow Activities in C#, PCF-Controls in TypeScript und React, Code Apps für alles, was ein Formular nicht abbildet. Sicher angebunden über Managed Identity und Custom APIs.</p>
         <ul><li>C# Plugins</li><li>PCF Controls</li><li>Code Apps (React)</li><li>Custom Connectors</li><li>Fluent UI v9</li></ul>
       </article>
       <article class="service wide">
@@ -500,9 +551,13 @@
         <h3>Revisionssichere Archivierung und Löschung für Dataverse</h3>
         <div class="story">
           <div><h4>Ausgangslage</h4><p>Aufbewahrungspflichten nach GoBD und Löschfristen nach DSGVO greifen auf denselben Datensätzen ineinander. Die native Dataverse-Langzeitaufbewahrung kam nicht in Frage: erzwungene Kaskaden auf Kindtabellen, keine Feldausschlüsse, kein Prüffenster vor der Löschung.</p></div>
-          <div><h4>Lösung</h4><p>Eine eigene Regel-Engine aus neun Konfigurationstabellen: Aufbewahrungsklassen, einzeln prüfbare Guard-Bedingungen, eine Matrix für polymorphe Aktivitätsbezüge, Feldausschlüsse. Drei geplante Jobs (Bewertung, Archivierung, Löschung) schreiben je Datensatz ein Archiv in unveränderlichen Blob-Speicher, bevor sie den Status ändern.</p></div>
+          <div><h4>Lösung</h4><p>Eine eigene, konfigurierbare Regel-Engine für Aufbewahrung, Archivierung und Löschung direkt auf Dataverse. Jeder Datensatz wird archiviert, bevor sich sein Status ändert, und die Regeln liegen in Konfiguration statt in Code.</p></div>
           <div class="result"><h4>Ergebnis</h4><p>Archiv- und Löschtermine werden einmal gesetzt und sind danach unveränderlich. Jeder Einzeldatensatz ist für Prüfer per Referenz abrufbar. Die Fachseite steuert Regeln über Konfiguration, ohne Code anzufassen.</p></div>
         </div>
+        <details class="tech">
+          <summary>Technische Umsetzung</summary>
+          <p>Neun Konfigurationstabellen: Aufbewahrungsklassen, einzeln prüfbare Guard-Bedingungen, eine Matrix für polymorphe Aktivitätsbezüge, Feldausschlüsse. Drei geplante Jobs (Bewertung, Archivierung, Löschung) in .NET 8 schreiben je Datensatz ein Archiv in unveränderlichen Blob-Speicher, bevor sie den Status ändern. Stack: Dataverse, .NET 8, Data Lake Gen2, Synapse Link, Azure DevOps.</p>
+        </details>
       </div>
     </article>
 
@@ -520,9 +575,13 @@
         <h3>Dynamics 365 in Phasen: von Sales in Deutschland zum Rollout in die Schweiz und nach Frankreich</h3>
         <div class="story">
           <div><h4>Ausgangslage</h4><p>Vertrieb, Kundenservice und Außendienst sollten auf eine gemeinsame Dynamics-365-Plattform, beginnend in Deutschland und später in weiteren Ländergesellschaften. Jede Phase musste auf der vorherigen aufbauen, ohne sie umzubauen.</p></div>
-          <div><h4>Lösung</h4><p>Eine Zielarchitektur für alle Phasen von Beginn an: zuerst Sales in Deutschland, danach Customer Service und Field Service, anschließend die Rollouts in die Schweiz und nach Frankreich. Dazu eine erweiterte SharePoint-Integration, die automatische Zuordnung von Vertriebsgebieten, eine offlinefähige Canvas App zur Lead-Erfassung auf Messen und ein Außendienst-Dashboard als Code App. ALM mit Feature-Branches und automatisierten Managed-Solution-Builds.</p></div>
+          <div><h4>Lösung</h4><p>Eine Zielarchitektur für alle Phasen von Beginn an: zuerst Sales in Deutschland, danach Customer Service und Field Service, anschließend die Rollouts in die Schweiz und nach Frankreich. Dazu ein standardisiertes ALM, damit jede Phase auf derselben Basis reproduzierbar ausgeliefert wird.</p></div>
           <div class="result"><h4>Ergebnis</h4><p>Neue Module und Länder kamen auf derselben Architektur dazu, ohne bestehende Prozesse umzubauen. Releases laufen über Pipelines statt über manuelle Exporte.</p></div>
         </div>
+        <details class="tech">
+          <summary>Technische Umsetzung</summary>
+          <p>Erweiterte SharePoint-Integration, automatische Zuordnung von Vertriebsgebieten, eine offlinefähige Canvas App zur Lead-Erfassung auf Messen und ein Außendienst-Dashboard als Code App. Erweiterungen als C#-Plugins und PCF-Controls. ALM auf Azure DevOps mit Feature-Branches, Power Platform CLI und automatisierten Managed-Solution-Builds.</p>
+        </details>
       </div>
     </article>
 
@@ -540,9 +599,13 @@
         <h3>Contact Center mit WhatsApp und E-Mail, inklusive automatischer Vorgangszuordnung</h3>
         <div class="story">
           <div><h4>Ausgangslage</h4><p>Hohes Aufkommen an Kundenmails zu Buchungen, Umbuchungen und Reklamationen in Sammelpostfächern. Agenten suchten den Vorgang von Hand; Fristen vor Reisebeginn wurden nicht priorisiert. WhatsApp fehlte als Kanal ganz.</p></div>
-          <div><h4>Lösung</h4><p>Analyse und Design der Contact-Center-Lösung, Aufbau des ALM auf Azure DevOps und Leitung der Umsetzung von WhatsApp- und E-Mail-Kanal auf dem Omnichannel-Stack. Regelwerk und Flows ordnen Mails anhand von Buchungsnummern und Inhalten dem Auftrag zu und priorisieren nach SLA, abhängig vom Abstand zum Reisetermin.</p></div>
+          <div><h4>Lösung</h4><p>Analyse und Design der Contact-Center-Lösung, Aufbau des ALM auf Azure DevOps und Leitung der Umsetzung von WhatsApp- und E-Mail-Kanal. Eingehende Nachrichten werden automatisch dem Vorgang zugeordnet und nach Dringlichkeit priorisiert.</p></div>
           <div class="result"><h4>Ergebnis</h4><p>Der Großteil der Mails erreicht ohne manuelles Suchen den richtigen Vorgang. Dringende Fälle stehen automatisch oben in der Warteschlange, WhatsApp läuft im selben Routing.</p></div>
         </div>
+        <details class="tech">
+          <summary>Technische Umsetzung</summary>
+          <p>Dynamics 365 Contact Center mit Omnichannel für WhatsApp und E-Mail über Azure Communication Services. Regelwerk und Flows ordnen Mails anhand von Buchungsnummern und Inhalten dem Auftrag zu und priorisieren nach SLA, abhängig vom Abstand zum Reisetermin. ALM auf Azure DevOps.</p>
+        </details>
       </div>
     </article>
 
@@ -559,9 +622,13 @@
         <h3>Solution Admin Console: Dataverse-Administration als Code App</h3>
         <div class="story">
           <div><h4>Ausgangslage</h4><p>Gewachsene Tenants mit Dutzenden Solutions, undurchsichtigen Abhängigkeiten und Sicherheitsrollen, deren tatsächliche Wirkung niemand sicher benennen konnte. Das Admin Center beantwortet diese Fragen nur mühsam oder gar nicht.</p></div>
-          <div><h4>Lösung</h4><p>Eine Code App direkt auf Dataverse, die Solution- und Umgebungsadministration an einem Ort zusammenführt. Drumherum ein Security Role Analyzer bis auf Schnittstellentabellen und ein Plugin Trace Explorer.</p></div>
+          <div><h4>Lösung</h4><p>Eine Code App direkt auf Dataverse, die Solution- und Umgebungsadministration an einem Ort zusammenführt und die Fragen beantwortet, die das Admin Center offen lässt: Abhängigkeiten, reale Wirkung von Rollen, Plugin-Laufzeiten.</p></div>
           <div class="result"><h4>Ergebnis</h4><p>Aufräumen und Auditieren dauert Stunden statt Tage. Sichtbarkeit ist per Berechtigung gesteuert, sodass die Werkzeuge im Kundentenant bleiben können. Die Suite wird derzeit zum Produkt für den DACH-Markt ausgebaut. <a class="more" href="blog/admin-console-1-working-solutions/">Die Geschichte im Blog</a></p></div>
         </div>
+        <details class="tech">
+          <summary>Technische Umsetzung</summary>
+          <p>Power Platform Code App in React und TypeScript (Vite, Fluent UI v9) auf der Dataverse Web API. Drumherum ein Security Role Analyzer bis auf Schnittstellentabellen und ein Plugin Trace Explorer. Alle 21 Arbeitsbereiche stehen auf der <a class="more" href="solution-admin-console.html">Produktseite</a>.</p>
+        </details>
       </div>
     </article>
 
@@ -574,6 +641,45 @@
       <div class="mandate"><div class="when">09/2022 – 10/2026</div><div class="who">Payment Services<span>Dynamics 365 Specialist</span></div><p>Architekturstandards, Monitoring und Center-of-Excellence-Praktiken für die Dynamics-Plattform. <a class="more" href="#ref-payment">Fallbeispiel oben</a></p></div>
       <div class="mandate"><div class="when">08/2022 – heute</div><div class="who">Automation Engineering<span>Solution Architect</span></div><p>Einführung von Sales, Field Service und Project Operations mit Dual Write zu Finance &amp; Operations, Integration Workday ↔ Field Service, Release-Automation.</p></div>
     </div>
+  </div>
+</section>
+
+<section id="health-check" class="offer-section">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Einstiegsangebot zum Festpreis</div>
+      <h2>Dynamics 365 Health Check</h2>
+      <p class="ask">Sie möchten zuerst wissen, wo Ihre Dynamics-Plattform steht?</p>
+      <p>In einem strukturierten Health Check analysiere ich Solution-Architektur, Customizing, Code, Automatisierung, Performance sowie Daten und Kapazität, dazu Sicherheit und ALM im Überblick. Sie erhalten eine Scorecard mit Ampel je Dimension, die zehn größten Risiken und einen priorisierten Maßnahmenplan, der Ihnen gehört: Sie setzen ihn intern, mit Ihrem Partner oder mit mir um.</p>
+      <div class="actions">
+        <a class="btn primary" href="health-check/">Health Check ansehen</a>
+      </div>
+    </div>
+    <ul class="offer-facts" aria-label="Eckdaten des Health Checks">
+      <li><b>5 Tage</b><span>Kickoff, toolgestützte Analyse mit Lesezugriff, Kurzinterviews, Ergebnispräsentation</span></li>
+      <li><b>Fester Umfang</b><span>Acht Prüfdimensionen, jede mit einer Leitfrage, die am Ende beantwortet ist</span></li>
+      <li><b>Feste Ergebnisse</b><span>Health-Scorecard, Top-10-Risiken, priorisierter Maßnahmenkatalog</span></li>
+      <li><b>Unabhängig</b><span>Kein Lizenzvertrieb, keine Bindung an einen Implementierungspartner</span></li>
+      <li><b>Toolgestützt</b><span>Befunde sind mit eigenem Analyse-Toolset gemessen und belegt, nicht geschätzt</span></li>
+      <li><b>Maßnahmenplan</b><span>In drei Stufen: Quick Wins, 90 Tage, Zielarchitektur. Die Umsetzung ist bewusst nicht enthalten</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="ki" class="pitch">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Erweiterung der Architektur</div>
+      <h2>AI-ready Dynamics Architecture</h2>
+      <p class="ask">Copilot und Agenten lohnen sich dort, wo Daten, Prozesse und Architektur dafür bereit sind.</p>
+      <p>Ich prüfe nicht nur, wo KI in Ihrer Dynamics-Landschaft eingesetzt werden kann, sondern ob Dataverse-Datenmodell, Security, Prozesse und Integrationen dafür überhaupt bereit sind. Was fehlt, wird Teil der Architektur, und KI kommt in Stufen dazu.</p>
+    </div>
+    <ol class="chain" aria-label="Vier Voraussetzungen">
+      <li><i>01</i><div>Datenmodell<span>Sind die Daten in Dataverse vollständig, eindeutig und auffindbar?</span></div></li>
+      <li><i>02</i><div>Security<span>Sieht ein Agent nur, was der Anwender sehen darf?</span></div></li>
+      <li><i>03</i><div>Prozesse<span>Ist der Prozess klar genug, dass sich eine Entscheidung automatisieren lässt?</span></div></li>
+      <li><i>04</i><div>Integrationen<span>Kommen die Daten aus den führenden Systemen und nicht aus Kopien?</span></div></li>
+    </ol>
   </div>
 </section>
 
@@ -593,10 +699,17 @@
       <div class="principle"><h3>Compliance ist Teil der Architektur</h3><p>DSGVO, GoBD und Mitbestimmung nach §&nbsp;87 BetrVG sind im DACH-Raum keine Randthemen. Ich plane ihre Anforderungen von Beginn an in die Architektur ein, etwa bei Löschfristen, Protokollierung und Berechtigungen, statt sie am Ende nachzurüsten.</p></div>
       <div class="principle"><h3>Übergabe gehört zum Auftrag</h3><p>Jede Lösung kommt mit Pipeline, Dokumentation und einem Team, das sie versteht. Ich habe kein Interesse daran, unersetzlich zu bleiben.</p></div>
     </div>
+  </div>
+</section>
 
+<section id="werkzeuge" class="tools-section">
+  <div class="wrap">
+    <div class="head">
+      <h2>Werkzeuge, die ich mitbringe</h2>
+      <p class="claim">Ich bringe nicht nur Erfahrung mit. Ich bringe Werkzeuge mit.</p>
+      <p>Aus wiederkehrenden Problemen in Mandaten entstanden, außerhalb einzelner Projekte weiterentwickelt und projektübergreifend im Einsatz oder kurz davor. Erfahrung wird bei mir zu wiederverwendbaren Werkzeugen und Engineering-Patterns, statt sie in jedem Projekt neu zu erfinden.</p>
+    </div>
     <div class="tools">
-      <h3 class="sub">Werkzeuge, die ich mitbringe</h3>
-      <p>Außerhalb einzelner Mandate entwickelt, projektübergreifend im Einsatz oder kurz davor, statt es in jedem Projekt neu zu erfinden.</p>
       <div class="signature">
         <article class="sig lead">
           <h3>Solution Admin Console und Code-App-Tooling</h3>
@@ -616,9 +729,9 @@
           <div class="stack">Azure DevOps Pipelines &amp; Repos, Power Platform CLI, Managed/Unmanaged Lifecycle, .NET Plugin Build Chain</div>
         </article>
         <article class="sig">
-          <h3>KI-gestützte Umsetzung und System-Reviews mit Claude Code</h3>
-          <p>Fester Bestandteil meiner Arbeitsweise: Konzepte entwerfen und gegen Dataverse-Grenzen prüfen, Plugins, PCF und Code Apps implementieren, Testabdeckung erzeugen. Skaliert bis zum vollständigen System-Review einer bestehenden Umgebung, verdichtet zu priorisierten Findings. Läuft auf einem Mono-Repo mit Multi-Agent-Setup und eigenen Dataverse-Skills, damit Namenskonventionen und Coding-Standards konsistent gelten.</p>
-          <div class="stack">Claude Code, eigene Dataverse-Skills, Multi-Agent-Mono-Repo, Azure DevOps Work Items</div>
+          <h3>AI-gestützte Engineering-Workflows</h3>
+          <p>Moderne Coding Agents und eigene Dataverse- und Power-Platform-Workflows nutze ich, um Architektur, Implementierung, Tests und Systemanalysen schneller und reproduzierbarer umzusetzen: Konzepte gegen Dataverse-Grenzen prüfen, Plugins, PCF und Code Apps implementieren, Testabdeckung erzeugen, bis zum vollständigen System-Review einer bestehenden Umgebung mit priorisierten Findings. Namenskonventionen und Coding-Standards sind als eigene Regelwerke hinterlegt und gelten in jedem Projekt gleich.</p>
+          <div class="stack">Claude Code · Coding Agents · Multi-Agent-Workflows · Azure DevOps · Dataverse</div>
         </article>
       </div>
     </div>
@@ -666,6 +779,7 @@
     <div>
       <h2>Ein Projekt, ein Review oder erst einmal eine Frage?</h2>
       <p>Schreiben Sie mir kurz, worum es geht. Ich antworte in der Regel innerhalb eines Werktags und sage auch, wenn ich nicht der Richtige bin.</p>
+      <p class="fine">Verfügbar ab Januar 2027 · 3 Tage pro Woche · remote und im DACH-Raum</p>
     </div>
     <div class="card">
       <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de<small>E-Mail, am zuverlässigsten</small></a>
