@@ -21,6 +21,20 @@
     <description>Dataverse keeps every label per language. If a translation is missing, French users see English field names. The standard way to fix that is an export to Excel with thousands of rows and no filter for “missing”. Translation Studio reads the same export, shows only the gaps and writes it back filled in.</description>
   </item>
   <item>
+    <title>What the dispatcher sees, and how a board gets to production</title>
+    <link>https://dynamicspro.de/en/blog/schedule-board-2-vorschau-und-transfer/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/en/blog/schedule-board-2-vorschau-und-transfer/</guid>
+    <pubDate>Fri, 02 Oct 2026 08:00:00 +0200</pubDate>
+    <description>Booking tile, resource cell and colors of a schedule board used to be visible only after saving, in the board. Part two: a designer with live preview, a builder instead of HTML, and an export that turns identifiers back into names.</description>
+  </item>
+  <item>
+    <title>The copy that loses three references</title>
+    <link>https://dynamicspro.de/en/blog/schedule-board-1-kopie-und-filter/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/en/blog/schedule-board-1-kopie-und-filter/</guid>
+    <pubDate>Thu, 01 Oct 2026 08:00:00 +0200</pubDate>
+    <description>A tab in the schedule board is a record with a JSON and three references. Microsoft's tool copies it and loses the references. Part one on Schedule Board Manager: copying, editing without JSON, and why a filter field filters nothing.</description>
+  </item>
+  <item>
     <title>Moving configuration data, and turning the tool into a product</title>
     <link>https://dynamicspro.de/en/blog/admin-console-4-datentransfer/</link>
     <guid isPermaLink="true">https://dynamicspro.de/en/blog/admin-console-4-datentransfer/</guid>

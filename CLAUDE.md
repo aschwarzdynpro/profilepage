@@ -4,7 +4,7 @@ Statische Single-File-Site (`index.html`), kein Build, kein Framework. Ausgelief
 
 ## Regeln
 - Alles bleibt in `index.html` (CSS im `<style>`, keine externen JS-Bundles). Bilder nach `assets/`.
-- Ausnahme: `solution-admin-console.html`, `translation-studio.html`, `impressum.html`, `datenschutz.html`,
+- Ausnahme: `solution-admin-console.html`, `translation-studio.html`, `schedule-board-manager.html`, `impressum.html`, `datenschutz.html`,
   die Angebotsseiten unter `<slug>/index.html` und der Blog unter `blog/` sind eigene Seiten mit eigenem `<style>`. Anschrift, USt-IdNr. und Aufsichtsbehörde nur nach Rücksprache ändern.
 - Keine Frameworks, kein Tailwind, kein Build-Schritt einführen.
 - Deutsch, Sie-Ansprache, kein Marketing-Sprech (die englische Fassung unter `en/` siehe Zweisprachigkeit). Keine Emojis, keine Bindestrich-Gedankenstriche.
@@ -27,7 +27,7 @@ Deutsch ist die Hauptsprache, Englisch liegt unter `en/` mit **identischen Pfade
 ändert beide Fassungen. Englische Seiten verweisen mit `../` bzw. `../../` auf `assets/`.
 
 - **SEO:** jede Seite hat `hreflang` de, en und `x-default` (= deutsch), eigenes `canonical`,
-  `og:locale` `de_DE` bzw. `en_US`. `sitemap.xml` führt beide Fassungen (26 URLs).
+  `og:locale` `de_DE` bzw. `en_US`. `sitemap.xml` führt beide Fassungen (32 URLs).
 - **Vorbelegung ohne Speichern:** Nur die deutschen Seiten tragen im `<head>` ein kleines Skript
   („Sprache vorbelegen"). Kommt ein Besucher **von außen** (Referrer leer oder fremd) und ist seine
   erste Browsersprache nicht Deutsch, ersetzt es die URL durch die englische Fassung derselben
@@ -39,7 +39,7 @@ Deutsch ist die Hauptsprache, Englisch liegt unter `en/` mit **identischen Pfade
   `/en/<pfad>`, `DE` auf `/<pfad>?lang=de`, damit ein englischer Browser die deutsche Seite nicht
   sofort wieder verlässt.
 - **Werkzeug:** `python3 scripts/i18n.py de|en` setzt hreflang, Umschalter, dessen CSS und (nur
-  deutsch) das Skript in die sechs statischen Seiten und ist wiederholbar. Die Blogseiten tragen
+  deutsch) das Skript in die sieben statischen Seiten und ist wiederholbar. Die Blogseiten tragen
   dieselben Bausteine; ein neuer Beitrag übernimmt sie aus einem vorhandenen.
 - **Englische Texte:** dieselben Regeln wie deutsch (kein Marketing-Sprech, keine Gedankenstriche,
   Kunden nach Branche), Anrede „you". Impressum und Datenschutz sind Lesefassungen mit dem Hinweis,
@@ -62,10 +62,10 @@ Komponente baut, baut sie gleich in diesem Bild und hängt nichts Dunkles mehr a
 
 - Tokens: `--bg`, `--bg-2 #f1efe9`, `--line #d8d4cc`, `--ink`, `--ink-2 #444`, `--ink-3 #7a766f`, `--red`
 - Schrift: Manrope (Überschriften), IBM Plex Sans (Fließtext), selbst gehostet als Variable Fonts in `assets/fonts/`
-- OG-Vorschaukarten: `node scripts/og.mjs` rendert aus `scripts/og-card.html` zehn Karten nach
+- OG-Vorschaukarten: `node scripts/og.mjs` rendert aus `scripts/og-card.html` zwölf Karten nach
   `assets/`: `og.png` (Startseite, Impressum, Datenschutz), `og-health-check.png`, `og-blog.png`
-  (Übersicht und alle Beiträge), `og-konsole.png`, `og-studio.png`, dazu dieselben fünf englisch als
-  `og-en.png`, `og-en-health-check.png`, `og-en-blog.png`, `og-en-konsole.png`, `og-en-studio.png`. Die Texte je Karte stehen in
+  (Übersicht und alle Beiträge), `og-konsole.png`, `og-studio.png`, `og-boards.png`, dazu dieselben sechs englisch als
+  `og-en.png`, `og-en-health-check.png`, `og-en-blog.png`, `og-en-konsole.png`, `og-en-studio.png`, `og-en-boards.png`. Die Texte je Karte stehen in
   `og.mjs`; die Karte liest sie als Query-Parameter. Wer Claim oder Titel einer Seite ändert, zieht
   die Karte nach und rendert neu.
 - Skills: Balkengruppen `.sg` (5 Segmente = Niveau, Zahl = Jahre), neben dem Werdegang. Das frühere Netzdiagramm ist bewusst weg, eine Selbsteinschätzung auf 1 bis 5 überzeugt niemanden.
@@ -109,6 +109,25 @@ aufgenommen, mit den eingebauten Mock-Daten (fiktives Fuhrpark-Szenario in en/de
    600px und ist in der `feat wide`-Karte unscharf. Vor dem Foto den Toast abwarten (5 s).
 3. Aufnahme bei 1600 Breite, `deviceScaleFactor: 2`, auf 1600px herunterrechnen, WebP 0,92.
 
+## Produktseite Schedule Board Manager
+`schedule-board-manager.html` beschreibt die dritte Code App nach dem Muster der Studio-Seite
+(Hero mit Faktenleiste, Inhaltsverzeichnis mit 17 Sprungzielen in fünf Gruppen, `feat`-Karten,
+Panels „Quer durch die App", Kontakt). Quelle ist `CodeApps/apps/schedule-board-manager/README.md`
+und die In-App-Hilfe `src/help/helpContent.ts` im Repo `aschwarzdynpro/CodeApps`. Verlinkt aus der
+Werkzeuge-Karte der Startseite und aus den beiden Blogbeiträgen. Der Kunde heißt wie in der
+Mandatsliste „Automation Engineering", im Text „Kunde aus der Automatisierungstechnik"; Board-,
+Team- und Personennamen aus dessen Umgebung bleiben draußen. Die App läuft seit 01.10.2026 in der
+Testumgebung des Kunden (Kicker „in der Testumgebung eines Kunden im Einsatz"); sobald sie in
+Produktion ist, Kicker, letzter Absatz unter „Wofür" und Werkzeuge-Karte nachziehen.
+
+Die Screenshots `assets/screenshots/sbm-*.webp` sind selbst aufgenommen, mit den Mock-Daten der App
+(fiktive Disposition mit erfundenen Namen): `apps/schedule-board-manager` aus dem CodeApps-Repo mit
+`npx vite` starten. Die generierten Dataverse-Clients unter `src/generated/` sind gitignored; ohne
+sie bricht Vite beim Import ab. Für den Mock-Modus genügen leere Stubs mit den importierten Namen
+(nicht committen). Aufnahme bei 1600 Breite, `deviceScaleFactor: 2`, geclippt unterhalb von
+`header.topbar`, auf 1600px herunterrechnen, WebP 0,92. Für das Import-Bild vorher ein Board
+exportieren und die Datei im Reiter „Importieren" einlesen.
+
 ## Blog
 `blog/index.html` ist die Übersicht, jeder Beitrag liegt unter `blog/<slug>/index.html`, dazu
 `blog/feed.xml` (RSS, neuester zuerst: neuer Beitrag = neues `<item>`). Der Workflow kopiert
@@ -144,7 +163,9 @@ Translation-Studio-Beitrag trägt an derselben Stelle `assets/blog/translation-g
 
 Serie zur Konsole in vier Teilen, je eine Bauphase, **datiert auf das Ende der Phase im
 Git-Log** (25.06. Workbench und Merge, 20.07. Validate, 10.08. Betrieb, 21.09. Transfer Hub
-und Produkt), dazu der Beitrag zum Translation Studio vom 03.10. Ein Beitrag weiß nur, was
+und Produkt), dazu die Beiträge zum Translation Studio vom 03.10. und 05.10. und die zwei Teile
+zum Schedule Board Manager (01.10. Kopie, Editor, Filterlayout, Freigaben; 02.10. Darstellung,
+Baukasten, Export/Import). Ein Beitrag weiß nur, was
 an seinem Datum bekannt war; spätere Ereignisse stehen als „Nachtrag vom <Datum>" am Ende.
 Die Übersicht und der Feed sortieren neueste zuerst, die Serie liest man von Teil 1 aus. Der Kasten „alle Teile" am Ende jedes Teils listet die Serie;
 ein neuer Teil muss in jeden anderen Teil eingetragen werden. Ton: erste Person, Sie-Ansprache
@@ -181,6 +202,8 @@ Kopie von CSS und Skript.
 - `translation-studio.html`: dieselbe Spalte mit 19 Sprungzielen in fünf Gruppen
   (Wofür, Studio, Weitere Bereiche, Quer durch die App, Kontakt), CSS und Skript sind
   eine Kopie der Konsolenseite.
+- `schedule-board-manager.html`: dieselbe Spalte mit 17 Sprungzielen in fünf Gruppen
+  (Wofür, Ein Board, Mehrere Boards und Umgebungen, Quer durch die App, Kontakt).
 - Angebotsseiten (`health-check/index.html` und was nach dem Muster folgt): **kein Panel
   und kein Inhaltsverzeichnis.** Nur Kopfleiste mit Marke, Rückweg zur Startseite und
   dem CTA-Knopf, der auch mobil stehen bleibt. Das ist Absicht: eine Angebotsseite hat

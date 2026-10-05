@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+/* Sprache vorbelegen: siehe CLAUDE.md, Abschnitt Zweisprachigkeit. Speichert nichts. */
+(function(){try{
+  var q=new URLSearchParams(location.search);
+  if(q.get('lang')==='de'){q.delete('lang');var s=q.toString();history.replaceState(null,'',location.pathname+(s?'?'+s:'')+location.hash);return}
+  if(navigator.webdriver||/bot|crawl|spider|slurp|preview|facebookexternalhit|lighthouse|headless/i.test(navigator.userAgent))return;
+  var r=document.referrer;if(r&&r.indexOf(location.origin+'/')===0)return;
+  var l=(navigator.languages&&navigator.languages[0])||navigator.language||'';
+  if(/^de(-|$)/i.test(l))return;
+  location.replace('/en'+location.pathname+location.search+location.hash);
+}catch(e){}})();
+</script>
+<link rel="alternate" hreflang="de" href="https://dynamicspro.de/schedule-board-manager.html">
+<link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/schedule-board-manager.html">
+<link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/schedule-board-manager.html">
+<title>Schedule Board Manager · DynamicsPro</title>
+<meta name="description" content="Power Apps Code App für die Schedule-Board-Tabs in Dynamics 365 Field Service und Project Operations: Boards samt Konfigurationen kopieren, im Formular bearbeiten, Darstellung mit Live-Vorschau, Filterlayout, Freigaben, Vergleich, Übertragung auf mehrere Boards und in andere Umgebungen.">
+<link rel="canonical" href="https://dynamicspro.de/schedule-board-manager.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#fbfaf7">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="DynamicsPro">
+<meta property="og:url" content="https://dynamicspro.de/schedule-board-manager.html">
+<meta property="og:title" content="Schedule Board Manager">
+<meta property="og:description" content="Power Apps Code App für die Schedule-Board-Tabs in Field Service und Project Operations: kopieren mit allen Konfigurationen, im Formular bearbeiten, Darstellung mit Live-Vorschau, vergleichen, auf mehrere Boards und in andere Umgebungen übertragen.">
+<meta property="og:image" content="https://dynamicspro.de/assets/og-boards.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+  :root{
+    --navy:#1a1a1a;--navy-2:#2a2a2a;--navy-line:#d8d4cc;
+    --sky:#b5342b;--sky-soft:rgba(181,52,43,.08);--red:#b5342b;--red-soft:rgba(181,52,43,.08);
+    --bg:#fbfaf7;--bg-2:#f1efe9;--line:#d8d4cc;--white:#ffffff;
+    --ink:#1a1a1a;--ink-2:#444444;--ink-3:#7a766f;
+    --display:"Manrope",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:var(--body);font-size:17px;line-height:1.65;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.15;letter-spacing:-0.02em}
+  em{font-style:normal;color:var(--ink);font-weight:600}
+  .wrap{width:min(1200px,100% - 3rem);margin-inline:auto}
+  .kicker{font-size:.95rem;font-weight:600;color:var(--ink-3)}
+
+  .nav{position:sticky;top:0;z-index:30;background:var(--navy);border-bottom:1px solid var(--navy-line);color:#E6EDF7}
+  .nav .wrap{display:flex;align-items:center;gap:1rem;height:68px}
+  .mark{font-family:var(--display);font-weight:700;font-size:1.2rem;display:flex;align-items:center;gap:.6rem;letter-spacing:-0.02em;margin-right:auto}
+  .mark svg{width:26px;height:26px}
+  .nav .back{font-size:.95rem;color:#B9C7DA;font-weight:500}
+  .nav .back:hover{color:#fff}
+  .nav .cta{color:var(--navy);background:var(--sky);padding:.55rem 1.05rem;border-radius:4px;font-weight:600;font-size:.95rem;font-family:var(--display)}
+  .nav .cta:hover{background:#8CC6FF}
+  @media (max-width:640px){.nav .back{display:none}}
+
+  .head{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .head::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:40px 40px;mask-image:linear-gradient(90deg,transparent 35%,#000 100%);-webkit-mask-image:linear-gradient(90deg,transparent 35%,#000 100%)}
+  .head .wrap{position:relative;padding:4.5rem 0 3.5rem}
+  .head .kicker{color:var(--sky)}
+  .head h1{font-size:clamp(2.1rem,4.2vw,3.1rem);margin-top:.9rem;max-width:20ch}
+  .head .lead{margin-top:1.4rem;font-size:1.15rem;line-height:1.55;color:#B9C7DA;max-width:62ch}
+  .facts{margin-top:2.6rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;border-top:1px solid var(--navy-line);padding-top:1.6rem}
+  .facts dt{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#7F98BC;font-weight:600}
+  .facts dd{margin-top:.35rem;font-size:.97rem;color:#E6EDF7}
+  @media (max-width:900px){.facts{grid-template-columns:repeat(2,1fr);gap:1.3rem}}
+  @media (max-width:480px){.facts{grid-template-columns:1fr}}
+
+  main{padding:4.5rem 0 5rem}
+  section+section{margin-top:4.5rem}
+  .intro{width:min(72ch,100%)}
+  .intro h2{font-size:clamp(1.6rem,3vw,2.1rem)}
+  .intro p{margin-top:1rem;color:var(--ink-2)}
+
+  .group>header{border-top:2px solid var(--navy);padding-top:1.1rem;margin-bottom:2rem;display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .group h2{font-size:1.7rem}
+  .group>header p{color:var(--ink-2);font-size:.98rem;max-width:56ch}
+  .feats{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+  @media (max-width:900px){.feats{grid-template-columns:1fr}}
+  .feat{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:1.5rem 1.6rem}
+  .feat h3{font-size:1.12rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+  .feat .gate{font-family:var(--body);font-size:.7rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:3px;padding:.15rem .45rem}
+  .feat p{margin-top:.75rem;color:var(--ink-2);font-size:.97rem}
+  .feat ul{margin-top:.9rem;list-style:none;display:flex;flex-wrap:wrap;gap:.4rem}
+  .feat ul li{font-size:.82rem;color:var(--ink-2);background:var(--bg-2);border-radius:3px;padding:.25rem .55rem}
+  .feat.wide{grid-column:1 / -1}
+  .shot{margin-top:1.3rem}
+  .shot img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:5px;background:var(--bg-2)}
+  .shot figcaption{margin-top:.6rem;font-size:.86rem;color:var(--ink-3);line-height:1.5}
+  .subs{margin-top:1.4rem;border-top:1px solid var(--line);padding-top:1.3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  @media (max-width:900px){.subs{grid-template-columns:1fr;gap:1.2rem}}
+  .subs h4{font-family:var(--display);font-size:1rem;font-weight:700;letter-spacing:-0.01em}
+  .subs p{margin-top:.45rem;color:var(--ink-2);font-size:.94rem}
+
+  .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.4rem}
+  @media (max-width:900px){.split{grid-template-columns:1fr}}
+  .panel{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:1.6rem 1.7rem}
+  .panel h3{font-size:1.12rem}
+  .panel p{margin-top:.75rem;color:var(--ink-2);font-size:.97rem}
+  .panel dl{margin-top:1.1rem;display:grid;grid-template-columns:auto 1fr;gap:.55rem 1.2rem;font-size:.94rem}
+  .panel dt{color:var(--ink-3);font-weight:600}
+  .panel dd{color:var(--ink-2)}
+
+  .contact{background:var(--navy);color:#fff;margin-top:4.5rem}
+  .contact .wrap{padding:4rem 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:3rem;align-items:center}
+  .contact h2{font-size:clamp(1.6rem,3vw,2.1rem);max-width:22ch}
+  .contact p{margin-top:1rem;color:#B9C7DA;max-width:48ch}
+  .contact .card{background:var(--navy-2);border:1px solid var(--navy-line);border-radius:6px;padding:.6rem}
+  .contact .card a{display:block;padding:.9rem 1rem;border-radius:4px;font-family:var(--display);font-weight:600}
+  .contact .card a:hover{background:rgba(255,255,255,.06)}
+  .contact .card small{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;color:#8FA5C0;margin-top:.15rem}
+  @media (max-width:900px){.contact .wrap{grid-template-columns:1fr;gap:2rem}}
+
+  footer{padding:2rem 0;font-size:.88rem;color:var(--ink-2)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a:hover{color:var(--ink)}
+  /* Schwebendes Inhaltsverzeichnis: Desktop als mitlaufende Spalte, mobil als Panel */
+  section[id],article[id]{scroll-margin-top:96px}
+  main .wrap{position:relative;padding-left:18rem}
+  .toc-shell{position:absolute;left:0;top:0;bottom:0;width:15rem}
+  .toc{position:sticky;top:88px;max-height:calc(100vh - 112px);overflow:auto;overscroll-behavior:contain}
+  .toc-title{font-family:var(--display);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);padding-left:.95rem;margin-bottom:.7rem}
+  .toc ul{list-style:none}
+  .toc-group+.toc-group{margin-top:.12rem}
+  .toc a{display:block;border-left:2px solid var(--line);padding:.3rem .4rem .3rem .95rem;color:var(--ink-2);font-size:.92rem;line-height:1.35}
+  .toc a:hover{color:var(--ink);border-left-color:var(--ink-3);background:var(--bg-2)}
+  .toc-head{font-family:var(--display);font-weight:700;font-size:.97rem;color:var(--ink);letter-spacing:-0.01em}
+  .toc-group.open>.toc-head{border-left-color:var(--navy)}
+  .toc-sub{margin-bottom:.35rem}
+  .toc-sub a{padding-left:1.7rem;padding-top:.22rem;padding-bottom:.22rem;font-size:.89rem}
+  .toc a.on{color:var(--navy);font-weight:600;border-left-color:var(--sky);background:var(--bg-2)}
+  .toc.js .toc-group:not(.open)>.toc-sub{display:none}
+  .toc-fab,.toc-backdrop,.toc-bar,.toc-close{display:none}
+
+  @media (max-width:1100px){
+    main .wrap{padding-left:0}
+    .toc-shell{position:fixed;left:0;right:0;bottom:0;top:auto;width:auto;z-index:60;display:flex;flex-direction:column;background:var(--white);border-top:1px solid var(--line);border-radius:6px 6px 0 0;box-shadow:0 -14px 34px rgba(15,30,51,.18);max-height:min(72vh,560px);overflow:hidden;transform:translateY(101%);visibility:hidden;transition:transform .22s ease,visibility .22s}
+    .toc-shell[data-open]{transform:none;visibility:visible}
+    .toc-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem .8rem .85rem 1.4rem;border-bottom:1px solid var(--line);font-family:var(--display);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3)}
+    .toc-close{display:flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;border:0;background:none;color:var(--ink-2);cursor:pointer;border-radius:4px}
+    .toc-close:hover{background:var(--bg-2);color:var(--ink)}
+    .toc-close svg{width:16px;height:16px}
+    .toc{position:static;flex:1 1 auto;max-height:none;overflow:auto;overscroll-behavior:contain;padding:1rem 1.4rem calc(1.4rem + env(safe-area-inset-bottom))}
+    .toc-title{display:none}
+    /* Im Panel stehen alle Gruppen offen, sonst wäre nur die aktive erreichbar */
+    .toc.js .toc-group:not(.open)>.toc-sub{display:block}
+    .toc-backdrop:not([hidden]){display:block;position:fixed;inset:0;z-index:55;background:rgba(15,30,51,.4)}
+    .toc-fab{display:inline-flex;align-items:center;gap:.5rem;position:fixed;right:1.1rem;bottom:calc(1.1rem + env(safe-area-inset-bottom));z-index:65;border:0;cursor:pointer;font-family:var(--display);font-weight:600;font-size:.95rem;color:#fff;background:var(--navy);border-radius:999px;padding:.75rem 1.15rem;box-shadow:0 10px 24px rgba(15,30,51,.28)}
+    .toc-fab svg{width:17px;height:17px;flex:none}
+    .toc-fab[aria-expanded="true"]{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){.toc-shell{transition:none}}
+
+  /* Magazin-Theme, gleiches Bild wie der Blog: helles Papier, Schwarz, Rot als einziger Akzent,
+     Doppellinien statt dunkler Flaechen. Ueberschreibt die Regeln darueber; wer eine Komponente
+     neu baut, baut sie gleich in diesem Bild. */
+  h1,h2,h3,h4{font-weight:800;letter-spacing:-0.025em}
+  a:focus-visible,button:focus-visible{outline-color:var(--red)}
+  .kicker{font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+  .nav{background:var(--bg);border-bottom:1px solid var(--ink);color:var(--ink)}
+  .nav li a,.nav .back{color:var(--ink-2)}
+  .nav li a:hover,.nav .back:hover{color:var(--ink)}
+  .nav li.cta a,.nav .cta{background:var(--ink);color:var(--bg);border-radius:0}
+  .nav li.cta a:hover,.nav .cta:hover{background:var(--red)}
+  .nav .main li:not(.cta) a.on{color:var(--ink)}
+  .nav .main li:not(.cta) a.on::after{background:var(--red)}
+  .hero,section.head{background:var(--bg);color:var(--ink);border-bottom:3px double var(--ink)}
+  .hero::before,section.head::before{display:none}
+  .hero .kicker,section.head .kicker{color:var(--red)}
+  .hero .lead,section.head .lead{color:var(--ink-2);font-weight:300}
+  .hero h1,section.head h1{font-size:clamp(2.3rem,5.2vw,4rem)}
+  .avail{border-color:var(--line);color:var(--ink-2);background:none}
+  .btn{border-radius:0}
+  .btn.primary,.service.offer .btn{background:var(--ink);color:var(--bg)}
+  .btn.primary:hover,.service.offer .btn:hover{background:var(--red)}
+  .btn.outline{border-color:var(--ink);color:var(--ink)}
+  .btn.outline:hover{border-color:var(--red);color:var(--red)}
+  .facts{border-top-color:var(--ink)}
+  .facts dt{color:var(--ink-3)}
+  .facts dd{color:var(--ink)}
+  .band{background:var(--bg);border-bottom:1px solid var(--ink)}
+  .service.offer{background:var(--bg);color:var(--ink);border:1px solid var(--ink);border-top:3px double var(--ink)}
+  .service.offer p{color:var(--ink-2)}
+  .service.offer li{background:var(--bg-2);color:var(--ink)}
+  .sig.lead{background:var(--bg);color:var(--ink);border-color:var(--line);border-top:3px solid var(--red)}
+  .sig.lead p{color:var(--ink-2)}
+  .sig.lead .stack{color:var(--ink-3)}
+  .sig a.more,.sig.lead a.more{color:var(--ink)}
+  .case .story .result{border-left-color:var(--red)}
+  a.more{box-shadow:inset 0 -1px 0 var(--red)}
+  a.more:hover{background:var(--red-soft)}
+  .steps li::before{color:var(--red)}
+  .note{border-left-color:var(--red)}
+  .tl:first-child::before{background:var(--red);border-color:var(--red)}
+  .contact{background:var(--bg);color:var(--ink);border-top:3px double var(--ink)}
+  .contact p{color:var(--ink-2)}
+  .contact .fine{color:var(--ink-3)}
+  .contact .card{background:none;border:0;padding:0;border-radius:0}
+  .contact .card a{border-bottom:1px solid var(--line);border-radius:0;padding:.8rem 0}
+  .contact .card a:last-child{border-bottom:0}
+  .contact .card a:hover{background:none;color:var(--red)}
+  .contact .card small,.contact .card a small{color:var(--ink-3)}
+  .toc a.on{color:var(--ink);border-left-color:var(--red)}
+  .toc-fab{background:var(--ink);border-radius:0;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+  .toc-shell{border-radius:0}
+  footer{border-top:1px solid var(--line)}
+  .feat,.panel,.dim,.outcome,address,.service li,.feat ul li,.contact .card,.shot img,.portrait{border-radius:0}
+
+  /* Sprachumschalter in der Kopfleiste */
+  .nav .wrap{gap:1rem}
+  .nav .mark{margin-right:auto}
+  .nav a.lang,.nav li.lang a{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.12em;line-height:1;color:var(--ink);border:1px solid var(--ink);padding:.38rem .5rem;white-space:nowrap}
+  .nav a.lang:hover,.nav li.lang a:hover{background:var(--ink);color:var(--bg,#fbfaf7)}
+  @media (max-width:900px){.nav .main li.lang{display:list-item}}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="DynamicsPro, zur Startseite">
+      <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#b5342b"/><rect x="15" y="3" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><rect x="3" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><rect x="15" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.5"/><path d="M11 7h4M7 11v4M19 11v4M11 19h4" stroke="#1a1a1a" stroke-width="1.5"/></svg>
+      DynamicsPro
+    </a>
+    <a class="back" href="/">Zurück zur Startseite</a>
+    <a class="lang" data-i18n href="/en/schedule-board-manager.html" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <a class="cta" href="#kontakt">Kontakt</a>
+  </div>
+</header>
+
+<section class="head">
+  <div class="wrap">
+    <div class="kicker">Eigenes Produkt, in der Testumgebung eines Kunden im Einsatz</div>
+    <h1>Schedule Board Manager</h1>
+    <p class="lead">Eine Power Apps Code App für die Tabs des Schedule Boards in Dynamics 365 Field Service und Project Operations. Sie kopiert Boards samt ihrer Konfigurationen, bearbeitet jede Einstellung in einem Formular statt im JSON, zeigt Buchungskachel, Ressourcenzelle und Farben in einer Live-Vorschau, vergleicht Boards, überträgt Einstellungen auf mehrere Boards und bringt ein Board mit allen Verweisen in eine andere Umgebung. Jede Änderung zeigt vorher, was sich ändert.</p>
+    <dl class="facts">
+      <div><dt>Typ</dt><dd>Power Apps Code App, läuft im Tenant des Kunden</dd></div>
+      <div><dt>Technik</dt><dd>React, TypeScript, Vite, Fluent UI v9</dd></div>
+      <div><dt>Daten</dt><dd>Schedule Board Settings und ihre Konfigurationen in Dataverse, Konnektor für Freigaben und Metadaten</dd></div>
+      <div><dt>Umfang</dt><dd>Kopieren, Bearbeiten, Darstellung, Filterlayout, Freigaben, Vergleichen, Übertragen</dd></div>
+    </dl>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+
+    <div class="toc-shell" id="toc-shell">
+      <div class="toc-bar">
+        <span>Auf dieser Seite</span>
+        <button class="toc-close" id="toc-close" type="button" aria-label="Inhaltsverzeichnis schließen">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>
+        </button>
+      </div>
+      <nav class="toc" id="toc" aria-labelledby="toc-title">
+        <p class="toc-title" id="toc-title">Auf dieser Seite</p>
+        <ul>
+          <li class="toc-group"><a class="toc-head" href="#wofuer">Wofür</a></li>
+          <li class="toc-group">
+            <a class="toc-head" href="#ein-board">Ein Board</a>
+            <ul class="toc-sub">
+              <li><a href="#boards">Board-Liste und Aktionen</a></li>
+              <li><a href="#bearbeiten">Bearbeiten</a></li>
+              <li><a href="#speichern">Speichern und Verlauf</a></li>
+              <li><a href="#darstellung">Darstellung</a></li>
+              <li><a href="#filterlayout">Filterlayout</a></li>
+              <li><a href="#freigaben">Besitzer und Freigaben</a></li>
+              <li><a href="#json">JSON</a></li>
+            </ul>
+          </li>
+          <li class="toc-group">
+            <a class="toc-head" href="#mehrere-umgebungen">Mehrere Boards, mehrere Umgebungen</a>
+            <ul class="toc-sub">
+              <li><a href="#vergleichen">Vergleichen</a></li>
+              <li><a href="#mehrere">Mehrere anpassen</a></li>
+              <li><a href="#transfer">Export und Import</a></li>
+              <li><a href="#hilfe">Hilfe</a></li>
+            </ul>
+          </li>
+          <li class="toc-group">
+            <a class="toc-head" href="#uebergreifend">Quer durch die App</a>
+            <ul class="toc-sub">
+              <li><a href="#schutz">Schutzregeln</a></li>
+              <li><a href="#rechte">Rechte und Grenzen</a></li>
+              <li><a href="#datenweg">Datenweg</a></li>
+              <li><a href="#bauweise">Bauweise</a></li>
+            </ul>
+          </li>
+          <li class="toc-group"><a class="toc-head" href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <section class="intro" id="wofuer">
+      <h2>Wofür</h2>
+      <p>Jeder Tab, den Disponenten oben im Schedule Board sehen, ist ein Datensatz der Tabelle Schedule Board Setting. Darin stecken ein paar Dutzend Spalten, ein JSON mit Zeitskala, Arbeitszeit, Zeilenhöhen, Schedule-Typen und Anforderungsbereichen, die gespeicherten Filterwerte und drei Verweise auf eigene Konfigurationszeilen: das Filterlayout, die Ressourcenzellen-Vorlage und die Ressourcenabfrage. Wer ein Board für ein zweites Team braucht, legt es bisher von Hand neu an oder bearbeitet das JSON im Formular. Wer wissen will, warum sich zwei Boards unterschiedlich verhalten, vergleicht zwei JSON-Texte.</p>
+      <p>Microsoft liefert dafür ein FastTrack-Steuerelement, das Boards lesen, kopieren, löschen und aktivieren kann, aber nicht bearbeiten. Seine Kopie übernimmt nur Schlüssel mit dem Präfix <code>msdyn_</code> und verliert dabei die drei Verweise auf die Konfigurationen, und genau dort hängen in gewachsenen Umgebungen die kundeneigenen Filter und Abfragen. Der Schedule Board Manager setzt dort an: Kopieren mit allen Verweisen, Bearbeiten im Formular, Darstellung mit Vorschau, Vergleichen, Übertragen auf mehrere Boards und in andere Umgebungen.</p>
+      <p>Im Spiel sind ausschließlich Konfigurationsdaten des Schedule Boards, keine Buchungen und keine Personendaten. Die Abbildungen auf dieser Seite zeigen die App mit den eingebauten Beispieldaten, einer fiktiven Disposition mit erfundenen Namen, nicht mit Kundendaten.</p>
+      <p>Die App läuft seit dem 1. Oktober 2026 in der Testumgebung eines Kunden aus der Automatisierungstechnik, der sein Schedule Board über Project Operations betreibt. Der Weg nach Produktion steht an, die Export- und Importfunktion ist dafür gebaut.</p>
+    </section>
+
+    <section class="group" id="ein-board">
+      <header>
+        <h2>Ein Board</h2>
+        <p>Von der Liste bis zum Verlauf: alles, was an einem einzelnen Board hängt.</p>
+      </header>
+      <div class="feats">
+
+        <article class="feat" id="boards">
+          <h3>Board-Liste und Aktionen</h3>
+          <p>Links alle Boards mit Position, Freigabeart, Status und Besitzer, oben eine Suche nach Name und Besitzer. Die Reihenfolge der Tabs lässt sich umstellen. Kopieren fragt nach Name, Freigabe und Position und nimmt die drei Konfigurations-Verweise mit, auf Wunsch auch die Datensatz-Freigaben. Eine Kopie ist nie ein System-Board, aus „System“ wird „Jeder“. Dazu Aktivieren, Deaktivieren, Löschen, Export und der Sprung zum Datensatz-Formular.</p>
+          <ul><li>Kopie mit allen drei Verweisen</li><li>Reihenfolge der Tabs</li><li>Export als Paket</li></ul>
+        </article>
+
+        <article class="feat" id="speichern">
+          <h3>Speichern, Konflikte, Verlauf</h3>
+          <p>Vor dem Schreiben zeigt eine Vorschau jedes geänderte Feld, bis hinunter zu den einzelnen Werten im JSON, und geschrieben werden nur die geänderten Spalten. Vorher prüft die App die Versionsnummer des Datensatzes, denn das Schedule Board selbst schreibt die Einstellungen bei jeder Ansichtsänderung. Der vorherige Stand landet im Verlauf, lokal im Browser, die letzten zehn, und lässt sich als Entwurf zurückladen.</p>
+          <ul><li>Diff bis auf den JSON-Wert</li><li>Konfliktprüfung über die Versionsnummer</li><li>Zehn Stände im Verlauf</li></ul>
+        </article>
+
+        <article class="feat wide" id="bearbeiten">
+          <h3>Bearbeiten: jede Einstellung im Formular</h3>
+          <p>Das Formular folgt dem Field Mapping von Microsoft: Board-Ansicht, Farben, Schedule Assistant, Karte, Sonstiges mit den drei Konfigurations-Verweisen, eigene Web-Ressource, die Schedule-Typen je Buchungsart und die Anforderungsbereiche mit Hinzufügen, Sortieren und Entfernen. Nicht gesetzte Felder zeigen den Wert des Default-Boards, von dem sie erben. Für alles, was das Formular nicht kennt, bleibt der JSON-Reiter.</p>
+          <p>Das JSON der Einstellungen wird nie neu aufgebaut. Der Editor ändert genau den jeweiligen Pfad, unbekannte Schlüssel bleiben, wie sie sind, und davon gibt es reichlich. Schalter, die das Board nur als vorhandenen Schlüssel kennt, werden beim Ausschalten entfernt und nicht auf null gesetzt, so wie es das Board selbst tut.</p>
+          <ul><li>Formular nach dem Field Mapping</li><li>Geerbte Werte des Default-Boards sichtbar</li><li>Unbekannte Schlüssel bleiben erhalten</li></ul>
+          <figure class="shot">
+            <img src="assets/screenshots/sbm-boards.webp" width="1600" height="948" loading="lazy" decoding="async" alt="Bildschirmfoto: Links die Liste der Boards mit Position, Freigabe und Besitzer, rechts das Formular eines Boards mit den Abschnitten Allgemein, Board-Ansicht, Farben, Schedule Assistant, Karte, Sonstiges, Schedule-Typen und Anforderungsbereiche.">
+            <figcaption>Die Board-Liste und das Formular eines Boards. Beispieldaten, eine fiktive Disposition, keine Kundendaten.</figcaption>
+          </figure>
+        </article>
+
+        <article class="feat wide" id="darstellung">
+          <h3>Darstellung: sehen, was der Disponent sieht</h3>
+          <p>Der Reiter bündelt alles Sichtbare eines Boards mit einer Live-Vorschau. Die <em>Buchungskachel</em> je Schedule-Typ als Baukasten aus Zeilen mit Feldern und Text, Felder über die Beziehungen der Buchung per Klick, darunter die Kachel in einer Stundenansicht mit Dauer, Statusfarbe und Zeilenhöhe; wer will, bearbeitet das HTML direkt. Die <em>Ressourcenzelle</em> als Handlebars-Vorlage mit den Variablen aus der Ressourcenabfrage, in vier Zuständen und in der Schedule-Assistant-Ansicht, mit eigenem Speichern und Zeilen-Diff. <em>Tooltips und Details</em> aus den Spalten der hinterlegten Ansichten. <em>Farben</em> für Tages- und Stundenansicht und Schedule Assistant. Die <em>Buchungswarnung</em>.</p>
+          <p>Der Designer zeigt, ob eine Vorlage dem Board gehört, vom Default-Board geerbt ist oder der Produkt-Standard greift, und prüft auf JavaScript und falsche Platzhalter. Vorlagen-HTML läuft in der Vorschau in einem abgeschotteten Rahmen ohne Skripte. Die Vorschau nähert das Board an, sie ist kein Abbild: Das CSS des Boards ist außerhalb des Boards nicht verfügbar.</p>
+          <ul><li>Baukasten statt HTML für die Kachel</li><li>Eigener Handlebars-Interpreter für die Zelle</li><li>Vererbung vom Default-Board sichtbar</li></ul>
+          <figure class="shot">
+            <img src="assets/screenshots/sbm-farben.webp" width="1600" height="948" loading="lazy" decoding="async" alt="Bildschirmfoto: Der Reiter Darstellung mit den Farben eines Boards. Links die Farbfelder für Auslastung, Arbeitszeit und Schedule Assistant, rechts die Vorschau als Tagesansicht mit Prozentwerten je Ressource und Tag, als Stundenansicht mit Buchungen und als Verfügbarkeitsleiste des Schedule Assistant.">
+            <figcaption>Farben mit Vorschau: Tagesansicht, Stundenansicht und Schedule Assistant, gefärbt aus den Werten des Boards.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/screenshots/sbm-darstellung.webp" width="1600" height="948" loading="lazy" decoding="async" alt="Bildschirmfoto: Die Buchungskachel im Baukasten, eine Zeile mit dem Feld Name, darunter die Vorschau der Kachel in einer Stundenansicht und die Liste der einfügbaren Felder mit den Beziehungen der Buchung zu Ressource, Buchungsstatus, Ressourcenanforderung und Arbeitsauftrag.">
+            <figcaption>Die Buchungskachel als Baukasten: Zeilen mit Feldern, die Vorschau in der Stundenansicht und die Felder der Buchung samt ihren Beziehungen.</figcaption>
+          </figure>
+        </article>
+
+        <article class="feat wide" id="filterlayout">
+          <h3>Filterlayout: die Felder links im Board</h3>
+          <p>Die Felder des Ressourcenfilters stehen nicht im Board, sondern als XML in einer eigenen Konfigurationszeile, die sich mehrere Boards teilen können. Die App bearbeitet Beschriftung, Schlüssel, Tabelle und Spalte, Mehrfachauswahl und Reihenfolge, entfernt Felder und legt neue an, mit Tabellen und Auswahlspalten aus den Metadaten der Umgebung. Sie zeigt, welche Boards das Layout teilen, und legt auf Wunsch eine Kopie nur für das aktuelle Board an.</p>
+          <p>Ein Feld filtert erst, wenn die Ressourcenabfrage seinen Schlüssel auswertet. Die App liest die Abfrage des Boards und markiert Felder ohne Gegenstück mit „filtert nichts“. Umgekehrt schlägt sie jeden Schlüssel vor, den die Abfrage kennt, der im Layout aber fehlt, mit seiner Wirkung in Klartext, und füllt Art, Tabelle, Spalte und Beschriftung vor. Unbekannte Attribute und verschachtelte Elemente im XML bleiben unverändert, Container nur über den XML-Reiter.</p>
+          <ul><li>Geteilte Layouts sichtbar, Kopie je Board</li><li>Abgleich mit der Ressourcenabfrage</li><li>Vorschläge für fehlende Felder</li></ul>
+          <figure class="shot">
+            <img src="assets/screenshots/sbm-filterlayout.webp" width="1600" height="948" loading="lazy" decoding="async" alt="Bildschirmfoto: Der Filterlayout-Editor. Oben der Hinweis, dass sich vier Boards dieses Layout teilen, darunter die Tabelle der Felder mit Beschriftung, Schlüssel, Typ, Tabelle und Spalte; mehrere Felder tragen den gelben Hinweis, dass sie nicht in der Ressourcenabfrage stehen und nichts filtern.">
+            <figcaption>Ein Layout, das sich vier Boards teilen, und Felder, die nichts filtern, weil die Ressourcenabfrage ihren Schlüssel nicht kennt.</figcaption>
+          </figure>
+        </article>
+
+        <article class="feat" id="freigaben">
+          <h3>Besitzer und Freigaben</h3>
+          <p>Für Boards mit „Bestimmte Personen“ zeigt die App, wer das Board sieht, Benutzer und Teams, ändert die Stufe zwischen Lesen und Bearbeiten, entfernt Freigaben und findet neue Personen per Live-Suche ab zwei Zeichen; mehrere Wörter grenzen ein. Der Besitzer lässt sich auf einen Benutzer oder ein Besitzer-Team ändern, mit Bestätigung und Hinweisen; System-Boards sind ausgenommen. Bei „Nur ich“ ist das der Weg, ein Board an jemand anderen zu übergeben.</p>
+          <ul><li>Lesen oder Lesen und Bearbeiten</li><li>Live-Suche über Name und E-Mail</li><li>Mit den Rechten des angemeldeten Nutzers</li></ul>
+        </article>
+
+        <article class="feat" id="json">
+          <h3>JSON</h3>
+          <p>Einstellungen und Filterwerte als Rohtext, für alles, was das Formular nicht abbildet: die Inline-Kopien der Schedule-Assistant-Konfigurationen in den Schedule-Typen, Schlüssel, die Microsoft nicht dokumentiert, Experimente. Auch hier gilt die Diff-Vorschau beim Speichern.</p>
+          <ul><li>Fallback für Undokumentiertes</li><li>Dieselbe Speicherleiste</li></ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="group" id="mehrere-umgebungen">
+      <header>
+        <h2>Mehrere Boards, mehrere Umgebungen</h2>
+        <p>Vergleichen, auf mehrere Boards übertragen, in eine andere Umgebung bringen.</p>
+      </header>
+      <div class="feats">
+
+        <article class="feat wide" id="vergleichen">
+          <h3>Vergleichen</h3>
+          <p>Zwei Boards Feld für Feld: Spalten, die drei Konfigurationen und jeder Wert im JSON der Einstellungen, filterbar nach Bereich und durchsuchbar. Zwei Boards, die sich unterschiedlich verhalten, zeigen hier den Grund. „Von A nach B übertragen“ springt mit den vorausgewählten Feldern direkt in „Mehrere anpassen“.</p>
+          <ul><li>Spalten, Konfigurationen, Settings</li><li>Direkt in die Übertragung</li></ul>
+          <figure class="shot">
+            <img src="assets/screenshots/sbm-vergleichen.webp" width="1600" height="948" loading="lazy" decoding="async" alt="Bildschirmfoto: Der Vergleich zweier Boards, eine Tabelle mit Bereich, Einstellung und den Werten beider Boards, oben die Zähler je Bereich und der Knopf Von A nach B übertragen.">
+            <figcaption>Zwei Boards Feld für Feld. Was abweicht, steht in Rot und Grün nebeneinander.</figcaption>
+          </figure>
+        </article>
+
+        <article class="feat" id="mehrere">
+          <h3>Mehrere anpassen</h3>
+          <p>Ein Vorlage-Board, eine Auswahl aus Konfigurationen, Schlüsseln der Einstellungen, Filterwerten und Spalten, und die Ziel-Boards. Vor dem Anwenden steht die Vorschau je Board, danach das Ergebnis je Board. Im Modus „Besitzer ändern“ bekommen mehrere Boards einen neuen Besitzer; System-Boards und Boards, die ihm schon gehören, werden übersprungen.</p>
+          <ul><li>Vorschau je Ziel-Board</li><li>Besitzer für mehrere Boards</li></ul>
+        </article>
+
+        <article class="feat" id="hilfe">
+          <h3>Hilfe in der App</h3>
+          <p>Ein Panel von rechts über der App, der ungespeicherte Entwurf bleibt dabei erhalten. Fünfzehn Abschnitte von Überblick bis Häufige Fragen, Inhaltsverzeichnis mit Suche und Hervorhebung. „Hilfe“ in der Kopfzeile öffnet beim aktuellen Bereich, das Fragezeichen neben den Reitern beim aktuellen Reiter.</p>
+          <ul><li>Erklärt Vererbung, geteilte Konfigurationen, Filter ohne Wirkung</li></ul>
+        </article>
+
+        <article class="feat wide" id="transfer">
+          <h3>Export und Import: ein Board in eine andere Umgebung</h3>
+          <p>Ein Board besteht fast nur aus IDs, und nur ein Teil davon ist in jeder Umgebung gleich. Der Export schreibt deshalb ein Paket: das Board mit allen Spalten, Einstellungen und Filterwerten, jede referenzierte Konfiguration mit Inhalt, dazu Name und Tabelle jeder Ansicht, die Tabelle jedes Schedule-Typs, der Name der Zeitzone und Tabelle und Primärname jedes Datensatzes in den gespeicherten Filtern. Nicht im Paket: Freigaben, Besitzer, Verlauf.</p>
+          <p>Der Import ordnet jede ID der Zielumgebung zu, erst über die ID, dann über den Namen, und jede Zeile lässt sich ändern. Konfigurationen werden verwendet, neu angelegt, mit dem Inhalt der Datei überschrieben oder leer gelassen, mit Inhaltsvergleich und Warnung, welche Boards sie noch nutzen. Was kein Gegenstück hat, fällt sauber weg statt als tote ID zu bleiben. Ziel ist ein neues Board oder ein bestehendes, das ersetzt wird, mit Diff-Vorschau und Verlauf.</p>
+          <ul><li>Konfigurationen mit Inhalt im Paket</li><li>Zuordnung per ID, dann per Name</li><li>Neues Board oder bestehendes ersetzen</li></ul>
+          <figure class="shot">
+            <img src="assets/screenshots/sbm-import.webp" width="1600" height="948" loading="lazy" decoding="async" alt="Bildschirmfoto: Der Import eines Boards aus einer Datei. Oben die gewählte Datei und das Board darin, darunter das Ziel als neues Board mit Name und Freigabe, dann die Tabelle der Konfigurationen mit dem Namen in der Datei, dem Gegenstück in dieser Umgebung und der gewählten Aktion.">
+            <figcaption>Der Import: jede Konfiguration aus der Datei bekommt ein Gegenstück in der Zielumgebung oder wird neu angelegt. Nichts wird geschrieben, bevor die Zuordnung steht.</figcaption>
+          </figure>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="group" id="uebergreifend">
+      <header>
+        <h2>Quer durch die App</h2>
+        <p>Was überall gilt, unabhängig vom Bereich.</p>
+      </header>
+      <div class="split">
+
+        <article class="panel" id="schutz">
+          <h3>Schutzregeln</h3>
+          <p>Boards mit Freigabe „System“ und die festen Boards von Universal Resource Scheduling lassen sich weder löschen noch deaktivieren noch umbenennen. Die „Initial public view“ hat in jeder Umgebung eine andere ID und die Freigabe „Nur ich“; sie wird deshalb über ihren Namen in drei Sprachen erkannt und ist vor dem Löschen geschützt. Eine Kopie ist nie ein System-Board.</p>
+          <p>Das JSON der Einstellungen wird pfadgenau geändert und nie neu aufgebaut. Eine Vorlage, die das Board nicht setzt, bleibt geerbt und wird nicht als Kopie ins Board geschrieben, bis jemand das ausdrücklich will. Jedes Speichern zeigt vorher den Diff.</p>
+        </article>
+
+        <article class="panel" id="rechte">
+          <h3>Rechte und Grenzen</h3>
+          <p>Alles läuft mit dem Konto des angemeldeten Benutzers. Freigaben und Metadaten gehen über den Dataverse-Konnektor an einer Benutzer-Verbindung, bewusst nicht an einem Dienstkonto: Sonst könnte jeder Nutzer der App mit dessen Rechten beliebige Boards teilen. Besitzer ändern braucht das Recht „Zuweisen“ auf Schedule Board Settings. Im Power-Apps-Host laufen Fehler bis in die Oberfläche durch, es gibt keinen stillen Rückfall auf Beispieldaten, damit ein Schreibvorgang nie scheinbar gelingt.</p>
+          <p>Bewusst nicht enthalten: das Bearbeiten der Ressourcenabfrage selbst, sie ist nur lesbar; die Schedule-Assistant-Konfigurationen im Formular, nur über JSON; ein zentraler Verlauf, der liegt im Browser.</p>
+        </article>
+
+        <article class="panel" id="datenweg">
+          <h3>Datenweg</h3>
+          <p>Boards, Konfigurationen, Buchungs-Setups, Ansichten, Benutzer, Teams und Zeitzonen kommen über die generierten Datenquellen der Code App. Freigaben lesen über die Zugriffstabelle und schreiben über die Aktionen GrantAccess, ModifyAccess und RevokeAccess; Tabellen, Spalten und Beziehungen für die Feldauswahl kommen aus den Metadaten der Umgebung, je Sitzung zwischengespeichert. Ohne Metadaten bleiben die Felder Freitext.</p>
+          <p>Der Besitzerwechsel ist ein Update auf das Besitzer-Feld, die Web-API-Form von „Zuweisen“. Zugriffsteams können nichts besitzen und tauchen in der Suche nicht auf. Die Vorschau der Zellvorlage rendert ein eigener kleiner Handlebars-Interpreter, weil die Bibliothek mit dynamisch erzeugtem Code kompiliert; nachgebildet sind nur die Helfer aus den Microsoft-Beispielen, Unbekanntes wird gemeldet statt geraten.</p>
+        </article>
+
+        <article class="panel" id="bauweise">
+          <h3>Bauweise</h3>
+          <p>Die Oberfläche hängt an einer Service-Schnittstelle, nicht direkt an Dataverse. Ohne Verbindung läuft die App mit Beispieldaten im Speicher, was Demos und Entwicklung ohne Tenant möglich macht; ein Hinweis in der Kopfzeile zeigt den Modus. Die Oberfläche nutzt Fluent UI v9, dieselbe Bibliothek, auf der die Modern Controls von Power Apps aufbauen, und bricht ihre Spalten nach der verfügbaren Breite im Host um, nicht nach der Fensterbreite.</p>
+          <p>Einstellungsmodell, Schutzregeln, Filterlayout-XML, Abfrage-Analyse, Personensuche, Transferpaket, Vorlagen, Handlebars-Interpreter, Zeilen-Diff und Farben sind reine Funktionen mit Tests, getrennt vom Datenzugriff. Der Baukasten der Buchungskachel schreibt im Stil der vorhandenen Vorlage, damit im Diff nur die Änderung steht.</p>
+        </article>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<button class="toc-fab" id="toc-fab" type="button" aria-expanded="false" aria-controls="toc-shell">
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h8"/></svg>
+  Inhalt
+</button>
+<div class="toc-backdrop" id="toc-backdrop" hidden></div>
+
+<section id="kontakt" class="contact">
+  <div class="wrap">
+    <div>
+      <h2>Mehr als ein Team am Schedule Board?</h2>
+      <p>Wenn bei Ihnen Boards von Hand nachgebaut werden, zwei Boards sich unterschiedlich verhalten und niemand sagen kann, warum, oder ein Board von der Testumgebung nach Produktion soll, schreiben Sie mir kurz. Die App läuft im Tenant des Kunden, ohne Dienstkonto.</p>
+    </div>
+    <div class="card">
+      <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de<small>E-Mail, am zuverlässigsten</small></a>
+      <a href="tel:+491735274172">+49 173 5274172<small>Telefon</small></a>
+      <a href="/">Zurück zum Profil<small>Referenzen, Skills, Werdegang</small></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein bei Nürnberg</span>
+    <span><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+
+<script>
+// Inhaltsverzeichnis: aktiver Eintrag folgt der Scrollposition, offen ist immer
+// genau eine Gruppe. Ohne JavaScript stehen alle Eintraege ausgeklappt da.
+(function () {
+  var shell = document.getElementById('toc-shell');
+  var toc = document.getElementById('toc');
+  var fab = document.getElementById('toc-fab');
+  var backdrop = document.getElementById('toc-backdrop');
+  var close = document.getElementById('toc-close');
+  if (!shell || !toc || !fab || !backdrop || !close) return;
+  toc.classList.add('js');
+
+  var entries = [];
+  Array.prototype.forEach.call(toc.querySelectorAll('a[href^="#"]'), function (a) {
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if (el) entries.push({ link: a, el: el, group: a.closest('.toc-group') });
+  });
+  var groups = Array.prototype.slice.call(toc.querySelectorAll('.toc-group'));
+  var current = null;
+
+  function keepVisible(a) {
+    var box = toc.scrollHeight > toc.clientHeight + 2 ? toc : shell;
+    if (box.scrollHeight <= box.clientHeight + 2) return;
+    var ar = a.getBoundingClientRect(), br = box.getBoundingClientRect();
+    if (ar.top < br.top + 8) box.scrollTop -= br.top + 8 - ar.top;
+    else if (ar.bottom > br.bottom - 8) box.scrollTop += ar.bottom - br.bottom + 8;
+  }
+
+  function open(group) {
+    groups.forEach(function (g) { g.classList.toggle('open', g === group); });
+  }
+
+  function spy() {
+    if (!entries.length) return;
+    var active = entries[0];
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].el.getBoundingClientRect().top <= 120) active = entries[i];
+    }
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+      active = entries[entries.length - 1];
+    }
+    if (active === current) return;
+    current = active;
+    entries.forEach(function (e) { e.link.classList.remove('on'); e.link.removeAttribute('aria-current'); });
+    active.link.classList.add('on');
+    active.link.setAttribute('aria-current', 'location');
+    open(active.group);
+    keepVisible(active.link);
+  }
+
+  var pending = false;
+  function onScroll() {
+    // Die Seite scrollt nur, wenn ein Sprung stattgefunden hat: Panel zu.
+    if (shell.hasAttribute('data-open') && Math.abs(window.scrollY - openedAt) > 120) setOpen(false, false);
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(function () { pending = false; spy(); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  spy();
+
+  var openedAt = 0;
+  function focus(el) {
+    try { el.focus({ preventScroll: true }); } catch (err) { el.focus(); }
+  }
+  function setOpen(state, moveFocus) {
+    if (state) shell.setAttribute('data-open', ''); else shell.removeAttribute('data-open');
+    backdrop.hidden = !state;
+    fab.setAttribute('aria-expanded', state ? 'true' : 'false');
+    if (state) {
+      if (current) keepVisible(current.link);
+      focus(close);
+      openedAt = window.scrollY;
+    } else if (moveFocus !== false && shell.contains(document.activeElement)) {
+      focus(fab);
+    }
+  }
+  fab.addEventListener('click', function () { setOpen(fab.getAttribute('aria-expanded') !== 'true'); });
+  close.addEventListener('click', function () { setOpen(false); });
+  backdrop.addEventListener('click', function () { setOpen(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  // Drei Wege zu, damit das Panel nach einem Sprung nie offen stehen bleibt:
+  // der Klick selbst, der Hash-Wechsel und das Scrollen zum Ziel.
+  shell.addEventListener('click', function (e) {
+    var node = e.target;
+    if (node && node.nodeType === 3) node = node.parentNode;
+    var a = node && node.closest ? node.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var g = a.closest('.toc-group');
+    if (g) open(g);
+    setOpen(false, false);
+  });
+  window.addEventListener('hashchange', function () { setOpen(false, false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 1100) setOpen(false); });
+})();
+</script>
+</body>
+</html>

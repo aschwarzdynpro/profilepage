@@ -29,6 +29,12 @@ const CARDS = [
     sub: 'Fehlende Übersetzungen von Dataverse-Beschriftungen sehen, in einer Matrix oder per CSV füllen und über den Standard-Import zurückspielen.',
     tag: 'Code App',
   }],
+  ['og-boards.png', {
+    kicker: 'Eigenes Produkt',
+    title: 'Schedule Board Manager',
+    sub: 'Schedule-Board-Tabs in Field Service und Project Operations kopieren, im Formular bearbeiten, mit Live-Vorschau gestalten, vergleichen und in andere Umgebungen übertragen.',
+    tag: 'Code App',
+  }],
   // Englische Fassung unter /en/
   ['og-en.png', {
     kicker: 'Freelance · Nuremberg and DACH region',
@@ -58,6 +64,12 @@ const CARDS = [
     kicker: 'Own product',
     title: 'Translation Studio',
     sub: 'See missing translations of Dataverse labels, fill them in a matrix or via CSV and import them back through the standard import.',
+    tag: 'Code App', who: 'Freelancer, Nuremberg',
+  }],
+  ['og-en-boards.png', {
+    kicker: 'Own product',
+    title: 'Schedule Board Manager',
+    sub: 'Copy schedule board tabs in Field Service and Project Operations, edit them in a form, design them with a live preview, compare them and transfer them to other environments.',
     tag: 'Code App', who: 'Freelancer, Nuremberg',
   }],
 ];

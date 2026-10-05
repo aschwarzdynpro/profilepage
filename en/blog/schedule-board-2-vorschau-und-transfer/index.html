@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="alternate" hreflang="de" href="https://dynamicspro.de/blog/schedule-board-2-vorschau-und-transfer/">
+<link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/blog/schedule-board-2-vorschau-und-transfer/">
+<link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/blog/schedule-board-2-vorschau-und-transfer/">
+<title>What the dispatcher sees, and how a board gets to production · DynamicsPro</title>
+<meta name="description" content="Booking tile, resource cell and colors of a schedule board used to be visible only after saving, in the board. Part two: a designer with live preview, a builder instead of HTML, and an export that turns identifiers back into names.">
+<link rel="canonical" href="https://dynamicspro.de/en/blog/schedule-board-2-vorschau-und-transfer/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#fbfaf7">
+<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../../assets/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="DynamicsPro Blog" href="https://dynamicspro.de/en/blog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="DynamicsPro">
+<meta property="og:url" content="https://dynamicspro.de/en/blog/schedule-board-2-vorschau-und-transfer/">
+<meta property="og:title" content="What the dispatcher sees, and how a board gets to production">
+<meta property="og:description" content="Booking tile, resource cell and colors of a schedule board used to be visible only after saving, in the board. Part two: a designer with live preview, a builder instead of HTML, and an export that turns identifiers back into names.">
+<meta property="og:image" content="https://dynamicspro.de/assets/og-en-blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-10-02">
+<meta property="article:author" content="Andy Schwarz">
+<link rel="preload" href="../../../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../assets/fonts/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Selbst gehostet (SIL Open Font License 1.1), kein Drittanbieter-Request */
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../../assets/fonts/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"Manrope";font-style:normal;font-weight:400 800;font-display:swap;src:url(../../../assets/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../../assets/fonts/plex-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(../../../assets/fonts/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../../../assets/fonts/plex-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url(../../../assets/fonts/plex-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+  :root{
+    --paper:#fbfaf7;--paper-2:#f1efe9;--rule:#d8d4cc;--rule-2:#bdb7ac;
+    --ink:#1a1a1a;--ink-2:#444;--ink-3:#7a766f;--red:#b5342b;--red-soft:rgba(181,52,43,.08);
+    --display:"Manrope",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:var(--body);font-size:18px;line-height:1.7;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing:-0.025em}
+  em{font-style:normal;font-weight:600;color:var(--ink)}
+  .wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+  .kicker{font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+
+  /* Impressum-Leiste */
+  .nav{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--ink)}
+  .nav .wrap{display:flex;align-items:center;gap:1.4rem;height:60px}
+  .mark{font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:-0.02em;display:inline-flex;align-items:center;gap:.5rem;margin-right:auto}
+  .mark svg{width:20px;height:20px}
+  .mark small{font-family:var(--body);font-weight:400;font-size:.8rem;color:var(--ink-3);margin-left:.6rem;letter-spacing:.08em;text-transform:uppercase}
+  .nav .back,.nav .cta{font-family:var(--display);font-weight:700;font-size:.85rem}
+  .nav .back{color:var(--ink-2)}
+  .nav .back:hover{color:var(--ink)}
+  .nav .cta{color:var(--paper);background:var(--ink);padding:.45rem .95rem}
+  .nav .cta:hover{background:var(--red)}
+  @media (max-width:640px){.nav .back,.mark small{display:none}}
+
+  /* Beitragskopf */
+  .head{padding:3.2rem 0 2.4rem;border-bottom:3px double var(--ink)}
+  .head h1{font-size:clamp(2.3rem,6vw,4.4rem);max-width:18ch;margin-top:1rem}
+  .head .deck{margin-top:1.4rem;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.45;color:var(--ink-2);max-width:48ch;font-weight:300}
+  .byline{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin-top:2rem;padding-top:.9rem;border-top:1px solid var(--ink);font-size:.9rem;color:var(--ink-2)}
+  .byline b{font-family:var(--display);font-weight:700;color:var(--ink)}
+
+  /* Text */
+  main{padding:3rem 0 4rem}
+  .post{width:min(68ch,100%);margin-inline:auto}
+  .post>p{margin-top:1.2rem;color:var(--ink-2)}
+  .post>p:first-child{margin-top:0}
+  .post>p:first-child::first-letter{font-family:var(--display);font-weight:800;font-size:3.9em;line-height:.8;float:left;padding:.08em .14em 0 0;color:var(--ink)}
+  .post h2{counter-increment:sec;margin-top:3.4rem;font-size:1.65rem;max-width:24ch}
+  .post h2::before{content:counter(sec,decimal-leading-zero);display:block;font-size:.85rem;letter-spacing:.14em;color:var(--red);margin-bottom:.6rem;font-weight:700}
+  .post h2.rev::before{content:"Addendum"}
+  .post h2.rev{padding-top:1.4rem;border-top:1px solid var(--ink)}
+  .post h2+p{margin-top:1rem}
+  .post{counter-reset:sec}
+  .post ul{margin:1rem 0 0 1.2rem;color:var(--ink-2)}
+  .post code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.86em;background:var(--paper-2);padding:.05em .4em;border-radius:2px;color:var(--ink)}
+  .post a{box-shadow:inset 0 -1px 0 var(--red);font-weight:500}
+  .post a:hover{background:var(--red-soft)}
+  .post .aside{margin:1.8rem 0 0;padding:.2rem 0 .2rem 1.3rem;border-left:3px solid var(--red);color:var(--ink-2);font-size:1rem}
+  .post .aside p+p{margin-top:.7rem}
+  .pull{margin:2.8rem 0 2.4rem;padding:1.6rem 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;letter-spacing:-0.02em;color:var(--ink);max-width:28ch}
+  .pull::before{content:"\201C";color:var(--red)}
+  .pull::after{content:"\201D";color:var(--red)}
+  /* Abbildungen breiter als der Text */
+  .shot{margin:2.2rem 0 0;width:min(100vw - 2.5rem,900px);margin-left:calc(50% - min(100vw - 2.5rem,900px)/2)}
+  .shot img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+  .shot figcaption{margin-top:.7rem;font-size:.86rem;color:var(--ink-3);line-height:1.5;border-left:2px solid var(--red);padding-left:.8rem;max-width:68ch}
+
+  /* Serie */
+  .series{width:min(68ch,100%);margin:3.6rem auto 0;border-top:3px double var(--ink);padding-top:1.2rem}
+  .series ol{list-style:none;margin-top:.8rem}
+  .series li{border-bottom:1px solid var(--rule);padding:.7rem 0}
+  .series li a{display:grid;grid-template-columns:2.8rem 1fr;gap:.6rem;align-items:baseline}
+  .series li a i{font-style:normal;font-family:var(--display);font-weight:800;color:var(--red);font-size:.9rem;letter-spacing:.1em}
+  .series li a b{font-family:var(--display);font-weight:700}
+  .series li a:hover b{box-shadow:inset 0 -2px 0 var(--red)}
+  .series li.now a b{color:var(--ink-3)}
+  .series li.now a b::after{content:" · you are reading this one";font-family:var(--body);font-weight:400;font-size:.85rem}
+
+  /* Übersicht */
+  .mast{padding:3.2rem 0 1.6rem;border-bottom:3px double var(--ink)}
+  .mast h1{font-size:clamp(3rem,9vw,6.5rem);letter-spacing:-0.04em;line-height:.95}
+  .mast .deck{margin-top:1.2rem;font-size:1.2rem;color:var(--ink-2);max-width:60ch;font-weight:300}
+  .lead{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;padding:2.4rem 0;border-bottom:1px solid var(--ink);align-items:center}
+  .lead h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-top:.6rem;max-width:20ch}
+  .lead h2 a:hover{box-shadow:inset 0 -3px 0 var(--red)}
+  .lead p{margin-top:1rem;color:var(--ink-2)}
+  .lead img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+  .lead .meta{margin-top:1rem;font-size:.88rem;color:var(--ink-3)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem}
+  .story{padding:1.6rem 0;border-bottom:1px solid var(--rule)}
+  .story h2{font-size:1.45rem;margin-top:.5rem;max-width:22ch}
+  .story h2 a:hover{box-shadow:inset 0 -2px 0 var(--red)}
+  .story p{margin-top:.7rem;color:var(--ink-2);font-size:.98rem}
+  .story .meta{margin-top:.8rem;font-size:.86rem;color:var(--ink-3)}
+  .note{padding:1.6rem 0 0;font-size:.95rem;color:var(--ink-2);max-width:68ch}
+  .note a{box-shadow:inset 0 -1px 0 var(--red)}
+  @media (max-width:820px){.lead{grid-template-columns:1fr;gap:1.4rem}.grid{grid-template-columns:1fr}}
+
+  .contact{border-top:3px double var(--ink);margin-top:1rem}
+  .contact .wrap{padding:3rem 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:3rem;align-items:start}
+  .contact h2{font-size:1.9rem;max-width:20ch;margin-top:.6rem}
+  .contact p{margin-top:.9rem;color:var(--ink-2);max-width:46ch}
+  .contact .card a{display:block;padding:.75rem 0;border-bottom:1px solid var(--rule);font-family:var(--display);font-weight:700}
+  .contact .card a:hover{color:var(--red)}
+  .contact .card small{display:block;font-family:var(--body);font-weight:400;font-size:.85rem;color:var(--ink-3)}
+  @media (max-width:820px){.contact .wrap{grid-template-columns:1fr;gap:1.6rem}}
+  footer{padding:1.6rem 0 2.6rem;font-size:.85rem;color:var(--ink-3)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a:hover{color:var(--ink)}
+
+  /* Sprachumschalter in der Kopfleiste */
+  .nav .wrap{gap:1rem}
+  .nav .mark{margin-right:auto}
+  .nav a.lang,.nav li.lang a{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.12em;line-height:1;color:var(--ink);border:1px solid var(--ink);padding:.38rem .5rem;white-space:nowrap}
+  .nav a.lang:hover,.nav li.lang a:hover{background:var(--ink);color:var(--bg,#fbfaf7)}
+  @media (max-width:900px){.nav .main li.lang{display:list-item}}
+</style>
+</head>
+
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="/en/" aria-label="DynamicsPro, to the home page">
+      <svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" fill="#b5342b"/><rect x="15" y="3" width="8" height="8" stroke="#1a1a1a" stroke-width="1.6"/><rect x="3" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.6"/><rect x="15" y="15" width="8" height="8" stroke="#1a1a1a" stroke-width="1.6"/></svg>
+      DynamicsPro<small>Workshop notes</small>
+    </a>
+    <a class="back" href="../">All posts</a>
+    <a class="lang" href="/blog/schedule-board-2-vorschau-und-transfer/?lang=de" hreflang="de" lang="de" aria-label="Deutsche Fassung">DE</a>
+    <a class="cta" href="#kontakt">Contact</a>
+  </div>
+</header>
+
+<section class="head">
+  <div class="wrap">
+    <span class="kicker">Schedule Board Manager · Part 2 of 2</span>
+    <h1>What the dispatcher sees, and how a board gets to production</h1>
+    <p class="deck">Booking tile, resource cell and colors of a schedule board used to be visible only after saving, in the board. Part two: a designer with live preview, a builder instead of HTML, and an export that turns identifiers back into names.</p>
+    <div class="byline"><span>By <b>Andy Schwarz</b></span><span>October 2, 2026</span><span>7 min read</span></div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+    <article class="post">
+<p>The booking template of a schedule board is a piece of HTML with placeholders in curly braces. The resource cell is a Handlebars template in a configuration record of its own. The tooltips are identifiers of views. Until October 1 all of that could be edited in the app as free text, and whether the result looked good in the board only showed after saving, in the board, with real bookings. For a template that four boards share, that is not a workflow, that is an experiment on the dispatch team.</p>
+<figure class="shot">
+  <img src="../../../assets/screenshots/sbm-farben.webp" width="1600" height="948" loading="lazy" decoding="async" alt="Screenshot: The Appearance tab with the colors of a board. On the left the color fields for utilization, working hours and schedule assistant, on the right the preview as a day view with percentages per resource and day, as an hourly view with bookings and as the availability bar of the schedule assistant.">
+  <figcaption>The Appearance tab with the colors of a board: day view, hourly view and schedule assistant, colored from the board's values. Sample data, invented names.</figcaption>
+</figure>
+
+<h2>A preview that does not lie</h2>
+<p>On the evening of October 1 the “Appearance” tab arrived. It shows every visible setting of a board next to a preview: the booking tile per schedule type in an hourly view with duration, status color and row height, the resource cell in four states and in the schedule assistant's view, the tooltips from the columns of the configured views, the colors, the booking alert. Fields for the tile are picked by click across the booking's relationships, and the app assembles the path from the schema names the way the template expects it. The designer says whether a template belongs to the board, is inherited from the default board or whether the product default applies, and it checks for JavaScript and wrong placeholders.</p>
+<p>Two decisions made the preview more expensive than it had to be. Template HTML from Dataverse runs in a frame with an empty sandbox attribute, no scripts, no access to the app, no CSS leaking out. And the cell template is rendered by a small Handlebars interpreter of my own instead of the library, because the library compiles its templates with dynamically generated code, and I do not want that in an app that displays other people's templates. Only the helpers from Microsoft's samples are reproduced. Everything else is reported rather than guessed. The preview approximates the board, no more: the board's CSS is not available outside the board, and I checked the fidelity against Microsoft's samples, not against the customer's templates.</p>
+
+<blockquote class="pull">A board consists almost entirely of identifiers, and only some of them are the same in every environment.</blockquote>
+<h2>Four hundred pixels missing in the host</h2>
+<p>Locally the tab looked fine. In the test environment, inside the Power Apps host, it was squeezed: template editor without line wrapping, preview with scrollbars, a cut-off color preview. The breakpoints hung on the window width, and in the host the frame and the board list take away around four hundred pixels. So two columns stayed, although the space was not there. Since late evening on October 1 the breakpoints follow the width of the appearance area itself, through container queries, and below around 1500 pixels code, preview and field list sit one below the other. The same day the UI had moved to Fluent UI v9, the same library the Power Apps modern controls are built on, because the native browser controls looked dated next to Power Apps. One trap from that stays documented: the Fluent provider copies its class onto every popup, and whoever hangs their base styles on that class gets an empty overlay over the whole page.</p>
+<p>On October 2 the builder arrived. The booking template had been a large, mostly empty text field with raw HTML. But the real templates almost always have the same shape: a frame, rows with an icon or text and a bold field, separated by line breaks. That can be edited without HTML. One row per tile row, fields as chips with display names from the metadata, text in small input fields, bold per part by click. The serializer writes back in the style of the existing template, with its frame attributes, its spelling of the bold tag and the line break, so that the diff only shows the change. Templates built differently open as HTML. I checked the builder against all templates from the customer's test environment without loss; the test for that lives outside the repo because it contains the templates.</p>
+<figure class="shot">
+  <img src="../../../assets/screenshots/sbm-import.webp" width="1600" height="948" loading="lazy" decoding="async" alt="Screenshot: The import of a board from a file. At the top the chosen file and the board in it, below the target as a new board with name and share type, then the table of configurations with the name in the file, the counterpart in this environment and the chosen action.">
+  <figcaption>The import of a board from a file: every configuration gets a counterpart in the target environment or is created, before anything is written.</figcaption>
+</figure>
+
+<h2>Turning identifiers back into names</h2>
+<p>The board is supposed to go from the test environment to production. The first export had only written the board's JSON, and that is useless: a board consists almost entirely of identifiers, and only some of them are the same in every environment. Views from solutions and the standard configurations of Universal Resource Scheduling carry the same identifier everywhere, the custom configurations, the booking setups and the records in the saved filters do not. Since October 1 the export writes a package: the board with all columns, every referenced configuration with its content, plus for every identifier what you recognize it by in another environment, name and table of the view, table of the schedule type, name of the time zone, table and primary name of the record.</p>
+<p>The import maps every identifier to the target environment, first by identifier, then by name, and shows every row for changing. Configurations are reused, created, overwritten with the file's content or left empty, with a comparison of the content and a warning about which boards still use the record. What has no counterpart drops out cleanly: a view field is emptied, a requirement panel without a view drops out of the settings entirely, instead of staying behind as a dead identifier. The target is a new board or an existing one that gets replaced, with the same diff as on save. Not in the package are shares, owner and history; user identifiers differ per environment, and mapping them via email addresses is on the list.</p>
+<p>No board has reached production so far. For that the app has to run there, with its own configuration, and it only does so after an explicit decision by the customer. Since October 2 the app has a help with fifteen sections, as a panel over the app, so that an unsaved draft is not lost while looking something up. Most of it explains what the UI does not show: inheritance from the default board, shared configurations, filter fields without effect. All features are on the <a href="../../schedule-board-manager.html">product page</a>.</p>
+<section class="series" aria-label="All parts of the series">
+  <span class="kicker">Schedule Board Manager, all parts</span>
+  <ol><li><a href="../schedule-board-1-kopie-und-filter/"><i>01</i><b>The copy that loses three references</b></a></li><li class="now"><a href="../schedule-board-2-vorschau-und-transfer/"><i>02</i><b>What the dispatcher sees, and how a board gets to production</b></a></li></ol>
+</section>
+    </article>
+
+  </div>
+</main>
+
+<section id="kontakt" class="contact">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Contact</span>
+      <h2>More than one language in your environment?</h2>
+      <p>If nobody can say how many of your labels are actually translated, send me a short message. A first export of your environment shows where you stand.</p>
+    </div>
+    <div class="card">
+      <a href="mailto:aschwarz@dynamicspro.de">aschwarz@dynamicspro.de<small>Email, most reliable</small></a>
+      <a href="tel:+491735274172">+49 173 5274172<small>Phone</small></a>
+      <a href="../../">Back to the profile<small>Case studies, skills, career</small></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein near Nuremberg</span>
+    <span><a href="../../impressum.html">Legal notice</a> &nbsp;&middot;&nbsp; <a href="../../datenschutz.html">Privacy policy</a></span>
+  </div>
+</footer>
+</body>
+</html>

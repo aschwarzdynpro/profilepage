@@ -55,6 +55,7 @@ PAGES = [
     ('index.html', '/'),
     ('solution-admin-console.html', '/solution-admin-console.html'),
     ('translation-studio.html', '/translation-studio.html'),
+    ('schedule-board-manager.html', '/schedule-board-manager.html'),
     ('health-check/index.html', '/health-check/'),
     ('impressum.html', '/impressum.html'),
     ('datenschutz.html', '/datenschutz.html'),

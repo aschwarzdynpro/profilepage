@@ -21,6 +21,20 @@
     <description>Dataverse pflegt jede Beschriftung je Sprache. Fehlt eine Übersetzung, sehen französische Anwender englische Feldnamen. Der Standardweg, das zu beheben, ist ein Export nach Excel mit tausenden Zeilen und ohne Filter auf „fehlt&quot;. Das Translation Studio liest denselben Export, zeigt nur die Lücken und schreibt ihn gefüllt zurück.</description>
   </item>
   <item>
+    <title>Was der Disponent sieht, und wie ein Board nach Produktion kommt</title>
+    <link>https://dynamicspro.de/blog/schedule-board-2-vorschau-und-transfer/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/blog/schedule-board-2-vorschau-und-transfer/</guid>
+    <pubDate>Fri, 02 Oct 2026 08:00:00 +0200</pubDate>
+    <description>Buchungskachel, Ressourcenzelle und Farben eines Schedule Boards sah man bisher erst nach dem Speichern im Board. Der zweite Teil: ein Designer mit Live-Vorschau, ein Baukasten statt HTML, und ein Export, der aus Kennungen wieder Namen macht.</description>
+  </item>
+  <item>
+    <title>Die Kopie, der drei Verweise fehlen</title>
+    <link>https://dynamicspro.de/blog/schedule-board-1-kopie-und-filter/</link>
+    <guid isPermaLink="true">https://dynamicspro.de/blog/schedule-board-1-kopie-und-filter/</guid>
+    <pubDate>Thu, 01 Oct 2026 08:00:00 +0200</pubDate>
+    <description>Ein Tab im Schedule Board ist ein Datensatz mit einem JSON und drei Verweisen. Das Werkzeug von Microsoft kopiert ihn und verliert die Verweise. Der erste Teil zum Schedule Board Manager: Kopieren, Bearbeiten ohne JSON, und warum ein Filterfeld nichts filtert.</description>
+  </item>
+  <item>
     <title>Konfigurationsdaten bewegen, und aus dem Werkzeug ein Produkt machen</title>
     <link>https://dynamicspro.de/blog/admin-console-4-datentransfer/</link>
     <guid isPermaLink="true">https://dynamicspro.de/blog/admin-console-4-datentransfer/</guid>

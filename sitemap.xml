@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dynamicspro.de/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -56,6 +56,21 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://dynamicspro.de/blog/schedule-board-1-kopie-und-filter/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dynamicspro.de/blog/schedule-board-2-vorschau-und-transfer/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dynamicspro.de/schedule-board-manager.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://dynamicspro.de/impressum.html</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>yearly</changefreq>
@@ -67,7 +82,7 @@
   </url>
   <url>
     <loc>https://dynamicspro.de/en/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -117,6 +132,21 @@
   </url>
   <url>
     <loc>https://dynamicspro.de/en/blog/translation-studio-designer/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dynamicspro.de/en/blog/schedule-board-1-kopie-und-filter/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dynamicspro.de/en/blog/schedule-board-2-vorschau-und-transfer/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dynamicspro.de/en/schedule-board-manager.html</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
   </url>
