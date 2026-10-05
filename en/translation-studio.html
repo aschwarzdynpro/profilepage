@@ -271,6 +271,7 @@
             <a class="toc-head" href="#studio">Studio</a>
             <ul class="toc-sub">
               <li><a href="#scope">Solution and languages</a></li>
+              <li><a href="#designer">Designer</a></li>
               <li><a href="#matrix">Gap matrix</a></li>
               <li><a href="#filter">Filters and metrics</a></li>
               <li><a href="#glossar">Glossary and consistency</a></li>
@@ -305,13 +306,13 @@
       <p>Dataverse keeps every label once per installed language: the display name of a table, every column, every choice value, every form and view name. If a translation is missing, French users see English field names. The standard way to fix that has been the same for years: export the translations, get a zip file containing an Excel 2003 XML file with thousands of rows, search it without any filter for whatever is missing, import, publish.</p>
       <p>In practice, that means nobody sees what is missing and nobody keeps it up to date. Every release adds new columns, and the gap grows. Translation Studio turns the process around. It reads the same export, shows only the gaps, lets you fill them in place and writes the same file back with your changes. It changes nothing in the metadata by any other route.</p>
       <p>Only metadata is involved, no business data. The screenshots on this page show the app with its built-in sample data, a fictional fleet management scenario in English, German and French, not customer data.</p>
-      <p>The app is fully built and runs end to end with sample data, including a simulated import. The first deployment in a customer environment with three languages is coming up.</p>
+      <p>The app is fully built, runs end to end with sample data, including a simulated import, and has its first runs against a development environment with three languages behind it, including a real import. Use by the business department is coming up.</p>
     </section>
 
     <section class="group" id="studio">
       <header>
         <h2>Studio</h2>
-        <p>The workspace: load a solution, see the gaps, fill them, play them back.</p>
+        <p>The workspace: load a solution, see and fill the gaps in the designer or in the table, play them back.</p>
       </header>
       <div class="feats">
 
@@ -327,9 +328,24 @@
           <ul><li>CSV export and bulk actions apply to the filtered rows</li></ul>
         </article>
 
+        <article class="feat wide" id="designer">
+          <h3>Designer: translate where users look</h3>
+          <p>The designer is the default view after loading, the table is one switch away. On the left the components of the solution: apps, tables with their forms and views, dashboards, each entry with a ring for the share translated and a number for what is open, plus a search on Ctrl+K. In the middle the selected component, the way it looks in the app: a table's profile with names, forms and views including their type, columns and choice values per column; a form from its <code>formxml</code> with header, tabs, sections and fields; a view from its <code>layoutxml</code> with the column headers; a model-driven app from its sitemap with areas and groups. On the right, if you want them, the <em>Details</em>: the selected label in all target languages side by side, with glossary suggestion, “apply everywhere”, “correct as is” and undo. Both side columns can be hidden and resized, and the browser remembers that.</p>
+          <p>Editing happens right on the canvas: click, type, Enter. Tab applies and jumps to the next gap, across form tabs and app areas too, F8 jumps without applying, Ctrl+Enter marks “correct as is” and moves on. A light bulb sits on every gap the glossary has a suggestion for, and the head of the page applies all suggestions on the page at once. A breadcrumb leads from the overview through the table to the form and back, Alt+Up goes one level up. Texts the export does not contain, such as sitemap titles and custom form texts, are shown dashed red and read-only. All changes from designer and table end up in one list and go out together with <em>Apply</em>.</p>
+          <ul><li>Forms, views and sitemaps live from the environment</li><li>Tab from gap to gap</li><li>The same change list as the table</li></ul>
+          <figure class="shot">
+            <img src="../assets/screenshots/ts-designer-formular.webp" width="1600" height="947" loading="lazy" decoding="async" alt="Screenshot: The designer. On the left the components of the solution with progress rings, in the middle the main form of a table with tabs, sections and fields, one missing field opened for typing, on the right the details with the label in English, German and French and a glossary suggestion.">
+            <figcaption>The main form of a table: tabs with the number of open labels, a missing field opened for typing, on the right the same label in all languages with the suggestion from the glossary.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="../assets/screenshots/ts-designer-app.webp" width="1600" height="947" loading="lazy" decoding="async" alt="Screenshot: A model-driven app in the designer, header with the app name, navigation with areas and groups from the sitemap. The app's subtitle is underlined in dashed red, above it the note that custom sitemap titles are not part of the translation export.">
+            <figcaption>A model-driven app with its navigation from the sitemap. The app's subtitle is dashed red: it is not part of the translation export, the designer only shows it.</figcaption>
+          </figure>
+        </article>
+
         <article class="feat wide" id="matrix">
           <h3>Gap matrix</h3>
-          <p>Each row is one label: the type, the component with table and name where the metadata can resolve them, the affected column such as display name, description or plural name, the base language text as read-only, and one editable cell per target language. Each cell has one of four states. <em>Missing</em> when the target language is empty. <em>Probably untranslated</em> when the text is identical to the base language. That is a guess, since “Status” is German too, so you can mark the cell as correct, and the mark is kept per solution. <em>Changed</em> as long as an edit has not been imported yet, with undo. And <em>ok</em>.</p>
+          <p>The table view, one switch away from the designer. Each row is one label: the type, the component with table and name where the metadata can resolve them, the affected column such as display name, description or plural name, the base language text as read-only, and one editable cell per target language. Each cell has one of four states. <em>Missing</em> when the target language is empty. <em>Probably untranslated</em> when the text is identical to the base language. That is a guess, since “Status” is German too, so you can mark the cell as correct, and the mark is kept per solution. <em>Changed</em> as long as an edit has not been imported yet, with undo. And <em>ok</em>.</p>
           <p>The matrix renders only the visible rows, so it copes with tens of thousands of labels. Enter commits, Esc discards. It rejects texts over 500 characters because the import would fail on them, and an existing translation cannot be cleared, because it is not documented whether an empty cell means “delete” or “unchanged” on import.</p>
           <ul><li>Four color-coded states</li><li>“Correct as is” mark per solution</li><li>Custom windowing, no grid library</li></ul>
           <figure class="shot">
@@ -412,13 +428,13 @@
         <article class="panel" id="rechte">
           <h3>Permissions and limits</h3>
           <p>Everything runs under the signed-in user's account, not a service account. Export and import require the privilege to export and import customizations, usually through the System Customizer role. If the import privilege is missing, the app stays in read-only mode and says so in plain words; the gaps can then be handed as CSV to someone who has the permissions.</p>
-          <p>Deliberately not included: machine translation, because it requires a data protection decision by the customer, editing the base language, and texts in canvas apps, flows and the sitemap, which the Dataverse export does not cover.</p>
+          <p>Deliberately not included: machine translation, because it requires a data protection decision by the customer, editing the base language, and texts in canvas apps, flows and the sitemap, which the Dataverse export does not cover; the designer shows sitemap titles but does not write them.</p>
         </article>
 
         <article class="panel" id="datenweg">
           <h3>Data path</h3>
           <p>The Dataverse connector of a code app can read tables and call actions, but it cannot write metadata. That is why everything goes through the native translation export and import, one action per direction, plus publish. Progress comes from the import job table. For each action the app knows several routes and remembers the first one that works.</p>
-          <p>For import and publish it tries a second route only if the first one demonstrably does not exist, and never after a timeout, when the import might already be running on the server. Nothing gets imported twice. The file itself is Excel 2003 XML inside a zip file; a custom scanner handles sparse rows, merged cells and formatted text.</p>
+          <p>For import and publish it tries a second route only if the first one demonstrably does not exist, and never after a timeout, when the import might already be running on the server. Nothing gets imported twice. The file itself is Excel 2003 XML inside a zip file; a custom scanner handles sparse rows, merged cells and formatted text. Forms, views and sitemaps are read live through the connector by the designer, and choice values per column through metadata reads that the app registers itself as a native action, just like the export.</p>
         </article>
 
         <article class="panel" id="bauweise">

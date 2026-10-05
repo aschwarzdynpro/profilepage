@@ -88,7 +88,8 @@ Karten mit Screenshot müssen `feat wide` sein, in der halben Spalte ist das Bil
 ## Produktseite Translation Studio
 `translation-studio.html` beschreibt die zweite Code App nach demselben Muster wie die
 Konsolenseite (Hero mit Faktenleiste, Inhaltsverzeichnis, Gruppen aus `feat`-Karten, Panels
-„Quer durch die App", Kontakt). Quelle ist `CodeApps/apps/translation-studio/README.md`
+„Quer durch die App", Kontakt). Der Designer (Standardansicht seit 03.10.) ist eine `feat wide`-Karte
+vor der Matrix mit den beiden Screenshots `ts-designer-*.webp`. Quelle ist `CodeApps/apps/translation-studio/README.md`
 und die In-App-Hilfe `src/help/helpContent.ts` im Repo `aschwarzdynpro/CodeApps`; bei
 Änderungen an der App dort abgleichen. Verlinkt ist die Seite aus der Werkzeuge-Karte
 der Startseite. **Keine Referenzkarte und keine Mandatszeile**, solange die App nicht
@@ -177,7 +178,7 @@ Kopie von CSS und Skript.
 - `solution-admin-console.html`: mitlaufende Spalte links mit allen 27 Sprungzielen,
   offen ist immer genau eine Gruppe. Unter 1100px Panel über den Knopf „Inhalt",
   dort stehen alle Gruppen offen.
-- `translation-studio.html`: dieselbe Spalte mit 18 Sprungzielen in fünf Gruppen
+- `translation-studio.html`: dieselbe Spalte mit 19 Sprungzielen in fünf Gruppen
   (Wofür, Studio, Weitere Bereiche, Quer durch die App, Kontakt), CSS und Skript sind
   eine Kopie der Konsolenseite.
 - Angebotsseiten (`health-check/index.html` und was nach dem Muster folgt): **kein Panel

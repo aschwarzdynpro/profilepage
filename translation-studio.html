@@ -283,6 +283,7 @@
             <a class="toc-head" href="#studio">Studio</a>
             <ul class="toc-sub">
               <li><a href="#scope">Solution und Sprachen</a></li>
+              <li><a href="#designer">Designer</a></li>
               <li><a href="#matrix">Lückenmatrix</a></li>
               <li><a href="#filter">Filter und Kennzahlen</a></li>
               <li><a href="#glossar">Glossar und Konsistenz</a></li>
@@ -317,13 +318,13 @@
       <p>Dataverse pflegt jede Beschriftung je installierter Sprache: den Anzeigenamen einer Tabelle, jede Spalte, jeden Auswahlwert, jeden Formular- und Ansichtsnamen. Fehlt eine Übersetzung, sehen französische Anwender englische Feldnamen. Der Standardweg, das zu beheben, ist seit Jahren derselbe: Übersetzungen exportieren, eine Zip-Datei mit einer Excel-2003-XML-Datei von tausenden Zeilen bekommen, darin ohne Filter nach dem suchen, was fehlt, importieren, veröffentlichen.</p>
       <p>In der Praxis heißt das: Niemand sieht, was fehlt, und niemand pflegt es laufend. Mit jedem Release kommen neue Spalten dazu, die Lücke wächst. Das Translation Studio dreht den Weg um. Es liest denselben Export, zeigt nur die Lücken, lässt sie an Ort und Stelle füllen und schreibt dieselbe Datei mit den Änderungen zurück. An diesem Weg vorbei ändert es nichts an den Metadaten.</p>
       <p>Im Spiel sind ausschließlich Metadaten, keine Geschäftsdaten. Die Abbildungen auf dieser Seite zeigen die App mit den eingebauten Beispieldaten, einem fiktiven Fuhrpark-Szenario in Englisch, Deutsch und Französisch, nicht mit Kundendaten.</p>
-      <p>Die App ist fertig gebaut und läuft vollständig mit Beispieldaten, einschließlich eines simulierten Imports. Der erste Einsatz in einer Kundenumgebung mit drei Sprachen steht an.</p>
+      <p>Die App ist fertig gebaut, läuft vollständig mit Beispieldaten, einschließlich eines simulierten Imports, und hat die ersten Läufe gegen eine Entwicklungsumgebung mit drei Sprachen hinter sich, einschließlich eines echten Imports. Der Einsatz durch die Fachabteilung steht an.</p>
     </section>
 
     <section class="group" id="studio">
       <header>
         <h2>Studio</h2>
-        <p>Der Arbeitsbereich: Solution laden, Lücken sehen, füllen, zurückspielen.</p>
+        <p>Der Arbeitsbereich: Solution laden, Lücken im Designer oder in der Tabelle sehen und füllen, zurückspielen.</p>
       </header>
       <div class="feats">
 
@@ -339,9 +340,24 @@
           <ul><li>CSV-Export und Bulk-Aktionen wirken auf die gefilterten Zeilen</li></ul>
         </article>
 
+        <article class="feat wide" id="designer">
+          <h3>Designer: Übersetzen, wo die Nutzer hinsehen</h3>
+          <p>Der Designer ist die Standardansicht nach dem Laden, die Tabelle liegt einen Umschalter weiter. Links die Komponenten der Solution: Apps, Tabellen mit ihren Formularen und Ansichten, Dashboards, je Eintrag ein Ring für den Anteil übersetzt und eine Zahl für das, was offen ist, dazu eine Suche über Strg+K. In der Mitte die gewählte Komponente, so wie sie in der App aussieht: der Steckbrief einer Tabelle mit Namen, Formularen und Ansichten samt Typ, Spalten und Auswahlwerten je Spalte; ein Formular aus seinem <code>formxml</code> mit Kopfzeile, Registerkarten, Abschnitten und Feldern; eine Ansicht aus ihrem <code>layoutxml</code> mit den Spaltenköpfen; eine Model-driven App aus ihrer Sitemap mit Bereichen und Gruppen. Rechts auf Wunsch die <em>Details</em>: die gewählte Beschriftung in allen Zielsprachen nebeneinander, mit Glossar-Vorschlag, „überall übernehmen“, „korrekt so“ und Rücknahme. Beide Spalten lassen sich ausblenden und in der Breite ziehen, der Browser merkt sich das.</p>
+          <p>Bearbeitet wird direkt im Canvas: anklicken, tippen, Enter. Tab übernimmt und springt zur nächsten Lücke, auch über Registerkarten und App-Bereiche hinweg, F8 springt ohne zu übernehmen, Strg+Enter markiert „korrekt so“ und geht weiter. Eine Glühbirne steht an jeder Lücke, für die das Glossar einen Vorschlag hat, der Kopf der Seite übernimmt alle Vorschläge der Seite auf einmal. Ein Navigationspfad führt von der Übersicht über die Tabelle zum Formular und zurück, Alt+Pfeil nach oben geht eine Ebene höher. Texte, die der Export nicht enthält, etwa Sitemap-Titel und eigene Formulartexte, zeigt der Designer rot gestrichelt und nur lesend. Alle Änderungen aus Designer und Tabelle landen in einer Liste und gehen gemeinsam mit <em>Anwenden</em> hinaus.</p>
+          <ul><li>Formulare, Ansichten und Sitemaps live aus der Umgebung</li><li>Tab von Lücke zu Lücke</li><li>Dieselbe Änderungsliste wie die Tabelle</li></ul>
+          <figure class="shot">
+            <img src="assets/screenshots/ts-designer-formular.webp" width="1600" height="947" loading="lazy" decoding="async" alt="Bildschirmfoto: Der Designer. Links die Komponenten der Solution mit Fortschrittsringen, in der Mitte das Hauptformular einer Tabelle mit Registerkarten, Abschnitten und Feldern, ein fehlendes Feld ist zum Tippen geöffnet, rechts die Details mit der Beschriftung in Englisch, Deutsch und Französisch und einem Glossar-Vorschlag.">
+            <figcaption>Das Hauptformular einer Tabelle: Registerkarten mit der Zahl offener Beschriftungen, ein fehlendes Feld zum Tippen geöffnet, rechts dieselbe Beschriftung in allen Sprachen mit dem Vorschlag aus dem Glossar.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/screenshots/ts-designer-app.webp" width="1600" height="947" loading="lazy" decoding="async" alt="Bildschirmfoto: Eine Model-driven App im Designer, Kopfleiste mit App-Namen, Navigation mit Bereichen und Gruppen aus der Sitemap. Der Untertitel der App ist rot gestrichelt unterstrichen, darüber der Hinweis, dass eigene Sitemap-Titel nicht im Übersetzungsexport stehen.">
+            <figcaption>Eine Model-driven App mit ihrer Navigation aus der Sitemap. Der Untertitel der App ist rot gestrichelt: Er steht nicht im Übersetzungsexport, der Designer zeigt ihn nur.</figcaption>
+          </figure>
+        </article>
+
         <article class="feat wide" id="matrix">
           <h3>Lückenmatrix</h3>
-          <p>Jede Zeile ist eine Beschriftung: Typ, Komponente mit Tabelle und Name, soweit aus den Metadaten auflösbar, die betroffene Spalte wie Anzeigename, Beschreibung oder Mehrzahl, der Text der Basissprache nur lesend und je Zielsprache eine editierbare Zelle. Vier Zustände je Zelle: <em>fehlt</em>, wenn die Zielsprache leer ist. <em>Vermutlich unübersetzt</em>, wenn der Text mit der Basissprache identisch ist. Das ist eine Vermutung, „Status“ ist auch Deutsch, deshalb lässt sich die Zelle als korrekt markieren, und die Markierung bleibt je Solution erhalten. <em>Geändert</em>, solange eine Bearbeitung noch nicht importiert ist, mit Rücknahme. Und <em>ok</em>.</p>
+          <p>Die Tabellenansicht, ein Umschalter neben dem Designer. Jede Zeile ist eine Beschriftung: Typ, Komponente mit Tabelle und Name, soweit aus den Metadaten auflösbar, die betroffene Spalte wie Anzeigename, Beschreibung oder Mehrzahl, der Text der Basissprache nur lesend und je Zielsprache eine editierbare Zelle. Vier Zustände je Zelle: <em>fehlt</em>, wenn die Zielsprache leer ist. <em>Vermutlich unübersetzt</em>, wenn der Text mit der Basissprache identisch ist. Das ist eine Vermutung, „Status“ ist auch Deutsch, deshalb lässt sich die Zelle als korrekt markieren, und die Markierung bleibt je Solution erhalten. <em>Geändert</em>, solange eine Bearbeitung noch nicht importiert ist, mit Rücknahme. Und <em>ok</em>.</p>
           <p>Die Matrix rendert nur die sichtbaren Zeilen und kommt so auch mit zehntausenden Beschriftungen zurecht. Enter übernimmt, Esc verwirft. Texte über 500 Zeichen lehnt sie ab, weil der Import daran scheitern würde, und eine vorhandene Übersetzung lässt sich nicht leeren, weil nicht dokumentiert ist, ob eine leere Zelle beim Import „löschen“ oder „unverändert“ bedeutet.</p>
           <ul><li>Vier Zustände mit Farbe</li><li>Korrekt-so-Markierung je Solution</li><li>Eigene Fensterung ohne Grid-Bibliothek</li></ul>
           <figure class="shot">
@@ -424,13 +440,13 @@
         <article class="panel" id="rechte">
           <h3>Rechte und Grenzen</h3>
           <p>Alles läuft mit dem Konto des angemeldeten Benutzers, nicht mit einem Dienstkonto. Export und Import brauchen das Recht, Anpassungen zu exportieren und zu importieren, in der Regel die Rolle System Customizer. Fehlt das Importrecht, bleibt die App im Lesemodus und sagt das im Klartext; die Lücken lassen sich dann als CSV an jemanden mit Rechten weitergeben.</p>
-          <p>Bewusst nicht enthalten: maschinelle Übersetzung, weil sie eine Datenschutzentscheidung des Kunden braucht, das Bearbeiten der Basissprache sowie Texte in Canvas Apps, Flows und Sitemap, die der Export von Dataverse nicht abdeckt.</p>
+          <p>Bewusst nicht enthalten: maschinelle Übersetzung, weil sie eine Datenschutzentscheidung des Kunden braucht, das Bearbeiten der Basissprache sowie Texte in Canvas Apps, Flows und Sitemap, die der Export von Dataverse nicht abdeckt; Sitemap-Titel zeigt der Designer, schreibt sie aber nicht.</p>
         </article>
 
         <article class="panel" id="datenweg">
           <h3>Datenweg</h3>
           <p>Der Dataverse-Konnektor einer Code App kann Tabellen lesen und Aktionen aufrufen, aber keine Metadaten schreiben. Deshalb geht alles über den nativen Übersetzungs-Export und -Import, eine Aktion je Richtung, plus Veröffentlichen. Der Fortschritt kommt aus der Importjob-Tabelle. Für jede Aktion kennt die App mehrere Wege und merkt sich den ersten, der funktioniert.</p>
-          <p>Bei Import und Veröffentlichen probiert sie einen zweiten Weg nur, wenn der erste nachweislich nicht existiert, und nie nach einem Timeout, bei dem der Import auf dem Server schon laufen könnte. Nichts wird doppelt importiert. Die Datei selbst ist Excel-2003-XML in einer Zip-Datei; ein eigener Scanner versteht dünn besetzte Zeilen, verbundene Zellen und formatierten Text.</p>
+          <p>Bei Import und Veröffentlichen probiert sie einen zweiten Weg nur, wenn der erste nachweislich nicht existiert, und nie nach einem Timeout, bei dem der Import auf dem Server schon laufen könnte. Nichts wird doppelt importiert. Die Datei selbst ist Excel-2003-XML in einer Zip-Datei; ein eigener Scanner versteht dünn besetzte Zeilen, verbundene Zellen und formatierten Text. Formulare, Ansichten und Sitemaps liest der Designer live über den Konnektor, die Auswahlwerte je Spalte über Metadaten-Abfragen, die die App wie den Export selbst als native Aktion registriert.</p>
         </article>
 
         <article class="panel" id="bauweise">
