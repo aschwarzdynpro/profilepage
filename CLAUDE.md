@@ -320,10 +320,9 @@ Massgeblich ist das **englische** Profil-Dokument `Profile_Andy_Schwarz_2026.doc
   ist er seit 01/2019, das sind 7 Jahre. Die 12 in beiden Dokumenten ist der Fehler und wird
   dort korrigiert. Nicht auf 12 zurückdrehen.
 
-Seit 07.10.2026 gilt für die Jahreszahlen der Skills die **deutsche** Fassung
-`Profil_Andy_Schwarz_2026_DE.docx` (Entscheidung Andy); englische Fassung und Site wurden
-an sie angeglichen (Power BI 4, Dataflows 2, JavaScript / TypeScript 16, PCF / Code Apps 3,
-Azure Integration Services 12). Die Niveaus (1 bis 5) sind in beiden Dokumenten und auf der
+Die Jahreszahlen der Skills hat Andy am 07.10.2026 festgelegt, beide Dokumente und die Site
+tragen sie gleich: Power BI 2, Dataflows 2, JavaScript / TypeScript 16, PCF / Code Apps 4,
+Azure Integration Services 12. Die Niveaus (1 bis 5) sind in beiden Dokumenten und auf der
 Site gleich. Texte und Rollenbezeichnungen folgen weiter dem englischen Dokument.
 
 Rollenbezeichnungen müssen über Referenzkarte, Mandatsliste und Profil-Dokument
