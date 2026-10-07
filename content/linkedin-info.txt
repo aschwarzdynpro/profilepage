@@ -1,29 +1,47 @@
 Dynamics 365 Solution Architect für komplexe CE- und Power-Platform-Landschaften. Ich entwerfe die Architektur, baue das ALM auf und schreibe den Code, wo es nötig ist. Für Unternehmen, bei denen Dynamics 365 über einzelne Apps hinausgewachsen ist.
 
-Seit 2007 im Microsoft-CRM-Umfeld, seit 2019 Solution Architect, seit 2022 freiberuflich unter der Marke DynamicsPro. Eingebettet in Kundenteams oder als Subunternehmer für Microsoft-Partner, remote aus Bayern für den DACH-Raum. Ab Januar 2027 für neue Mandate verfügbar.
+Seit 2007 im Microsoft-CRM-Umfeld, seit 2019 Solution Architect, seit 2022 freiberuflich unter der Marke DynamicsPro. Eingebettet in Kundenteams oder als Subunternehmer für Microsoft-Partner, remote aus Bayern für den DACH-Raum.
 
-Was ich übernehme
+Ab Januar 2027 für neue Mandate verfügbar.
 
-Solution Architecture: Zielbild für Dynamics 365 Sales, Customer Service und Field Service. Dataverse-Datenmodell, Berechtigungskonzept, Multi-Company-Setups und die Frage, welches System welche Daten führt.
 
-ALM und DevOps: Feature-Branch-Workflow, automatisierte Managed-Solution-Builds und Transport entlang der Umgebungskette auf Azure DevOps. Erprobte Strukturen, die ich mitbringe, statt sie in jedem Projekt neu zu bauen.
+WAS ICH ÜBERNEHME
 
-Integration: Dual Write zwischen CE und Finance and Operations, Anbindung von HR- und Drittsystemen über Service Bus und Logic Apps, Monitoring mit Application Insights. Idempotent gebaut, damit Wiederholungen keine Duplikate erzeugen.
+• Solution Architecture
+Zielbild für Dynamics 365 Sales, Customer Service und Field Service. Dataverse-Datenmodell, Berechtigungskonzept, Multi-Company-Setups und die Frage, welches System welche Daten führt.
 
-Pro-Code: Plugins in C#, PCF-Controls in TypeScript und React, Power Platform Code Apps für alles, was ein Formular nicht abbildet.
+• ALM und DevOps
+Feature-Branch-Workflow, automatisierte Managed-Solution-Builds und Transport entlang der Umgebungskette auf Azure DevOps. Erprobte Strukturen, die ich mitbringe.
 
-Aus Mandaten
+• Integration
+Dual Write zwischen CE und Finance and Operations, Anbindung von HR- und Drittsystemen über Service Bus und Logic Apps, Monitoring mit Application Insights. Idempotent gebaut, damit Wiederholungen keine Duplikate erzeugen.
 
-Industrieller Leuchtenhersteller: Zielarchitektur für Sales, Customer Service und Field Service in Phasen, Rollout von Deutschland in die Schweiz und nach Frankreich. Seit 2024 als Solution Architect.
+• Pro-Code
+Plugins in C#, PCF-Controls in TypeScript und React, Power Platform Code Apps für alles, was ein Formular nicht abbildet.
 
-Zahlungsdienstleister: revisionssichere Archivierung und Löschung auf Dataverse nach GoBD und DSGVO. Konfigurierbare Regel-Engine in .NET 8, die Fachseite steuert Regeln ohne Code.
 
-Lead-to-Cash über Sales, Field Service, Supply Chain Management und Finance, verbunden über Dual Write. Architektur, Cross-Company-Kundenmodell, Konfliktauflösung zwischen CE- und F&O-Datenmodell.
+AUS MANDATEN
 
-Eigene Werkzeuge
+• Industrieller Leuchtenhersteller
+Zielarchitektur für Sales, Customer Service und Field Service in Phasen, Rollout von Deutschland in die Schweiz und nach Frankreich. Seit 2024 als Solution Architect.
+
+• Zahlungsdienstleister
+Revisionssichere Archivierung und Löschung auf Dataverse nach GoBD und DSGVO. Konfigurierbare Regel-Engine in .NET 8, die Fachseite steuert Regeln ohne Code.
+
+• Lead-to-Cash über vier Workloads
+Sales, Field Service, Supply Chain Management und Finance, verbunden über Dual Write. Architektur, Cross-Company-Kundenmodell, Konfliktauflösung zwischen CE- und F&O-Datenmodell.
+
+
+EIGENE WERKZEUGE
 
 Aus wiederkehrenden Problemen in Mandaten sind drei Power Platform Code Apps entstanden: Solution Administration Console, Translation Studio und Schedule Board Manager. Die Entstehungsgeschichte steht im Blog auf dynamicspro.de.
 
-Dynamics 365 Health Check: Festpreis, fünf Tage, acht Prüfdimensionen. Ergebnis sind Scorecard, Top-10-Risiken und ein Maßnahmenplan, den Sie intern, mit Ihrem Partner oder mit mir umsetzen. Details unter dynamicspro.de/health-check.
+
+DYNAMICS 365 HEALTH CHECK
+
+Festpreis, fünf Tage, acht Prüfdimensionen. Ergebnis sind Scorecard, Top-10-Risiken und ein Maßnahmenplan, den Sie intern, mit Ihrem Partner oder mit mir umsetzen. Details unter dynamicspro.de/health-check.
+
+
+KONTAKT
 
 Anfragen zu Architekturrollen, ALM und Integrationsprojekten gern per Nachricht oder über dynamicspro.de.
