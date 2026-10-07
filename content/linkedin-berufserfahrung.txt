@@ -1,0 +1,64 @@
+LinkedIn, Bereich Berufserfahrung. Haupteintrag DynamicsPro plus ein Eintrag je Mandat,
+alle mit Unternehmen „DynamicsPro" (aus der Liste wählen), Beschäftigungsart „Freiberuflich",
+Ort „Remote". LinkedIn gruppiert Einträge mit demselben Unternehmen automatisch.
+Zeiträume, Branchen und Rollen wie in der Mandatsliste auf dynamicspro.de.
+
+
+HAUPTEINTRAG
+
+Titel: Dynamics 365 Solution Architect
+Unternehmen: DynamicsPro · Freiberuflich
+Zeitraum: Aug. 2022 bis heute
+Ort: Remote
+
+Solution Architect für Dynamics 365 CE und Power Platform, eingebettet in Kundenteams oder als Subunternehmer für Microsoft-Partner. Ich entwerfe die Zielarchitektur, baue das ALM auf Azure DevOps auf und schreibe Plugins, PCF-Controls und Code Apps, wo Low-Code endet.
+
+Die Mandate stehen als eigene Einträge darunter. Dazu Lead-Architect-Rollen, ALM-Einführungen, Health Checks und Analysearbeit in über zehn weiteren Projekten.
+
+Aus den Mandaten sind drei eigene Power Platform Code Apps entstanden (Solution Administration Console, Translation Studio, Schedule Board Manager) und ein Health Check zum Festpreis. Beides auf dynamicspro.de.
+
+
+MANDAT 1
+
+Titel: Solution Architect · Reiseindustrie
+Zeitraum: Feb. 2026 bis heute
+
+Dynamics 365 Contact Center mit WhatsApp und E-Mail als Kanälen, Omnichannel auf Azure Communication Services, ALM auf Azure DevOps.
+
+
+MANDAT 2
+
+Titel: Solution Architect · Industrieller Leuchtenhersteller
+Zeitraum: Feb. 2024 bis heute
+
+Architectural Lead der Dynamics-365-Einführung in Phasen: Sales in Deutschland, danach Customer Service und Field Service, Rollout in die Schweiz und nach Frankreich. Dataverse-Datenmodell, Berechtigungskonzept, PCF-Controls, C#-Plugins, Code Apps, Azure DevOps.
+
+
+MANDAT 3
+
+Titel: Architecture Advisor · Engineering
+Zeitraum: Feb. 2024 bis heute
+
+Architektur-Workshops zu Multi-Company-Setup, Integrationsszenarien und Multi-Workload-Ansätzen für eine Branchenlösung auf Dynamics 365.
+
+
+MANDAT 4
+
+Titel: Dynamics 365 Specialist · Zahlungsdienstleister
+Zeitraum: Sep. 2022 bis Okt. 2026
+
+Architekturstandards, Monitoring und Center-of-Excellence-Praktiken für die Dynamics-Plattform. Revisionssichere Archivierung und Löschung auf Dataverse nach GoBD und DSGVO: konfigurierbare Regel-Engine, drei geplante Jobs in .NET 8, Archiv in unveränderlichem Blob-Speicher, Synapse Link.
+
+
+MANDAT 5
+
+Titel: Solution Architect · Automatisierungstechnik
+Zeitraum: Aug. 2022 bis heute
+
+Einführung von Sales, Field Service und Project Operations mit Dual Write zu Finance and Operations, Integration Workday mit Field Service, Release-Automation auf Azure DevOps. Schedule Board Manager als Code App in der Testumgebung des Kunden.
+
+
+KENNTNISSE JE EINTRAG (in dieser Reihenfolge verknüpfen)
+
+Dynamics 365, Solution Architecture, Microsoft Dataverse, Azure DevOps, Microsoft Power Platform,
+dann je Mandat das Spezifische (Dual Write, Field Service, Contact Center, PCF, C#).
