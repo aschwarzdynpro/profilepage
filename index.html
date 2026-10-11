@@ -18,9 +18,10 @@
 <link rel="alternate" hreflang="de" href="https://dynamicspro.de/">
 <link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/">
 <link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/">
-<title>Andy Schwarz · DynamicsPro · Dynamics 365 Solution Architect</title>
-<meta name="description" content="Andy Schwarz, Dynamics 365 Solution Architect für komplexe CE- und Power-Platform-Landschaften. Architektur, ALM, Integration und Pro-Code für Sales, Customer Service und Field Service, dazu der Health Check zum Festpreis. Nürnberg, remote und im DACH-Raum.">
+<title>Dynamics 365 Solution Architect, freiberuflich · DynamicsPro Nürnberg</title>
+<meta name="description" content="Freiberuflicher Dynamics 365 Solution Architect: Architektur, ALM, Integration, Pro-Code für CE und Power Platform. Health Check zum Festpreis. Nürnberg, DACH.">
 <link rel="canonical" href="https://dynamicspro.de/">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#fbfaf7">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/favicon.svg">
@@ -352,11 +353,17 @@
   .nav a.lang,.nav li.lang a{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.12em;line-height:1;color:var(--ink);border:1px solid var(--ink);padding:.38rem .5rem;white-space:nowrap}
   .nav a.lang:hover,.nav li.lang a:hover{background:var(--ink);color:var(--bg,#fbfaf7)}
   @media (max-width:900px){.nav .main li.lang{display:list-item}}
+
+  /* Fusszeile: weitere Seiten (scripts/seo.py) */
+  footer .foot-links{width:100%;display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;padding-bottom:1rem;border-bottom:1px solid var(--line,var(--rule,#d8d4cc))}
+  footer .foot-links a{color:var(--ink-2,#444)}
+  footer .foot-links a[aria-current]{color:var(--ink,#1a1a1a)}
 </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://dynamicspro.de/#person",
   "name": "Andy Schwarz",
   "jobTitle": "Dynamics 365 Solution Architect",
   "url": "https://dynamicspro.de/",
@@ -370,6 +377,11 @@
   },
   "sameAs": [
     "https://www.linkedin.com/in/andy-schwarz-70543aa1"
+  ],
+  "knowsLanguage": ["de", "en"],
+  "hasCredential": [
+    { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "PL-600 Microsoft Power Platform Solution Architect", "recognizedBy": { "@type": "Organization", "name": "Microsoft" } },
+    { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "MB-240 Dynamics 365 Field Service Functional Consultant", "recognizedBy": { "@type": "Organization", "name": "Microsoft" } }
   ],
   "knowsAbout": [
     "Microsoft Dynamics 365",
@@ -399,7 +411,8 @@
   "image": "https://dynamicspro.de/assets/og.png",
   "email": "mailto:aschwarz@dynamicspro.de",
   "telephone": "+49 173 5274172",
-  "founder": { "@type": "Person", "name": "Andy Schwarz" },
+  "founder": { "@id": "https://dynamicspro.de/#person" },
+  "sameAs": [ "https://www.linkedin.com/in/andy-schwarz-70543aa1" ],
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Stein bei Nürnberg",
@@ -418,6 +431,29 @@
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Integration mit Azure Integration Services" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Systemanalyse und Reviews" } }
     ]
+  }
+}
+</script>
+<script type="application/ld+json" id="ld-website">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://dynamicspro.de/#website",
+  "url": "https://dynamicspro.de/",
+  "name": "DynamicsPro",
+  "alternateName": [
+    "DynamicsPro, Andy Schwarz",
+    "dynamicspro.de"
+  ],
+  "inLanguage": [
+    "de-DE",
+    "en-US"
+  ],
+  "publisher": {
+    "@id": "https://dynamicspro.de/#business"
+  },
+  "author": {
+    "@id": "https://dynamicspro.de/#person"
   }
 }
 </script>
@@ -686,7 +722,7 @@
 <section id="arbeitsweise">
   <div class="wrap">
     <div class="about">
-      <img class="portrait" src="assets/andy-schwarz.jpg" alt="Andy Schwarz">
+      <img class="portrait" src="assets/andy-schwarz.jpg" width="800" height="800" loading="lazy" decoding="async" alt="Andy Schwarz, Dynamics 365 Solution Architect, DynamicsPro">
       <div>
         <h2>Wie ich arbeite</h2>
         <p class="lead-in">Dipl.-Inf. (FH), seit 2007 im Microsoft-CRM-Umfeld. 15 Jahre als angestellter Entwickler, Berater und Architekt, seit 2022 Freelancer unter der Marke DynamicsPro, eingebettet in Kundenteams oder als Subunternehmer für Microsoft-Partner.</p>
@@ -799,6 +835,7 @@
 
 <footer>
   <div class="wrap">
+    <nav class="foot-links" aria-label="Weitere Seiten"><a href="/health-check/">Dynamics 365 Health Check</a> <a href="/solution-admin-console.html">Solution Administration Console</a> <a href="/translation-studio.html">Translation Studio</a> <a href="/schedule-board-manager.html">Schedule Board Manager</a> <a href="/blog/">Blog</a></nav>
     <span>© 2026 Andy Schwarz · DynamicsPro · Stein bei Nürnberg</span>
     <span><a href="impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="datenschutz.html">Datenschutz</a></span>
   </div>

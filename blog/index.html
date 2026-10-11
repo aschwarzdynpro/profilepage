@@ -18,10 +18,10 @@
 <link rel="alternate" hreflang="de" href="https://dynamicspro.de/blog/">
 <link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/blog/">
 <link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/blog/">
-<title>Blog · DynamicsPro</title>
-<meta name="description" content="Werkstattnotizen von Andy Schwarz: wie die eigenen Werkzeuge für Dynamics 365 und die Power Platform entstanden sind, welches Problem dahinter stand und was dabei schiefging.">
+<title>Blog: Werkstattnotizen zu Dynamics 365 und Power Platform · DynamicsPro</title>
+<meta name="description" content="Werkstattnotizen von Andy Schwarz: wie eigene Werkzeuge für Dynamics 365 und die Power Platform entstanden sind, welches Problem dahinter stand, was schiefging.">
 <link rel="canonical" href="https://dynamicspro.de/blog/">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#fbfaf7">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/favicon.svg">
@@ -159,7 +159,125 @@
   .nav a.lang,.nav li.lang a{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.12em;line-height:1;color:var(--ink);border:1px solid var(--ink);padding:.38rem .5rem;white-space:nowrap}
   .nav a.lang:hover,.nav li.lang a:hover{background:var(--ink);color:var(--bg,#fbfaf7)}
   @media (max-width:900px){.nav .main li.lang{display:list-item}}
+
+  /* Fusszeile: weitere Seiten (scripts/seo.py) */
+  footer .foot-links{width:100%;display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;padding-bottom:1rem;border-bottom:1px solid var(--line,var(--rule,#d8d4cc))}
+  footer .foot-links a{color:var(--ink-2,#444)}
+  footer .foot-links a[aria-current]{color:var(--ink,#1a1a1a)}
 </style>
+<script type="application/ld+json" id="ld-blog">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": "https://dynamicspro.de/blog/#blog",
+  "url": "https://dynamicspro.de/blog/",
+  "name": "Blog: Werkstattnotizen zu Dynamics 365 und Power Platform",
+  "description": "Werkstattnotizen von Andy Schwarz: wie eigene Werkzeuge für Dynamics 365 und die Power Platform entstanden sind, welches Problem dahinter stand, was schiefging.",
+  "inLanguage": "de-DE",
+  "author": {
+    "@type": "Person",
+    "@id": "https://dynamicspro.de/#person",
+    "name": "Andy Schwarz",
+    "url": "https://dynamicspro.de/",
+    "jobTitle": "Dynamics 365 Solution Architect",
+    "sameAs": [
+      "https://www.linkedin.com/in/andy-schwarz-70543aa1"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://dynamicspro.de/#business",
+    "name": "DynamicsPro",
+    "url": "https://dynamicspro.de/"
+  },
+  "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://dynamicspro.de/blog/translation-studio-designer/#article",
+      "headline": "Der Kunde wollte das Formular sehen, nicht die Tabelle",
+      "url": "https://dynamicspro.de/blog/translation-studio-designer/",
+      "datePublished": "2026-10-05",
+      "image": "https://dynamicspro.de/assets/og-blog.png"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://dynamicspro.de/blog/translation-studio/#article",
+      "headline": "Drei Sprachen, eine Zip-Datei, und niemand sieht, was fehlt",
+      "url": "https://dynamicspro.de/blog/translation-studio/",
+      "datePublished": "2026-10-03",
+      "image": "https://dynamicspro.de/assets/og-blog.png"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://dynamicspro.de/blog/schedule-board-2-vorschau-und-transfer/#article",
+      "headline": "Was der Disponent sieht, und wie ein Board nach Produktion kommt",
+      "url": "https://dynamicspro.de/blog/schedule-board-2-vorschau-und-transfer/",
+      "datePublished": "2026-10-02",
+      "image": "https://dynamicspro.de/assets/og-blog.png"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://dynamicspro.de/blog/schedule-board-1-kopie-und-filter/#article",
+      "headline": "Die Kopie, der drei Verweise fehlen",
+      "url": "https://dynamicspro.de/blog/schedule-board-1-kopie-und-filter/",
+      "datePublished": "2026-10-01",
+      "image": "https://dynamicspro.de/assets/og-blog.png"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://dynamicspro.de/blog/admin-console-4-datentransfer/#article",
+      "headline": "Konfigurationsdaten bewegen, und aus dem Werkzeug ein Produkt machen",
+      "url": "https://dynamicspro.de/blog/admin-console-4-datentransfer/",
+      "datePublished": "2026-09-21",
+      "image": "https://dynamicspro.de/assets/og-blog.png"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://dynamicspro.de/blog/admin-console-3-betrieb/#article",
+      "headline": "Wer darf was, und was tut das System gerade",
+      "url": "https://dynamicspro.de/blog/admin-console-3-betrieb/",
+      "datePublished": "2026-08-10",
+      "image": "https://dynamicspro.de/assets/og-blog.png"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://dynamicspro.de/blog/admin-console-2-vor-dem-import/#article",
+      "headline": "Warum Importe scheitern, und wie man es vorher sieht",
+      "url": "https://dynamicspro.de/blog/admin-console-2-vor-dem-import/",
+      "datePublished": "2026-07-20",
+      "image": "https://dynamicspro.de/assets/og-blog.png"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://dynamicspro.de/blog/admin-console-1-working-solutions/#article",
+      "headline": "Eine Solution je Work Item, und dann der Merge",
+      "url": "https://dynamicspro.de/blog/admin-console-1-working-solutions/",
+      "datePublished": "2026-06-25",
+      "image": "https://dynamicspro.de/assets/og-blog.png"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json" id="ld-breadcrumb">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://dynamicspro.de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://dynamicspro.de/blog/"
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -258,6 +376,7 @@
 
 <footer>
   <div class="wrap">
+    <nav class="foot-links" aria-label="Weitere Seiten"><a href="/health-check/">Dynamics 365 Health Check</a> <a href="/solution-admin-console.html">Solution Administration Console</a> <a href="/translation-studio.html">Translation Studio</a> <a href="/schedule-board-manager.html">Schedule Board Manager</a> <a href="/blog/" aria-current="page">Blog</a></nav>
     <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein bei Nürnberg</span>
     <span><a href="../impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="../datenschutz.html">Datenschutz</a></span>
   </div>

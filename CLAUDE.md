@@ -46,6 +46,31 @@ Deutsch ist die Hauptsprache, Englisch liegt unter `en/` mit **identischen Pfade
   dass nur die deutsche Fassung verbindlich ist; Anschrift, USt-IdNr. und Behördenname stehen dort
   unverändert.
 
+## Suchmaschinen (seit Oktober 2026)
+Ziel sind deutschsprachige Suchen von Entscheidern und Admins im DACH-Raum, nicht Recruiter. Jede
+Seite hat zwei Überschriften: die **Schlagzeile** im `<h1>` bleibt redaktionell („Die Kopie, der drei
+Verweise fehlen"), der **Suchtitel** im `<title>` nennt zuerst den Begriff, den jemand bei Google
+eintippt, dann die Schlagzeile, dann `· DynamicsPro` („Schedule Board kopieren: Die Kopie, der drei
+Verweise fehlen · DynamicsPro"), höchstens etwa 75 Zeichen. `og:title` trägt die Schlagzeile. Die
+`meta description` hat höchstens 160 Zeichen, nennt den Suchbegriff im ersten Satz und verspricht
+nichts, was die Seite nicht hält. Zielbegriffe je Seite stehen in `content/seo-zielbegriffe.md`.
+
+- `python3 scripts/seo.py` erzeugt wiederholbar aus den Seiten selbst: `BlogPosting` und
+  `BreadcrumbList` je Beitrag (`dateModified` ist der jüngste Nachtrag), `Blog` auf den Übersichten,
+  `SoftwareApplication` auf den Produktseiten, `WebSite` auf der Startseite, `max-image-preview:large`
+  im robots-Meta und die Fußzeile „Weitere Seiten" (nicht auf der Angebotsseite, die hat genau eine
+  Handlung). Nach jedem neuen Beitrag und jeder Titeländerung laufen lassen; `--check` meldet
+  Abweichungen, ohne zu schreiben. `Person` und `ProfessionalService` (Startseite) sowie `Service`
+  (Health Check) bleiben Handarbeit im `<head>`; die Person trägt `@id` `https://dynamicspro.de/#person`,
+  darauf verweisen die erzeugten Blöcke.
+- `404.html` ist die Fehlerseite von GitHub Pages: `noindex`, nur absolute Pfade, weil sie unter jeder
+  fehlenden Adresse ausgeliefert wird. Sie steht in der Dateiliste des Workflows und in `scripts/shot.mjs`.
+- `sitemap.xml`: `lastmod` nur anfassen, wenn sich Inhalt oder Kopf der Seite geändert haben.
+- Search Console und Bing Webmaster Tools werden per DNS-TXT-Eintrag verifiziert, kein Meta-Tag im HTML.
+- Die Weiterleitung „Sprache vorbelegen" schließt Crawler per User-Agent aus. Google rät von
+  sprachabhängigen Weiterleitungen ab; sie bleibt, weil hreflang vollständig ist und Crawler sie nie
+  sehen. Wer sie ausweitet, prüft zuerst die Ausnahmeliste im Skript.
+
 ## Erscheinungsbild: Magazin (seit Oktober 2026)
 Die ganze Site sieht aus wie eine gedruckte Fachzeitschrift: helles Papier `--bg #fbfaf7`,
 Schwarz `--ink #1a1a1a`, **Rot `--red #b5342b` als einzige Akzentfarbe**, Doppellinien
@@ -330,6 +355,9 @@ zusammenpassen. Payment Services heisst überall `Dynamics 365 Specialist`.
 
 ## Offen
 - Pro Referenz eine belastbare Kennzahl ergänzen.
+- `https://www.dynamicspro.de/` antwortet mit 503 (Stand 11.10.2026), `http://www` leitet korrekt auf
+  die Apex-Domain. Fix in den GitHub-Pages-Einstellungen (Custom Domain entfernen und neu setzen,
+  damit das Zertifikat für `www` ausgestellt wird), nicht im Repo.
 - Link „Profil als PDF" im Hero für Recruiter und Vendor Management, sobald eine PDF-Fassung des
   Profil-Dokuments in `assets/` liegt. Bis dahin kein Link, ein toter Link wäre schlimmer als keiner.
 

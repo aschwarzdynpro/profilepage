@@ -86,6 +86,9 @@ Je freigegebenem Beitrag, Datum = Tag der Freigabe:
    Umschalter `EN` in der Kopfleiste, CSS, Kopfleiste, Beitragskopf, Fuß). Inhalt ersetzen, alle
    Pfade und Daten anpassen, Kapitelnummern 01, 02 …, Initial im ersten Absatz, Zitat vor der
    zweiten Zwischenüberschrift, Bild mit Bildunterschrift nach dem Einstieg.
+   `<title>` ist der Suchtitel (Suchbegriff, Doppelpunkt, Schlagzeile, `· DynamicsPro`, etwa 75 Zeichen),
+   `og:title` die Schlagzeile, `meta description` höchstens 160 Zeichen mit dem Suchbegriff im ersten
+   Satz. Regeln in `CLAUDE.md`, Abschnitt Suchmaschinen.
 2. **Englische Seite** `en/blog/<slug>/index.html`: aus der englischen Fassung desselben
    Vorlagebeitrags, Text übersetzt (gleiche Regeln, Anrede „you", Zitat wörtlich im Text),
    gleicher Slug, Umschalter `DE` auf `/blog/<slug>/?lang=de`, `og-en-blog.png`, `en_US`.
@@ -97,6 +100,8 @@ Je freigegebenem Beitrag, Datum = Tag der Freigabe:
 6. Gehört der Beitrag zu einer Serie, den Kasten „alle Teile" in jedem Teil nachziehen.
 7. `content/blog-themen.md` fortschreiben: Woche, alle vorgeschlagenen Themen, je
    „veröffentlicht <slug>" oder „abgelehnt" (bei „keinen" nur diese Datei committen).
+8. `python3 scripts/seo.py` laufen lassen: setzt `BlogPosting`, Breadcrumbs, den Eintrag auf den
+   Übersichten und die Fußzeile für die neuen Seiten. Danach `python3 scripts/seo.py --check` ohne Ausgabe.
 
 ### Prüfen
 - `npm run shot` muss durchlaufen (keine Fremd-Requests, Schriften geladen). In der Cloud-Sitzung

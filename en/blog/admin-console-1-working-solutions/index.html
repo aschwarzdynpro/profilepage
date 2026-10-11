@@ -6,10 +6,10 @@
 <link rel="alternate" hreflang="de" href="https://dynamicspro.de/blog/admin-console-1-working-solutions/">
 <link rel="alternate" hreflang="en" href="https://dynamicspro.de/en/blog/admin-console-1-working-solutions/">
 <link rel="alternate" hreflang="x-default" href="https://dynamicspro.de/blog/admin-console-1-working-solutions/">
-<title>One solution per work item, and then the merge · DynamicsPro</title>
-<meta name="description" content="Part 1 of the series on the Solution Administration Console: Working Solutions per work item, the merge into the release solution, and Excel and XrmToolBox before that. With two addenda on the merge from August and September.">
+<title>Dataverse ALM: One solution per work item, and then the merge · DynamicsPro</title>
+<meta name="description" content="Dataverse ALM in practice: one unmanaged solution per work item, the merge into the release solution, and what went wrong before with Excel and XrmToolBox.">
 <link rel="canonical" href="https://dynamicspro.de/en/blog/admin-console-1-working-solutions/">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#fbfaf7">
 <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../../assets/favicon.svg">
@@ -148,7 +148,81 @@
   .nav a.lang,.nav li.lang a{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.12em;line-height:1;color:var(--ink);border:1px solid var(--ink);padding:.38rem .5rem;white-space:nowrap}
   .nav a.lang:hover,.nav li.lang a:hover{background:var(--ink);color:var(--bg,#fbfaf7)}
   @media (max-width:900px){.nav .main li.lang{display:list-item}}
+
+  /* Fusszeile: weitere Seiten (scripts/seo.py) */
+  footer .foot-links{width:100%;display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;padding-bottom:1rem;border-bottom:1px solid var(--line,var(--rule,#d8d4cc))}
+  footer .foot-links a{color:var(--ink-2,#444)}
+  footer .foot-links a[aria-current]{color:var(--ink,#1a1a1a)}
 </style>
+<script type="application/ld+json" id="ld-article">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https://dynamicspro.de/en/blog/admin-console-1-working-solutions/#article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dynamicspro.de/en/blog/admin-console-1-working-solutions/"
+  },
+  "url": "https://dynamicspro.de/en/blog/admin-console-1-working-solutions/",
+  "headline": "One solution per work item, and then the merge",
+  "description": "Dataverse ALM in practice: one unmanaged solution per work item, the merge into the release solution, and what went wrong before with Excel and XrmToolBox.",
+  "image": [
+    "https://dynamicspro.de/assets/blog/devops-loop.jpg",
+    "https://dynamicspro.de/assets/og-en-blog.png"
+  ],
+  "datePublished": "2026-06-25",
+  "dateModified": "2026-09-16",
+  "author": {
+    "@type": "Person",
+    "@id": "https://dynamicspro.de/#person",
+    "name": "Andy Schwarz",
+    "url": "https://dynamicspro.de/en/",
+    "jobTitle": "Dynamics 365 Solution Architect",
+    "sameAs": [
+      "https://www.linkedin.com/in/andy-schwarz-70543aa1"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://dynamicspro.de/#business",
+    "name": "DynamicsPro",
+    "url": "https://dynamicspro.de/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "@id": "https://dynamicspro.de/en/blog/#blog"
+  },
+  "articleSection": "Solution Administration Console",
+  "inLanguage": "en-US",
+  "wordCount": 1152
+}
+</script>
+<script type="application/ld+json" id="ld-breadcrumb">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://dynamicspro.de/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://dynamicspro.de/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "One solution per work item, and then the merge",
+      "item": "https://dynamicspro.de/en/blog/admin-console-1-working-solutions/"
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -245,6 +319,7 @@
 
 <footer>
   <div class="wrap">
+    <nav class="foot-links" aria-label="More pages"><a href="/en/health-check/">Dynamics 365 Health Check</a> <a href="/en/solution-admin-console.html">Solution Administration Console</a> <a href="/en/translation-studio.html">Translation Studio</a> <a href="/en/schedule-board-manager.html">Schedule Board Manager</a> <a href="/en/blog/">Blog</a></nav>
     <span>&copy; 2026 Andy Schwarz &middot; DynamicsPro &middot; Stein near Nuremberg</span>
     <span><a href="../../impressum.html">Legal notice</a> &nbsp;&middot;&nbsp; <a href="../../datenschutz.html">Privacy policy</a></span>
   </div>
