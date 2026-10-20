@@ -125,7 +125,35 @@ Ihrem Partner oder mit mir um.
 Die Jahreszahl steht bewusst auf „über 16", passend zu Hero und OG-Beschreibung der
 Startseite. Siehe CLAUDE.md, Abschnitt Inhaltliche Quelle.
 
-## Block 7 — Abschluss-CTA (navy, mit Kontaktkarte)
+## Block 7 — Häufige Fragen
+
+Überschrift: Preis, Dauer, Zugriffe und Grenzen
+Kicker: Häufige Fragen zum Dynamics 365 Health Check
+Unterzeile: Die Antworten stehen verteilt auf dieser Seite, hier zusammengefasst.
+
+Acht Fragen, Formulierung wie gesucht wird, nicht wie intern geredet wird. Jede Antwort
+nennt nur Zahlen, die weiter oben auf der Seite stehen: 5.000 €, fünf Tage, 4 bis 5
+Stunden, acht Dimensionen, Top 10, drei Stufen.
+
+| Frage | Kern der Antwort |
+| --- | --- |
+| Was kostet ein Dynamics 365 Health Check? | 5.000 € zzgl. USt., fester Umfang, Umsetzung getrennt |
+| Wie lange dauert der Health Check, und wann kann er starten? | fünf Tage, Start zwei bis drei Wochen nach Beauftragung, remote |
+| Wie viel Zeit muss mein Team einplanen? | rund 4 bis 5 Stunden, aufgeteilt auf die vier Termine |
+| Welche Zugriffe brauchen Sie, und wird an meinen Umgebungen etwas verändert? | Lesezugriff auf zwei Umgebungen, PPAC, optional DevOps; es wird nichts geschrieben |
+| Was erhalte ich am Ende? | Scorecard, Top-10-Risiken, Maßnahmenkatalog in drei Stufen |
+| Ist die Umsetzung der Maßnahmen enthalten? | nein, auch der Workshop nicht |
+| Für welche Systeme gilt der Health Check? | D365 CE und Power Platform auf Dataverse, nicht F&O |
+| Lohnt sich der Health Check, wenn das System läuft? | ja, genau dafür; Befunde sind gemessen, nicht geschätzt |
+
+Der Block steht vor dem Abschluss-CTA, nicht dahinter: er beantwortet Einwände, er
+erhebt keine. Die Absagen bleiben in Block 9.
+
+Sichtbarer Text und `FAQPage`-Schema im `<head>` müssen **wörtlich** übereinstimmen.
+Kein `<details>`, nichts zum Aufklappen: Was im Schema steht, muss ohne Klick auf der
+Seite stehen.
+
+## Block 8 — Abschluss-CTA (navy, mit Kontaktkarte)
 
 Headline: 5.000 € Festpreis. 5 Tage. Klare Antworten.
 
@@ -139,7 +167,7 @@ kostenfrei.
 
 Kontaktkarte: E-Mail, Telefon, Zum Profil. Dieselben drei Wege wie auf der Startseite.
 
-## Block 8 — Zwei Listen nebeneinander, hinter dem CTA
+## Block 9 — Zwei Listen nebeneinander, hinter dem CTA
 
 Steht bewusst als letzter Abschnitt hinter dem Abschluss-CTA. Drei Absagen unmittelbar
 vor dem Knopf bremsen den Abschluss, gebraucht wird der Block trotzdem: wer bis hier
@@ -172,6 +200,9 @@ Nicht enthalten:
 | OG title | Dynamics 365 Health Check zum Festpreis |
 | OG description | In 5 Tagen zu Scorecard, Top-10-Risiken und priorisiertem Maßnahmenplan für Dynamics 365 CE und Power Platform. Unabhängig, toolgestützt, ohne Eingriff in Ihre Umgebungen. |
 | OG image | https://dynamicspro.de/assets/og.png (die Karte der Startseite, bis eine eigene existiert) |
+
+Strukturierte Daten im `<head>`: `Service` mit `Offer` und Preis, dazu `FAQPage` mit den
+acht Fragen aus Block 7. Beide als eigenes `application/ld+json`.
 
 Zielbegriffe, DACH-Mittelstand, deutschsprachige Suche:
 

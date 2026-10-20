@@ -51,7 +51,10 @@ Die ganze Site sieht aus wie eine gedruckte Fachzeitschrift: helles Papier `--bg
 Schwarz `--ink #1a1a1a`, **Rot `--red #b5342b` als einzige Akzentfarbe**, Doppellinien
 (`3px double`) statt dunkler Flächen, Kopfleiste auf Papier mit schwarzer Linie, Kontakt-Knopf
 schwarz. Keine abgerundeten Ecken, keine Schatten. Überschriften Manrope 800 mit engem
-Zeichenabstand, Kicker rot in Versalien mit Sperrung. Die frühere Navy-Fassung (`#0F1E33` mit
+Zeichenabstand, Kicker rot in Versalien mit Sperrung. Der Kicker über einer H2 ist die
+Suchzeile, die Überschrift darunter die Lesezeile: der Kicker trägt den Zielbegriff
+(„Leistungen für Dynamics 365 CE und Power Platform"), die Überschrift bleibt der
+menschliche Satz („Was ich übernehme"). Die frühere Navy-Fassung (`#0F1E33` mit
 Hellblau `#6DB4FF`) ist weg; `--navy` und `--sky` existieren in den Tokens nur noch als Alias auf
 Schwarz und Rot, damit alte Regeln nicht brechen.
 
@@ -235,11 +238,16 @@ ohne Varianten auf der Seite. Wer den Betrag ändern will, ändert ihn im Angebo
 und danach hier.
 
 **Seitenmuster.** Jede Angebotsseite liegt unter `<slug>/index.html`, damit die URL ohne
-`.html` auskommt, und folgt den acht Blöcken aus `content/offer-page-template.md`:
+`.html` auskommt, und folgt den neun Blöcken aus `content/offer-page-template.md`:
 Hero mit Kennzahlenleiste, Problem, Prüfumfang als Kacheln, Ablauf als nummerierte Liste,
-Ergebnis als Dreierraster, Warum DynamicsPro, Abschluss-CTA, Voraussetzungen und Abgrenzung.
+Ergebnis als Dreierraster, Warum DynamicsPro, Häufige Fragen, Abschluss-CTA,
+Voraussetzungen und Abgrenzung.
 Der Rahmen steht bewusst hinter dem CTA, der Einwand wird schon unter den Kacheln in einem
 Satz benannt. Drei Absagen unmittelbar vor dem Knopf bremsen den Abschluss.
+Die Fragen stehen umgekehrt **vor** dem CTA: sie beantworten Einwände, statt welche zu
+erheben. Ihr sichtbarer Text und das `FAQPage`-Schema im `<head>` müssen wörtlich
+übereinstimmen, und der Text steht ohne Aufklappen auf der Seite (kein `<details>`).
+Jede Antwort nennt nur Zahlen, die weiter oben auf derselben Seite stehen.
 Gestaltung und Design-Tokens sind die der übrigen Seiten, jede Datei trägt ihre eigene
 Kopie von CSS.
 

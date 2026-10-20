@@ -219,6 +219,14 @@
   footer{border-top:1px solid var(--line)}
   .feat,.panel,.dim,.outcome,address,.service li,.feat ul li,.contact .card,.shot img,.portrait{border-radius:0}
 
+  /* Haeufige Fragen: Lesespalte mit Trennlinien wie der Ablauf, Frage in Manrope.
+     Sichtbarer Text, kein Aufklappen: der FAQPage-Eintrag im Kopf muss dasselbe sagen. */
+  section>.wrap>header>.kicker{margin-bottom:.5rem}
+  .faq{border-top:1px solid var(--line);width:min(78ch,100%)}
+  .faq>div{border-bottom:1px solid var(--line);padding:1.3rem 0}
+  .faq h3{font-size:1.08rem;max-width:62ch}
+  .faq p{margin-top:.4rem;color:var(--ink-2);font-size:.97rem}
+
   /* Sprachumschalter in der Kopfleiste */
   .nav .wrap{gap:1rem}
   .nav .mark{margin-right:auto}
@@ -244,6 +252,78 @@
     "availability": "https://schema.org/InStock",
     "url": "https://dynamicspro.de/health-check/"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Was kostet ein Dynamics 365 Health Check?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "5.000 € zzgl. USt., fester Umfang, ohne Stufen und ohne Varianten. Enthalten ist, was auf dieser Seite steht. Die Umsetzung der Maßnahmen wird getrennt beauftragt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie lange dauert der Health Check, und wann kann er starten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fünf Tage. Darin liegen Kickoff, die toolgestützte Analyse, zwei bis drei Kurzinterviews und die Ergebnispräsentation. Der Start liegt in der Regel zwei bis drei Wochen nach Beauftragung, die Durchführung ist remote."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie viel Zeit muss mein Team einplanen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rund 4 bis 5 Stunden insgesamt: 90 Minuten Kickoff, zwei bis drei Interviews von je 45 Minuten und eine Stunde Ergebnispräsentation. Dazu einen festen Ansprechpartner für Rückfragen zwischendurch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welche Zugriffe brauchen Sie, und wird an meinen Umgebungen etwas verändert?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lesezugriff auf die produktive und eine vorgelagerte Dataverse-Umgebung, auf das Power Platform Admin Center und, sofern vorhanden, auf Azure DevOps oder GitHub. Verändert wird nichts: Die Analyse liest, sie schreibt nicht."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was erhalte ich am Ende?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Drei Dokumente: eine Health-Scorecard über acht Dimensionen mit Ampel und Begründung, die zehn größten Risiken mit Auswirkung und betroffenen Umgebungen und einen Maßnahmenkatalog in drei Stufen, nämlich Quick Wins, 90 Tage und Zielarchitektur. Die Dokumente gehören Ihnen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ist die Umsetzung der Maßnahmen enthalten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein. Der Health Check endet mit dem Maßnahmenkatalog. Sie setzen ihn intern um, mit Ihrem bisherigen Partner oder mit mir. Auch der optionale Workshop, in dem wir Zuschnitt und Reihenfolge der Maßnahmen durchsprechen, ist nicht im Festpreis enthalten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Für welche Systeme gilt der Health Check?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Für Dynamics 365 Customer Engagement, also Sales, Customer Service und Field Service, und für die Power Platform auf Dataverse. Finance & Operations und Integrationen außerhalb der Power Platform sind nicht Teil des Prüfumfangs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Lohnt sich der Health Check, wenn das System läuft?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dafür ist er gedacht. Die meisten Systeme laufen, nur weiß niemand genau, wie stabil. Geprüft werden Solution-Architektur, Customizing, Code, Automatisierung, Performance sowie Daten und Kapazität, dazu Sicherheit und ALM im Überblick. Die Befunde sind gemessen, nicht geschätzt."
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -293,6 +373,7 @@
 <section id="dimensionen">
   <div class="wrap">
     <header>
+      <div class="kicker">Prüfumfang Dynamics 365 CE und Power Platform</div>
       <h2>Was geprüft wird</h2>
       <p>Acht Dimensionen, jede mit einer Leitfrage, die am Ende beantwortet ist.</p>
     </header>
@@ -345,6 +426,7 @@
 <section id="ablauf">
   <div class="wrap">
     <header>
+      <div class="kicker">Ablauf in fünf Tagen</div>
       <h2>Ablauf</h2>
       <p>Vier Termine über fünf Tage, dazwischen die toolgestützte Analyse. Der Workshop danach ist optional.</p>
     </header>
@@ -387,6 +469,7 @@
 <section id="ergebnis">
   <div class="wrap">
     <header>
+      <div class="kicker">Ergebnisdokumente</div>
       <h2>Ihr Ergebnis</h2>
       <p>Drei Dokumente, die Sie ohne mich weiterverwenden können.</p>
     </header>
@@ -411,6 +494,7 @@
 <section id="warum">
   <div class="wrap">
     <header>
+      <div class="kicker">Unabhängig und toolgestützt</div>
       <h2>Warum DynamicsPro</h2>
     </header>
     <div class="why">
@@ -425,6 +509,50 @@
       <div>
         <h3>Eigenes Analyse-Toolset statt Bauchgefühl</h3>
         <p>Befunde sind gemessen und belegt, nicht geschätzt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fragen">
+  <div class="wrap">
+    <header>
+      <div class="kicker">Häufige Fragen zum Dynamics 365 Health Check</div>
+      <h2>Preis, Dauer, Zugriffe und Grenzen</h2>
+      <p>Die Antworten stehen verteilt auf dieser Seite, hier zusammengefasst.</p>
+    </header>
+    <div class="faq">
+      <div>
+        <h3>Was kostet ein Dynamics 365 Health Check?</h3>
+        <p>5.000 € zzgl. USt., fester Umfang, ohne Stufen und ohne Varianten. Enthalten ist, was auf dieser Seite steht. Die Umsetzung der Maßnahmen wird getrennt beauftragt.</p>
+      </div>
+      <div>
+        <h3>Wie lange dauert der Health Check, und wann kann er starten?</h3>
+        <p>Fünf Tage. Darin liegen Kickoff, die toolgestützte Analyse, zwei bis drei Kurzinterviews und die Ergebnispräsentation. Der Start liegt in der Regel zwei bis drei Wochen nach Beauftragung, die Durchführung ist remote.</p>
+      </div>
+      <div>
+        <h3>Wie viel Zeit muss mein Team einplanen?</h3>
+        <p>Rund 4 bis 5 Stunden insgesamt: 90 Minuten Kickoff, zwei bis drei Interviews von je 45 Minuten und eine Stunde Ergebnispräsentation. Dazu einen festen Ansprechpartner für Rückfragen zwischendurch.</p>
+      </div>
+      <div>
+        <h3>Welche Zugriffe brauchen Sie, und wird an meinen Umgebungen etwas verändert?</h3>
+        <p>Lesezugriff auf die produktive und eine vorgelagerte Dataverse-Umgebung, auf das Power Platform Admin Center und, sofern vorhanden, auf Azure DevOps oder GitHub. Verändert wird nichts: Die Analyse liest, sie schreibt nicht.</p>
+      </div>
+      <div>
+        <h3>Was erhalte ich am Ende?</h3>
+        <p>Drei Dokumente: eine Health-Scorecard über acht Dimensionen mit Ampel und Begründung, die zehn größten Risiken mit Auswirkung und betroffenen Umgebungen und einen Maßnahmenkatalog in drei Stufen, nämlich Quick Wins, 90 Tage und Zielarchitektur. Die Dokumente gehören Ihnen.</p>
+      </div>
+      <div>
+        <h3>Ist die Umsetzung der Maßnahmen enthalten?</h3>
+        <p>Nein. Der Health Check endet mit dem Maßnahmenkatalog. Sie setzen ihn intern um, mit Ihrem bisherigen Partner oder mit mir. Auch der optionale Workshop, in dem wir Zuschnitt und Reihenfolge der Maßnahmen durchsprechen, ist nicht im Festpreis enthalten.</p>
+      </div>
+      <div>
+        <h3>Für welche Systeme gilt der Health Check?</h3>
+        <p>Für Dynamics 365 Customer Engagement, also Sales, Customer Service und Field Service, und für die Power Platform auf Dataverse. Finance &amp; Operations und Integrationen außerhalb der Power Platform sind nicht Teil des Prüfumfangs.</p>
+      </div>
+      <div>
+        <h3>Lohnt sich der Health Check, wenn das System läuft?</h3>
+        <p>Dafür ist er gedacht. Die meisten Systeme laufen, nur weiß niemand genau, wie stabil. Geprüft werden Solution-Architektur, Customizing, Code, Automatisierung, Performance sowie Daten und Kapazität, dazu Sicherheit und ALM im Überblick. Die Befunde sind gemessen, nicht geschätzt.</p>
       </div>
     </div>
   </div>
@@ -453,6 +581,7 @@
 <section id="rahmen" class="after-cta">
   <div class="wrap">
     <header>
+      <div class="kicker">Vor der Beauftragung</div>
       <h2>Voraussetzungen und Abgrenzung</h2>
       <p>Damit vor der Beauftragung klar ist, was Sie beistellen und was der Health Check nicht leistet.</p>
     </header>

@@ -79,7 +79,25 @@ Erfahrung, Unabhängigkeit, Werkzeug. Je Titel und ein Satz Beleg.
 Keine Kundennamen, keine Logos, keine Stimmen, keine Fallzahlen. NDA.
 Jahreszahlen folgen der Startseite und dem englischen Profil-Dokument.
 
-## Block 7 — Abschluss-CTA (navy, mit Kontaktkarte)
+## Block 7 — Häufige Fragen
+
+Überschrift: die Themen der Fragen in einer Zeile, nicht das Wort „FAQ".
+Kicker: Häufige Fragen zum `<Angebot>`
+
+Sechs bis acht Fragen, so formuliert, wie ein Käufer sie in die Suche tippt: Preis,
+Dauer, eigener Aufwand, nötige Zugriffe, Ergebnis, Abgrenzung, und eine Frage, die den
+naheliegenden Einwand aufnimmt („Lohnt sich das, wenn mein System läuft?").
+
+Jede Antwort besteht aus Zahlen, die weiter oben auf der Seite stehen. Eine Antwort, die
+etwas Neues behauptet, ist ein Fehler im Rest der Seite.
+
+Der Block steht **vor** dem Abschluss-CTA: Er beantwortet Einwände, er erhebt keine. Die
+Absagen bleiben im Rahmenblock dahinter.
+
+Sichtbarer Text und `FAQPage`-Schema im `<head>` müssen wörtlich übereinstimmen, und der
+Text steht ohne Aufklappen auf der Seite. Kein `<details>`.
+
+## Block 8 — Abschluss-CTA (navy, mit Kontaktkarte)
 
 Headline: Preis, Dauer, Nutzen in drei kurzen Sätzen.
 Subline: Durchführungsform und Vorlauf.
@@ -87,7 +105,7 @@ Button: Erstgespräch vereinbaren
 Kleingedrucktes: Preis zzgl. USt. und die Länge des Erstgesprächs.
 Kontaktkarte: E-Mail, Telefon, Zum Profil.
 
-## Block 8 — Zwei Listen nebeneinander: Rahmen, hinter dem CTA
+## Block 9 — Zwei Listen nebeneinander: Rahmen, hinter dem CTA
 
 Letzter Abschnitt der Seite, hinter dem Abschluss-CTA. Drei Absagen unmittelbar vor dem
 Knopf bremsen den Abschluss. Der Einwand wird stattdessen schon unter den Kacheln in
@@ -113,6 +131,12 @@ Umsetzung der Maßnahmen, weil sie getrennt verkauft wird.
 
 Fünf bis acht deutsche Zielbegriffe festhalten und in Überschriften und Fließtext
 unterbringen. Kein `meta name="keywords"`.
+
+Strukturierte Daten, zwei Blöcke `application/ld+json` im `<head>`: `Service` mit
+`Offer` und Preis, dazu `FAQPage` mit den Fragen aus Block 7, wörtlich wie im Text.
+
+Jeder Abschnittskopf trägt einen Kicker mit dem Zielbegriff, die Überschrift darunter
+bleibt der menschliche Satz. Der Kicker ist die Suchzeile, die Überschrift die Lesezeile.
 
 ## Anschlüsse auf der Startseite
 

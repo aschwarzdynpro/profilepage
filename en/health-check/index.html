@@ -207,6 +207,14 @@
   footer{border-top:1px solid var(--line)}
   .feat,.panel,.dim,.outcome,address,.service li,.feat ul li,.contact .card,.shot img,.portrait{border-radius:0}
 
+  /* Haeufige Fragen: Lesespalte mit Trennlinien wie der Ablauf, Frage in Manrope.
+     Sichtbarer Text, kein Aufklappen: der FAQPage-Eintrag im Kopf muss dasselbe sagen. */
+  section>.wrap>header>.kicker{margin-bottom:.5rem}
+  .faq{border-top:1px solid var(--line);width:min(78ch,100%)}
+  .faq>div{border-bottom:1px solid var(--line);padding:1.3rem 0}
+  .faq h3{font-size:1.08rem;max-width:62ch}
+  .faq p{margin-top:.4rem;color:var(--ink-2);font-size:.97rem}
+
   /* Sprachumschalter in der Kopfleiste */
   .nav .wrap{gap:1rem}
   .nav .mark{margin-right:auto}
@@ -232,6 +240,78 @@
     "availability": "https://schema.org/InStock",
     "url": "https://dynamicspro.de/en/health-check/"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does a Dynamics 365 health check cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "€5,000 plus VAT, fixed scope, with no tiers and no variants. What this page describes is what the price covers. Implementing the actions is ordered separately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does the health check take, and when can it start?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Five days. They cover the kickoff, the tool-supported analysis, two to three short interviews and the results presentation. The start is usually two to three weeks after you place the order, and delivery is remote."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much time does my team need to set aside?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "About 4 to 5 hours in total: 90 minutes for the kickoff, two to three interviews of 45 minutes each, and one hour for the results presentation. Plus one fixed contact for questions in between."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What access do you need, and is anything changed in my environments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Read access to the production Dataverse environment and one upstream environment, to the Power Platform admin center and, if you use them, to Azure DevOps or GitHub. Nothing is changed: the analysis reads, it does not write."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do I get at the end?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three documents: a health scorecard across eight dimensions with a traffic-light rating and the reasoning, the ten biggest risks with impact and affected environments, and an action catalog in three tiers, namely quick wins, 90 days and target architecture. The documents are yours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is implementing the actions included?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The health check ends with the action catalog. You implement it in-house, with your current partner or with me. The optional workshop, where we talk through how to slice the actions and in what order, is not included in the fixed price either."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which systems does the health check cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dynamics 365 Customer Engagement, meaning Sales, Customer Service and Field Service, and the Power Platform on Dataverse. Finance & Operations and integrations outside the Power Platform are out of scope."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the health check worth it if the system is running?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That is what it is for. Most systems run, but nobody knows exactly how stable they are. It covers solution architecture, customization, code, automation, performance, and data and capacity, plus security and ALM at overview level. Findings are measured, not estimated."
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -281,6 +361,7 @@
 <section id="dimensionen">
   <div class="wrap">
     <header>
+      <div class="kicker">Scope: Dynamics 365 CE and Power Platform</div>
       <h2>What gets checked</h2>
       <p>Eight dimensions, each with a guiding question that has an answer by the end.</p>
     </header>
@@ -333,6 +414,7 @@
 <section id="ablauf">
   <div class="wrap">
     <header>
+      <div class="kicker">Five days</div>
       <h2>How it runs</h2>
       <p>Four sessions over five days, with the tool-supported analysis in between. The workshop afterwards is optional.</p>
     </header>
@@ -375,6 +457,7 @@
 <section id="ergebnis">
   <div class="wrap">
     <header>
+      <div class="kicker">Deliverables</div>
       <h2>What you get</h2>
       <p>Three documents you can keep using without me.</p>
     </header>
@@ -399,6 +482,7 @@
 <section id="warum">
   <div class="wrap">
     <header>
+      <div class="kicker">Independent and tool-supported</div>
       <h2>Why DynamicsPro</h2>
     </header>
     <div class="why">
@@ -413,6 +497,50 @@
       <div>
         <h3>My own analysis toolset, not gut feeling</h3>
         <p>Findings are measured and documented, not estimated.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fragen">
+  <div class="wrap">
+    <header>
+      <div class="kicker">Frequently asked questions about the Dynamics 365 health check</div>
+      <h2>Price, duration, access and limits</h2>
+      <p>The answers are spread across this page, collected here.</p>
+    </header>
+    <div class="faq">
+      <div>
+        <h3>What does a Dynamics 365 health check cost?</h3>
+        <p>€5,000 plus VAT, fixed scope, with no tiers and no variants. What this page describes is what the price covers. Implementing the actions is ordered separately.</p>
+      </div>
+      <div>
+        <h3>How long does the health check take, and when can it start?</h3>
+        <p>Five days. They cover the kickoff, the tool-supported analysis, two to three short interviews and the results presentation. The start is usually two to three weeks after you place the order, and delivery is remote.</p>
+      </div>
+      <div>
+        <h3>How much time does my team need to set aside?</h3>
+        <p>About 4 to 5 hours in total: 90 minutes for the kickoff, two to three interviews of 45 minutes each, and one hour for the results presentation. Plus one fixed contact for questions in between.</p>
+      </div>
+      <div>
+        <h3>What access do you need, and is anything changed in my environments?</h3>
+        <p>Read access to the production Dataverse environment and one upstream environment, to the Power Platform admin center and, if you use them, to Azure DevOps or GitHub. Nothing is changed: the analysis reads, it does not write.</p>
+      </div>
+      <div>
+        <h3>What do I get at the end?</h3>
+        <p>Three documents: a health scorecard across eight dimensions with a traffic-light rating and the reasoning, the ten biggest risks with impact and affected environments, and an action catalog in three tiers, namely quick wins, 90 days and target architecture. The documents are yours.</p>
+      </div>
+      <div>
+        <h3>Is implementing the actions included?</h3>
+        <p>No. The health check ends with the action catalog. You implement it in-house, with your current partner or with me. The optional workshop, where we talk through how to slice the actions and in what order, is not included in the fixed price either.</p>
+      </div>
+      <div>
+        <h3>Which systems does the health check cover?</h3>
+        <p>Dynamics 365 Customer Engagement, meaning Sales, Customer Service and Field Service, and the Power Platform on Dataverse. Finance &amp; Operations and integrations outside the Power Platform are out of scope.</p>
+      </div>
+      <div>
+        <h3>Is the health check worth it if the system is running?</h3>
+        <p>That is what it is for. Most systems run, but nobody knows exactly how stable they are. It covers solution architecture, customization, code, automation, performance, and data and capacity, plus security and ALM at overview level. Findings are measured, not estimated.</p>
       </div>
     </div>
   </div>
@@ -441,6 +569,7 @@
 <section id="rahmen" class="after-cta">
   <div class="wrap">
     <header>
+      <div class="kicker">Before you place the order</div>
       <h2>Prerequisites and out of scope</h2>
       <p>So that before you place the order it is clear what you provide and what the health check does not cover.</p>
     </header>
