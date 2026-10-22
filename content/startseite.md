@@ -20,11 +20,15 @@ Headline: Dynamics 365 Health Check
 
 Frage: Sie möchten zuerst wissen, wo Ihre Dynamics-Plattform steht?
 
-Text: In einem strukturierten Health Check analysiere ich Solution-Architektur, Customizing,
-Code, Automatisierung, Performance sowie Daten und Kapazität, dazu Sicherheit und ALM im
-Überblick. Sie erhalten eine Scorecard mit Ampel je Dimension, die zehn größten Risiken und
-einen priorisierten Maßnahmenplan, der Ihnen gehört: Sie setzen ihn intern, mit Ihrem Partner
-oder mit mir um.
+Text: In einem strukturierten Health Check analysiere ich Kapazität und Lizenzen, Performance
+und Betrieb, Sicherheit, ALM und Customizing, Automatisierung, Datenmodell und Datenqualität,
+Nutzung und Adoption sowie Umgebungen und Governance, dazu Code und Erweiterungen, sofern
+vorhanden. Sie erhalten eine Scorecard mit Ampel je
+Dimension, die zehn größten Risiken und einen priorisierten Maßnahmenplan, der Ihnen gehört:
+Sie setzen ihn intern, mit Ihrem Partner oder mit mir um.
+
+Die acht Namen sind die Kapitel des Gesamtberichts und nicht frei wählbar, siehe
+`content/health-check.md`, Block 3.
 
 Eckdaten: 5 Tage, Fester Umfang, Feste Ergebnisse, Unabhängig, Toolgestützt, Maßnahmenplan,
 jeweils mit einem Satz, der aus `content/health-check.md` belegt ist. Kein Preis an dieser

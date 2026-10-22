@@ -49,11 +49,21 @@ ein Satz, was das Angebot daran ändert. Drei bis vier Zeilen, mehr nicht.
 Überschrift: Was geprüft wird
 
 Sechs bis acht Kacheln, je Titel und eine Leitfrage. Die Leitfrage ist eine echte
-Frage mit Fragezeichen und wird im Ergebnis beantwortet. Dimensionen, die ein anderes
-Angebot der Familie vertieft, tragen den Zusatz „(Überblick)".
+Frage mit Fragezeichen und wird im Ergebnis beantwortet.
 
-Hinweis unter den Kacheln: welche Dimensionen nur im Überblick bewertet werden und
-welches Angebot sie vertieft. Dieser Hinweis hält die Familie zusammen und begrenzt
+**Die Kacheltitel sind die Kapitel des Ergebnisdokuments, nicht freie Überschriften.**
+Wo ein Werkzeug den Bericht erzeugt, werden die Namen von dort übernommen; beim Health
+Check sind es die acht Dimensionen aus `DIMS` in `scripts/health_analysis.py` (Repo
+`Healthcheck`). Eine Kachel, die das Ergebnisdokument nicht als Kapitel kennt, verspricht
+etwas, das der Kunde nicht wiederfindet.
+
+Den Zusatz „(Überblick)" trägt eine Dimension nur, wenn das Werkzeug dort tatsächlich
+weniger liefert. Beim Health Check stand er an Sicherheit und ALM, obwohl beide
+vollwertige Dimensionen sind und die Fachberichte im Lieferpaket liegen; er ist dort
+entfernt. Wer ihn setzt, prüft vorher im Werkzeug, was der Lauf wirklich ausgibt.
+
+Hinweis unter den Kacheln: was der Lauf zusätzlich liefert oder weglässt, und welches
+Angebot eine Dimension vertieft. Dieser Hinweis hält die Familie zusammen und begrenzt
 den Umfang.
 
 ## Block 4 — Nummerierte Liste: der Ablauf

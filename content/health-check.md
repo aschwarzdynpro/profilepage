@@ -42,32 +42,58 @@ Customizing-Altlasten, langsame Formulare, fehlerhafte Flows, unklare Berechtigu
 Die meisten Systeme laufen, aber niemand weiß genau, wie stabil. Der Health Check
 schafft Klarheit, bevor aus Risiken Ausfälle werden.
 
-## Block 3 — Kachelraster, 8 Kacheln (2 Spalten, ab 900px eine Spalte)
+## Block 3 — Kachelraster, 8 feste Kacheln plus eine bedingte (2 Spalten, ab 900px eine Spalte)
 
 Überschrift: Was geprüft wird
-Unterzeile: Acht Dimensionen, jede mit einer Leitfrage, die am Ende beantwortet ist.
+Unterzeile: Acht Dimensionen, dazu die Code-Analyse, wenn die Umgebung sie hergibt. Jede mit
+einer Leitfrage, die am Ende beantwortet ist.
+
+Die Namen und ihre Reihenfolge sind **nicht frei wählbar**: sie sind die Kapitel des
+Gesamtberichts, wie `scripts/health_analysis.py` sie in `DIMS` erzeugt (Repo
+`Healthcheck`). Wer sie hier umbenennt, erzeugt eine Seite, die andere Kapitel verspricht
+als der Kunde bekommt.
 
 | Nr. | Dimension | Leitfrage |
 | --- | --- | --- |
-| 01 | Solution-Architektur und Layering | Sind Solutions sinnvoll geschnitten, Publisher konsistent, Layer beherrscht? |
-| 02 | Customizing-Qualität | Wie viel Altlast, Ungenutztes und Überladenes steckt in Tabellen, Formularen und Ansichten? |
-| 03 | Code-Qualität | Sind Plugins, JavaScript und PCF wartbar, aktuell und frei von Solution-Checker-Befunden? |
-| 04 | Automatisierung | Laufen Flows und Workflows stabil, mit klaren Eigentümern und ohne veraltete Technik? |
-| 05 | Performance | Wo bremsen Abfragen, synchrone Logik oder API-Limits die Anwender? |
-| 06 | Daten und Kapazität | Wie entwickeln sich Speicher, Datenqualität und Wachstum? |
-| 07 | Sicherheit und Berechtigungen (Überblick) | Gibt es offensichtliche Risiken bei Rollen, Admin-Rechten und Zugriffen? |
-| 08 | ALM und Betrieb (Überblick) | Sind Transporte, Umgebungen, Rollback und Dokumentation tragfähig? |
+| 01 | Kapazität und Lizenzen | Wie entwickeln sich Speicher, Audit-Log und Wachstum, und wo liegen gekaufte Lizenzen ungenutzt? |
+| 02 | Performance und Betrieb | Wo bremsen Abfragen, überladene Formulare, synchrone Logik oder Drosselungen die Anwender? |
+| 03 | Sicherheit | Wer darf tatsächlich was: Rollen, Administratoren, organisationsweite Zugriffe und Zuweisungen? |
+| 04 | ALM und Customizing | Sind Solutions sinnvoll geschnitten, Publisher konsistent, Layer beherrscht und die Solution-Checker-Befunde abgearbeitet? |
+| 05 | Automatisierung | Laufen Flows und Workflows stabil, mit Dienstkonten als Eigentümer und ohne veraltete Technik? |
+| 06 | Datenmodell und Datenqualität | Wie viel Altlast steckt in Tabellen und Formularen, und sind Duplikate, Pflichtfelder und Füllgrade im Griff? |
+| 07 | Nutzung und Adoption | Wer arbeitet tatsächlich im System, und welche Lizenzen und Funktionen bleiben ungenutzt? |
+| 08 | Umgebungen und Governance | Tragen Umgebungslandschaft, DLP-Richtlinien, Backups und Plattformstand? |
+| 09 | Code und Erweiterungen (`wenn vorhanden`) | Ist das Kunden-JavaScript wartbar, frei von abgekündigten APIs und ohne fest verdrahtete Umgebungs-URLs oder Geheimnisse im Code? |
 
-Hinweis unter den Kacheln (`p.note`): Sicherheit, ALM sowie Lizenzen und Kapazität
-werden im Überblick bewertet. Für eine Tiefenanalyse gibt es jeweils eigene Reports.
-Die Umsetzung der Maßnahmen ist nicht enthalten. Voraussetzungen und Abgrenzung stehen
-am Seitenende.
+Kachel 09 ist D10 im Werkzeug und steht unter der Bedingung `CODE_ON`: sie erscheint, sobald
+Kundenbibliotheken gefunden werden oder ein Repository ausgewertet werden konnte. Sie trägt
+deshalb die Marke „wenn vorhanden" (`span.opt`, dieselbe wie der optionale Workshop in Block 4)
+und läuft als `.dim.cond` über beide Spalten, sonst bliebe die letzte Rasterzeile halb leer.
+**Die Kachel darf nicht wieder in den Hinweistext wandern:** die Code-Analyse ist ein
+Kaufargument und gehört in den Prüfumfang, nicht in die Fußnote. In gewachsenen Umgebungen
+greift die Bedingung praktisch immer.
+
+Hinweis unter den Kacheln (`p.note`): Die neunte Dimension setzt voraus, dass sich
+Kunden-JavaScript, Plugins oder ein Repository auswerten lassen; in gewachsenen Umgebungen
+ist das praktisch immer der Fall. Hinzu kommt Integration (Dual Write), wenn Strecken laufen.
+Die Fachberichte zu Sicherheitsmodell, Performance und Formularfüllgraden, aus denen die
+Bewertung stammt, liegen dem Ergebnis bei. Die Umsetzung der Maßnahmen ist nicht
+enthalten. Voraussetzungen und Abgrenzung stehen am Seitenende.
 
 Die beiden letzten Sätze nehmen den Einwand vorweg, den Block 8 sonst erst unmittelbar
 vor dem Abschluss-Knopf bringen würde, und weisen den Weg zum ausführlichen Block.
 
-Der Hinweis ist die Brücke zur restlichen Angebotsfamilie. Er bleibt stehen, bis die
-Seiten dazu existieren, und wird dann verlinkt.
+Die beiden Zusatzdimensionen stehen im Werkzeug unter einer Bedingung (`DW_ON`, `CODE_ON`
+in `health_analysis.py`), deshalb stehen sie als Hinweis und nicht als Kachel. In der
+Praxis erscheint „Code und Erweiterungen" fast immer, weil die Skriptauswertung zum
+Standardlauf gehört; „Integration (Dual Write)" nur bei Kunden mit laufenden Strecken.
+
+Der Hinweis nannte Sicherheit, ALM, Lizenzen und Kapazität früher als Überblick und
+verwies für die Tiefe auf eigene Reports. Das stimmte nicht: alle vier sind vollwertige
+Dimensionen, und `Build-Index.py` legt die Fachberichte zu Sicherheitsmodell, Performance
+und Formularfüllgraden in dasselbe Lieferpaket. **Offen bleibt damit der Zuschnitt der
+restlichen Angebotsfamilie**: Wenn die Fachberichte im Festpreis liegen, verkaufen die
+geplanten Tiefenanalyse-Seiten die Auswertung und die Umsetzung, nicht den Bericht.
 
 ## Block 4 — Nummerierte Liste, 4 Schritte
 
@@ -101,13 +127,19 @@ der Kennzahlenleiste des Hero nach.
 ## Block 5 — Dreierraster Lieferobjekte
 
 Überschrift: Ihr Ergebnis
-Unterzeile: Drei Dokumente, die Sie ohne mich weiterverwenden können.
+Unterzeile: Drei Dokumente, die Sie ohne mich weiterverwenden können, dazu die
+Fachberichte, aus denen die Bewertung stammt.
 
 | Lieferobjekt | Inhalt |
 | --- | --- |
-| Health-Scorecard | Über acht Dimensionen mit Ampel und Begründung. |
+| Health-Scorecard | Über acht Dimensionen und die Code-Analyse, jeweils mit Ampel und Begründung. |
 | Top-10-Risiken | Mit Auswirkung und betroffenen Umgebungen. |
-| Priorisierter Maßnahmenkatalog | In drei Stufen: Quick Wins, 90 Tage, Zielarchitektur. |
+| Priorisierter Maßnahmenkatalog | In drei Stufen nach Fahrplan: 30, 60 und 90 Tage. |
+
+Die drei Stufen sind die Phasen aus `scripts/action_plan.py`: der Fahrplan kennt 30, 60
+und 90 Tage, gelbe Befunde rutschen eine Phase nach hinten, rote Sofortmaßnahmen stehen
+immer in Phase 30. Eine Stufe „Zielarchitektur" stand hier früher, das Werkzeug erzeugt
+sie nicht.
 
 Hinweis (`p.note`): Der Maßnahmenkatalog gehört Ihnen. Sie setzen ihn intern, mit
 Ihrem Partner oder mit mir um.
@@ -133,7 +165,7 @@ Unterzeile: Die Antworten stehen verteilt auf dieser Seite, hier zusammengefasst
 
 Acht Fragen, Formulierung wie gesucht wird, nicht wie intern geredet wird. Jede Antwort
 nennt nur Zahlen, die weiter oben auf der Seite stehen: 5.000 €, fünf Tage, 4 bis 5
-Stunden, acht Dimensionen, Top 10, drei Stufen.
+Stunden, acht Dimensionen plus Code-Analyse, Top 10, drei Stufen zu 30, 60 und 90 Tagen.
 
 | Frage | Kern der Antwort |
 | --- | --- |
@@ -141,9 +173,9 @@ Stunden, acht Dimensionen, Top 10, drei Stufen.
 | Wie lange dauert der Health Check, und wann kann er starten? | fünf Tage, Start zwei bis drei Wochen nach Beauftragung, remote |
 | Wie viel Zeit muss mein Team einplanen? | rund 4 bis 5 Stunden, aufgeteilt auf die vier Termine |
 | Welche Zugriffe brauchen Sie, und wird an meinen Umgebungen etwas verändert? | Lesezugriff auf zwei Umgebungen, PPAC, optional DevOps; es wird nichts geschrieben |
-| Was erhalte ich am Ende? | Scorecard, Top-10-Risiken, Maßnahmenkatalog in drei Stufen |
+| Was erhalte ich am Ende? | Scorecard, Top-10-Risiken, Maßnahmenkatalog in drei Stufen, dazu die Fachberichte |
 | Ist die Umsetzung der Maßnahmen enthalten? | nein, auch der Workshop nicht |
-| Für welche Systeme gilt der Health Check? | D365 CE und Power Platform auf Dataverse, nicht F&O |
+| Für welche Systeme gilt der Health Check? | D365 CE und Power Platform auf Dataverse, nicht F&O; von Dual Write die Dataverse-Seite |
 | Lohnt sich der Health Check, wenn das System läuft? | ja, genau dafür; Befunde sind gemessen, nicht geschätzt |
 
 Der Block steht vor dem Abschluss-CTA, nicht dahinter: er beantwortet Einwände, er
@@ -187,7 +219,11 @@ Nicht enthalten:
 
 - Umsetzung von Maßnahmen
 - Fachliche Prozessberatung und Lizenzberatung
-- Finance & Operations sowie Integrationen außerhalb der Power Platform
+- Finance & Operations selbst sowie Integrationen außerhalb der Power Platform
+
+„Selbst" steht dort, weil Dimension D9 die Dual-Write-Strecken bewertet, allerdings nur
+aus Dataverse gelesen. Initial-Sync-Stand und Fehlerliste des Dienstes liegen in F&O und
+sind lesend nicht erreichbar, siehe Konzept des Werkzeugs, Abschnitt D9.
 
 ## SEO
 
