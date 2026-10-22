@@ -93,11 +93,10 @@
   section>.wrap>header h2{font-size:1.7rem}
   section>.wrap>header p{margin-top:.5rem;color:var(--ink-2);font-size:.98rem;max-width:62ch}
 
-  /* Eight fixed check dimensions plus the code analysis. Two columns so title and guiding question
-     stay readable side by side; the conditional ninth spans both columns, otherwise the last row
-     would sit half empty. */
+  /* Nine check dimensions. Two columns so title and guiding question stay readable side by side;
+     the ninth spans both columns, otherwise the last row would sit half empty. */
   .dims{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
-  .dim.cond{grid-column:1/-1}
+  .dim.wide{grid-column:1/-1}
   @media (max-width:900px){.dims{grid-template-columns:1fr}}
   .dim{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:1.5rem 1.6rem}
   .dim .no{font-family:var(--display);font-size:.78rem;font-weight:700;letter-spacing:.06em;color:var(--ink-3)}
@@ -112,7 +111,7 @@
   .steps h3{font-size:1.08rem}
   .steps p{margin-top:.3rem;color:var(--ink-2);font-size:.97rem}
   .steps li.optional::before{color:var(--ink-3)}
-  .steps .opt,.dim .opt{font-family:var(--body);font-size:.7rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:3px;padding:.15rem .45rem;margin-left:.6rem;white-space:nowrap}
+  .steps .opt{font-family:var(--body);font-size:.7rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:3px;padding:.15rem .45rem;margin-left:.6rem;white-space:nowrap}
 
   /* Outcome: three deliverables side by side. */
   .outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
@@ -287,7 +286,7 @@
       "name": "What do I get at the end?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Three documents: a health scorecard across eight dimensions and the code analysis, each with a traffic-light rating and the reasoning, the ten biggest risks with impact and affected environments, and an action catalog in three tiers along the roadmap, namely 30, 60 and 90 days. Plus the specialist reports on the security model, performance and form fill rates. The documents are yours."
+        "text": "Three documents: a health scorecard across nine dimensions with a traffic-light rating and the reasoning, the ten biggest risks with impact and affected environments, and an action catalog in three tiers along the roadmap, namely 30, 60 and 90 days. Plus the four specialist reports on the security model, performance, code and extensions, and form fill rates. The documents are yours."
       }
     },
     {
@@ -311,7 +310,7 @@
       "name": "Is the health check worth it if the system is running?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "That is what it is for. Most systems run, but nobody knows exactly how stable they are. It covers capacity and licenses, performance and operations, security, ALM and customization, automation, data model and data quality, usage and adoption, and environments and governance, plus code and extensions where available. Findings are measured, not estimated."
+        "text": "That is what it is for. Most systems run, but nobody knows exactly how stable they are. It covers capacity and licenses, performance and operations, security, ALM and customization, automation, data model and data quality, usage and adoption, environments and governance, and code and extensions. Findings are measured, not estimated."
       }
     }
   ]
@@ -366,7 +365,7 @@
     <header>
       <div class="kicker">Scope: Dynamics 365 CE and Power Platform</div>
       <h2>What gets checked</h2>
-      <p>Eight dimensions, plus the code analysis where the environment provides it. Each with a guiding question that has an answer by the end.</p>
+      <p>Nine dimensions, each with a guiding question that has an answer by the end.</p>
     </header>
     <div class="dims">
       <article class="dim">
@@ -409,13 +408,13 @@
         <h3>Environments and governance</h3>
         <p>Are the environment landscape, DLP policies, backups and the platform version fit for purpose?</p>
       </article>
-      <article class="dim cond">
+      <article class="dim wide">
         <div class="no">09</div>
-        <h3>Code and extensions <span class="opt">where available</span></h3>
-        <p>Is your JavaScript maintainable, free of deprecated APIs and without hard-coded environment URLs or secrets in the code?</p>
+        <h3>Code and extensions</h3>
+        <p>Is your own JavaScript maintainable, free of deprecated APIs and without hard-coded environment URLs or secrets in the code?</p>
       </article>
     </div>
-    <p class="note">The ninth dimension requires that your JavaScript, plugins or a repository can be analyzed; in environments that have grown over years that is almost always the case. Integration (Dual Write) is added where links are running. The specialist reports on the security model, performance and form fill rates, which the rating is based on, come with the results. Implementing the actions is not included. Prerequisites and what is out of scope are listed at the end of the page.</p>
+    <p class="note">A tenth dimension is added where Dual Write is in use: running links, map versions and write errors, read from Dataverse. The four specialist reports on the security model, performance, code and extensions, and form fill rates, which the rating is based on, come with the results. Implementing the actions is not included. Prerequisites and what is out of scope are listed at the end of the page.</p>
   </div>
 </section>
 
@@ -472,7 +471,7 @@
     <div class="outcomes">
       <article class="outcome">
         <h3>Health scorecard</h3>
-        <p>Across eight dimensions and the code analysis, each with a traffic-light rating and the reasoning behind it.</p>
+        <p>Across nine dimensions, with a traffic-light rating and the reasoning behind it.</p>
       </article>
       <article class="outcome">
         <h3>Top 10 risks</h3>
@@ -536,7 +535,7 @@
       </div>
       <div>
         <h3>What do I get at the end?</h3>
-        <p>Three documents: a health scorecard across eight dimensions and the code analysis, each with a traffic-light rating and the reasoning, the ten biggest risks with impact and affected environments, and an action catalog in three tiers along the roadmap, namely 30, 60 and 90 days. Plus the specialist reports on the security model, performance and form fill rates. The documents are yours.</p>
+        <p>Three documents: a health scorecard across nine dimensions with a traffic-light rating and the reasoning, the ten biggest risks with impact and affected environments, and an action catalog in three tiers along the roadmap, namely 30, 60 and 90 days. Plus the four specialist reports on the security model, performance, code and extensions, and form fill rates. The documents are yours.</p>
       </div>
       <div>
         <h3>Is implementing the actions included?</h3>
@@ -548,7 +547,7 @@
       </div>
       <div>
         <h3>Is the health check worth it if the system is running?</h3>
-        <p>That is what it is for. Most systems run, but nobody knows exactly how stable they are. It covers capacity and licenses, performance and operations, security, ALM and customization, automation, data model and data quality, usage and adoption, and environments and governance, plus code and extensions where available. Findings are measured, not estimated.</p>
+        <p>That is what it is for. Most systems run, but nobody knows exactly how stable they are. It covers capacity and licenses, performance and operations, security, ALM and customization, automation, data model and data quality, usage and adoption, environments and governance, and code and extensions. Findings are measured, not estimated.</p>
       </div>
     </div>
   </div>

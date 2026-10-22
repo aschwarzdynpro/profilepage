@@ -105,11 +105,10 @@
   section>.wrap>header h2{font-size:1.7rem}
   section>.wrap>header p{margin-top:.5rem;color:var(--ink-2);font-size:.98rem;max-width:62ch}
 
-  /* Acht feste Prüfdimensionen plus die Code-Analyse. Zwei Spalten, damit Titel und Leitfrage
-     nebeneinander lesbar bleiben; die bedingte neunte läuft über beide Spalten, sonst bliebe
-     die letzte Zeile halb leer. */
+  /* Neun Prüfdimensionen. Zwei Spalten, damit Titel und Leitfrage nebeneinander lesbar bleiben;
+     die neunte läuft über beide Spalten, sonst bliebe die letzte Zeile halb leer. */
   .dims{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
-  .dim.cond{grid-column:1/-1}
+  .dim.wide{grid-column:1/-1}
   @media (max-width:900px){.dims{grid-template-columns:1fr}}
   .dim{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:1.5rem 1.6rem}
   .dim .no{font-family:var(--display);font-size:.78rem;font-weight:700;letter-spacing:.06em;color:var(--ink-3)}
@@ -124,7 +123,7 @@
   .steps h3{font-size:1.08rem}
   .steps p{margin-top:.3rem;color:var(--ink-2);font-size:.97rem}
   .steps li.optional::before{color:var(--ink-3)}
-  .steps .opt,.dim .opt{font-family:var(--body);font-size:.7rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:3px;padding:.15rem .45rem;margin-left:.6rem;white-space:nowrap}
+  .steps .opt{font-family:var(--body);font-size:.7rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:3px;padding:.15rem .45rem;margin-left:.6rem;white-space:nowrap}
 
   /* Ergebnis: drei Lieferobjekte nebeneinander. */
   .outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
@@ -299,7 +298,7 @@
       "name": "Was erhalte ich am Ende?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Drei Dokumente: eine Health-Scorecard über acht Dimensionen und die Code-Analyse, jeweils mit Ampel und Begründung, die zehn größten Risiken mit Auswirkung und betroffenen Umgebungen und einen Maßnahmenkatalog in drei Stufen nach Fahrplan, nämlich 30, 60 und 90 Tage. Dazu die Fachberichte zu Sicherheitsmodell, Performance und Formularfüllgraden. Die Dokumente gehören Ihnen."
+        "text": "Drei Dokumente: eine Health-Scorecard über neun Dimensionen mit Ampel und Begründung, die zehn größten Risiken mit Auswirkung und betroffenen Umgebungen und einen Maßnahmenkatalog in drei Stufen nach Fahrplan, nämlich 30, 60 und 90 Tage. Dazu die vier Fachberichte zu Sicherheitsmodell, Performance, Code und Erweiterungen sowie Formularfüllgraden. Die Dokumente gehören Ihnen."
       }
     },
     {
@@ -323,7 +322,7 @@
       "name": "Lohnt sich der Health Check, wenn das System läuft?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Dafür ist er gedacht. Die meisten Systeme laufen, nur weiß niemand genau, wie stabil. Geprüft werden Kapazität und Lizenzen, Performance und Betrieb, Sicherheit, ALM und Customizing, Automatisierung, Datenmodell und Datenqualität, Nutzung und Adoption sowie Umgebungen und Governance, dazu Code und Erweiterungen, sofern vorhanden. Die Befunde sind gemessen, nicht geschätzt."
+        "text": "Dafür ist er gedacht. Die meisten Systeme laufen, nur weiß niemand genau, wie stabil. Geprüft werden Kapazität und Lizenzen, Performance und Betrieb, Sicherheit, ALM und Customizing, Automatisierung, Datenmodell und Datenqualität, Nutzung und Adoption, Umgebungen und Governance sowie Code und Erweiterungen. Die Befunde sind gemessen, nicht geschätzt."
       }
     }
   ]
@@ -378,7 +377,7 @@
     <header>
       <div class="kicker">Prüfumfang Dynamics 365 CE und Power Platform</div>
       <h2>Was geprüft wird</h2>
-      <p>Acht Dimensionen, dazu die Code-Analyse, wenn die Umgebung sie hergibt. Jede mit einer Leitfrage, die am Ende beantwortet ist.</p>
+      <p>Neun Dimensionen, jede mit einer Leitfrage, die am Ende beantwortet ist.</p>
     </header>
     <div class="dims">
       <article class="dim">
@@ -421,13 +420,13 @@
         <h3>Umgebungen und Governance</h3>
         <p>Tragen Umgebungslandschaft, DLP-Richtlinien, Backups und Plattformstand?</p>
       </article>
-      <article class="dim cond">
+      <article class="dim wide">
         <div class="no">09</div>
-        <h3>Code und Erweiterungen <span class="opt">wenn vorhanden</span></h3>
-        <p>Ist das Kunden-JavaScript wartbar, frei von abgekündigten APIs und ohne fest verdrahtete Umgebungs-URLs oder Geheimnisse im Code?</p>
+        <h3>Code und Erweiterungen</h3>
+        <p>Ist das kundeneigene JavaScript wartbar, frei von abgekündigten APIs und ohne fest verdrahtete Umgebungs-URLs oder Geheimnisse im Code?</p>
       </article>
     </div>
-    <p class="note">Die neunte Dimension setzt voraus, dass sich Kunden-JavaScript, Plugins oder ein Repository auswerten lassen; in gewachsenen Umgebungen ist das praktisch immer der Fall. Hinzu kommt Integration (Dual Write), wenn Strecken laufen. Die Fachberichte zu Sicherheitsmodell, Performance und Formularfüllgraden, aus denen die Bewertung stammt, liegen dem Ergebnis bei. Die Umsetzung der Maßnahmen ist nicht enthalten. Voraussetzungen und Abgrenzung stehen am Seitenende.</p>
+    <p class="note">Eine zehnte Dimension kommt hinzu, wenn Dual Write im Einsatz ist: laufende Strecken, Map-Versionen und Schreibfehler, gelesen aus Dataverse. Die vier Fachberichte zu Sicherheitsmodell, Performance, Code und Erweiterungen sowie Formularfüllgraden, aus denen die Bewertung stammt, liegen dem Ergebnis bei. Die Umsetzung der Maßnahmen ist nicht enthalten. Voraussetzungen und Abgrenzung stehen am Seitenende.</p>
   </div>
 </section>
 
@@ -484,7 +483,7 @@
     <div class="outcomes">
       <article class="outcome">
         <h3>Health-Scorecard</h3>
-        <p>Über acht Dimensionen und die Code-Analyse, jeweils mit Ampel und Begründung.</p>
+        <p>Über neun Dimensionen mit Ampel und Begründung.</p>
       </article>
       <article class="outcome">
         <h3>Top-10-Risiken</h3>
@@ -548,7 +547,7 @@
       </div>
       <div>
         <h3>Was erhalte ich am Ende?</h3>
-        <p>Drei Dokumente: eine Health-Scorecard über acht Dimensionen und die Code-Analyse, jeweils mit Ampel und Begründung, die zehn größten Risiken mit Auswirkung und betroffenen Umgebungen und einen Maßnahmenkatalog in drei Stufen nach Fahrplan, nämlich 30, 60 und 90 Tage. Dazu die Fachberichte zu Sicherheitsmodell, Performance und Formularfüllgraden. Die Dokumente gehören Ihnen.</p>
+        <p>Drei Dokumente: eine Health-Scorecard über neun Dimensionen mit Ampel und Begründung, die zehn größten Risiken mit Auswirkung und betroffenen Umgebungen und einen Maßnahmenkatalog in drei Stufen nach Fahrplan, nämlich 30, 60 und 90 Tage. Dazu die vier Fachberichte zu Sicherheitsmodell, Performance, Code und Erweiterungen sowie Formularfüllgraden. Die Dokumente gehören Ihnen.</p>
       </div>
       <div>
         <h3>Ist die Umsetzung der Maßnahmen enthalten?</h3>
@@ -560,7 +559,7 @@
       </div>
       <div>
         <h3>Lohnt sich der Health Check, wenn das System läuft?</h3>
-        <p>Dafür ist er gedacht. Die meisten Systeme laufen, nur weiß niemand genau, wie stabil. Geprüft werden Kapazität und Lizenzen, Performance und Betrieb, Sicherheit, ALM und Customizing, Automatisierung, Datenmodell und Datenqualität, Nutzung und Adoption sowie Umgebungen und Governance, dazu Code und Erweiterungen, sofern vorhanden. Die Befunde sind gemessen, nicht geschätzt.</p>
+        <p>Dafür ist er gedacht. Die meisten Systeme laufen, nur weiß niemand genau, wie stabil. Geprüft werden Kapazität und Lizenzen, Performance und Betrieb, Sicherheit, ALM und Customizing, Automatisierung, Datenmodell und Datenqualität, Nutzung und Adoption, Umgebungen und Governance sowie Code und Erweiterungen. Die Befunde sind gemessen, nicht geschätzt.</p>
       </div>
     </div>
   </div>

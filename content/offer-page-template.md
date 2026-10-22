@@ -53,8 +53,8 @@ Frage mit Fragezeichen und wird im Ergebnis beantwortet.
 
 **Die Kacheltitel sind die Kapitel des Ergebnisdokuments, nicht freie Überschriften.**
 Wo ein Werkzeug den Bericht erzeugt, werden die Namen von dort übernommen; beim Health
-Check sind es die acht Dimensionen aus `DIMS` in `scripts/health_analysis.py` (Repo
-`Healthcheck`). Eine Kachel, die das Ergebnisdokument nicht als Kapitel kennt, verspricht
+Check sind es die neun Dimensionen aus `DIMS` in `scripts/health_analysis.py` (Repo
+`Healthcheck`), die zehnte kommt bei Dual Write dazu. Eine Kachel, die das Ergebnisdokument nicht als Kapitel kennt, verspricht
 etwas, das der Kunde nicht wiederfindet.
 
 Den Zusatz „(Überblick)" trägt eine Dimension nur, wenn das Werkzeug dort tatsächlich
